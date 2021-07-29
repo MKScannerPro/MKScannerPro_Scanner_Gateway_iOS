@@ -29,6 +29,7 @@
         _publishTopic = @"{device_name/device_id/device_to_app}";
         _cleanSession = YES;
         _keepAlive = @"60";
+        _qos = 1;
     }
     return self;
 }
@@ -55,27 +56,29 @@
     if (!ValidStr(self.keepAlive) || [self.keepAlive integerValue] < 10 || [self.keepAlive integerValue] > 120) {
         return @"KeepAlive error";
     }
-    if (self.userName.length > 256 || ![self.userName isAsciiString]) {
+    if (self.userName.length > 256 || (ValidStr(self.userName) && ![self.userName isAsciiString])) {
         return @"UserName error";
     }
-    if (self.password.length > 256 || ![self.password isAsciiString]) {
+    if (self.password.length > 256 || (ValidStr(self.password) && ![self.password isAsciiString])) {
         return @"Password error";
     }
-    if (self.certificate < 0 || self.certificate > 2) {
-        return @"Certificate error";
-    }
-    if (self.certificate > 0) {
-        if (!ValidStr(self.caFileName)) {
-            return @"CA File cannot be empty.";
+    if (self.sslIsOn) {
+        if (self.certificate < 0 || self.certificate > 2) {
+            return @"Certificate error";
         }
-        if (self.certificate == 2 && (!ValidStr(self.clientKeyName) || !ValidStr(self.clientCertName))) {
-            return @"Client File cannot be empty.";
+        if (self.certificate > 0) {
+            if (!ValidStr(self.caFileName)) {
+                return @"CA File cannot be empty.";
+            }
+            if (self.certificate == 2 && (!ValidStr(self.clientKeyName) || !ValidStr(self.clientCertName))) {
+                return @"Client File cannot be empty.";
+            }
         }
     }
     if (!ValidStr(self.deviceID) || self.deviceID.length > 32 || ![self.deviceID isAsciiString]) {
         return @"DeviceID error";
     }
-    if (self.ntpHost.length > 64 || ![self.ntpHost isAsciiString]) {
+    if (self.ntpHost.length > 64 || (ValidStr(self.ntpHost) && ![self.ntpHost isAsciiString])) {
         return @"NTP URL error";
     }
     if (self.timeZone < 0 || self.timeZone > 24) {

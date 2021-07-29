@@ -296,17 +296,25 @@ NSString *const MKSPReceiveDeviceDatasNotification = @"MKSPReceiveDeviceDatasNot
 #pragma mark - private method
 
 - (BOOL)checkServerDataProtocol:(id <MKSPServerDataProtocol>)protocol {
-    if (!ValidStr(protocol.host) || protocol.host.length > 64) {
+    if (!ValidStr(protocol.host) || protocol.host.length > 64 || ![protocol.host isAsciiString]) {
         return NO;
     }
     if (!ValidStr(protocol.port) || [protocol.port integerValue] < 0 || [protocol.port integerValue] > 65535) {
         return NO;
     }
-    if (!ValidStr(protocol.clientID) || protocol.clientID.length > 64) {
+    if (!ValidStr(protocol.clientID) || protocol.clientID.length > 64 || ![protocol.clientID isAsciiString]) {
         return NO;
     }
-    if (protocol.subscribeTopic.length > 128 || protocol.publishTopic.length > 128
-        || protocol.userName.length > 256 || protocol.password.length > 256) {
+    if (protocol.publishTopic.length > 128 || (ValidStr(protocol.publishTopic) && ![protocol.publishTopic isAsciiString])) {
+        return NO;
+    }
+    if (protocol.subscribeTopic.length > 128 || (ValidStr(protocol.subscribeTopic) && ![protocol.subscribeTopic isAsciiString])) {
+        return NO;
+    }
+    if (protocol.userName.length > 256 || (ValidStr(protocol.userName) && ![protocol.userName isAsciiString])) {
+        return NO;
+    }
+    if (protocol.password.length > 256 || (ValidStr(protocol.password) && ![protocol.password isAsciiString])) {
         return NO;
     }
     if (protocol.qos < 0 || protocol.qos > 2) {
@@ -315,17 +323,20 @@ NSString *const MKSPReceiveDeviceDatasNotification = @"MKSPReceiveDeviceDatasNot
     if (!ValidStr(protocol.keepAlive) || [protocol.keepAlive integerValue] < 10 || [protocol.keepAlive integerValue] > 120) {
         return NO;
     }
-    if (protocol.certificate < 0 || protocol.certificate > 2) {
-        return NO;
+    if (protocol.sslIsOn) {
+        if (protocol.certificate < 0 || protocol.certificate > 2) {
+            return NO;
+        }
+        if (protocol.certificate == 1 && !ValidStr(protocol.caFileName)) {
+            //需要根证书
+            return NO;
+        }
+        if (protocol.certificate == 2 && (!ValidStr(protocol.caFileName) || !ValidStr(protocol.clientFileName))) {
+            //双向验证，需要CA根证书、.p12证书
+            return NO;
+        }
     }
-    if (protocol.certificate == 1 && !ValidStr(protocol.caFileName)) {
-        //需要根证书
-        return NO;
-    }
-    if (protocol.certificate == 2 && (!ValidStr(protocol.caFileName) || !ValidStr(protocol.clientFileName))) {
-        //双向验证，需要CA根证书、.p12证书
-        return NO;
-    }
+    
     return YES;
 }
 

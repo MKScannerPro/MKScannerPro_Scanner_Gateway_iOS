@@ -81,7 +81,7 @@
 - (void)updateCellDatas:(NSDictionary *)dic {
     MKSPMQTTSettingForDeviceCellModel *cellModel1 = [[MKSPMQTTSettingForDeviceCellModel alloc] init];
     cellModel1.msg = @"Type";
-    cellModel1.rightMsg = (dic[@"connect_type"] == 0) ? @"TCP" : @"SSL";
+    cellModel1.rightMsg = ([dic[@"connect_type"] integerValue] == 0) ? @"TCP" : @"SSL";
     [self.dataList addObject:cellModel1];
     
     MKSPMQTTSettingForDeviceCellModel *cellModel2 = [[MKSPMQTTSettingForDeviceCellModel alloc] init];

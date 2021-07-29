@@ -91,7 +91,7 @@
 
 #pragma mark - UI
 - (void)loadSubViews {
-    self.defaultTitle = @"Data reporting timeout";
+    self.defaultTitle = @"Data report timeout";
     [self.view addSubview:self.textField];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(30.f);

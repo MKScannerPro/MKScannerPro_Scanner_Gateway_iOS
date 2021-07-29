@@ -229,10 +229,10 @@ MKTextButtonCellDelegate>
 }
 
 - (UIView *)headerView {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, 44.f)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, 55.f)];
     headerView.backgroundColor = COLOR_WHITE_MACROS;
     
-    UILabel *msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 10.f, 110.f, 24.f)];
+    UILabel *msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 10.f, 110.f, MKFont(15.f).lineHeight)];
     msgLabel.textColor = DEFAULT_TEXT_COLOR;
     msgLabel.textAlignment = NSTextAlignmentLeft;
     msgLabel.font = MKFont(15.f);
@@ -245,7 +245,14 @@ MKTextButtonCellDelegate>
     syncButton.frame = CGRectMake(kViewWidth - 15.f - 45.f, 7.f, 45.f, 30.f);
     [headerView addSubview:syncButton];
     
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15.f, 44.f - CUTTING_LINE_HEIGHT, kViewWidth - 2 * 15.f, CUTTING_LINE_HEIGHT)];
+    UILabel *noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 30.f, 110.f, MKFont(15.f).lineHeight)];
+    noteLabel.textAlignment = NSTextAlignmentLeft;
+    noteLabel.textColor = UIColorFromRGB(0xcccccc);
+    noteLabel.font = MKFont(12.f);
+    noteLabel.text = @"Date&Time";
+    [headerView addSubview:noteLabel];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15.f, 55.f - CUTTING_LINE_HEIGHT, kViewWidth - 2 * 15.f, CUTTING_LINE_HEIGHT)];
     lineView.backgroundColor = CUTTING_LINE_COLOR;
     [headerView addSubview:lineView];
     

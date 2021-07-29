@@ -343,19 +343,19 @@
 
 - (void)loadSection0Datas {
     MKSettingTextCellModel *cellModel1 = [[MKSettingTextCellModel alloc] init];
-    cellModel1.leftMsg = @"LED settings";
+    cellModel1.leftMsg = @"LED status option";
     [self.section0List addObject:cellModel1];
     
     MKSettingTextCellModel *cellModel2 = [[MKSettingTextCellModel alloc] init];
-    cellModel2.leftMsg = @"Data reporting timeout";
+    cellModel2.leftMsg = @"Data report timeout";
     [self.section0List addObject:cellModel2];
     
     MKSettingTextCellModel *cellModel3 = [[MKSettingTextCellModel alloc] init];
-    cellModel3.leftMsg = @"Network status reporting interval";
+    cellModel3.leftMsg = @"Network status report period";
     [self.section0List addObject:cellModel3];
     
     MKSettingTextCellModel *cellModel4 = [[MKSettingTextCellModel alloc] init];
-    cellModel4.leftMsg = @"Connection timeout setting";
+    cellModel4.leftMsg = @"Connection timeout option";
     [self.section0List addObject:cellModel4];
     
     MKSettingTextCellModel *cellModel5 = [[MKSettingTextCellModel alloc] init];

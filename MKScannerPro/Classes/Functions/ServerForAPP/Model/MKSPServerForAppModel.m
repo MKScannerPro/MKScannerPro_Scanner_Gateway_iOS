@@ -47,10 +47,10 @@
     if (!ValidStr(self.clientID) || self.clientID.length > 64 || ![self.clientID isAsciiString]) {
         return @"ClientID error";
     }
-    if (self.publishTopic.length > 128 || ![self.publishTopic isAsciiString]) {
+    if (self.publishTopic.length > 128 || (ValidStr(self.publishTopic) && ![self.publishTopic isAsciiString])) {
         return @"PublishTopic error";
     }
-    if (self.subscribeTopic.length > 128 || ![self.subscribeTopic isAsciiString]) {
+    if (self.subscribeTopic.length > 128 || (ValidStr(self.subscribeTopic) && ![self.subscribeTopic isAsciiString])) {
         return @"SubscribeTopic error";
     }
     if (self.qos < 0 || self.qos > 2) {
@@ -59,21 +59,23 @@
     if (!ValidStr(self.keepAlive) || [self.keepAlive integerValue] < 10 || [self.keepAlive integerValue] > 120) {
         return @"KeepAlive error";
     }
-    if (self.userName.length > 256 || ![self.userName isAsciiString]) {
+    if (self.userName.length > 256 || (ValidStr(self.userName) && ![self.userName isAsciiString])) {
         return @"UserName error";
     }
-    if (self.password.length > 256 || ![self.password isAsciiString]) {
+    if (self.password.length > 256 || (ValidStr(self.password) && ![self.password isAsciiString])) {
         return @"Password error";
     }
-    if (self.certificate < 0 || self.certificate > 2) {
-        return @"Certificate error";
-    }
-    if (self.certificate > 0) {
-        if (!ValidStr(self.caFileName)) {
-            return @"CA File cannot be empty.";
+    if (self.sslIsOn) {
+        if (self.certificate < 0 || self.certificate > 2) {
+            return @"Certificate error";
         }
-        if (self.certificate == 2 && !ValidStr(self.clientFileName)) {
-            return @"Client File cannot be empty.";
+        if (self.certificate > 0) {
+            if (!ValidStr(self.caFileName)) {
+                return @"CA File cannot be empty.";
+            }
+            if (self.certificate == 2 && !ValidStr(self.clientFileName)) {
+                return @"Client File cannot be empty.";
+            }
         }
     }
     return @"";
@@ -82,6 +84,9 @@
 #pragma mark - private method
 - (void)loadServerParams {
     if (!ValidDict([MKSPServerManager shared].serverParams)) {
+        self.cleanSession = YES;
+        self.keepAlive = @"60";
+        self.qos = 1;
         return;
     }
     self.host = [MKSPServerManager shared].serverParams[@"host"];
@@ -89,19 +94,10 @@
     self.clientID = [MKSPServerManager shared].serverParams[@"clientID"];
     self.subscribeTopic = [MKSPServerManager shared].serverParams[@"subscribeTopic"];
     self.publishTopic = [MKSPServerManager shared].serverParams[@"publishTopic"];
-    if (ValidNum([MKSPServerManager shared].serverParams[@"cleanSession"])) {
-        self.cleanSession = [[MKSPServerManager shared].serverParams[@"cleanSession"] boolValue];
-    }else {
-        self.cleanSession = YES;
-    }
+    self.cleanSession = [[MKSPServerManager shared].serverParams[@"cleanSession"] boolValue];
     
     self.qos = [[MKSPServerManager shared].serverParams[@"qos"] integerValue];
-    if (ValidStr([MKSPServerManager shared].serverParams[@"keepAlive"])) {
-        self.keepAlive = [MKSPServerManager shared].serverParams[@"keepAlive"];
-    }else {
-        self.keepAlive = @"60";
-    }
-     ;
+    self.keepAlive = [MKSPServerManager shared].serverParams[@"keepAlive"];
     self.userName = [MKSPServerManager shared].serverParams[@"userName"];
     self.password = [MKSPServerManager shared].serverParams[@"password"];
     self.sslIsOn = [[MKSPServerManager shared].serverParams[@"sslIsOn"] boolValue];

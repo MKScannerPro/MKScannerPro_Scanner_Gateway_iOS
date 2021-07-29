@@ -258,7 +258,7 @@
 
 - (UIButton *)timeZoneButton {
     if (!_timeZoneButton) {
-        _timeZoneButton = [MKCustomUIAdopter customButtonWithTitle:@"UTC+0"
+        _timeZoneButton = [MKCustomUIAdopter customButtonWithTitle:@"UTC+00"
                                                             target:self
                                                             action:@selector(timeZoneButtonPressed)];
         [_timeZoneButton.titleLabel setFont:MKFont(13.f)];
@@ -280,12 +280,12 @@
 
 - (NSArray *)dataList {
     if (!_dataList) {
-        _dataList = @[@"UTC-12",@"UTC-11",@"UTC-10",@"UTC-9",
-                      @"UTC-8",@"UTC-7",@"UTC-6",@"UTC-5",
-                      @"UTC-4",@"UTC-3",@"UTC-2",@"UTC-1",
-                      @"UTC+0",@"UTC+1",@"UTC+2",@"UTC+3",
-                      @"UTC+4",@"UTC+5",@"UTC+6",@"UTC+7",
-                      @"UTC+8",@"UTC+9",@"UTC+10",@"UTC+11",
+        _dataList = @[@"UTC-12",@"UTC-11",@"UTC-10",@"UTC-09",
+                      @"UTC-08",@"UTC-07",@"UTC-06",@"UTC-05",
+                      @"UTC-04",@"UTC-03",@"UTC-02",@"UTC-01",
+                      @"UTC+00",@"UTC+01",@"UTC+02",@"UTC+03",
+                      @"UTC+04",@"UTC+05",@"UTC+06",@"UTC+07",
+                      @"UTC+08",@"UTC+09",@"UTC+10",@"UTC+11",
                       @"UTC+12"];
     }
     return _dataList;
