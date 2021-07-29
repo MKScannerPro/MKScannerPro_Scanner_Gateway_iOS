@@ -1,0 +1,185 @@
+//
+//  MKSPServerOperation.m
+//  MKScannerPro_Example
+//
+//  Created by aa on 2021/7/17.
+//  Copyright © 2021 aadyx2007@163.com. All rights reserved.
+//
+
+#import "MKSPServerOperation.h"
+
+#import "MKMacroDefines.h"
+
+#import "MKSPServerTaskAdopter.h"
+
+@interface MKSPServerOperation ()
+
+@property (nonatomic, strong)dispatch_source_t receiveTimer;
+
+/**
+ 线程ID
+ */
+@property (nonatomic, assign)mk_sp_serverOperationID operationID;
+
+/**
+ 线程结束时候的回调
+ */
+@property (nonatomic, copy)void (^completeBlock) (NSError *error, id returnData);
+
+@property (nonatomic, copy)void (^commandBlock)(void);
+
+/**
+ 超时标志
+ */
+@property (nonatomic, assign)BOOL timeout;
+
+/**
+ 接受数据超时个数
+ */
+@property (nonatomic, assign)NSInteger receiveTimerCount;
+
+@property (nonatomic, copy)NSString *deviceID;
+
+@end
+
+@implementation MKSPServerOperation
+@synthesize executing = _executing;
+@synthesize finished = _finished;
+
+- (void)dealloc{
+    NSLog(@"SPServer任务销毁");
+}
+
+- (instancetype)initOperationWithID:(mk_sp_serverOperationID)operationID
+                           deviceID:(NSString *)deviceID
+                       commandBlock:(void (^)(void))commandBlock
+                      completeBlock:(void (^)(NSError *error, id returnData))completeBlock {
+    if (self = [super init]) {
+        _executing = NO;
+        _finished = NO;
+        _operationID = operationID;
+        _deviceID = deviceID;
+        _commandBlock = commandBlock;
+        _completeBlock = completeBlock;
+    }
+    return self;
+}
+
+#pragma mark - super method
+
+- (void)start{
+    if (self.isFinished || self.isCancelled) {
+        [self willChangeValueForKey:@"isFinished"];
+        _finished = YES;
+        [self didChangeValueForKey:@"isFinished"];
+        return;
+    }
+    [self willChangeValueForKey:@"isExecuting"];
+    _executing = YES;
+    [self didChangeValueForKey:@"isExecuting"];
+    if (self.commandBlock) {
+        self.commandBlock();
+    }
+    [self startReceiveTimer];
+}
+
+#pragma mark - MKSPServerOperationProtocol
+
+- (void)didReceiveMessage:(NSDictionary *)data onTopic:(NSString *)topic {
+    if (!ValidDict(data) || !ValidStr(topic) || topic.length > 128) {
+        return;
+    }
+    NSString *deviceID = data[@"device_info"][@"device_id"];
+    if (!ValidStr(deviceID) || deviceID.length > 32 || ![deviceID isEqualToString:self.deviceID]) {
+        return;
+    }
+    [self dataParserReceivedData:[MKSPServerTaskAdopter parseDataWithJson:data topic:topic]];
+}
+
+#pragma mark - Private method
+
+/**
+ 如果需要从外设拿总条数，则在拿到总条数之后，开启接受超时定时器，开启定时器的时候已经设置了当前线程的生命周期，所以不需要重新beforeDate了。如果是直接开启的接收超时定时器，这个时候需要控制当前线程的生命周期
+ 
+ */
+- (void)startReceiveTimer{
+    __weak __typeof(&*self)weakSelf = self;
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    self.receiveTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    //当2s内没有接收到新的数据的时候，也认为是接受超时
+    dispatch_source_set_timer(self.receiveTimer, dispatch_walltime(NULL, 0), 1 * NSEC_PER_SEC, 0);
+    dispatch_source_set_event_handler(self.receiveTimer, ^{
+        __strong typeof(self) sself = weakSelf;
+        if (sself.timeout || sself.receiveTimerCount >= 20) {
+            //接受数据超时
+            sself.receiveTimerCount = 0;
+            [sself communicationTimeout];
+            return ;
+        }
+        sself.receiveTimerCount ++;
+    });
+    if (self.isCancelled) {
+        return;
+    }
+    //如果需要从外设拿总条数，则在拿到总条数之后，开启接受超时定时器
+    dispatch_resume(self.receiveTimer);
+}
+
+- (void)finishOperation{
+    [self willChangeValueForKey:@"isExecuting"];
+    _executing = NO;
+    [self didChangeValueForKey:@"isExecuting"];
+    [self willChangeValueForKey:@"isFinished"];
+    _finished = YES;
+    [self didChangeValueForKey:@"isFinished"];
+}
+
+- (void)communicationTimeout{
+    self.timeout = YES;
+    if (self.receiveTimer) {
+        dispatch_cancel(self.receiveTimer);
+    }
+    [self finishOperation];
+    if (self.completeBlock) {
+        NSError *error = [[NSError alloc] initWithDomain:@"com.moko.operationError"
+                                                    code:-999
+                                                userInfo:@{@"errorInfo":@"Communication timeout"}];
+        self.completeBlock(error, nil);
+    }
+}
+
+- (void)dataParserReceivedData:(NSDictionary *)dataDic{
+    if (self.isCancelled || !_executing || !ValidDict(dataDic) || self.timeout) {
+        return;
+    }
+    mk_sp_serverOperationID operationID = [dataDic[@"operationID"] integerValue];
+    if (operationID == mk_sp_defaultServerOperationID || operationID != self.operationID) {
+        return;
+    }
+    NSDictionary *returnData = dataDic[@"returnData"];
+    if (!ValidDict(returnData)) {
+        return;
+    }
+    if (self.receiveTimer) {
+        dispatch_cancel(self.receiveTimer);
+    }
+    [self finishOperation];
+    if (self.completeBlock) {
+        self.completeBlock(nil, returnData);
+    }
+}
+
+#pragma mark - getter
+- (BOOL)isConcurrent{
+    return YES;
+}
+
+- (BOOL)isFinished{
+    return _finished;
+}
+
+- (BOOL)isExecuting{
+    return _executing;
+}
+
+@end

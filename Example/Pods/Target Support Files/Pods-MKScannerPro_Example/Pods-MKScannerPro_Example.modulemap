@@ -1,0 +1,6 @@
+framework module Pods_MKScannerPro_Example {
+  umbrella header "Pods-MKScannerPro_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
