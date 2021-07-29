@@ -15,7 +15,7 @@ if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queu
 } else {\
     dispatch_async(dispatch_get_main_queue(), block);\
 }
-#endif
+#endif 
 
 static MKSPMQTTServerManager *manager = nil;
 static dispatch_once_t onceToken;
