@@ -97,11 +97,7 @@ MKSPCAFileSelectControllerDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadSubViews];
-    [self loadSectionDatas];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(connectStatusChanged)
-                                                 name:mk_sp_peripheralConnectStateChangedNotification
-                                               object:nil];
+    [self readDataFromDevice];
 }
 
 #pragma mark - super method
@@ -369,6 +365,24 @@ MKSPCAFileSelectControllerDelegate>
 }
 
 #pragma mark - interface
+- (void)readDataFromDevice {
+    [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
+    @weakify(self);
+    [self.dataModel readPramsFromDeviceWithSucBlock:^{
+        @strongify(self);
+        [[MKHudManager share] hide];
+        [self loadSectionDatas];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(connectStatusChanged)
+                                                     name:mk_sp_peripheralConnectStateChangedNotification
+                                                   object:nil];
+    } failedBlock:^(NSError * _Nonnull error) {
+        @strongify(self);
+        [[MKHudManager share] hide];
+        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+    }];
+}
+
 - (void)configServerParams:(NSString *)ssid password:(NSString *)password {
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     @weakify(self);

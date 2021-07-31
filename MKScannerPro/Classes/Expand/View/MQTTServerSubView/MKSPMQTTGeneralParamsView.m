@@ -207,7 +207,7 @@
     if (!_segment) {
         _segment = [[UISegmentedControl alloc] initWithItems:@[@"0",@"1",@"2"]];
         [_segment mk_setTintColor:NAVBAR_COLOR_MACROS];
-        _segment.selectedSegmentTintColor = COLOR_WHITE_MACROS;
+//        _segment.selectedSegmentTintColor = COLOR_WHITE_MACROS;
         _segment.selectedSegmentIndex = 1;
         [_segment addTarget:self
                      action:@selector(segmentValueChanged)

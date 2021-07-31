@@ -46,7 +46,7 @@
         }];
         [self.msgLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(self.mas_centerX);
-            make.width.mas_equalTo(100.f);
+            make.width.mas_equalTo(120.f);
             make.centerY.mas_equalTo(self.mas_centerY);
             make.height.mas_equalTo(MKFont(18.f).lineHeight);
         }];

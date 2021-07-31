@@ -57,6 +57,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)checkParams;
 
+- (void)readPramsFromDeviceWithSucBlock:(void (^)(void))sucBlock
+                            failedBlock:(void (^)(NSError *error))failedBlock;
+
 - (void)configParamsWithWifiSSID:(NSString *)ssid
                         password:(NSString *)password
                         sucBlock:(void (^)(void))sucBlock

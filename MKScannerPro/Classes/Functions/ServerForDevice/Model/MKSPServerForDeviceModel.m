@@ -13,6 +13,9 @@
 
 #import "MKSPInterface+MKSPConfig.h"
 
+static NSString *const defaultSubTopic = @"{device_name}/{device_id}/app_to_device";
+static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_app";
+
 @interface MKSPServerForDeviceModel ()
 
 @property (nonatomic, strong)dispatch_queue_t configQueue;
@@ -25,11 +28,12 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _subscribeTopic = @"{device_name/device_id/app_to_device}";
-        _publishTopic = @"{device_name/device_id/device_to_app}";
+        _subscribeTopic = defaultSubTopic;
+        _publishTopic = defaultPubTopic;
         _cleanSession = YES;
         _keepAlive = @"60";
         _qos = 1;
+        _timeZone = 12;
     }
     return self;
 }
@@ -85,6 +89,25 @@
         return @"TimeZone error";
     }
     return @"";
+}
+
+- (void)readPramsFromDeviceWithSucBlock:(void (^)(void))sucBlock
+                            failedBlock:(void (^)(NSError *error))failedBlock {
+    dispatch_async(self.configQueue, ^{
+        if (![self readDeviceMac]) {
+            [self operationFailedBlockWithMsg:@"Read Mac Address Error" block:failedBlock];
+            return;
+        }
+        if (![self readDeviceName]) {
+            [self operationFailedBlockWithMsg:@"Read Device Name Error" block:failedBlock];
+            return;
+        }
+        moko_dispatch_main_safe(^{
+            if (sucBlock) {
+                sucBlock();
+            }
+        });
+    });
 }
 
 - (void)configParamsWithWifiSSID:(NSString *)ssid
@@ -186,14 +209,6 @@
             [self operationFailedBlockWithMsg:@"Config Wifi Password Error" block:failedBlock];
             return;
         }
-        if (![self readDeviceMac]) {
-            [self operationFailedBlockWithMsg:@"Read Mac Address Error" block:failedBlock];
-            return;
-        }
-        if (![self readDeviceName]) {
-            [self operationFailedBlockWithMsg:@"Read Device Name Error" block:failedBlock];
-            return;
-        }
         if (![self exitConfigMode]) {
             [self operationFailedBlockWithMsg:@"Exit Error" block:failedBlock];
             return;
@@ -245,8 +260,17 @@
 
 - (BOOL)configSubscribe {
     __block BOOL success = NO;
-    [MKSPInterface sp_configSubscibeTopic:self.subscribeTopic sucBlock:^{
+    NSString *topic = @"";
+    if ([self.subscribeTopic isEqualToString:defaultSubTopic]) {
+        //用户使用默认的topic
+        topic = [NSString stringWithFormat:@"%@/%@/%@",self.deviceName,self.deviceID,@"app_to_device"];
+    }else {
+        //用户修改了topic
+        topic = self.subscribeTopic;
+    }
+    [MKSPInterface sp_configSubscibeTopic:topic sucBlock:^{
         success = YES;
+        self.subscribeTopic = topic;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
         dispatch_semaphore_signal(self.semaphore);
@@ -257,8 +281,17 @@
 
 - (BOOL)configPublish {
     __block BOOL success = NO;
-    [MKSPInterface sp_configPublishTopic:self.publishTopic sucBlock:^{
+    NSString *topic = @"";
+    if ([self.publishTopic isEqualToString:defaultPubTopic]) {
+        //用户使用默认的topic
+        topic = [NSString stringWithFormat:@"%@/%@/%@",self.deviceName,self.deviceID,@"device_to_app"];
+    }else {
+        //用户修改了topic
+        topic = self.publishTopic;
+    }
+    [MKSPInterface sp_configPublishTopic:topic sucBlock:^{
         success = YES;
+        self.publishTopic = topic;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
         dispatch_semaphore_signal(self.semaphore);

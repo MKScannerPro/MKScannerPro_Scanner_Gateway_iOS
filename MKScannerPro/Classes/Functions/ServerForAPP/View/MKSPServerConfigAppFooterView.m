@@ -232,7 +232,7 @@ MKSPMQTTSSLForAppViewDelegate>
         CGSize clientSize = [NSString sizeWithText:clientName
                                            andFont:MKFont(13.f)
                                         andMaxSize:CGSizeMake(self.frame.size.width - 2 * 15.f - 120.f -  2 * 10.f - 40.f, MAXFLOAT)];
-        return 210.f + caSize.height + clientSize.height;
+        return 220.f + caSize.height + clientSize.height;
     }
     return 230.f;
 }
