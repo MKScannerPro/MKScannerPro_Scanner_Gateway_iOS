@@ -221,7 +221,7 @@ NSString *const MKSPReceiveDeviceDatasNotification = @"MKSPReceiveDeviceDatasNot
     }
     [self.operationQueue cancelAllOperations];
     MQTTSSLSecurityPolicy *securityPolicy = nil;
-    NSArray *certList = @[];
+    NSArray *certList = nil;
     NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     BOOL sslIsOn = [self.serverParams[@"sslIsOn"] boolValue];
     if (sslIsOn) {

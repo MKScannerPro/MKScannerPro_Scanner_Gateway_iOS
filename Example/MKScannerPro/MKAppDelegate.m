@@ -29,8 +29,8 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     _window.rootViewController = nav;
     [_window makeKeyAndVisible];
-    [self addLaunchScreen];
-    [self addLocationAuth];
+//    [self addLaunchScreen];
+//    [self addLocationAuth];
     return YES;
 }
 

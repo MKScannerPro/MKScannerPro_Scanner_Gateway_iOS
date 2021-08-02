@@ -11,6 +11,18 @@
 
 NSString *const MKSPNetworkStatusChangedNotification = @"MKSPNetworkStatusChangedNotification";
 
+@interface NSObject (MKSPNetworkManager)
+
+@end
+
+@implementation NSObject (MKSPNetworkManager)
+
++ (void)load{
+    [MKSPNetworkManager sharedInstance];
+}
+
+@end
+
 @interface MKSPNetworkManager()
 
 @property(nonatomic, assign)AFNetworkReachabilityStatus currentNetStatus;//当前网络状态

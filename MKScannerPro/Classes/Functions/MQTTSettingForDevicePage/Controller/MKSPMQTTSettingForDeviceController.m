@@ -129,6 +129,16 @@
     cellModel10.rightMsg = dic[@"subscribe_topic"];
     [self.dataList addObject:cellModel10];
     
+    MKSPMQTTSettingForDeviceCellModel *cellModel11 = [[MKSPMQTTSettingForDeviceCellModel alloc] init];
+    cellModel11.msg = @"Client ID";
+    cellModel11.rightMsg = dic[@"client_id"];
+    [self.dataList addObject:cellModel11];
+    
+    MKSPMQTTSettingForDeviceCellModel *cellModel12 = [[MKSPMQTTSettingForDeviceCellModel alloc] init];
+    cellModel12.msg = @"Device ID";
+    cellModel12.rightMsg = dic[@"device_id"];
+    [self.dataList addObject:cellModel12];
+    
     [self.tableView reloadData];
 }
 

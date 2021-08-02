@@ -176,7 +176,25 @@ MKSPDeviceModelDelegate>
     MKSPDeviceModel *deviceModel = user[@"deviceModel"];
     deviceModel.delegate = self;
     [deviceModel startStateMonitoringTimer];
-    [self.dataList addObject:deviceModel];
+    
+    NSInteger index = 0;
+    BOOL contain = NO;
+    for (NSInteger i = 0; i < self.dataList.count; i ++) {
+        MKSPDeviceModel *model = self.dataList[i];
+        if ([model.deviceID isEqualToString:deviceModel.deviceID]) {
+            index = i;
+            contain = YES;
+            break;
+        }
+    }
+    if (contain) {
+        //当前设备列表存在deviceID相同的设备，替换，本地数据库已经替换过了
+        [self.dataList replaceObjectAtIndex:index withObject:deviceModel];
+    }else {
+        //不存在，则添加到设备列表
+        [self.dataList addObject:deviceModel];
+    }
+    
     [self loadMainViews];
     [[MKSPServerManager shared] subscriptions:@[[deviceModel currentPublishedTopic]]];
 }

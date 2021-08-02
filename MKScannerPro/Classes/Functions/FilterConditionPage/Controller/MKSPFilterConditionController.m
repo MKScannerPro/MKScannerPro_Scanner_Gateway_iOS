@@ -324,8 +324,10 @@ MKFilterRawAdvDataCellDelegate>
     }
     MKFilterRawAdvDataCellModel *cellModel = [[MKFilterRawAdvDataCellModel alloc] init];
     cellModel.index = self.section3List.count;
-    cellModel.dataTypePlaceHolder = @"00-FF";
-    cellModel.rawTextFieldPlaceHolder = @"00-FF";
+    cellModel.dataTypePlaceHolder = @"Data Type";
+    cellModel.minTextFieldPlaceHolder = @"0-29";
+    cellModel.maxTextFieldPlaceHolder = @"0-29";
+    cellModel.rawTextFieldPlaceHolder = @"Raw Data Field";
     [self.section3List addObject:cellModel];
     [self.tableView mk_reloadSection:3 withRowAnimation:UITableViewRowAnimationNone];
 }
