@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, mk_sp_serverOperationID) {
     mk_sp_server_taskReadFilterConditionsBOperation,        //读取扫描过滤条件B
     mk_sp_server_taskReadDeviceMQTTServerInfoOperation,     //读取设备的MQTT服务器信息
     mk_sp_server_taskReadConnectionTimeoutOperation,        //读取网络连接超时时长
+    mk_sp_server_taskReadScanTimeoutOptionOperation,        //读取蓝牙扫描超时重启时长
     
 #pragma mark - 配置
     mk_sp_server_taskConfigDeviceResetOperation,            //设备恢复出厂设置
@@ -34,5 +35,7 @@ typedef NS_ENUM(NSInteger, mk_sp_serverOperationID) {
     mk_sp_server_taskConfigFilterConditionsAOperation,      //配置扫描过滤条件A
     mk_sp_server_taskConfigFilterConditionsBOperation,      //配置扫描过滤条件B
     mk_sp_server_taskConfigConnectionTimeoutOperation,      //配置网络连接超时时长
+    mk_sp_server_taskConfigScanTimeoutOptionOperation,      //配置蓝牙扫描超时重启时长
+    mk_sp_server_taskConfigRebootDeviceOperation,           //设备重启
 };
 

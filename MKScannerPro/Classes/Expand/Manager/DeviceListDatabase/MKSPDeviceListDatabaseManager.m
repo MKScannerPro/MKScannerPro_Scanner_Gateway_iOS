@@ -53,15 +53,15 @@
         
         for (MKSPDeviceModel *device in deviceList) {
             BOOL exist = NO;
-            FMResultSet * result = [db executeQuery:@"select * from SPDeviceTable where deviceID = ?",device.deviceID];
+            FMResultSet * result = [db executeQuery:@"select * from SPDeviceTable where macAddress = ?",device.macAddress];
             while (result.next) {
-                if ([device.deviceID isEqualToString:[result stringForColumn:@"deviceID"]]) {
+                if ([device.macAddress isEqualToString:[result stringForColumn:@"macAddress"]]) {
                     exist = YES;
                 }
             }
             if (exist) {
                 //存在该设备，更新设备
-                [db executeUpdate:@"UPDATE SPDeviceTable SET macAddress = ?, clientID = ?, deviceName = ? ,subscribedTopic = ? ,publishedTopic = ? WHERE deviceID = ?",SafeStr(device.macAddress),SafeStr(device.clientID),SafeStr(device.deviceName),SafeStr(device.subscribedTopic),SafeStr(device.publishedTopic),SafeStr(device.deviceID)];
+                [db executeUpdate:@"UPDATE SPDeviceTable SET deviceID = ?, clientID = ?, deviceName = ? ,subscribedTopic = ? ,publishedTopic = ? WHERE macAddress = ?",SafeStr(device.deviceID),SafeStr(device.clientID),SafeStr(device.deviceName),SafeStr(device.subscribedTopic),SafeStr(device.publishedTopic),SafeStr(device.macAddress)];
             }else{
                 //不存在，插入设备
                 [db executeUpdate:@"INSERT INTO SPDeviceTable (deviceID,clientID,deviceName,subscribedTopic,publishedTopic,macAddress) VALUES (?,?,?,?,?,?)",SafeStr(device.deviceID),SafeStr(device.clientID),SafeStr(device.deviceName),SafeStr(device.subscribedTopic),SafeStr(device.publishedTopic),SafeStr(device.macAddress)];
@@ -77,17 +77,17 @@
     }];
 }
 
-+ (void)deleteDeviceWithDeviceID:(NSString *)deviceID
-                        sucBlock:(void (^)(void))sucBlock
-                     failedBlock:(void (^)(NSError *error))failedBlock {
-    if (!ValidStr(deviceID)) {
++ (void)deleteDeviceWithMacAddress:(NSString *)macAddress
+                          sucBlock:(void (^)(void))sucBlock
+                       failedBlock:(void (^)(NSError *error))failedBlock {
+    if (!ValidStr(macAddress)) {
         [self operationDeleteFailedBlock:failedBlock];
         return;
     }
     
     [[FMDatabaseQueue databaseQueueWithPath:kFilePath(@"SPDeviceDB")] inDatabase:^(FMDatabase *db) {
         
-        BOOL result = [db executeUpdate:@"DELETE FROM SPDeviceTable WHERE deviceID = ?",deviceID];
+        BOOL result = [db executeUpdate:@"DELETE FROM SPDeviceTable WHERE macAddress = ?",macAddress];
         if (!result) {
             [self operationDeleteFailedBlock:failedBlock];
             return;

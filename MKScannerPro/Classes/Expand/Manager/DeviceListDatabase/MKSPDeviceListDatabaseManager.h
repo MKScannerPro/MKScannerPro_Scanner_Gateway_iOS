@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 创建数据库
 + (BOOL)initDataBase;
 
-/// 设备入库，key为deviceID地址，如果本地已经存在则覆盖，不存在则插入
+/// 设备入库，key为mac地址，如果本地已经存在则覆盖，不存在则插入
 /// @param deviceList 设备列表
 /// @param sucBlock 成功回调
 /// @param failedBlock 失败回调
@@ -24,9 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
                 sucBlock:(void (^)(void))sucBlock
              failedBlock:(void (^)(NSError *error))failedBlock;
 
-+ (void)deleteDeviceWithDeviceID:(NSString *)deviceID
-                        sucBlock:(void (^)(void))sucBlock
-                     failedBlock:(void (^)(NSError *error))failedBlock;
++ (void)deleteDeviceWithMacAddress:(NSString *)macAddress
+                          sucBlock:(void (^)(void))sucBlock
+                       failedBlock:(void (^)(NSError *error))failedBlock;
 
 + (void)readLocalDeviceWithSucBlock:(void (^)(NSArray <MKSPDeviceModel *> *deviceList))sucBlock
                         failedBlock:(void (^)(NSError *error))failedBlock;

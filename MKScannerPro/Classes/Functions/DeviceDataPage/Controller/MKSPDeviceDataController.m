@@ -133,8 +133,8 @@ MKSPDeviceDataTableHeaderViewDelegate>
 }
 
 - (void)sp_saveButtonAction {
-    if (!ValidStr(self.headerModel.scanTime) || [self.headerModel.scanTime integerValue] < 1 || [self.headerModel.scanTime integerValue] > 65535) {
-        [self.view showCentralToast:@"Scan time 1~65535"];
+    if (!ValidStr(self.headerModel.scanTime) || [self.headerModel.scanTime integerValue] < 10 || [self.headerModel.scanTime integerValue] > 65535) {
+        [self.view showCentralToast:@"Scan time 10~65535"];
         return;
     }
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
@@ -164,7 +164,7 @@ MKSPDeviceDataTableHeaderViewDelegate>
         return;
     }
     for (NSDictionary *dic in tempList) {
-        NSString *jsonString = [dic mk_jsonStringEncoded];
+        NSString *jsonString = [self convertToJsonData:dic];
         if (ValidStr(jsonString)) {
             MKSPDeviceDataPageCellModel *cellModel = [[MKSPDeviceDataPageCellModel alloc] init];
             cellModel.msg = jsonString;
@@ -174,9 +174,22 @@ MKSPDeviceDataTableHeaderViewDelegate>
     [self needRefreshList];
 }
 
+- (NSString *)convertToJsonData:(NSDictionary *)dict{
+    NSError *error = nil;
+    NSData *policyData = [NSJSONSerialization dataWithJSONObject:dict options:kNilOptions error:&error];
+    if(!policyData && error){
+        return @"";
+    }
+    //NSJSONSerialization converts a URL string from http://... to http:\/\/... remove the extra escapes
+    NSString *policyStr = [[NSString alloc] initWithData:policyData encoding:NSUTF8StringEncoding];
+    policyStr = [policyStr stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
+    return policyStr;
+}
+
+
 - (void)receiveDeviceNameChanged:(NSNotification *)note {
     NSDictionary *user = note.userInfo;
-    if (!ValidDict(user) || !ValidStr(user[@"deviceID"]) || ![self.deviceModel.deviceID isEqualToString:user[@"deviceID"]]) {
+    if (!ValidDict(user) || !ValidStr(user[@"macAddress"]) || ![self.deviceModel.macAddress isEqualToString:user[@"macAddress"]]) {
         return;
     }
     self.defaultTitle = user[@"deviceName"];
@@ -284,10 +297,10 @@ MKSPDeviceDataTableHeaderViewDelegate>
                                              selector:@selector(receiveDeviceOffline:)
                                                  name:MKSPDeviceModelOfflineNotification
                                                object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(serverManagerStateChanged)
-                                                 name:MKSPMQTTSessionManagerStateChangedNotification
-                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(serverManagerStateChanged)
+//                                                 name:MKSPMQTTSessionManagerStateChangedNotification
+//                                               object:nil];
 }
 
 #pragma mark - UI

@@ -105,18 +105,12 @@ NSString *const MKSPReceiveDeviceDatasNotification = @"MKSPReceiveDeviceDatasNot
     if (!ValidStr(topic) || !ValidData(data)) {
         return;
     }
-    NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    if (!ValidStr(receiveStr)) {
-        return;
-    }
-    NSData * tempData = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
-    if (!ValidData(tempData)) {
-        return;
-    }
-    NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:tempData options:NSJSONReadingAllowFragments error:nil];
+    NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
     if (!ValidDict(dataDic) || !ValidNum(dataDic[@"msg_id"]) || !ValidStr(dataDic[@"device_info"][@"device_id"])) {
         return;
     }
+    NSLog(@"接收到的数据:%@",data);
+    NSLog(@"解析过的数据:%@",dataDic);
     NSInteger msgID = [dataDic[@"msg_id"] integerValue];
     NSString *deviceID = dataDic[@"device_info"][@"device_id"];
     //无论是什么消息，都抛出该通知，证明设备在线

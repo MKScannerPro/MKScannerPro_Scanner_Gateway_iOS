@@ -133,6 +133,13 @@ mk_sp_centralManagerScanDelegate>
     [self updateDataWithDeviceModel:dataModel];
 }
 
+- (void)mk_sp_stopScan {
+    if (self.rightButton.isSelected) {
+        [self.refreshIcon.layer removeAnimationForKey:@"mk_refreshAnimationKey"];
+        [self.rightButton setSelected:NO];
+    }
+}
+
 #pragma mark - 刷新
 - (void)startScanDevice {
     self.rightButton.selected = NO;

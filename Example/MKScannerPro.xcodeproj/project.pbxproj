@@ -480,7 +480,7 @@
 				GCC_PREFIX_HEADER = "MKScannerPro/MKScannerPro-Prefix.pch";
 				INFOPLIST_FILE = "MKScannerPro/MKScannerPro-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -626,7 +626,7 @@
 				GCC_PREFIX_HEADER = "MKScannerPro/MKScannerPro-Prefix.pch";
 				INFOPLIST_FILE = "MKScannerPro/MKScannerPro-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -647,7 +647,7 @@
 				GCC_PREFIX_HEADER = "MKScannerPro/MKScannerPro-Prefix.pch";
 				INFOPLIST_FILE = "MKScannerPro/MKScannerPro-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

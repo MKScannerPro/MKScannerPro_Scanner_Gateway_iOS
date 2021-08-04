@@ -344,6 +344,31 @@
                              failedBlock:failedBlock];
 }
 
++ (void)sp_readScanTimeoutOptionWithDeviceID:(NSString *)deviceID
+                                  macAddress:(NSString *)macAddress
+                                       topic:(NSString *)topic
+                                    sucBlock:(void (^)(id returnData))sucBlock
+                                 failedBlock:(void (^)(NSError *error))failedBlock {
+    NSString *checkMsg = [self checkDeviceID:deviceID topic:topic macAddress:macAddress];
+    if (ValidStr(checkMsg)) {
+        [self operationFailedBlockWithMsg:checkMsg failedBlock:failedBlock];
+        return;
+    }
+    NSDictionary *data = @{
+        @"msg_id":@(2017),
+        @"device_info":@{
+                @"device_id":deviceID,
+                @"mac":macAddress
+        },
+    };
+    [[MKSPServerManager shared] sendData:data
+                                   topic:topic
+                                deviceID:deviceID
+                                  taskID:mk_sp_server_taskReadScanTimeoutOptionOperation
+                                sucBlock:sucBlock
+                             failedBlock:failedBlock];
+}
+
 #pragma mark ****************************************参数配置************************************************
 
 + (void)sp_configDeviceResetWithDeviceID:(NSString *)deviceID
@@ -491,7 +516,7 @@
                                           topic:(NSString *)topic
                                        sucBlock:(void (^)(id returnData))sucBlock
                                     failedBlock:(void (^)(NSError *error))failedBlock {
-    if (interval < 0 || (interval > 1 && interval < 10) || interval > 86400) {
+    if (interval < 0 || (interval > 0 && interval < 10) || interval > 86400) {
         [self operationFailedBlockWithMsg:@"Params error" failedBlock:failedBlock];
         return;
     }
@@ -792,6 +817,67 @@
                                    topic:topic
                                 deviceID:deviceID
                                   taskID:mk_sp_server_taskConfigConnectionTimeoutOperation
+                                sucBlock:sucBlock
+                             failedBlock:failedBlock];
+}
+
++ (void)sp_configScanTimeoutOption:(NSInteger)interval
+                          deviceID:(NSString *)deviceID
+                        macAddress:(NSString *)macAddress
+                             topic:(NSString *)topic
+                          sucBlock:(void (^)(id returnData))sucBlock
+                       failedBlock:(void (^)(NSError *error))failedBlock {
+    if (interval < 0 || interval > 1440) {
+        [self operationFailedBlockWithMsg:@"Params error" failedBlock:failedBlock];
+        return;
+    }
+    NSString *checkMsg = [self checkDeviceID:deviceID topic:topic macAddress:macAddress];
+    if (ValidStr(checkMsg)) {
+        [self operationFailedBlockWithMsg:checkMsg failedBlock:failedBlock];
+        return;
+    }
+    NSDictionary *data = @{
+        @"msg_id":@(1017),
+        @"device_info":@{
+                @"device_id":deviceID,
+                @"mac":macAddress
+        },
+        @"data":@{
+                @"timeout":@(interval),
+        }
+    };
+    [[MKSPServerManager shared] sendData:data
+                                   topic:topic
+                                deviceID:deviceID
+                                  taskID:mk_sp_server_taskConfigScanTimeoutOptionOperation
+                                sucBlock:sucBlock
+                             failedBlock:failedBlock];
+}
+
++ (void)sp_rebootDeviceWithDeviceID:(NSString *)deviceID
+                         macAddress:(NSString *)macAddress
+                              topic:(NSString *)topic
+                           sucBlock:(void (^)(id returnData))sucBlock
+                        failedBlock:(void (^)(NSError *error))failedBlock {
+    NSString *checkMsg = [self checkDeviceID:deviceID topic:topic macAddress:macAddress];
+    if (ValidStr(checkMsg)) {
+        [self operationFailedBlockWithMsg:checkMsg failedBlock:failedBlock];
+        return;
+    }
+    NSDictionary *data = @{
+        @"msg_id":@(1018),
+        @"device_info":@{
+                @"device_id":deviceID,
+                @"mac":macAddress
+        },
+        @"data":@{
+                @"restart":@(1),
+        }
+    };
+    [[MKSPServerManager shared] sendData:data
+                                   topic:topic
+                                deviceID:deviceID
+                                  taskID:mk_sp_server_taskConfigRebootDeviceOperation
                                 sucBlock:sucBlock
                              failedBlock:failedBlock];
 }

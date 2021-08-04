@@ -27,7 +27,8 @@ static CGFloat const buttonHeight = 30.f;
 static CGFloat const settingViewHeight = 150.f;
 static CGFloat const defaultScrollViewHeight = 270.f;
 
-@interface MKSPServerConfigDeviceFooterView ()<MKSPMQTTGeneralParamsViewDelegate,
+@interface MKSPServerConfigDeviceFooterView ()<UIScrollViewDelegate,
+MKSPMQTTGeneralParamsViewDelegate,
 MKSPMQTTUserCredentialsViewDelegate,
 MKSPMQTTSSLForDeviceViewDelegate,
 MKSPServerConfigDeviceSettingViewDelegate>
@@ -129,6 +130,12 @@ MKSPServerConfigDeviceSettingViewDelegate>
     }];
 }
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    self.index = scrollView.contentOffset.x / kViewWidth;
+    [self loadButtonUI];
+}
+
 #pragma mark - MKSPMQTTGeneralParamsViewDelegate
 - (void)sp_mqtt_generalParams_cleanSessionStatusChanged:(BOOL)isOn {
     if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_cleanSessionStatusChanged:)]) {
@@ -222,9 +229,7 @@ MKSPServerConfigDeviceSettingViewDelegate>
         return;
     }
     self.index = 0;
-    [self.generalButton setTitleColor:NAVBAR_COLOR_MACROS forState:UIControlStateNormal];
-    [self.credentialsButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
-    [self.sslButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
+    [self loadButtonUI];
     [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
@@ -233,9 +238,7 @@ MKSPServerConfigDeviceSettingViewDelegate>
         return;
     }
     self.index = 1;
-    [self.generalButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
-    [self.credentialsButton setTitleColor:NAVBAR_COLOR_MACROS forState:UIControlStateNormal];
-    [self.sslButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
+    [self loadButtonUI];
     [self.scrollView setContentOffset:CGPointMake(kViewWidth, 0) animated:YES];
 }
 
@@ -244,9 +247,7 @@ MKSPServerConfigDeviceSettingViewDelegate>
         return;
     }
     self.index = 2;
-    [self.generalButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
-    [self.credentialsButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
-    [self.sslButton setTitleColor:NAVBAR_COLOR_MACROS forState:UIControlStateNormal];
+    [self loadButtonUI];
     [self.scrollView setContentOffset:CGPointMake(2 * kViewWidth, 0) animated:YES];
 }
 
@@ -317,6 +318,27 @@ MKSPServerConfigDeviceSettingViewDelegate>
 }
 
 #pragma mark - private method
+- (void)loadButtonUI {
+    if (self.index == 0) {
+        [self.generalButton setTitleColor:NAVBAR_COLOR_MACROS forState:UIControlStateNormal];
+        [self.credentialsButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
+        [self.sslButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
+        return;
+    }
+    if (self.index == 1) {
+        [self.generalButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
+        [self.credentialsButton setTitleColor:NAVBAR_COLOR_MACROS forState:UIControlStateNormal];
+        [self.sslButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
+        return;
+    }
+    if (self.index == 2) {
+        [self.generalButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
+        [self.credentialsButton setTitleColor:DEFAULT_TEXT_COLOR forState:UIControlStateNormal];
+        [self.sslButton setTitleColor:NAVBAR_COLOR_MACROS forState:UIControlStateNormal];
+        return;
+    }
+}
+
 - (void)loadSubViews {
     if (self.topLineView.superview) {
         [self.topLineView removeFromSuperview];
@@ -421,6 +443,7 @@ MKSPServerConfigDeviceSettingViewDelegate>
         _scrollView.pagingEnabled = YES;
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.delegate = self;
     }
     return _scrollView;
 }

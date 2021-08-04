@@ -77,6 +77,12 @@
     }else if (msgID == 1016) {
         //配置网络连接超时时长
         operationID = mk_sp_server_taskConfigConnectionTimeoutOperation;
+    }else if (msgID == 1017) {
+        //配置蓝牙扫描超时重启时长
+        operationID = mk_sp_server_taskConfigScanTimeoutOptionOperation;
+    }else if (msgID == 1018) {
+        //设备重启
+        operationID = mk_sp_server_taskConfigRebootDeviceOperation;
     }
     return [self dataParserGetDataSuccess:json operationID:operationID];
 }
@@ -127,6 +133,9 @@
     }else if (msgID == 2016) {
         //读取网络连接超时时长
         operationID = mk_sp_server_taskReadConnectionTimeoutOperation;
+    }else if (msgID == 2017) {
+        //读取蓝牙扫描超时重启时长
+        operationID = mk_sp_server_taskReadScanTimeoutOptionOperation;
     }
     return [self dataParserGetDataSuccess:json operationID:operationID];
 }

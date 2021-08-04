@@ -37,6 +37,7 @@
 #import "MKSPSystemTimeController.h"
 #import "MKSPOTAController.h"
 #import "MKSPConnectionSettingController.h"
+#import "MKSPScanTimeoutOptionController.h"
 
 @interface MKSPSettingController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -122,6 +123,13 @@
         return;
     }
     if (indexPath.section == 0 && indexPath.row == 4) {
+        //Scan timeout option
+        MKSPScanTimeoutOptionController *vc = [[MKSPScanTimeoutOptionController alloc] init];
+        vc.deviceModel = self.deviceModel;
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
+    if (indexPath.section == 0 && indexPath.row == 5) {
         //System time
         MKSPSystemTimeController *vc = [[MKSPSystemTimeController alloc] init];
         vc.deviceModel = self.deviceModel;
@@ -186,31 +194,15 @@
 }
 
 #pragma mark - event method
-- (void)removeButtonPressed {
-    NSString *msg = @"Please confirm again whether to remove device.";
-    MKAlertController *alertView = [MKAlertController alertControllerWithTitle:@"Remove Device"
-                                                                       message:msg
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    [alertView addAction:cancelAction];
-    @weakify(self);
-    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        @strongify(self);
-        [self removeDevice];
-    }];
-    [alertView addAction:moreAction];
-    
-    [self presentViewController:alertView animated:YES completion:nil];
-}
-
 - (void)resetButtonPressed {
-    NSString *msg = @"After reset,the device will be removed from the device list,and relevant data will be totally cleared.";
+    NSString *msg = @"After reset, the device will be removed from the device list, and relevant data will be totally cleared.";
     MKAlertController *alertView = [MKAlertController alertControllerWithTitle:@"Reset Device"
                                                                        message:msg
                                                                 preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    [alertView addAction:cancelAction];
     @weakify(self);
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertView addAction:cancelAction];
     UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         @strongify(self);
         [self resetDevice];
@@ -220,34 +212,22 @@
     [self presentViewController:alertView animated:YES completion:nil];
 }
 
-#pragma mark - 删除设备
-- (void)resetDevice {
-    [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
-    [MKSPServerInterface sp_configDeviceResetWithDeviceID:self.deviceModel.deviceID
-                                               macAddress:self.deviceModel.macAddress
-                                                    topic:[self.deviceModel currentSubscribedTopic]
-                                                 sucBlock:^(id  _Nonnull returnData) {
-        [[MKHudManager share] hide];
-        [self removeDevice];
-    }
-                                              failedBlock:^(NSError * _Nonnull error) {
-        [[MKHudManager share] hide];
-        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+- (void)rebootButtonPressed {
+    NSString *msg = @"Please confirm again whether to reboot the device.";
+    MKAlertController *alertView = [MKAlertController alertControllerWithTitle:@"Reboot Device"
+                                                                       message:msg
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+    @weakify(self);
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }];
-}
-
-- (void)removeDevice {
-    [[MKHudManager share] showHUDWithTitle:@"Delete..." inView:self.view isPenetration:NO];
-    [MKSPDeviceListDatabaseManager deleteDeviceWithDeviceID:self.deviceModel.deviceID sucBlock:^{
-        [[MKHudManager share] hide];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"mk_sp_deleteDeviceNotification"
-                                                            object:nil
-                                                          userInfo:@{@"deviceID":self.deviceModel.deviceID}];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    } failedBlock:^(NSError * _Nonnull error) {
-        [[MKHudManager share] hide];
-        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+    [alertView addAction:cancelAction];
+    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        @strongify(self);
+        [self rebootDevice];
     }];
+    [alertView addAction:moreAction];
+    
+    [self presentViewController:alertView animated:YES completion:nil];
 }
 
 #pragma mark - 修改设备本地名称
@@ -322,10 +302,56 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"mk_sp_deviceNameChangedNotification"
                                                             object:nil
                                                           userInfo:@{
-                                                              @"deviceID":self.deviceModel.deviceID,
+                                                              @"macAddress":self.deviceModel.macAddress,
                                                               @"deviceName":self.localNameAsciiStr
                                                           }];
     } failedBlock:^(NSError * _Nonnull error) {
+        [[MKHudManager share] hide];
+        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+    }];
+}
+
+#pragma mark - 设备复位
+- (void)resetDevice {
+    [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
+    [MKSPServerInterface sp_configDeviceResetWithDeviceID:self.deviceModel.deviceID
+                                               macAddress:self.deviceModel.macAddress
+                                                    topic:[self.deviceModel currentSubscribedTopic]
+                                                 sucBlock:^(id  _Nonnull returnData) {
+        [[MKHudManager share] hide];
+        [self removeDevice];
+    }
+                                              failedBlock:^(NSError * _Nonnull error) {
+        [[MKHudManager share] hide];
+        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+    }];
+}
+
+- (void)removeDevice {
+    [[MKHudManager share] showHUDWithTitle:@"Delete..." inView:self.view isPenetration:NO];
+    [MKSPDeviceListDatabaseManager deleteDeviceWithMacAddress:self.deviceModel.macAddress sucBlock:^{
+        [[MKHudManager share] hide];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"mk_sp_deleteDeviceNotification"
+                                                            object:nil
+                                                          userInfo:@{@"macAddress":self.deviceModel.macAddress}];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } failedBlock:^(NSError * _Nonnull error) {
+        [[MKHudManager share] hide];
+        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+    }];
+}
+
+#pragma mark - 设备重启
+- (void)rebootDevice {
+    [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
+    [MKSPServerInterface sp_rebootDeviceWithDeviceID:self.deviceModel.deviceID
+                                          macAddress:self.deviceModel.macAddress
+                                               topic:[self.deviceModel currentSubscribedTopic]
+                                            sucBlock:^(id  _Nonnull returnData) {
+        [[MKHudManager share] hide];
+        [self.view showCentralToast:@"Success!"];
+    }
+                                         failedBlock:^(NSError * _Nonnull error) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:error.userInfo[@"errorInfo"]];
     }];
@@ -359,8 +385,12 @@
     [self.section0List addObject:cellModel4];
     
     MKSettingTextCellModel *cellModel5 = [[MKSettingTextCellModel alloc] init];
-    cellModel5.leftMsg = @"System time";
+    cellModel5.leftMsg = @"Scan timeout option";
     [self.section0List addObject:cellModel5];
+    
+    MKSettingTextCellModel *cellModel6 = [[MKSettingTextCellModel alloc] init];
+    cellModel6.leftMsg = @"System time";
+    [self.section0List addObject:cellModel6];
 }
 
 - (void)loadSection1Datas {
@@ -445,12 +475,12 @@
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, 120.f)];
     footerView.backgroundColor = RGBCOLOR(242, 242, 242);
     
-    UIButton *removeButton = [MKCustomUIAdopter customButtonWithTitle:@"Remove Device"
+    UIButton *removeButton = [MKCustomUIAdopter customButtonWithTitle:@"Reboot Device"
                                                                target:self
-                                                               action:@selector(removeButtonPressed)];
+                                                               action:@selector(rebootButtonPressed)];
     removeButton.frame = CGRectMake(50.f, 20.f, kViewWidth - 2 * 50.f, 40.f);
     
-    UIButton *resetButton = [MKCustomUIAdopter customButtonWithTitle:@"Reset"
+    UIButton *resetButton = [MKCustomUIAdopter customButtonWithTitle:@"Reset Device"
                                                               target:self
                                                               action:@selector(resetButtonPressed)];
     resetButton.frame = CGRectMake(50.f, 20.f + 20.f + 40.f, kViewWidth - 2 * 50.f, 40.f);

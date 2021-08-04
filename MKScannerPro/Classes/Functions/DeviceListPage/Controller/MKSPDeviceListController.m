@@ -17,6 +17,7 @@
 
 #import "MKHudManager.h"
 #import "MKCustomUIAdopter.h"
+#import "MKAlertController.h"
 
 #import "MKSPAboutController.h"
 #import "MKSPServerForAppController.h"
@@ -95,6 +96,17 @@ MKSPDeviceModelDelegate>
     return 60.f;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MKSPDeviceModel *deviceModel = self.dataList[indexPath.row];
+    if (deviceModel.onLineState != MKSPDeviceModelStateOnline) {
+        [self.view showCentralToast:@"Device is off-line!"];
+        return;
+    }
+    MKSPDeviceDataController *vc = [[MKSPDeviceDataController alloc] init];
+    vc.deviceModel = deviceModel;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -109,7 +121,6 @@ MKSPDeviceModelDelegate>
     cell.indexPath = indexPath;
     cell.dataModel = self.dataList[indexPath.row];
     cell.delegate = self;
-    [cell resetFlagForFrame];
     return cell;
 }
 
@@ -123,40 +134,21 @@ MKSPDeviceModelDelegate>
     if (index >= self.dataList.count) {
         return;
     }
-    MKSPDeviceModel *deviceModel = self.dataList[index];
-    [[MKHudManager share] showHUDWithTitle:@"Delete..." inView:self.view isPenetration:NO];
-    [MKSPDeviceListDatabaseManager deleteDeviceWithDeviceID:deviceModel.deviceID sucBlock:^{
-        [[MKHudManager share] hide];
-        [self.dataList removeObject:deviceModel];
-        [[MKSPServerManager shared] unsubscriptions:@[[deviceModel currentPublishedTopic]]];
-        [self loadMainViews];
-    } failedBlock:^(NSError * _Nonnull error) {
-        [[MKHudManager share] hide];
-        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+    
+    MKAlertController *alertView = [MKAlertController alertControllerWithTitle:@"Remove Device"
+                                                                       message:@"Please confirm again whether to remove the device."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+    @weakify(self);
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }];
-}
-
-/**
- 重新设置cell的子控件位置，主要是删除按钮方面的处理
- */
-- (void)sp_cellResetFrame {
-    [self cellCanSelected];
-}
-
-/// cell的点击事件，用来重置cell的布局
-/// @param index 所在index
-- (void)sp_cellTapAction:(NSInteger)index {
-    if (![self cellCanSelected]) {
-        return;
-    }
-    MKSPDeviceModel *deviceModel = self.dataList[index];
-    if (deviceModel.onLineState != MKSPDeviceModelStateOnline) {
-        [self.view showCentralToast:@"Device is off-line!"];
-        return;
-    }
-    MKSPDeviceDataController *vc = [[MKSPDeviceDataController alloc] init];
-    vc.deviceModel = deviceModel;
-    [self.navigationController pushViewController:vc animated:YES];
+    [alertView addAction:cancelAction];
+    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        @strongify(self);
+        [self removeDeviceFromLocal:index];
+    }];
+    [alertView addAction:moreAction];
+    
+    [self presentViewController:alertView animated:YES completion:nil];    
 }
 
 #pragma mark - MKSPDeviceModelDelegate
@@ -168,7 +160,6 @@ MKSPDeviceModelDelegate>
 
 #pragma mark - note
 - (void)receiveNewDevice:(NSNotification *)note {
-    //
     NSDictionary *user = note.userInfo;
     if (!ValidDict(user)) {
         return;
@@ -181,7 +172,7 @@ MKSPDeviceModelDelegate>
     BOOL contain = NO;
     for (NSInteger i = 0; i < self.dataList.count; i ++) {
         MKSPDeviceModel *model = self.dataList[i];
-        if ([model.deviceID isEqualToString:deviceModel.deviceID]) {
+        if ([model.macAddress isEqualToString:deviceModel.macAddress]) {
             index = i;
             contain = YES;
             break;
@@ -209,13 +200,13 @@ MKSPDeviceModelDelegate>
 
 - (void)receiveDeviceNameChanged:(NSNotification *)note {
     NSDictionary *user = note.userInfo;
-    if (!ValidDict(user) || !ValidStr(user[@"deviceID"]) || self.dataList.count == 0) {
+    if (!ValidDict(user) || !ValidStr(user[@"macAddress"]) || self.dataList.count == 0) {
         return;
     }
     NSInteger index = 0;
     for (NSInteger i = 0; i < self.dataList.count; i ++) {
         MKSPDeviceModel *deviceModel = self.dataList[i];
-        if ([deviceModel.deviceID isEqualToString:user[@"deviceID"]]) {
+        if ([deviceModel.macAddress isEqualToString:user[@"macAddress"]]) {
             deviceModel.deviceName = user[@"deviceName"];
             index = i;
             break;
@@ -226,13 +217,13 @@ MKSPDeviceModelDelegate>
 
 - (void)receiveDeleteDevice:(NSNotification *)note {
     NSDictionary *user = note.userInfo;
-    if (!ValidDict(user) || !ValidStr(user[@"deviceID"]) || self.dataList.count == 0) {
+    if (!ValidDict(user) || !ValidStr(user[@"macAddress"]) || self.dataList.count == 0) {
         return;
     }
     MKSPDeviceModel *deviceModel = nil;
     for (NSInteger i = 0; i < self.dataList.count; i ++) {
         MKSPDeviceModel *model = self.dataList[i];
-        if ([model.deviceID isEqualToString:user[@"deviceID"]]) {
+        if ([model.macAddress isEqualToString:user[@"macAddress"]]) {
             deviceModel = model;
             break;
         }
@@ -352,25 +343,18 @@ MKSPDeviceModelDelegate>
     [self needRefreshList];
 }
 
-/**
- 当有cell右侧的删除按钮出现时，不能触发点击事件
- 
- @return YES可点击，NO不可点击
- */
-- (BOOL)cellCanSelected{
-    BOOL canSelected = YES;
-    NSArray *arrCells = [self.tableView visibleCells];
-    for (int i = 0; i < [arrCells count]; i++) {
-        UITableViewCell *cell = arrCells[i];
-        if ([cell isKindOfClass:MKSPDeviceListCell.class]) {
-            MKSPDeviceListCell *tempCell = (MKSPDeviceListCell *)cell;
-            if ([tempCell canReset]) {
-                [tempCell resetCellFrame];
-                canSelected = NO;
-            }
-        }
-    }
-    return canSelected;
+- (void)removeDeviceFromLocal:(NSInteger)index {
+    MKSPDeviceModel *deviceModel = self.dataList[index];
+    [[MKHudManager share] showHUDWithTitle:@"Delete..." inView:self.view isPenetration:NO];
+    [MKSPDeviceListDatabaseManager deleteDeviceWithMacAddress:deviceModel.macAddress sucBlock:^{
+        [[MKHudManager share] hide];
+        [self.dataList removeObject:deviceModel];
+        [[MKSPServerManager shared] unsubscriptions:@[[deviceModel currentPublishedTopic]]];
+        [self loadMainViews];
+    } failedBlock:^(NSError * _Nonnull error) {
+        [[MKHudManager share] hide];
+        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+    }];
 }
 
 - (void)addNotifications {

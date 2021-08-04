@@ -176,6 +176,18 @@ NS_ASSUME_NONNULL_BEGIN
                                     sucBlock:(void (^)(id returnData))sucBlock
                                  failedBlock:(void (^)(NSError *error))failedBlock;
 
+/// 蓝牙扫描超时重启时长
+/// @param deviceID deviceID,1-32 Characters
+/// @param macAddress mac地址
+/// @param topic topic 1-128 Characters
+/// @param sucBlock 成功回调
+/// @param failedBlock 失败回调
++ (void)sp_readScanTimeoutOptionWithDeviceID:(NSString *)deviceID
+                                  macAddress:(NSString *)macAddress
+                                       topic:(NSString *)topic
+                                    sucBlock:(void (^)(id returnData))sucBlock
+                                 failedBlock:(void (^)(NSError *error))failedBlock;
+
 #pragma mark ****************************************参数配置************************************************
 
 /// 设备恢复出厂设置
@@ -415,6 +427,32 @@ NS_ASSUME_NONNULL_BEGIN
                              topic:(NSString *)topic
                           sucBlock:(void (^)(id returnData))sucBlock
                        failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// 配置蓝牙扫描超时重启时长
+/// @param interval 0min~1440mins.
+/// @param deviceID deviceID,1-32 Characters
+/// @param macAddress mac地址
+/// @param topic topic 1-128 Characters
+/// @param sucBlock 成功回调
+/// @param failedBlock 失败回调
++ (void)sp_configScanTimeoutOption:(NSInteger)interval
+                          deviceID:(NSString *)deviceID
+                        macAddress:(NSString *)macAddress
+                             topic:(NSString *)topic
+                          sucBlock:(void (^)(id returnData))sucBlock
+                       failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// 设备重启
+/// @param deviceID deviceID,1-32 Characters
+/// @param macAddress mac地址
+/// @param topic topic 1-128 Characters
+/// @param sucBlock 成功回调
+/// @param failedBlock 失败回调
++ (void)sp_rebootDeviceWithDeviceID:(NSString *)deviceID
+                         macAddress:(NSString *)macAddress
+                              topic:(NSString *)topic
+                           sucBlock:(void (^)(id returnData))sucBlock
+                        failedBlock:(void (^)(NSError *error))failedBlock;
 
 @end
 

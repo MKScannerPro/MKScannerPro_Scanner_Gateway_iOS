@@ -46,6 +46,7 @@
 #import "MKSPScanPageController.h"
 #import "MKSPScanPageModel.h"
 #import "MKSPScanPageCell.h"
+#import "MKSPScanTimeoutOptionController.h"
 #import "MKSPServerForAppController.h"
 #import "MKSPServerForAppModel.h"
 #import "MKSPMQTTSSLForAppView.h"

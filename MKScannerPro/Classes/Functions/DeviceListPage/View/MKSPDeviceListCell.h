@@ -19,16 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)sp_cellDeleteButtonPressed:(NSInteger)index;
 
-/**
- 重新设置cell的子控件位置，主要是删除按钮方面的处理
- */
-- (void)sp_cellResetFrame;
-
-
-/// cell的点击事件，用来重置cell的布局
-/// @param index 所在index
-- (void)sp_cellTapAction:(NSInteger)index;
-
 @end
 
 @class MKSPDeviceModel;
@@ -39,10 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)MKSPDeviceModel *dataModel;
 
 + (MKSPDeviceListCell *)initCellWithTableView:(UITableView *)tableView;
-
-- (BOOL)canReset;
-- (void)resetCellFrame;
-- (void)resetFlagForFrame;
 
 @end
 
