@@ -221,7 +221,7 @@ MKSPDeviceDataTableHeaderViewDelegate>
                                                       topic:[self.deviceModel currentSubscribedTopic]
                                                    sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
-        self.headerModel.isOn = ([returnData[@"data"][@"scan_swicth"] integerValue] == 1);
+        self.headerModel.isOn = ([returnData[@"data"][@"scan_switch"] integerValue] == 1);
         self.headerModel.scanTime = [NSString stringWithFormat:@"%ld",(long)[returnData[@"data"][@"scan_time"] integerValue]];
         self.headerView.dataModel = self.headerModel;
         [self updateStatus];

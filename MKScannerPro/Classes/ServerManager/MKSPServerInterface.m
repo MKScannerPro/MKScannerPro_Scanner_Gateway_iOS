@@ -566,7 +566,7 @@
                 @"mac":macAddress
         },
         @"data":@{
-                @"scan_swicth":(isOn ? @(1) : @(0)),
+                @"scan_switch":(isOn ? @(1) : @(0)),
                 @"scan_time":@(scanTime),
         }
     };
