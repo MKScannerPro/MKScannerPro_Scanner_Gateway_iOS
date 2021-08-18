@@ -109,15 +109,15 @@ MKSPCAFileSelectControllerDelegate>
 
 - (void)leftButtonMethod {
     MKAlertController *alertView = [MKAlertController alertControllerWithTitle:@""
-                                                                       message:@"Whether to save the modified parameters?"
+                                                                       message:@"Please confirm whether to save the modified parameters?"
                                                                 preferredStyle:UIAlertControllerStyleAlert];
     @weakify(self);
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Discard" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         @strongify(self);
         [super leftButtonMethod];
     }];
     [alertView addAction:cancelAction];
-    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         @strongify(self);
         [self rightButtonMethod];
     }];
@@ -458,7 +458,7 @@ MKSPCAFileSelectControllerDelegate>
 
 #pragma mark - UI
 - (void)loadSubViews {
-    self.defaultTitle = @"MQTT Settings for APP";
+    self.defaultTitle = @"Settings for APP";
     [self.rightButton setImage:LOADICON(@"MKScannerPro", @"MKSPServerForAppController", @"sp_saveIcon.png") forState:UIControlStateNormal];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {

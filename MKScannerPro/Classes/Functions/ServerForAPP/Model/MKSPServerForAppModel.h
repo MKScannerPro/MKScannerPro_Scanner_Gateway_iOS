@@ -41,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy)NSString *caFileName;
 
+/// P12证书
 @property (nonatomic, copy)NSString *clientFileName;
 
 /// 清除所有参数

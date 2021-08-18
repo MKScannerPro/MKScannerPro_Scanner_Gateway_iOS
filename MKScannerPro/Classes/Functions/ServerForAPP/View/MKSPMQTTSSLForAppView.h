@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy)NSString *caFileName;
 
+/// P12证书
 @property (nonatomic, copy)NSString *clientFileName;
 
 @end
@@ -34,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 用户点击选择了caFaile按钮
 - (void)sp_mqtt_sslParams_app_caFilePressed;
 
-/// 用户点击选择了cilentFile按钮
+/// 用户点击选择了P12证书按钮
 - (void)sp_mqtt_sslParams_app_clientFilePressed;
 
 @end

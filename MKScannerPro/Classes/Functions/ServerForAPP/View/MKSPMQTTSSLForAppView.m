@@ -115,7 +115,7 @@
         }
         return;
     }
-    //Client Cert File
+    //P12证书
     if ([self.delegate respondsToSelector:@selector(sp_mqtt_sslParams_app_clientFilePressed)]) {
         [self.delegate sp_mqtt_sslParams_app_clientFilePressed];
     }
@@ -171,7 +171,7 @@
     
     MKSPMQTTSSLCertificateViewModel *clientModel = [[MKSPMQTTSSLCertificateViewModel alloc] init];
     clientModel.index = 1;
-    clientModel.msg = @"Client Cert File";
+    clientModel.msg = @"P12 Cert File";
     clientModel.fileName = _dataModel.clientFileName;
     self.clientCertView.dataModel = clientModel;
     

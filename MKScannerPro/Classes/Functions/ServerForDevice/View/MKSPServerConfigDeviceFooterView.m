@@ -24,7 +24,7 @@
 
 static CGFloat const buttonWidth = 100.f;
 static CGFloat const buttonHeight = 30.f;
-static CGFloat const settingViewHeight = 150.f;
+static CGFloat const settingViewHeight = 180.f;
 static CGFloat const defaultScrollViewHeight = 270.f;
 
 @interface MKSPServerConfigDeviceFooterView ()<UIScrollViewDelegate,

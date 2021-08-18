@@ -177,7 +177,7 @@ MKSPMQTTSSLForAppViewDelegate>
     }
 }
 
-/// 用户点击选择了cilentFile按钮
+/// 用户点击选择了P12证书按钮
 - (void)sp_mqtt_sslParams_app_clientFilePressed {
     if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_clientFilePressed)]) {
         [self.delegate sp_mqtt_serverForApp_clientFilePressed];

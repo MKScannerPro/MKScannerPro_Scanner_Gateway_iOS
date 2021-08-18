@@ -24,11 +24,15 @@
 
 @property (nonatomic, strong)UIView *topLineView;
 
-@property (nonatomic, strong)UILabel *msgLabel;
+@property (nonatomic, strong)UILabel *topMsgLabel;
 
 @property (nonatomic, strong)UILabel *deviceIDLabel;
 
 @property (nonatomic, strong)MKTextField *deviceIDField;
+
+@property (nonatomic, strong)UIView *timeLineView;
+
+@property (nonatomic, strong)UILabel *timeLineMsgLabel;
 
 @property (nonatomic, strong)UILabel *ntpLabel;
 
@@ -49,9 +53,11 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self addSubview:self.topLineView];
-        [self.topLineView addSubview:self.msgLabel];
+        [self.topLineView addSubview:self.topMsgLabel];
         [self addSubview:self.deviceIDLabel];
         [self addSubview:self.deviceIDField];
+        [self addSubview:self.timeLineView];
+        [self.timeLineView addSubview:self.timeLineMsgLabel];
         [self addSubview:self.ntpLabel];
         [self addSubview:self.ntpUrlField];
         [self addSubview:self.timeZoneLabel];
@@ -69,7 +75,7 @@
         make.top.mas_equalTo(0);
         make.height.mas_equalTo(20.f);
     }];
-    [self.msgLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+    [self.topMsgLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15.f);
         make.right.mas_equalTo(-15.f);
         make.top.mas_equalTo(0);
@@ -87,10 +93,22 @@
         make.centerY.mas_equalTo(self.deviceIDField.mas_centerY);
         make.height.mas_equalTo(MKFont(13.f).lineHeight);
     }];
+    [self.timeLineView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.right.mas_equalTo(0);
+        make.top.mas_equalTo(self.deviceIDField.mas_bottom).mas_offset(5.f);
+        make.height.mas_equalTo(20.f);
+    }];
+    [self.timeLineMsgLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(15.f);
+        make.right.mas_equalTo(-15.f);
+        make.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(0);
+    }];
     [self.ntpUrlField mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.ntpLabel.mas_right).mas_offset(5.f);
         make.right.mas_equalTo(-15.f);
-        make.top.mas_equalTo(self.deviceIDField.mas_bottom).mas_offset(10.f);
+        make.top.mas_equalTo(self.timeLineView.mas_bottom).mas_offset(10.f);
         make.height.mas_equalTo(30.f);
     }];
     [self.ntpLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -164,15 +182,15 @@
     return _topLineView;
 }
 
-- (UILabel *)msgLabel {
-    if (!_msgLabel) {
-        _msgLabel = [[UILabel alloc] init];
-        _msgLabel.textColor = DEFAULT_TEXT_COLOR;
-        _msgLabel.textAlignment = NSTextAlignmentLeft;
-        _msgLabel.font = MKFont(15.f);
-        _msgLabel.text = @"Device Setting";
+- (UILabel *)topMsgLabel {
+    if (!_topMsgLabel) {
+        _topMsgLabel = [[UILabel alloc] init];
+        _topMsgLabel.textColor = DEFAULT_TEXT_COLOR;
+        _topMsgLabel.textAlignment = NSTextAlignmentLeft;
+        _topMsgLabel.font = MKFont(15.f);
+        _topMsgLabel.text = @"Device Id";
     }
-    return _msgLabel;
+    return _topMsgLabel;
 }
 
 - (UILabel *)deviceIDLabel {
@@ -208,6 +226,25 @@
         _deviceIDField.layer.cornerRadius = 6.f;
     }
     return _deviceIDField;
+}
+
+- (UIView *)timeLineView {
+    if (!_timeLineView) {
+        _timeLineView = [[UIView alloc] init];
+        _timeLineView.backgroundColor = RGBCOLOR(242, 242, 242);
+    }
+    return _timeLineView;
+}
+
+- (UILabel *)timeLineMsgLabel {
+    if (!_timeLineMsgLabel) {
+        _timeLineMsgLabel = [[UILabel alloc] init];
+        _timeLineMsgLabel.textColor = DEFAULT_TEXT_COLOR;
+        _timeLineMsgLabel.textAlignment = NSTextAlignmentLeft;
+        _timeLineMsgLabel.font = MKFont(15.f);
+        _timeLineMsgLabel.text = @"Time Setting";
+    }
+    return _timeLineMsgLabel;
 }
 
 - (UILabel *)ntpLabel {
