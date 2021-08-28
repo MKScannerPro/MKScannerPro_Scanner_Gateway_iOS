@@ -67,7 +67,6 @@ MKSPMQTTSSLForAppViewDelegate>
         make.top.mas_equalTo(0);
         make.height.mas_equalTo(40.f);
     }];
-    CGFloat space = (self.frame.size.width - 3 * buttonWidth - 2 * 10.f) / 2;
     [self.generalButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(10.f);
         make.width.mas_equalTo(buttonWidth);
@@ -125,8 +124,8 @@ MKSPMQTTSSLForAppViewDelegate>
 
 #pragma mark - MKSPMQTTGeneralParamsViewDelegate
 - (void)sp_mqtt_generalParams_cleanSessionStatusChanged:(BOOL)isOn {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_cleanSessionStatusChanged:)]) {
-        [self.delegate sp_mqtt_serverForApp_cleanSessionStatusChanged:isOn];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_switchStatusChanged:statusID:)]) {
+        [self.delegate sp_mqtt_serverForApp_switchStatusChanged:isOn statusID:0];
     }
 }
 
@@ -137,28 +136,28 @@ MKSPMQTTSSLForAppViewDelegate>
 }
 
 - (void)sp_mqtt_generalParams_KeepAliveChanged:(NSString *)keepAlive {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_KeepAliveChanged:)]) {
-        [self.delegate sp_mqtt_serverForApp_KeepAliveChanged:keepAlive];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_textFieldValueChanged:textID:)]) {
+        [self.delegate sp_mqtt_serverForApp_textFieldValueChanged:keepAlive textID:0];
     }
 }
 
 #pragma mark - MKSPMQTTUserCredentialsViewDelegate
 - (void)sp_mqtt_userCredentials_userNameChanged:(NSString *)userName {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_userNameChanged:)]) {
-        [self.delegate sp_mqtt_serverForApp_userNameChanged:userName];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_textFieldValueChanged:textID:)]) {
+        [self.delegate sp_mqtt_serverForApp_textFieldValueChanged:userName textID:1];
     }
 }
 
 - (void)sp_mqtt_userCredentials_passwordChanged:(NSString *)password {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_passwordChanged:)]) {
-        [self.delegate sp_mqtt_serverForApp_passwordChanged:password];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_textFieldValueChanged:textID:)]) {
+        [self.delegate sp_mqtt_serverForApp_textFieldValueChanged:password textID:2];
     }
 }
 
 #pragma mark - MKSPMQTTSSLForAppViewDelegate
 - (void)sp_mqtt_sslParams_app_sslStatusChanged:(BOOL)isOn {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_sslStatusChanged:)]) {
-        [self.delegate sp_mqtt_serverForApp_sslStatusChanged:isOn];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_switchStatusChanged:statusID:)]) {
+        [self.delegate sp_mqtt_serverForApp_switchStatusChanged:isOn statusID:1];
     }
 }
 
@@ -172,15 +171,15 @@ MKSPMQTTSSLForAppViewDelegate>
 
 /// 用户点击选择了caFaile按钮
 - (void)sp_mqtt_sslParams_app_caFilePressed {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_caFilePressed)]) {
-        [self.delegate sp_mqtt_serverForApp_caFilePressed];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_fileButtonPressed:)]) {
+        [self.delegate sp_mqtt_serverForApp_fileButtonPressed:0];
     }
 }
 
 /// 用户点击选择了P12证书按钮
 - (void)sp_mqtt_sslParams_app_clientFilePressed {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_clientFilePressed)]) {
-        [self.delegate sp_mqtt_serverForApp_clientFilePressed];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForApp_fileButtonPressed:)]) {
+        [self.delegate sp_mqtt_serverForApp_fileButtonPressed:1];
     }
 }
 

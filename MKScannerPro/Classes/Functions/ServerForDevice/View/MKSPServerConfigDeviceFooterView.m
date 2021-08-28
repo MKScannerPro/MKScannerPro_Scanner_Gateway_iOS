@@ -74,7 +74,6 @@ MKSPServerConfigDeviceSettingViewDelegate>
         make.top.mas_equalTo(0);
         make.height.mas_equalTo(40.f);
     }];
-    CGFloat space = (self.frame.size.width - 3 * buttonWidth - 2 * 10.f) / 2;
     [self.generalButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(10.f);
         make.width.mas_equalTo(buttonWidth);
@@ -138,8 +137,8 @@ MKSPServerConfigDeviceSettingViewDelegate>
 
 #pragma mark - MKSPMQTTGeneralParamsViewDelegate
 - (void)sp_mqtt_generalParams_cleanSessionStatusChanged:(BOOL)isOn {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_cleanSessionStatusChanged:)]) {
-        [self.delegate sp_mqtt_serverForDevice_cleanSessionStatusChanged:isOn];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_switchStatusChanged:statusID:)]) {
+        [self.delegate sp_mqtt_serverForDevice_switchStatusChanged:isOn statusID:0];
     }
 }
 
@@ -150,28 +149,28 @@ MKSPServerConfigDeviceSettingViewDelegate>
 }
 
 - (void)sp_mqtt_generalParams_KeepAliveChanged:(NSString *)keepAlive {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_KeepAliveChanged:)]) {
-        [self.delegate sp_mqtt_serverForDevice_KeepAliveChanged:keepAlive];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_textFieldValueChanged:textID:)]) {
+        [self.delegate sp_mqtt_serverForDevice_textFieldValueChanged:keepAlive textID:0];
     }
 }
 
 #pragma mark - MKSPMQTTUserCredentialsViewDelegate
 - (void)sp_mqtt_userCredentials_userNameChanged:(NSString *)userName {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_userNameChanged:)]) {
-        [self.delegate sp_mqtt_serverForDevice_userNameChanged:userName];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_textFieldValueChanged:textID:)]) {
+        [self.delegate sp_mqtt_serverForDevice_textFieldValueChanged:userName textID:1];
     }
 }
 
 - (void)sp_mqtt_userCredentials_passwordChanged:(NSString *)password {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_passwordChanged:)]) {
-        [self.delegate sp_mqtt_serverForDevice_passwordChanged:password];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_textFieldValueChanged:textID:)]) {
+        [self.delegate sp_mqtt_serverForDevice_textFieldValueChanged:password textID:2];
     }
 }
 
 #pragma mark - MKSPMQTTSSLForDeviceViewDelegate
 - (void)sp_mqtt_sslParams_device_sslStatusChanged:(BOOL)isOn {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_sslStatusChanged:)]) {
-        [self.delegate sp_mqtt_serverForDevice_sslStatusChanged:isOn];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_switchStatusChanged:statusID:)]) {
+        [self.delegate sp_mqtt_serverForDevice_switchStatusChanged:isOn statusID:1];
     }
 }
 
@@ -185,35 +184,35 @@ MKSPServerConfigDeviceSettingViewDelegate>
 
 /// 用户点击选择了caFaile按钮
 - (void)sp_mqtt_sslParams_device_caFilePressed {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_caFilePressed)]) {
-        [self.delegate sp_mqtt_serverForDevice_caFilePressed];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_fileButtonPressed:)]) {
+        [self.delegate sp_mqtt_serverForDevice_fileButtonPressed:0];
     }
 }
 
 /// 用户点击选择了Client Key按钮
 - (void)sp_mqtt_sslParams_device_clientKeyPressed {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_clientKeyPressed)]) {
-        [self.delegate sp_mqtt_serverForDevice_clientKeyPressed];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_fileButtonPressed:)]) {
+        [self.delegate sp_mqtt_serverForDevice_fileButtonPressed:1];
     }
 }
 
 /// 用户点击了Client Cert File按钮
 - (void)sp_mqtt_sslParams_device_clientCertPressed {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_clientCertPressed)]) {
-        [self.delegate sp_mqtt_serverForDevice_clientCertPressed];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_fileButtonPressed:)]) {
+        [self.delegate sp_mqtt_serverForDevice_fileButtonPressed:2];
     }
 }
 
 #pragma mark - MKSPServerConfigDeviceSettingViewDelegate
 - (void)sp_mqtt_deviecSetting_deviceIDChanged:(NSString *)deviceID {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_deviceIDChanged:)]) {
-        [self.delegate sp_mqtt_serverForDevice_deviceIDChanged:deviceID];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_textFieldValueChanged:textID:)]) {
+        [self.delegate sp_mqtt_serverForDevice_textFieldValueChanged:deviceID textID:3];
     }
 }
 
 - (void)sp_mqtt_deviecSetting_ntpURLChanged:(NSString *)url {
-    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_ntpURLChanged:)]) {
-        [self.delegate sp_mqtt_serverForDevice_ntpURLChanged:url];
+    if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_textFieldValueChanged:textID:)]) {
+        [self.delegate sp_mqtt_serverForDevice_textFieldValueChanged:url textID:4];
     }
 }
 

@@ -35,27 +35,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol MKSPServerConfigAppFooterViewDelegate <NSObject>
 
-- (void)sp_mqtt_serverForApp_cleanSessionStatusChanged:(BOOL)isOn;
+/// 用户改变了开关状态
+/// @param isOn isOn
+/// @param statusID 0:cleanSession   1:ssl
+- (void)sp_mqtt_serverForApp_switchStatusChanged:(BOOL)isOn statusID:(NSInteger)statusID;
 
 - (void)sp_mqtt_serverForApp_qosChanged:(NSInteger)qos;
 
-- (void)sp_mqtt_serverForApp_KeepAliveChanged:(NSString *)keepAlive;
-
-- (void)sp_mqtt_serverForApp_userNameChanged:(NSString *)userName;
-
-- (void)sp_mqtt_serverForApp_passwordChanged:(NSString *)password;
-
-- (void)sp_mqtt_serverForApp_sslStatusChanged:(BOOL)isOn;
+/// 输入框内容发生了改变
+/// @param text 最新的输入框内容
+/// @param textID 0:keepAlive    1:userName     2:password
+- (void)sp_mqtt_serverForApp_textFieldValueChanged:(NSString *)text textID:(NSInteger)textID;
 
 /// 用户选择了加密方式
 /// @param certificate 0:CA signed server certificate     1:CA certificate     2:Self signed certificates
 - (void)sp_mqtt_serverForApp_certificateChanged:(NSInteger)certificate;
 
-/// 用户点击选择了caFaile按钮
-- (void)sp_mqtt_serverForApp_caFilePressed;
-
-/// 用户点击选择了cilentFile按钮
-- (void)sp_mqtt_serverForApp_clientFilePressed;
+/// 用户点击了证书相关按钮
+/// @param fileType 0:caFaile   1:P12证书
+- (void)sp_mqtt_serverForApp_fileButtonPressed:(NSInteger)fileType;
 
 @end
 

@@ -216,9 +216,25 @@ MKSPCAFileSelectControllerDelegate>
 }
 
 #pragma mark - MKSPServerConfigAppFooterViewDelegate
-- (void)sp_mqtt_serverForApp_cleanSessionStatusChanged:(BOOL)isOn {
-    self.dataModel.cleanSession = isOn;
-    self.sslParamsModel.cleanSession = isOn;
+/// 用户改变了开关状态
+/// @param isOn isOn
+/// @param statusID 0:cleanSession   1:ssl
+- (void)sp_mqtt_serverForApp_switchStatusChanged:(BOOL)isOn statusID:(NSInteger)statusID {
+    if (statusID == 0) {
+        //cleanSession
+        self.dataModel.cleanSession = isOn;
+        self.sslParamsModel.cleanSession = isOn;
+        return;
+    }
+    if (statusID == 1) {
+        //ssl
+        self.dataModel.sslIsOn = isOn;
+        self.sslParamsModel.sslIsOn = isOn;
+        //动态刷新footer
+        [self setupSSLViewFrames];
+        self.sslParamsView.dataModel = self.sslParamsModel;
+        return;
+    }
 }
 
 - (void)sp_mqtt_serverForApp_qosChanged:(NSInteger)qos {
@@ -226,27 +242,28 @@ MKSPCAFileSelectControllerDelegate>
     self.sslParamsModel.qos = qos;
 }
 
-- (void)sp_mqtt_serverForApp_KeepAliveChanged:(NSString *)keepAlive {
-    self.dataModel.keepAlive = keepAlive;
-    self.sslParamsModel.keepAlive = keepAlive;
-}
-
-- (void)sp_mqtt_serverForApp_userNameChanged:(NSString *)userName {
-    self.dataModel.userName = userName;
-    self.sslParamsModel.userName = userName;
-}
-
-- (void)sp_mqtt_serverForApp_passwordChanged:(NSString *)password {
-    self.dataModel.password = password;
-    self.sslParamsModel.password = password;
-}
-
-- (void)sp_mqtt_serverForApp_sslStatusChanged:(BOOL)isOn {
-    self.dataModel.sslIsOn = isOn;
-    self.sslParamsModel.sslIsOn = isOn;
-    //动态刷新footer
-    [self setupSSLViewFrames];
-    self.sslParamsView.dataModel = self.sslParamsModel;
+/// 输入框内容发生了改变
+/// @param text 最新的输入框内容
+/// @param textID 0:keepAlive    1:userName     2:password
+- (void)sp_mqtt_serverForApp_textFieldValueChanged:(NSString *)text textID:(NSInteger)textID {
+    if (textID == 0) {
+        //keep alive
+        self.dataModel.keepAlive = text;
+        self.sslParamsModel.keepAlive = text;
+        return;
+    }
+    if (textID == 1) {
+        //user name
+        self.dataModel.userName = text;
+        self.sslParamsModel.userName = text;
+        return;
+    }
+    if (textID == 2) {
+        //password
+        self.dataModel.password = text;
+        self.sslParamsModel.password = text;
+        return;
+    }
 }
 
 /// 用户选择了加密方式
@@ -259,20 +276,25 @@ MKSPCAFileSelectControllerDelegate>
     self.sslParamsView.dataModel = self.sslParamsModel;
 }
 
-/// 用户点击选择了caFaile按钮
-- (void)sp_mqtt_serverForApp_caFilePressed {
-    MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
-    vc.pageType = mk_sp_caCertSelPage;
-    vc.delegate = self;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-/// 用户点击选择了cilentFile按钮
-- (void)sp_mqtt_serverForApp_clientFilePressed {
-    MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
-    vc.pageType = mk_sp_clientP12CertPage;
-    vc.delegate = self;
-    [self.navigationController pushViewController:vc animated:YES];
+/// 用户点击了证书相关按钮
+/// @param fileType 0:caFaile   1:P12证书
+- (void)sp_mqtt_serverForApp_fileButtonPressed:(NSInteger)fileType {
+    if (fileType == 0) {
+        //caFaile
+        MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
+        vc.pageType = mk_sp_caCertSelPage;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
+    if (fileType == 1) {
+        //P12证书
+        MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
+        vc.pageType = mk_sp_clientP12CertPage;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
 }
 
 #pragma mark - MKSPCAFileSelectControllerDelegate

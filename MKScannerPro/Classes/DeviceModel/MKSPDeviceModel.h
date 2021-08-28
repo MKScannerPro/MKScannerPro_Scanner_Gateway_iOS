@@ -29,10 +29,11 @@ extern NSString *const MKSPDeviceModelOfflineNotification;
 @interface MKSPDeviceModel : NSObject
 
 /**
- 进行MQTT通信的时候，设备身份唯一识别码
+ 数据交互可能存在多个设备订阅同一个topic的情况，这个时候只能通过deviceID区分设备，所以统一为topic+deviceID来区分通信数据
  */
 @property (nonatomic, copy)NSString *deviceID;
 
+/// MTQQ通信所需的ID，如果存在重复的，会出现交替上线的情况
 @property (nonatomic, copy)NSString *clientID;
 
 /**

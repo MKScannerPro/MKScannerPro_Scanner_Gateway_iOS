@@ -45,34 +45,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol MKSPServerConfigDeviceFooterViewDelegate <NSObject>
 
-- (void)sp_mqtt_serverForDevice_cleanSessionStatusChanged:(BOOL)isOn;
+/// 用户改变了开关状态
+/// @param isOn isOn
+/// @param statusID 0:cleanSession   1:ssl
+- (void)sp_mqtt_serverForDevice_switchStatusChanged:(BOOL)isOn statusID:(NSInteger)statusID;
+
+/// 输入框内容发生了改变
+/// @param text 最新的输入框内容
+/// @param textID 0:keepAlive    1:userName     2:password    3:deviceID   4:ntpURL
+- (void)sp_mqtt_serverForDevice_textFieldValueChanged:(NSString *)text textID:(NSInteger)textID;
 
 - (void)sp_mqtt_serverForDevice_qosChanged:(NSInteger)qos;
-
-- (void)sp_mqtt_serverForDevice_KeepAliveChanged:(NSString *)keepAlive;
-
-- (void)sp_mqtt_serverForDevice_userNameChanged:(NSString *)userName;
-
-- (void)sp_mqtt_serverForDevice_passwordChanged:(NSString *)password;
-
-- (void)sp_mqtt_serverForDevice_sslStatusChanged:(BOOL)isOn;
 
 /// 用户选择了加密方式
 /// @param certificate 0:CA signed server certificate     1:CA certificate     2:Self signed certificates
 - (void)sp_mqtt_serverForDevice_certificateChanged:(NSInteger)certificate;
 
-/// 用户点击选择了caFaile按钮
-- (void)sp_mqtt_serverForDevice_caFilePressed;
-
-/// 用户点击选择了cilentKeyFile按钮
-- (void)sp_mqtt_serverForDevice_clientKeyPressed;
-
-/// 用户点击选择了client cert file按钮
-- (void)sp_mqtt_serverForDevice_clientCertPressed;
-
-- (void)sp_mqtt_serverForDevice_deviceIDChanged:(NSString *)deviceID;
-
-- (void)sp_mqtt_serverForDevice_ntpURLChanged:(NSString *)url;
+/// 用户点击了证书相关按钮
+/// @param fileType 0:caFaile   1:cilentKeyFile   2:client cert file
+- (void)sp_mqtt_serverForDevice_fileButtonPressed:(NSInteger)fileType;
 
 /// 时区改变
 /// @param timeZone -12~12

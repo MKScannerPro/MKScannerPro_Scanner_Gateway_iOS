@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MKScannerPro'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A short description of MKScannerPro.'
 
 # This description is used to generate tags and improve search results.
@@ -36,15 +36,365 @@ TODO: Add long description of the pod here.
     'MKScannerPro' => ['MKScannerPro/Assets/*.png']
   }
 
-  s.dependency 'MKBaseModuleLibrary'
-  s.dependency 'MKCustomUIModule'
-  s.dependency 'MKBaseBleModule'
+  s.subspec 'ApplicationModule' do |ss|
+    ss.source_files = 'MKScannerPro/Classes/ApplicationModule/**'
+    
+    ss.dependency 'MKBaseModuleLibrary'
+  end
+  
+  s.subspec 'CTMediator' do |ss|
+    ss.source_files = 'MKScannerPro/Classes/CTMediator/**'
+    
+    ss.dependency 'MKBaseModuleLibrary'
+    
+    ss.dependency 'CTMediator'
+  end
+  
+  s.subspec 'Target' do |ss|
+    ss.source_files = 'MKScannerPro/Classes/Target/**'
+  end
+  
+  s.subspec 'Expand' do |ss|
+    
+    ss.subspec 'Manager' do |sss|
+      
+      sss.subspec 'DeviceListDatabase' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Expand/Manager/DeviceListDatabase/**'
+        
+        ssss.dependency 'FMDB'
+        ssss.dependency 'MKScannerPro/DeviceModel'
+      end
+      
+      sss.subspec 'NetworkManager' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Expand/Manager/NetworkManager/**'
+        
+        ssss.dependency 'AFNetworking'
+      end
+      
+    end
+    
+    ss.subspec 'View' do |sss|
+        sss.subspec 'MQTTServerSubView' do |ssss|
+          ssss.source_files = 'MKScannerPro/Classes/Expand/View/MQTTServerSubView/**'
+        end
+        
+        sss.dependency 'MKCustomUIModule'
+    end
+    
+    ss.dependency 'MKBaseModuleLibrary'
+    
+  end
+  
+  s.subspec 'DeviceModel' do |ss|
+    ss.source_files = 'MKScannerPro/Classes/DeviceModel/**'
+    
+    ss.dependency 'MKBaseModuleLibrary'
+    ss.dependency 'MKScannerPro/ServerManager'
+  end
+  
+  s.subspec 'SDK' do |ss|
+  
+    ss.subspec 'BLE' do |sss|
+      sss.source_files = 'MKScannerPro/Classes/SDK/BLE/**'
+      
+      sss.dependency 'MKBaseBleModule'
+    end
+    
+    ss.subspec 'MQTT' do |sss|
+      sss.source_files = 'MKScannerPro/Classes/SDK/MQTT/**'
+      
+      sss.dependency 'MQTTClient'
+    end
+  
+  end
+  
+  s.subspec 'ServerManager' do |ss|
+    
+    ss.source_files = 'MKScannerPro/Classes/ServerManager/**'
+    
+    ss.dependency 'MQTTClient'
+    ss.dependency 'MKBaseModuleLibrary'
+    ss.dependency 'MKScannerPro/SDK/MQTT'
+    
+  end
   
   
-  s.dependency 'MLInputDodger'
-  s.dependency 'FMDB'
-  s.dependency 'CTMediator'
-  s.dependency 'AFNetworking'
-  s.dependency 'MQTTClient'
+  s.subspec 'Functions' do |ss|
+    
+    ss.subspec 'AboutPage' do |sss|
+      
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/AboutPage/Controller/**'
+        
+        ssss.dependency 'MKScannerPro/Functions/AboutPage/Model'
+        ssss.dependency 'MKScannerPro/Functions/AboutPage/View'
+      end
+      
+      sss.subspec 'Model' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/AboutPage/Model/**'
+      end
+      
+      sss.subspec 'View' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/AboutPage/View/**'
+        
+        ssss.dependency 'MKScannerPro/Functions/AboutPage/Model'
+      end
+      
+    end
+    
+    ss.subspec 'CASelectPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/CASelectPage/Controller/**'
+      end
+    end
+    
+    ss.subspec 'ConnectionSettingPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ConnectionSettingPage/Controller/**'
+      end
+    end
+    
+    ss.subspec 'ConnectSuccessPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ConnectSuccessPage/Controller/**'
+      end
+    end
+    
+    ss.subspec 'DataReportingPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/DataReportingPage/Controller/**'
+      end
+    end
+    
+    ss.subspec 'DeviceDataPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/DeviceDataPage/Controller/**'
+      
+        ssss.dependency 'MKScannerPro/Functions/DeviceDataPage/View'
+        
+        ssss.dependency 'MKScannerPro/Functions/SettingPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/UploadDataOptionPage/Controller'
+      end
+      sss.subspec 'View' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/DeviceDataPage/View/**'
+      end
+    end
+    
+    ss.subspec 'DeviceInfoPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/DeviceInfoPage/Controller/**'
+      end
+    end
+    
+    ss.subspec 'DeviceListPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/DeviceListPage/Controller/**'
+      
+        ssss.dependency 'MKScannerPro/Functions/DeviceListPage/View'
+        
+        ssss.dependency 'MKScannerPro/Functions/AboutPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/ServerForAPP/Controller'
+        ssss.dependency 'MKScannerPro/Functions/ScanPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/DeviceDataPage/Controller'
+      end
+      sss.subspec 'View' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/DeviceListPage/View/**'
+      end
+    end
+    
+    ss.subspec 'DuplicateDataFilterPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/DuplicateDataFilterPage/Controller/**'
+      
+        ssss.dependency 'MKScannerPro/Functions/DuplicateDataFilterPage/Model'
+      end
+      sss.subspec 'Model' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/DuplicateDataFilterPage/Model/**'
+      end
+    end
+    
+    ss.subspec 'FilterConditionPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/FilterConditionPage/Controller/**'
+      
+        ssss.dependency 'MKScannerPro/Functions/FilterConditionPage/Model'
+      end
+      sss.subspec 'Model' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/FilterConditionPage/Model/**'
+      end
+    end
+    
+    ss.subspec 'LEDSettingPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/LEDSettingPage/Controller/**'
+      end
+    end
+    
+    ss.subspec 'MQTTSettingForDevicePage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/MQTTSettingForDevicePage/Controller/**'
+      
+        ssss.dependency 'MKScannerPro/Functions/MQTTSettingForDevicePage/View'
+      end
+      sss.subspec 'View' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/MQTTSettingForDevicePage/View/**'
+      end
+    end
+    
+    ss.subspec 'NetworkStatusPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/NetworkStatusPage/Controller/**'
+      end
+    end
+    
+    ss.subspec 'OTAPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/OTAPage/Controller/**'
+      end
+    end
+    
+    ss.subspec 'ScanPage' do |sss|
+      
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ScanPage/Controller/**'
+        
+        ssss.dependency 'MKScannerPro/Functions/ScanPage/Model'
+        ssss.dependency 'MKScannerPro/Functions/ScanPage/View'
+        
+        ssss.dependency 'MKScannerPro/Functions/ServerForDevice/Controller'
+      end
+      
+      sss.subspec 'Model' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ScanPage/Model/**'
+      end
+      
+      sss.subspec 'View' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ScanPage/View/**'
+        
+        ssss.dependency 'MKScannerPro/Functions/ScanPage/Model'
+      end
+      
+    end
+    
+    ss.subspec 'ScanTimeoutOptionPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ScanTimeoutOptionPage/Controller/**'
+      end
+    end
+    
+    ss.subspec 'ServerForAPP' do |sss|
+      
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ServerForAPP/Controller/**'
+        
+        ssss.dependency 'MKScannerPro/Functions/ServerForAPP/Model'
+        ssss.dependency 'MKScannerPro/Functions/ServerForAPP/View'
+        
+        ssss.dependency 'MKScannerPro/Functions/CASelectPage/Controller'
+      end
+      
+      sss.subspec 'Model' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ServerForAPP/Model/**'
+      end
+      
+      sss.subspec 'View' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ServerForAPP/View/**'
+      end
+      
+    end
+    
+    ss.subspec 'ServerForDevice' do |sss|
+      
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ServerForDevice/Controller/**'
+        
+        ssss.dependency 'MKScannerPro/Functions/ServerForDevice/Model'
+        ssss.dependency 'MKScannerPro/Functions/ServerForDevice/View'
+        
+        ssss.dependency 'MKScannerPro/Functions/CASelectPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/ConnectSuccessPage/Controller'
+      end
+      
+      sss.subspec 'Model' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ServerForDevice/Model/**'
+      end
+      
+      sss.subspec 'View' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/ServerForDevice/View/**'
+      end
+      
+    end
+  
+  
+    ss.subspec 'SettingPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/SettingPage/Controller/**'
+        
+        ssss.dependency 'MKScannerPro/Functions/DeviceInfoPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/MQTTSettingForDevicePage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/LEDSettingPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/DataReportingPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/NetworkStatusPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/SystemTimePage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/OTAPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/ConnectionSettingPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/ScanTimeoutOptionPage/Controller'
+      end
+    end
+    
+    ss.subspec 'SystemTimePage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/SystemTimePage/Controller/**'
+      end
+    end
+    
+    ss.subspec 'TypeFilterPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/TypeFilterPage/Controller/**'
+      
+        ssss.dependency 'MKScannerPro/Functions/TypeFilterPage/Model'
+      end
+      sss.subspec 'Model' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/TypeFilterPage/Model/**'
+      end
+    end
+    
+    ss.subspec 'UploadDataOptionPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/UploadDataOptionPage/Controller/**'
+      
+        ssss.dependency 'MKScannerPro/Functions/UploadDataOptionPage/Model'
+      end
+      sss.subspec 'Model' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/UploadDataOptionPage/Model/**'
+      end
+    end
+    
+    ss.subspec 'UploadOptionPage' do |sss|
+      sss.subspec 'Controller' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/UploadOptionPage/Controller/**'
+      
+        ssss.dependency 'MKScannerPro/Functions/UploadOptionPage/Model'
+        
+        ssss.dependency 'MKScannerPro/Functions/TypeFilterPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/FilterConditionPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/DuplicateDataFilterPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/UploadDataOptionPage/Controller'
+      end
+      sss.subspec 'Model' do |ssss|
+        ssss.source_files = 'MKScannerPro/Classes/Functions/UploadOptionPage/Model/**'
+      end
+    end
+  
+    ss.dependency 'MKScannerPro/DeviceModel'
+    ss.dependency 'MKScannerPro/Expand'
+    ss.dependency 'MKScannerPro/SDK'
+    ss.dependency 'MKScannerPro/ServerManager'
+    
+    ss.dependency 'MKBaseModuleLibrary'
+    ss.dependency 'MKCustomUIModule'
+    ss.dependency 'MLInputDodger'
+  
+  end
   
 end

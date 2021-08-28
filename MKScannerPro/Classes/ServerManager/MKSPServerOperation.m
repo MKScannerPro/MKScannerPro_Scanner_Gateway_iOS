@@ -97,16 +97,10 @@
 }
 
 #pragma mark - Private method
-
-/**
- 如果需要从外设拿总条数，则在拿到总条数之后，开启接受超时定时器，开启定时器的时候已经设置了当前线程的生命周期，所以不需要重新beforeDate了。如果是直接开启的接收超时定时器，这个时候需要控制当前线程的生命周期
- 
- */
 - (void)startReceiveTimer{
     __weak __typeof(&*self)weakSelf = self;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.receiveTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    //当2s内没有接收到新的数据的时候，也认为是接受超时
     dispatch_source_set_timer(self.receiveTimer, dispatch_walltime(NULL, 0), 1 * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(self.receiveTimer, ^{
         __strong typeof(self) sself = weakSelf;
@@ -121,7 +115,6 @@
     if (self.isCancelled) {
         return;
     }
-    //如果需要从外设拿总条数，则在拿到总条数之后，开启接受超时定时器
     dispatch_resume(self.receiveTimer);
 }
 

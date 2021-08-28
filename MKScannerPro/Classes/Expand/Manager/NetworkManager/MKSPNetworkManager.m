@@ -45,11 +45,6 @@ NSString *const MKSPNetworkStatusChangedNotification = @"MKSPNetworkStatusChange
 
 #pragma mark - public method
 
-/**
- 获取当前手机连接的wifi ssid
- 
- @return wifi ssid
- */
 + (NSString *)currentWifiSSID{
     CFArrayRef tempArray = CNCopySupportedInterfaces();
     if (!tempArray) {
@@ -67,11 +62,6 @@ NSString *const MKSPNetworkStatusChangedNotification = @"MKSPNetworkStatusChange
     return wifiDic[@"SSID"];
 }
 
-/**
- 当前网络是否可用
-
- @return YES:可用，NO:不可用
- */
 - (BOOL)currentNetworkAvailable{
     if (self.currentNetStatus == AFNetworkReachabilityStatusUnknown
         || self.currentNetStatus == AFNetworkReachabilityStatusNotReachable) {
@@ -80,11 +70,6 @@ NSString *const MKSPNetworkStatusChangedNotification = @"MKSPNetworkStatusChange
     return YES;
 }
 
-/**
- 当前网络是否是wifi
-
- @return YES:wifi，NO:非wifi
- */
 - (BOOL)currentNetworkIsWifi{
     return (self.currentNetStatus == AFNetworkReachabilityStatusReachableViaWiFi);
 }

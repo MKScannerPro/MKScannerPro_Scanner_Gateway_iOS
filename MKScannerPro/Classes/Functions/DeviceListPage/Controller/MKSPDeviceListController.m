@@ -19,10 +19,6 @@
 #import "MKCustomUIAdopter.h"
 #import "MKAlertController.h"
 
-#import "MKSPAboutController.h"
-#import "MKSPServerForAppController.h"
-#import "MKSPScanPageController.h"
-
 #import "MKSPDeviceModel.h"
 
 #import "MKSPNetworkManager.h"
@@ -35,6 +31,9 @@
 #import "MKSPDeviceListCell.h"
 #import "MKSPEasyShowView.h"
 
+#import "MKSPAboutController.h"
+#import "MKSPServerForAppController.h"
+#import "MKSPScanPageController.h"
 #import "MKSPDeviceDataController.h"
 
 static NSTimeInterval const kRefreshInterval = 0.5f;

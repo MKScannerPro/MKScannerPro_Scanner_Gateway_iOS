@@ -211,37 +211,66 @@ MKSPCAFileSelectControllerDelegate>
 }
 
 #pragma mark - MKSPServerConfigDeviceFooterViewDelegate
-- (void)sp_mqtt_serverForDevice_cleanSessionStatusChanged:(BOOL)isOn {
-    self.dataModel.cleanSession = isOn;
-    self.sslParamsModel.cleanSession = isOn;
+/// 用户改变了开关状态
+/// @param isOn isOn
+/// @param statusID 0:cleanSession   1:ssl
+- (void)sp_mqtt_serverForDevice_switchStatusChanged:(BOOL)isOn statusID:(NSInteger)statusID {
+    if (statusID == 0) {
+        //cleanSession
+        self.dataModel.cleanSession = isOn;
+        self.sslParamsModel.cleanSession = isOn;
+        return;
+    }
+    if (statusID == 1) {
+        //ssl
+        self.dataModel.sslIsOn = isOn;
+        self.sslParamsModel.sslIsOn = isOn;
+        //动态刷新footer
+        [self setupSSLViewFrames];
+        self.sslParamsView.dataModel = self.sslParamsModel;
+        return;
+    }
+}
+
+/// 输入框内容发生了改变
+/// @param text 最新的输入框内容
+/// @param textID 0:keepAlive    1:userName     2:password    3:deviceID   4:ntpURL
+- (void)sp_mqtt_serverForDevice_textFieldValueChanged:(NSString *)text textID:(NSInteger)textID {
+    if (textID == 0) {
+        //keepAlive
+        self.dataModel.keepAlive = text;
+        self.sslParamsModel.keepAlive = text;
+        return;
+    }
+    if (textID == 1) {
+        //userName
+        self.dataModel.userName = text;
+        self.sslParamsModel.userName = text;
+        return;
+    }
+    if (textID == 2) {
+        //password
+        self.dataModel.password = text;
+        self.sslParamsModel.password = text;
+        return;
+    }
+    if (textID == 3) {
+        //deviceID
+        self.dataModel.deviceID = text;
+        self.sslParamsModel.deviceID = text;
+        return;
+    }
+    if (textID == 4) {
+        //ntpURL
+        self.dataModel.ntpHost = text;
+        self.sslParamsModel.ntpHost = text;
+        return;
+    }
 }
 
 - (void)sp_mqtt_serverForDevice_qosChanged:(NSInteger)qos {
     self.dataModel.qos = qos;
     self.sslParamsModel.qos = qos;
-}
-
-- (void)sp_mqtt_serverForDevice_KeepAliveChanged:(NSString *)keepAlive {
-    self.dataModel.keepAlive = keepAlive;
-    self.sslParamsModel.keepAlive = keepAlive;
-}
-
-- (void)sp_mqtt_serverForDevice_userNameChanged:(NSString *)userName {
-    self.dataModel.userName = userName;
-    self.sslParamsModel.userName = userName;
-}
-
-- (void)sp_mqtt_serverForDevice_passwordChanged:(NSString *)password {
-    self.dataModel.password = password;
-    self.sslParamsModel.password = password;
-}
-
-- (void)sp_mqtt_serverForDevice_sslStatusChanged:(BOOL)isOn {
-    self.dataModel.sslIsOn = isOn;
-    self.sslParamsModel.sslIsOn = isOn;
-    //动态刷新footer
-    [self setupSSLViewFrames];
-    self.sslParamsView.dataModel = self.sslParamsModel;
 }
 
 /// 用户选择了加密方式
@@ -254,38 +283,33 @@ MKSPCAFileSelectControllerDelegate>
     self.sslParamsView.dataModel = self.sslParamsModel;
 }
 
-/// 用户点击选择了caFaile按钮
-- (void)sp_mqtt_serverForDevice_caFilePressed {
-    MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
-    vc.pageType = mk_sp_caCertSelPage;
-    vc.delegate = self;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-/// 用户点击选择了cilentKeyFile按钮
-- (void)sp_mqtt_serverForDevice_clientKeyPressed {
-    MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
-    vc.pageType = mk_sp_clientKeySelPage;
-    vc.delegate = self;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-/// 用户点击选择了client cert file按钮
-- (void)sp_mqtt_serverForDevice_clientCertPressed {
-    MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
-    vc.pageType = mk_sp_clientCertSelPage;
-    vc.delegate = self;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)sp_mqtt_serverForDevice_deviceIDChanged:(NSString *)deviceID {
-    self.dataModel.deviceID = deviceID;
-    self.sslParamsModel.deviceID = deviceID;
-}
-
-- (void)sp_mqtt_serverForDevice_ntpURLChanged:(NSString *)url {
-    self.dataModel.ntpHost = url;
-    self.sslParamsModel.ntpHost = url;
+/// 用户点击了证书相关按钮
+/// @param fileType 0:caFaile   1:cilentKeyFile   2:client cert file
+- (void)sp_mqtt_serverForDevice_fileButtonPressed:(NSInteger)fileType {
+    if (fileType == 0) {
+        //caFile
+        MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
+        vc.pageType = mk_sp_caCertSelPage;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
+    if (fileType == 1) {
+        //cilentKeyFile
+        MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
+        vc.pageType = mk_sp_clientKeySelPage;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
+    if (fileType == 2) {
+        //client cert file
+        MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
+        vc.pageType = mk_sp_clientCertSelPage;
+        vc.delegate = self;
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
 }
 
 /// 时区改变
