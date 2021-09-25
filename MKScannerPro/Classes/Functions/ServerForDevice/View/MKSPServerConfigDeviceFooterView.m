@@ -13,8 +13,8 @@
 #import "MKMacroDefines.h"
 #import "NSString+MKAdd.h"
 
-#import "MKSPMQTTGeneralParamsView.h"
-#import "MKSPMQTTUserCredentialsView.h"
+#import "MKMQTTGeneralParamsView.h"
+#import "MKMQTTUserCredentialsView.h"
 
 #import "MKSPMQTTSSLForDeviceView.h"
 #import "MKSPServerConfigDeviceSettingView.h"
@@ -28,8 +28,8 @@ static CGFloat const settingViewHeight = 180.f;
 static CGFloat const defaultScrollViewHeight = 270.f;
 
 @interface MKSPServerConfigDeviceFooterView ()<UIScrollViewDelegate,
-MKSPMQTTGeneralParamsViewDelegate,
-MKSPMQTTUserCredentialsViewDelegate,
+MKMQTTGeneralParamsViewDelegate,
+MKMQTTUserCredentialsViewDelegate,
 MKSPMQTTSSLForDeviceViewDelegate,
 MKSPServerConfigDeviceSettingViewDelegate>
 
@@ -45,9 +45,9 @@ MKSPServerConfigDeviceSettingViewDelegate>
 
 @property (nonatomic, strong)UIView *containerView;
 
-@property (nonatomic, strong)MKSPMQTTGeneralParamsView *generalView;
+@property (nonatomic, strong)MKMQTTGeneralParamsView *generalView;
 
-@property (nonatomic, strong)MKSPMQTTUserCredentialsView *credentialsView;
+@property (nonatomic, strong)MKMQTTUserCredentialsView *credentialsView;
 
 @property (nonatomic, strong)MKSPMQTTSSLForDeviceView *sslView;
 
@@ -135,33 +135,34 @@ MKSPServerConfigDeviceSettingViewDelegate>
     [self loadButtonUI];
 }
 
-#pragma mark - MKSPMQTTGeneralParamsViewDelegate
-- (void)sp_mqtt_generalParams_cleanSessionStatusChanged:(BOOL)isOn {
+#pragma mark - MKMQTTGeneralParamsViewDelegate
+- (void)mk_mqtt_generalParams_cleanSessionStatusChanged:(BOOL)isOn {
     if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_switchStatusChanged:statusID:)]) {
         [self.delegate sp_mqtt_serverForDevice_switchStatusChanged:isOn statusID:0];
     }
 }
 
-- (void)sp_mqtt_generalParams_qosChanged:(NSInteger)qos {
+- (void)mk_mqtt_generalParams_qosChanged:(NSInteger)qos {
     if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_qosChanged:)]) {
         [self.delegate sp_mqtt_serverForDevice_qosChanged:qos];
     }
 }
 
-- (void)sp_mqtt_generalParams_KeepAliveChanged:(NSString *)keepAlive {
+- (void)mk_mqtt_generalParams_KeepAliveChanged:(NSString *)keepAlive {
     if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_textFieldValueChanged:textID:)]) {
         [self.delegate sp_mqtt_serverForDevice_textFieldValueChanged:keepAlive textID:0];
     }
 }
 
-#pragma mark - MKSPMQTTUserCredentialsViewDelegate
-- (void)sp_mqtt_userCredentials_userNameChanged:(NSString *)userName {
+#pragma mark - MKMQTTUserCredentialsViewDelegate
+
+- (void)mk_mqtt_userCredentials_userNameChanged:(NSString *)userName {
     if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_textFieldValueChanged:textID:)]) {
         [self.delegate sp_mqtt_serverForDevice_textFieldValueChanged:userName textID:1];
     }
 }
 
-- (void)sp_mqtt_userCredentials_passwordChanged:(NSString *)password {
+- (void)mk_mqtt_userCredentials_passwordChanged:(NSString *)password {
     if ([self.delegate respondsToSelector:@selector(sp_mqtt_serverForDevice_textFieldValueChanged:textID:)]) {
         [self.delegate sp_mqtt_serverForDevice_textFieldValueChanged:password textID:2];
     }
@@ -287,13 +288,13 @@ MKSPServerConfigDeviceSettingViewDelegate>
     if (!_dataModel || ![_dataModel isKindOfClass:MKSPServerConfigDeviceFooterViewModel.class]) {
         return;
     }
-    MKSPMQTTGeneralParamsViewModel *generalModel = [[MKSPMQTTGeneralParamsViewModel alloc] init];
+    MKMQTTGeneralParamsViewModel *generalModel = [[MKMQTTGeneralParamsViewModel alloc] init];
     generalModel.clean = _dataModel.cleanSession;
     generalModel.qos = _dataModel.qos;
     generalModel.keepAlive = _dataModel.keepAlive;
     self.generalView.dataModel = generalModel;
     
-    MKSPMQTTUserCredentialsViewModel *credentialsViewModel = [[MKSPMQTTUserCredentialsViewModel alloc] init];
+    MKMQTTUserCredentialsViewModel *credentialsViewModel = [[MKMQTTUserCredentialsViewModel alloc] init];
     credentialsViewModel.userName = _dataModel.userName;
     credentialsViewModel.password = _dataModel.password;
     self.credentialsView.dataModel = credentialsViewModel;
@@ -398,9 +399,9 @@ MKSPServerConfigDeviceSettingViewDelegate>
     return _generalButton;
 }
 
-- (MKSPMQTTGeneralParamsView *)generalView {
+- (MKMQTTGeneralParamsView *)generalView {
     if (!_generalView) {
-        _generalView = [[MKSPMQTTGeneralParamsView alloc] init];
+        _generalView = [[MKMQTTGeneralParamsView alloc] init];
         _generalView.delegate = self;
     }
     return _generalView;
@@ -413,9 +414,9 @@ MKSPServerConfigDeviceSettingViewDelegate>
     return _credentialsButton;
 }
 
-- (MKSPMQTTUserCredentialsView *)credentialsView {
+- (MKMQTTUserCredentialsView *)credentialsView {
     if (!_credentialsView) {
-        _credentialsView = [[MKSPMQTTUserCredentialsView alloc] init];
+        _credentialsView = [[MKMQTTUserCredentialsView alloc] init];
         _credentialsView.delegate = self;
     }
     return _credentialsView;

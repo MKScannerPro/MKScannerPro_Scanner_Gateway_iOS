@@ -18,12 +18,15 @@
 #import "MKHudManager.h"
 #import "MKCustomUIAdopter.h"
 #import "MKAlertController.h"
+#import "MKAboutController.h"
 
 #import "MKSPDeviceModel.h"
 
-#import "MKSPNetworkManager.h"
+#import "MKNetworkManager.h"
 
 #import "MKSPServerManager.h"
+
+#import "MKSPMQTTServerManager.h"
 
 #import "MKSPDeviceListDatabaseManager.h"
 
@@ -31,7 +34,6 @@
 #import "MKSPDeviceListCell.h"
 #import "MKSPEasyShowView.h"
 
-#import "MKSPAboutController.h"
 #import "MKSPServerForAppController.h"
 #import "MKSPScanPageController.h"
 #import "MKSPDeviceDataController.h"
@@ -86,7 +88,7 @@ MKSPDeviceModelDelegate>
 }
 
 - (void)rightButtonMethod {
-    MKSPAboutController *vc = [[MKSPAboutController alloc] init];
+    MKAboutController *vc = [[MKAboutController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -239,16 +241,16 @@ MKSPDeviceModelDelegate>
 
 /// 当前MQTT服务器连接状态发生改变
 - (void)serverManagerStateChanged {
-    if ([MKSPServerManager shared].state == MKSPMQTTSessionManagerStateConnecting) {
+    if ([MKSPServerManager shared].state == MKMQTTSessionManagerStateConnecting) {
         [self.loadingView showText:@"Connecting..." superView:self.titleLabel animated:YES];
         return;
     }
-    if ([MKSPServerManager shared].state == MKSPMQTTSessionManagerStateConnected) {
+    if ([MKSPServerManager shared].state == MKMQTTSessionManagerStateConnected) {
         [self.loadingView hidden];
         self.defaultTitle = @"MKScannerPro";
         return;
     }
-    if ([MKSPServerManager shared].state == MKSPMQTTSessionManagerStateError) {
+    if ([MKSPServerManager shared].state == MKMQTTSessionManagerStateError) {
         [self.loadingView hidden];
         self.defaultTitle = @"Connect Failed";
         return;
@@ -256,7 +258,7 @@ MKSPDeviceModelDelegate>
 }
 
 - (void)networkStatusChanged {
-    if (![[MKSPNetworkManager sharedInstance] currentNetworkAvailable]) {
+    if (![[MKNetworkManager sharedInstance] currentNetworkAvailable]) {
         self.defaultTitle = @"Network Unreachable";
         return;
     }
@@ -264,7 +266,7 @@ MKSPDeviceModelDelegate>
 
 #pragma mark - event method
 - (void)addButtonPressed {
-    if (!ValidDict([MKSPServerManager shared].serverParams)) {
+    if (!ValidStr([MKSPMQTTServerManager shared].serverParams.host)) {
         //如果MQTT服务器参数不存在，则去引导用户添加服务器参数，让app连接MQTT服务器
         [self leftButtonMethod];
         return;
@@ -379,7 +381,7 @@ MKSPDeviceModelDelegate>
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(networkStatusChanged)
-                                                 name:MKSPNetworkStatusChangedNotification
+                                                 name:MKNetworkStatusChangedNotification
                                                object:nil];
 }
 

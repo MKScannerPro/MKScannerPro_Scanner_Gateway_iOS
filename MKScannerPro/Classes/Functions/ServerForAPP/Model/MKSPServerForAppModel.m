@@ -11,6 +11,8 @@
 #import "MKMacroDefines.h"
 #import "NSString+MKAdd.h"
 
+#import "MKSPMQTTServerManager.h"
+
 @implementation MKSPServerForAppModel
 
 - (instancetype)init {
@@ -83,27 +85,28 @@
 
 #pragma mark - private method
 - (void)loadServerParams {
-    if (!ValidDict([MKSPServerManager shared].serverParams)) {
+    if (!ValidStr([MKSPMQTTServerManager shared].serverParams.host)) {
+        //本地没有服务器参数
         self.cleanSession = YES;
         self.keepAlive = @"60";
         self.qos = 1;
         return;
     }
-    self.host = [MKSPServerManager shared].serverParams[@"host"];
-    self.port = [MKSPServerManager shared].serverParams[@"port"];
-    self.clientID = [MKSPServerManager shared].serverParams[@"clientID"];
-    self.subscribeTopic = [MKSPServerManager shared].serverParams[@"subscribeTopic"];
-    self.publishTopic = [MKSPServerManager shared].serverParams[@"publishTopic"];
-    self.cleanSession = [[MKSPServerManager shared].serverParams[@"cleanSession"] boolValue];
+    self.host = [MKSPMQTTServerManager shared].serverParams.host;
+    self.port = [MKSPMQTTServerManager shared].serverParams.port;
+    self.clientID = [MKSPMQTTServerManager shared].serverParams.clientID;
+    self.subscribeTopic = [MKSPMQTTServerManager shared].serverParams.subscribeTopic;
+    self.publishTopic = [MKSPMQTTServerManager shared].serverParams.publishTopic;
+    self.cleanSession = [MKSPMQTTServerManager shared].serverParams.cleanSession;
     
-    self.qos = [[MKSPServerManager shared].serverParams[@"qos"] integerValue];
-    self.keepAlive = [MKSPServerManager shared].serverParams[@"keepAlive"];
-    self.userName = [MKSPServerManager shared].serverParams[@"userName"];
-    self.password = [MKSPServerManager shared].serverParams[@"password"];
-    self.sslIsOn = [[MKSPServerManager shared].serverParams[@"sslIsOn"] boolValue];
-    self.certificate = [[MKSPServerManager shared].serverParams[@"certificate"] integerValue];
-    self.caFileName = [MKSPServerManager shared].serverParams[@"caFileName"];
-    self.clientFileName = [MKSPServerManager shared].serverParams[@"clientFileName"];
+    self.qos = [MKSPMQTTServerManager shared].serverParams.qos;
+    self.keepAlive = [MKSPMQTTServerManager shared].serverParams.keepAlive;
+    self.userName = [MKSPMQTTServerManager shared].serverParams.userName;
+    self.password = [MKSPMQTTServerManager shared].serverParams.password;
+    self.sslIsOn = [MKSPMQTTServerManager shared].serverParams.sslIsOn;
+    self.certificate = [MKSPMQTTServerManager shared].serverParams.certificate;
+    self.caFileName = [MKSPMQTTServerManager shared].serverParams.caFileName;
+    self.clientFileName = [MKSPMQTTServerManager shared].serverParams.clientFileName;
 }
 
 @end

@@ -10,7 +10,7 @@
 
 #import "MKMacroDefines.h"
 
-#import "MKSPServerManager.h"
+#import "MKSPMQTTServerManager.h"
 
 NSString *const MKSPDeviceModelOfflineNotification = @"MKSPDeviceModelOfflineNotification";
 
@@ -87,15 +87,15 @@ NSString *const MKSPDeviceModelOfflineNotification = @"MKSPDeviceModelOfflineNot
 }
 
 - (NSString *)currentSubscribedTopic {
-    if (ValidStr([MKSPServerManager shared].serverParams[@"publishTopic"])) {
-        return [MKSPServerManager shared].serverParams[@"publishTopic"];
+    if (ValidStr([MKSPMQTTServerManager shared].serverParams.publishTopic)) {
+        return [MKSPMQTTServerManager shared].serverParams.publishTopic;
     }
     return self.subscribedTopic;
 }
 
 - (NSString *)currentPublishedTopic {
-    if (ValidStr([MKSPServerManager shared].serverParams[@"subscribeTopic"])) {
-        return [MKSPServerManager shared].serverParams[@"subscribeTopic"];
+    if (ValidStr([MKSPMQTTServerManager shared].serverParams.subscribeTopic)) {
+        return [MKSPMQTTServerManager shared].serverParams.subscribeTopic;
     }
     return self.publishedTopic;
 }

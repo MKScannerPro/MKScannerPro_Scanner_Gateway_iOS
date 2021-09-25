@@ -26,18 +26,6 @@ NSString *const mk_sp_deviceDisconnectTypeNotification = @"mk_sp_deviceDisconnec
 static MKSPCentralManager *manager = nil;
 static dispatch_once_t onceToken;
 
-@interface NSObject (MKSPCentralManager)
-
-@end
-
-@implementation NSObject (MKSPCentralManager)
-
-+ (void)load{
-    [MKSPCentralManager shared];
-}
-
-@end
-
 @interface MKSPCentralManager ()
 
 @property (nonatomic, copy)NSString *password;

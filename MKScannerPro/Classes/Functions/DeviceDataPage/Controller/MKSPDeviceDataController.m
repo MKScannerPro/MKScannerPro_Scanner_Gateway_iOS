@@ -206,7 +206,7 @@ MKSPDeviceDataTableHeaderViewDelegate>
 }
 
 - (void)serverManagerStateChanged {
-    if ([MKSPServerManager shared].state != MKSPMQTTSessionManagerStateConnected) {
+    if ([MKSPServerManager shared].state != MKMQTTSessionManagerStateConnected) {
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         [self.view showCentralToast:@"APP is off-line!"];
         [self.navigationController popToRootViewControllerAnimated:YES];

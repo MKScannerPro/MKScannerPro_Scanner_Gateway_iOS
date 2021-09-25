@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/aadyx2007@163.com/MKScannerPro'
+  s.homepage         = 'https://github.com/MKScannerPro/MKScannerPro_iOS'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'aadyx2007@163.com' => 'aadyx2007@163.com' }
-  s.source           = { :git => 'https://github.com/aadyx2007@163.com/MKScannerPro.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/MKScannerPro/MKScannerPro_iOS.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '12.0'
@@ -65,20 +65,6 @@ TODO: Add long description of the pod here.
         ssss.dependency 'MKScannerPro/DeviceModel'
       end
       
-      sss.subspec 'NetworkManager' do |ssss|
-        ssss.source_files = 'MKScannerPro/Classes/Expand/Manager/NetworkManager/**'
-        
-        ssss.dependency 'AFNetworking'
-      end
-      
-    end
-    
-    ss.subspec 'View' do |sss|
-        sss.subspec 'MQTTServerSubView' do |ssss|
-          ssss.source_files = 'MKScannerPro/Classes/Expand/View/MQTTServerSubView/**'
-        end
-        
-        sss.dependency 'MKCustomUIModule'
     end
     
     ss.dependency 'MKBaseModuleLibrary'
@@ -89,7 +75,7 @@ TODO: Add long description of the pod here.
     ss.source_files = 'MKScannerPro/Classes/DeviceModel/**'
     
     ss.dependency 'MKBaseModuleLibrary'
-    ss.dependency 'MKScannerPro/ServerManager'
+    ss.dependency 'MKScannerPro/SDK/MQTT'
   end
   
   s.subspec 'SDK' do |ss|
@@ -103,50 +89,20 @@ TODO: Add long description of the pod here.
     ss.subspec 'MQTT' do |sss|
       sss.source_files = 'MKScannerPro/Classes/SDK/MQTT/**'
       
-      sss.dependency 'MQTTClient'
+      ss.dependency 'MKBaseMQTTModule'
     end
   
   end
   
   s.subspec 'ServerManager' do |ss|
-    
     ss.source_files = 'MKScannerPro/Classes/ServerManager/**'
     
-    ss.dependency 'MQTTClient'
     ss.dependency 'MKBaseModuleLibrary'
     ss.dependency 'MKScannerPro/SDK/MQTT'
-    
   end
   
   
   s.subspec 'Functions' do |ss|
-    
-    ss.subspec 'AboutPage' do |sss|
-      
-      sss.subspec 'Controller' do |ssss|
-        ssss.source_files = 'MKScannerPro/Classes/Functions/AboutPage/Controller/**'
-        
-        ssss.dependency 'MKScannerPro/Functions/AboutPage/Model'
-        ssss.dependency 'MKScannerPro/Functions/AboutPage/View'
-      end
-      
-      sss.subspec 'Model' do |ssss|
-        ssss.source_files = 'MKScannerPro/Classes/Functions/AboutPage/Model/**'
-      end
-      
-      sss.subspec 'View' do |ssss|
-        ssss.source_files = 'MKScannerPro/Classes/Functions/AboutPage/View/**'
-        
-        ssss.dependency 'MKScannerPro/Functions/AboutPage/Model'
-      end
-      
-    end
-    
-    ss.subspec 'CASelectPage' do |sss|
-      sss.subspec 'Controller' do |ssss|
-        ssss.source_files = 'MKScannerPro/Classes/Functions/CASelectPage/Controller/**'
-      end
-    end
     
     ss.subspec 'ConnectionSettingPage' do |sss|
       sss.subspec 'Controller' do |ssss|
@@ -192,7 +148,6 @@ TODO: Add long description of the pod here.
       
         ssss.dependency 'MKScannerPro/Functions/DeviceListPage/View'
         
-        ssss.dependency 'MKScannerPro/Functions/AboutPage/Controller'
         ssss.dependency 'MKScannerPro/Functions/ServerForAPP/Controller'
         ssss.dependency 'MKScannerPro/Functions/ScanPage/Controller'
         ssss.dependency 'MKScannerPro/Functions/DeviceDataPage/Controller'
@@ -289,8 +244,6 @@ TODO: Add long description of the pod here.
         
         ssss.dependency 'MKScannerPro/Functions/ServerForAPP/Model'
         ssss.dependency 'MKScannerPro/Functions/ServerForAPP/View'
-        
-        ssss.dependency 'MKScannerPro/Functions/CASelectPage/Controller'
       end
       
       sss.subspec 'Model' do |ssss|
@@ -311,7 +264,6 @@ TODO: Add long description of the pod here.
         ssss.dependency 'MKScannerPro/Functions/ServerForDevice/Model'
         ssss.dependency 'MKScannerPro/Functions/ServerForDevice/View'
         
-        ssss.dependency 'MKScannerPro/Functions/CASelectPage/Controller'
         ssss.dependency 'MKScannerPro/Functions/ConnectSuccessPage/Controller'
       end
       

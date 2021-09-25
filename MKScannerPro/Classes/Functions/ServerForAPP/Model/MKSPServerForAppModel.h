@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MKSPServerManager.h"
+#import "MKSPMQTTServerParamsProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MKSPServerForAppModel : NSObject<MKSPServerDataProtocol>
+@interface MKSPServerForAppModel : NSObject<MKSPMQTTServerParamsProtocol>
 
 @property (nonatomic, copy)NSString *host;
 

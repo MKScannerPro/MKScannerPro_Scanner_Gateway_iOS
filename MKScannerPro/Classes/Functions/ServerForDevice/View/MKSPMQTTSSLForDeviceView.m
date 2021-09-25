@@ -15,13 +15,12 @@
 
 #import "MKCustomUIAdopter.h"
 #import "MKPickerView.h"
-
-#import "MKSPMQTTSSLCertificateView.h"
+#import "MKMQTTSSLCertificateView.h"
 
 @implementation MKSPMQTTSSLForDeviceViewModel
 @end
 
-@interface MKSPMQTTSSLForDeviceView ()<MKSPMQTTSSLCertificateViewDelegate>
+@interface MKSPMQTTSSLForDeviceView ()<MKMQTTSSLCertificateViewDelegate>
 
 @property (nonatomic, strong)UILabel *sslLabel;
 
@@ -33,11 +32,11 @@
 
 @property (nonatomic, strong)UIButton *certificateButton;
 
-@property (nonatomic, strong)MKSPMQTTSSLCertificateView *caFileView;
+@property (nonatomic, strong)MKMQTTSSLCertificateView *caFileView;
 
-@property (nonatomic, strong)MKSPMQTTSSLCertificateView *clientKeyView;
+@property (nonatomic, strong)MKMQTTSSLCertificateView *clientKeyView;
 
-@property (nonatomic, strong)MKSPMQTTSSLCertificateView *clientCertView;
+@property (nonatomic, strong)MKMQTTSSLCertificateView *clientCertView;
 
 @end
 
@@ -118,8 +117,8 @@
     }];
 }
 
-#pragma mark - MKSPMQTTSSLCertificateViewDelegate
-- (void)sp_fileSelectedButtonPressed:(NSInteger)index {
+#pragma mark - MKMQTTSSLCertificateViewDelegate
+- (void)mk_fileSelectedButtonPressed:(NSInteger)index {
     if (index == 0) {
         //CA File
         if ([self.delegate respondsToSelector:@selector(sp_mqtt_sslParams_device_caFilePressed)]) {
@@ -182,19 +181,19 @@
     [self.certificateButton setTitle:dataList[_dataModel.certificate] forState:UIControlStateNormal];
     [self updateCertificateView:_dataModel.certificate];
     
-    MKSPMQTTSSLCertificateViewModel *caModel = [[MKSPMQTTSSLCertificateViewModel alloc] init];
+    MKMQTTSSLCertificateViewModel *caModel = [[MKMQTTSSLCertificateViewModel alloc] init];
     caModel.index = 0;
     caModel.msg = @"CA File";
     caModel.fileName = _dataModel.caFileName;
     self.caFileView.dataModel = caModel;
     
-    MKSPMQTTSSLCertificateViewModel *clientKeyModel = [[MKSPMQTTSSLCertificateViewModel alloc] init];
+    MKMQTTSSLCertificateViewModel *clientKeyModel = [[MKMQTTSSLCertificateViewModel alloc] init];
     clientKeyModel.index = 1;
     clientKeyModel.msg = @"Client Key";
     clientKeyModel.fileName = _dataModel.clientKeyName;
     self.clientKeyView.dataModel = clientKeyModel;
     
-    MKSPMQTTSSLCertificateViewModel *clientModel = [[MKSPMQTTSSLCertificateViewModel alloc] init];
+    MKMQTTSSLCertificateViewModel *clientModel = [[MKMQTTSSLCertificateViewModel alloc] init];
     clientModel.index = 2;
     clientModel.msg = @"Client Cert File";
     clientModel.fileName = _dataModel.clientCertName;
@@ -281,25 +280,25 @@
     return _certificateButton;
 }
 
-- (MKSPMQTTSSLCertificateView *)caFileView {
+- (MKMQTTSSLCertificateView *)caFileView {
     if (!_caFileView) {
-        _caFileView = [[MKSPMQTTSSLCertificateView alloc] init];
+        _caFileView = [[MKMQTTSSLCertificateView alloc] init];
         _caFileView.delegate = self;
     }
     return _caFileView;
 }
 
-- (MKSPMQTTSSLCertificateView *)clientKeyView {
+- (MKMQTTSSLCertificateView *)clientKeyView {
     if (!_clientKeyView) {
-        _clientKeyView = [[MKSPMQTTSSLCertificateView alloc] init];
+        _clientKeyView = [[MKMQTTSSLCertificateView alloc] init];
         _clientKeyView.delegate = self;
     }
     return _clientKeyView;
 }
 
-- (MKSPMQTTSSLCertificateView *)clientCertView {
+- (MKMQTTSSLCertificateView *)clientCertView {
     if (!_clientCertView) {
-        _clientCertView = [[MKSPMQTTSSLCertificateView alloc] init];
+        _clientCertView = [[MKMQTTSSLCertificateView alloc] init];
         _clientCertView.delegate = self;
     }
     return _clientCertView;

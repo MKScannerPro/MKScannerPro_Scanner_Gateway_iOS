@@ -24,20 +24,21 @@
 #import "MKTableSectionLineHeader.h"
 #import "MKCustomUIAdopter.h"
 #import "MKAlertController.h"
+#import "MKCAFileSelectController.h"
 
 #import "MKSPServerManager.h"
+
+#import "MKSPMQTTServerManager.h"
 
 #import "MKSPServerConfigAppFooterView.h"
 
 #import "MKSPServerForAppModel.h"
 
-#import "MKSPCAFileSelectController.h"
-
 @interface MKSPServerForAppController ()<UITableViewDelegate,
 UITableViewDataSource,
 MKTextFieldCellDelegate,
 MKSPServerConfigAppFooterViewDelegate,
-MKSPCAFileSelectControllerDelegate>
+MKCAFileSelectControllerDelegate>
 
 @property (nonatomic, strong)MKBaseTableView *tableView;
 
@@ -97,14 +98,14 @@ MKSPCAFileSelectControllerDelegate>
         [self.view showCentralToast:errorMsg];
         return;
     }
-    [[MKSPServerManager shared] saveServerParams:self.dataModel];
+    [[MKSPMQTTServerManager shared] saveServerParams:self.dataModel];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(serverManagerStateChanged)
                                                  name:MKSPMQTTSessionManagerStateChangedNotification
                                                object:nil];
     [[MKHudManager share] showHUDWithTitle:@"Connecting..." inView:self.view isPenetration:NO];
     self.leftButton.enabled = NO;
-    [[MKSPServerManager shared] connect];
+    [[MKSPMQTTServerManager shared] connect];
 }
 
 - (void)leftButtonMethod {
@@ -281,25 +282,25 @@ MKSPCAFileSelectControllerDelegate>
 - (void)sp_mqtt_serverForApp_fileButtonPressed:(NSInteger)fileType {
     if (fileType == 0) {
         //caFaile
-        MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
-        vc.pageType = mk_sp_caCertSelPage;
+        MKCAFileSelectController *vc = [[MKCAFileSelectController alloc] init];
+        vc.pageType = mk_caCertSelPage;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (fileType == 1) {
         //P12证书
-        MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
-        vc.pageType = mk_sp_clientP12CertPage;
+        MKCAFileSelectController *vc = [[MKCAFileSelectController alloc] init];
+        vc.pageType = mk_clientP12CertPage;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
 }
 
-#pragma mark - MKSPCAFileSelectControllerDelegate
-- (void)sp_certSelectedMethod:(mk_sp_certListPageType)certType certName:(NSString *)certName {
-    if (certType == mk_sp_caCertSelPage) {
+#pragma mark - MKCAFileSelectControllerDelegate
+- (void)mk_certSelectedMethod:(mk_certListPageType)certType certName:(NSString *)certName {
+    if (certType == mk_caCertSelPage) {
         //CA File
         self.dataModel.caFileName = certName;
         self.sslParamsModel.caFileName = certName;
@@ -310,7 +311,7 @@ MKSPCAFileSelectControllerDelegate>
         self.sslParamsView.dataModel = self.sslParamsModel;
         return;
     }
-    if (certType == mk_sp_clientP12CertPage) {
+    if (certType == mk_clientP12CertPage) {
         //P12
         self.dataModel.clientFileName = certName;
         self.sslParamsModel.clientFileName = certName;
@@ -325,13 +326,13 @@ MKSPCAFileSelectControllerDelegate>
 
 #pragma mark - note
 - (void)serverManagerStateChanged {
-    if ([MKSPServerManager shared].state == MKSPMQTTSessionManagerStateConnecting) {
+    if ([MKSPServerManager shared].state == MKMQTTSessionManagerStateConnecting) {
         [[MKHudManager share] showHUDWithTitle:@"Connecting..." inView:self.view isPenetration:NO];
         [self startReceiveTimer];
         self.leftButton.enabled = NO;
         return;
     }
-    if ([MKSPServerManager shared].state == MKSPMQTTSessionManagerStateConnected) {
+    if ([MKSPServerManager shared].state == MKMQTTSessionManagerStateConnected) {
         [self.view showCentralToast:@"Connect Success"];
         [[MKHudManager share] hide];
         self.leftButton.enabled = YES;
@@ -344,7 +345,7 @@ MKSPCAFileSelectControllerDelegate>
         [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5f];
         return;
     }
-    if ([MKSPServerManager shared].state == MKSPMQTTSessionManagerStateError) {
+    if ([MKSPServerManager shared].state == MKMQTTSessionManagerStateError) {
         [self connectFailed];
         return;
     }

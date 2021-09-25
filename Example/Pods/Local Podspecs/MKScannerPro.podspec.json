@@ -72,29 +72,6 @@
 
                 ]
               }
-            },
-            {
-              "name": "NetworkManager",
-              "source_files": "MKScannerPro/Classes/Expand/Manager/NetworkManager/**",
-              "dependencies": {
-                "AFNetworking": [
-
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "View",
-          "dependencies": {
-            "MKCustomUIModule": [
-
-            ]
-          },
-          "subspecs": [
-            {
-              "name": "MQTTServerSubView",
-              "source_files": "MKScannerPro/Classes/Expand/View/MQTTServerSubView/**"
             }
           ]
         }
@@ -107,13 +84,18 @@
         "MKBaseModuleLibrary": [
 
         ],
-        "MKScannerPro/ServerManager": [
+        "MKScannerPro/SDK/MQTT": [
 
         ]
       }
     },
     {
       "name": "SDK",
+      "dependencies": {
+        "MKBaseMQTTModule": [
+
+        ]
+      },
       "subspecs": [
         {
           "name": "BLE",
@@ -126,12 +108,7 @@
         },
         {
           "name": "MQTT",
-          "source_files": "MKScannerPro/Classes/SDK/MQTT/**",
-          "dependencies": {
-            "MQTTClient": [
-
-            ]
-          }
+          "source_files": "MKScannerPro/Classes/SDK/MQTT/**"
         }
       ]
     },
@@ -139,9 +116,6 @@
       "name": "ServerManager",
       "source_files": "MKScannerPro/Classes/ServerManager/**",
       "dependencies": {
-        "MQTTClient": [
-
-        ],
         "MKBaseModuleLibrary": [
 
         ],
@@ -176,45 +150,6 @@
         ]
       },
       "subspecs": [
-        {
-          "name": "AboutPage",
-          "subspecs": [
-            {
-              "name": "Controller",
-              "source_files": "MKScannerPro/Classes/Functions/AboutPage/Controller/**",
-              "dependencies": {
-                "MKScannerPro/Functions/AboutPage/Model": [
-
-                ],
-                "MKScannerPro/Functions/AboutPage/View": [
-
-                ]
-              }
-            },
-            {
-              "name": "Model",
-              "source_files": "MKScannerPro/Classes/Functions/AboutPage/Model/**"
-            },
-            {
-              "name": "View",
-              "source_files": "MKScannerPro/Classes/Functions/AboutPage/View/**",
-              "dependencies": {
-                "MKScannerPro/Functions/AboutPage/Model": [
-
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "CASelectPage",
-          "subspecs": [
-            {
-              "name": "Controller",
-              "source_files": "MKScannerPro/Classes/Functions/CASelectPage/Controller/**"
-            }
-          ]
-        },
         {
           "name": "ConnectionSettingPage",
           "subspecs": [
@@ -283,9 +218,6 @@
               "source_files": "MKScannerPro/Classes/Functions/DeviceListPage/Controller/**",
               "dependencies": {
                 "MKScannerPro/Functions/DeviceListPage/View": [
-
-                ],
-                "MKScannerPro/Functions/AboutPage/Controller": [
 
                 ],
                 "MKScannerPro/Functions/ServerForAPP/Controller": [
@@ -440,9 +372,6 @@
                 ],
                 "MKScannerPro/Functions/ServerForAPP/View": [
 
-                ],
-                "MKScannerPro/Functions/CASelectPage/Controller": [
-
                 ]
               }
             },
@@ -467,9 +396,6 @@
 
                 ],
                 "MKScannerPro/Functions/ServerForDevice/View": [
-
-                ],
-                "MKScannerPro/Functions/CASelectPage/Controller": [
 
                 ],
                 "MKScannerPro/Functions/ConnectSuccessPage/Controller": [

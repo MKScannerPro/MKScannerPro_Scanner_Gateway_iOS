@@ -24,9 +24,10 @@
 #import "MKTableSectionLineHeader.h"
 #import "MKCustomUIAdopter.h"
 #import "MKProgressView.h"
+#import "MKCAFileSelectController.h"
+#import "MKWifiAlertView.h"
 
 #import "MKSPServerConfigDeviceFooterView.h"
-#import "MKSPWifiAlertView.h"
 
 #import "MKSPServerForDeviceModel.h"
 
@@ -36,14 +37,15 @@
 
 #import "MKSPServerManager.h"
 
-#import "MKSPCAFileSelectController.h"
+#import "MKSPMQTTServerManager.h"
+
 #import "MKSPConnectSuccessController.h"
 
 @interface MKSPServerForDeviceController ()<UITableViewDelegate,
 UITableViewDataSource,
 MKTextFieldCellDelegate,
 MKSPServerConfigDeviceFooterViewDelegate,
-MKSPCAFileSelectControllerDelegate>
+MKCAFileSelectControllerDelegate>
 
 @property (nonatomic, strong)MKBaseTableView *tableView;
 
@@ -61,7 +63,7 @@ MKSPCAFileSelectControllerDelegate>
 
 @property (nonatomic, strong)UIView *footerView;
 
-@property (nonatomic, strong)MKSPWifiAlertView *alertView;
+@property (nonatomic, strong)MKWifiAlertView *alertView;
 
 @property (nonatomic, strong)MKProgressView *progressView;
 
@@ -108,7 +110,7 @@ MKSPCAFileSelectControllerDelegate>
         return;
     }
     self.alertView = nil;
-    self.alertView = [[MKSPWifiAlertView alloc] init];
+    self.alertView = [[MKWifiAlertView alloc] init];
     @weakify(self);
     [self.alertView showWithConfirmBlock:^(NSString * _Nonnull ssid, NSString * _Nonnull password) {
         @strongify(self);
@@ -288,24 +290,24 @@ MKSPCAFileSelectControllerDelegate>
 - (void)sp_mqtt_serverForDevice_fileButtonPressed:(NSInteger)fileType {
     if (fileType == 0) {
         //caFile
-        MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
-        vc.pageType = mk_sp_caCertSelPage;
+        MKCAFileSelectController *vc = [[MKCAFileSelectController alloc] init];
+        vc.pageType = mk_caCertSelPage;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (fileType == 1) {
         //cilentKeyFile
-        MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
-        vc.pageType = mk_sp_clientKeySelPage;
+        MKCAFileSelectController *vc = [[MKCAFileSelectController alloc] init];
+        vc.pageType = mk_clientKeySelPage;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (fileType == 2) {
         //client cert file
-        MKSPCAFileSelectController *vc = [[MKSPCAFileSelectController alloc] init];
-        vc.pageType = mk_sp_clientCertSelPage;
+        MKCAFileSelectController *vc = [[MKCAFileSelectController alloc] init];
+        vc.pageType = mk_clientCertSelPage;
         vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -319,9 +321,9 @@ MKSPCAFileSelectControllerDelegate>
     self.sslParamsModel.timeZone = timeZone;
 }
 
-#pragma mark - MKSPCAFileSelectControllerDelegate
-- (void)sp_certSelectedMethod:(mk_sp_certListPageType)certType certName:(NSString *)certName {
-    if (certType == mk_sp_caCertSelPage) {
+#pragma mark - MKCAFileSelectControllerDelegate
+- (void)mk_certSelectedMethod:(mk_certListPageType)certType certName:(NSString *)certName {
+    if (certType == mk_caCertSelPage) {
         //CA File
         self.dataModel.caFileName = certName;
         self.sslParamsModel.caFileName = certName;
@@ -332,7 +334,7 @@ MKSPCAFileSelectControllerDelegate>
         self.sslParamsView.dataModel = self.sslParamsModel;
         return;
     }
-    if (certType == mk_sp_clientKeySelPage) {
+    if (certType == mk_clientKeySelPage) {
         //客户端私钥
         self.dataModel.clientKeyName = certName;
         self.sslParamsModel.clientKeyName = certName;
@@ -343,7 +345,7 @@ MKSPCAFileSelectControllerDelegate>
         self.sslParamsView.dataModel = self.sslParamsModel;
         return;
     }
-    if (certType == mk_sp_clientCertSelPage) {
+    if (certType == mk_clientCertSelPage) {
         //客户端证书
         self.dataModel.clientCertName = certName;
         self.sslParamsModel.clientCertName = certName;
@@ -427,9 +429,9 @@ MKSPCAFileSelectControllerDelegate>
                                                     name:mk_sp_peripheralConnectStateChangedNotification
                                                   object:nil];
     NSString *topic = @"";
-    if (ValidStr([MKSPServerManager shared].serverParams[@"subscribeTopic"])) {
+    if (ValidStr([MKSPMQTTServerManager shared].serverParams.subscribeTopic)) {
         //查看是否设置了服务器的订阅topic
-        topic = [MKSPServerManager shared].serverParams[@"subscribeTopic"];
+        topic = [MKSPMQTTServerManager shared].serverParams.subscribeTopic;
     }else {
         topic = self.dataModel.publishTopic;
     }
