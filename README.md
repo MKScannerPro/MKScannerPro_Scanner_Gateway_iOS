@@ -17,7 +17,8 @@ MKScannerPro is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'MKScannerPro'
+pod 'MKScannerPro/SDK/BLE'              //BLE SDK
+pod 'MKScannerPro/SDK/MQTT'             //MQTT SDK
 ```
 
 ## Author
