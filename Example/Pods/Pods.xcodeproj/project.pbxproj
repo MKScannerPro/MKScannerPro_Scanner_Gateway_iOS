@@ -993,7 +993,7 @@
 		050CFD60B10D5D761048ACD93E4DE70F /* MKSPApplicationModule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPApplicationModule.h; sourceTree = "<group>"; };
 		057ECA964DCE563B0C92196E6B0254D3 /* MKBaseTableView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKBaseTableView.m; path = MKBaseModuleLibrary/Classes/Base/View/tableView/MKBaseTableView.m; sourceTree = "<group>"; };
 		05B9F54F725552DA5132A08D83D36909 /* MJRefreshBackGifFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackGifFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.h; sourceTree = "<group>"; };
-		05CCF915CDB5CA9948F0AA95329FEBDB /* MKBaseModuleLibrary.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MKBaseModuleLibrary.bundle; path = "MKBaseModuleLibrary-MKBaseModuleLibrary.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		05CCF915CDB5CA9948F0AA95329FEBDB /* MKBaseModuleLibrary.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKBaseModuleLibrary.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		05EAF03F159F060699462A83884660A3 /* MKSPOTAController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPOTAController.h; sourceTree = "<group>"; };
 		060E00BC15ACB17B7A7AEA23F1DA27E4 /* SecureDFUPeripheralDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SecureDFUPeripheralDelegate.swift; path = iOSDFULibrary/Classes/Implementation/SecureDFU/Peripheral/SecureDFUPeripheralDelegate.swift; sourceTree = "<group>"; };
 		067E68132BD203C71A4EA3A58672C09D /* MQTTCoreDataPersistence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQTTCoreDataPersistence.m; path = MQTTClient/MQTTClient/MQTTCoreDataPersistence.m; sourceTree = "<group>"; };
@@ -1077,7 +1077,7 @@
 		1FA6CE67388A24D9B5649D950E702EC6 /* MQTTStrict.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQTTStrict.m; path = MQTTClient/MQTTClient/MQTTStrict.m; sourceTree = "<group>"; };
 		1FDBB71A6C1399556E1B31C3C97C95AA /* MJRefreshBackFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackFooter.m; path = MJRefresh/Base/MJRefreshBackFooter.m; sourceTree = "<group>"; };
 		1FFA099412225E24052E9B1F1403C482 /* UIApplication+MKAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+MKAdd.h"; path = "MKBaseModuleLibrary/Classes/Category/UIApplication+MKAdd.h"; sourceTree = "<group>"; };
-		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2004CD984098A6BC7BAC14250EB5AAF9 /* MLInputDodger-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MLInputDodger-umbrella.h"; sourceTree = "<group>"; };
 		2048F3C7D6D5A3889B6FC21B77F26968 /* View+MASAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "View+MASAdditions.h"; path = "Masonry/View+MASAdditions.h"; sourceTree = "<group>"; };
 		20E79E15AB03C15789E48CD0EF3B5261 /* MQTTCFSocketTransport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQTTCFSocketTransport.h; path = MQTTClient/MQTTClient/MQTTCFSocketTransport.h; sourceTree = "<group>"; };
@@ -1085,7 +1085,7 @@
 		2135C9651345ECC0361BF5AD3D79C940 /* MKBLEBaseLogManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKBLEBaseLogManager.m; path = MKBaseBleModule/Classes/MKBLEBaseLogManager.m; sourceTree = "<group>"; };
 		21896458536CFDDC6ADAE5C1A8892AE1 /* MKHaveRefreshTableView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKHaveRefreshTableView.m; path = MKCustomUIModule/Classes/View/HaveRefreshView/MKHaveRefreshTableView.m; sourceTree = "<group>"; };
 		21A99F67366C158355604DE834867FE8 /* MKUpdateController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKUpdateController.m; path = MKCustomUIModule/Classes/Controller/DFUPage/Controller/MKUpdateController.m; sourceTree = "<group>"; };
-		21B1375088A0310C7AE2BE4C8188D12F /* iOSDFULibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = iOSDFULibrary.framework; path = iOSDFULibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		21B1375088A0310C7AE2BE4C8188D12F /* iOSDFULibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOSDFULibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21C88649F8FFEA13E3AEC21E692393ED /* WRNavigationBar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WRNavigationBar-prefix.pch"; sourceTree = "<group>"; };
 		220E9B70EE68B0B1678CC2D955108D2A /* UIButton+MKAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+MKAdd.h"; path = "MKBaseModuleLibrary/Classes/Category/UIButton+MKAdd.h"; sourceTree = "<group>"; };
 		227AF85FB15F3AB187AC5B9919391563 /* sp_editIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "sp_editIcon@3x.png"; path = "MKScannerPro/Assets/sp_editIcon@3x.png"; sourceTree = "<group>"; };
@@ -1099,7 +1099,7 @@
 		2585CEB2BF2487903600C49FB2BE4807 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
 		259F93CC16382BB3F36D83B563F5E0EA /* MKSPMQTTSSLForDeviceView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPMQTTSSLForDeviceView.h; sourceTree = "<group>"; };
 		25B0A85293671189089046AA581378EF /* sp_menuIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "sp_menuIcon@2x.png"; path = "MKScannerPro/Assets/sp_menuIcon@2x.png"; sourceTree = "<group>"; };
-		2607EE853833050B3E9A5C78A8B0F771 /* MKBaseModuleLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MKBaseModuleLibrary.framework; path = MKBaseModuleLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2607EE853833050B3E9A5C78A8B0F771 /* MKBaseModuleLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKBaseModuleLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2623D399A5F8FA1A09C88B1FB3799BAB /* MKMQTTUserCredentialsView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKMQTTUserCredentialsView.m; path = MKCustomUIModule/Classes/MQTTServerView/UserCredentials/MKMQTTUserCredentialsView.m; sourceTree = "<group>"; };
 		2728E625F992E83C5B85979BA0A424F1 /* MKSPLEDSettingController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPLEDSettingController.h; sourceTree = "<group>"; };
 		272B35438CD82C9DEF9F99582461CAB9 /* MKSettingTextCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKSettingTextCell.h; path = MKCustomUIModule/Classes/Cell/NormalCell/MKSettingTextCell/MKSettingTextCell.h; sourceTree = "<group>"; };
@@ -1202,7 +1202,7 @@
 		4796129D59AA100F4591CC02625DA603 /* Pods-MKScannerPro_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MKScannerPro_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		47B9B7476AB9A9B4CD89361DCC22BE55 /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
 		47CA7A089D91E9A9EEA405D2EACE806B /* UIView+XDRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+XDRefresh.h"; path = "MKBaseModuleLibrary/Classes/Category/UIView+XDRefresh.h"; sourceTree = "<group>"; };
-		48A4A6EDC08C8AC933D0DCD507E9D173 /* ZIPFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZIPFoundation.framework; path = ZIPFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48A4A6EDC08C8AC933D0DCD507E9D173 /* ZIPFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZIPFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4922B9A8149D01A53902690DB23B93FF /* MKSPScanTimeoutOptionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPScanTimeoutOptionController.h; sourceTree = "<group>"; };
 		492C09F256343D04B5BAE3A0572C319A /* MQTTSessionLegacy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQTTSessionLegacy.m; path = MQTTClient/MQTTClient/MQTTSessionLegacy.m; sourceTree = "<group>"; };
 		4937B590124078FFC7D79E10F4B10734 /* mk_customUI_addUsIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mk_customUI_addUsIcon@3x.png"; path = "MKCustomUIModule/Assets/mk_customUI_addUsIcon@3x.png"; sourceTree = "<group>"; };
@@ -1248,7 +1248,7 @@
 		55932E455D9BA62A06671F433629E5C8 /* Toast-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Toast-Info.plist"; sourceTree = "<group>"; };
 		55C4BFBC50F90A2C38A2103655BA7C39 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		55DCF8EF4DA6A0A3B7EA42988ABEA384 /* MKHexKeyboard.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKHexKeyboard.m; path = MKCustomUIModule/Classes/View/MKHexKeyBoard/MKHexKeyboard.m; sourceTree = "<group>"; };
-		55E0AFD333353D71ACC2207149E879D6 /* Toast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Toast.framework; path = Toast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55E0AFD333353D71ACC2207149E879D6 /* Toast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Toast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D347182CE1E684338C400E1E334908 /* iOSDFULibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDFULibrary.release.xcconfig; sourceTree = "<group>"; };
 		56EDC0AD46408B9A05D0B1C91EAB6762 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASLayoutConstraint.m; path = Masonry/MASLayoutConstraint.m; sourceTree = "<group>"; };
 		578500453F491D3C287BFE193B91C46D /* MKBaseBleModule-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MKBaseBleModule-dummy.m"; sourceTree = "<group>"; };
@@ -1307,7 +1307,7 @@
 		68001A0B95249A1267206F0F5ADDB86B /* navigation_back_button_white@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "navigation_back_button_white@2x.png"; path = "MKBaseModuleLibrary/Assets/navigation_back_button_white@2x.png"; sourceTree = "<group>"; };
 		688B9CD0488EDF75296DA1C02B446B82 /* MKBLEBaseLogManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKBLEBaseLogManager.h; path = MKBaseBleModule/Classes/MKBLEBaseLogManager.h; sourceTree = "<group>"; };
 		68C720764A4EED8F24EFE8A608C69667 /* MJRefreshConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshConst.h; path = MJRefresh/MJRefreshConst.h; sourceTree = "<group>"; };
-		68FD71EBA2CC98523D3AACCE8A0D43C8 /* CTMediator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CTMediator.framework; path = CTMediator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68FD71EBA2CC98523D3AACCE8A0D43C8 /* CTMediator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CTMediator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A011D837CDE4E27CB7DB68CAC30DF21 /* sp_refreshIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "sp_refreshIcon@3x.png"; path = "MKScannerPro/Assets/sp_refreshIcon@3x.png"; sourceTree = "<group>"; };
 		6A4715133987B31E09B6E4C8F784F55F /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackStateFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.h; sourceTree = "<group>"; };
 		6A47A1D46E683C33F4B93D64A036A85B /* MKBLEBaseSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKBLEBaseSDK.h; path = MKBaseBleModule/Classes/MKBLEBaseSDK.h; sourceTree = "<group>"; };
@@ -1358,8 +1358,8 @@
 		78356CD3C8EA6B969A4B1E5AB9C88A43 /* UIScrollView+MLInputDodger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MLInputDodger.m"; path = "Classes/UIScrollView+MLInputDodger.m"; sourceTree = "<group>"; };
 		7883730565B5B6456E9AB7AAE01A0850 /* MQTTSSLSecurityPolicyEncoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQTTSSLSecurityPolicyEncoder.h; path = MQTTClient/MQTTClient/MQTTSSLSecurityPolicyEncoder.h; sourceTree = "<group>"; };
 		790FFCFA34EF47F0EDBB88AEC3215D4E /* MKScannerPro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MKScannerPro.release.xcconfig; sourceTree = "<group>"; };
-		7948FA343D314AE2DEBBA7CA6076F151 /* CircleProgressBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CircleProgressBar.framework; path = CircleProgressBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		795D65D255D403824054D0CBE90E32B9 /* MKCustomUIModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MKCustomUIModule.framework; path = MKCustomUIModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7948FA343D314AE2DEBBA7CA6076F151 /* CircleProgressBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CircleProgressBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		795D65D255D403824054D0CBE90E32B9 /* MKCustomUIModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKCustomUIModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7976518EF3F30591148D61E3DCDFA26C /* sp_saveIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "sp_saveIcon@2x.png"; path = "MKScannerPro/Assets/sp_saveIcon@2x.png"; sourceTree = "<group>"; };
 		797C78E3424A15B6EFF87648D34BACAE /* Archive+MemoryFile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Archive+MemoryFile.swift"; path = "Sources/ZIPFoundation/Archive+MemoryFile.swift"; sourceTree = "<group>"; };
 		7A0E9A2D1B0A049C9ABC1709450CC180 /* MKBaseModuleLibrary.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MKBaseModuleLibrary.modulemap; sourceTree = "<group>"; };
@@ -1390,10 +1390,10 @@
 		8301BB5BA1AD447F12DA736255373449 /* MKWifiAlertView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKWifiAlertView.m; path = MKCustomUIModule/Classes/View/WifiAlertView/MKWifiAlertView.m; sourceTree = "<group>"; };
 		834FF5CC311037E9D356041CB1D582B1 /* FMDatabasePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = src/fmdb/FMDatabasePool.m; sourceTree = "<group>"; };
 		835376088A4832F92D77C497D84F0B82 /* MKProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKProgressView.m; path = MKCustomUIModule/Classes/View/MKProgressView/MKProgressView.m; sourceTree = "<group>"; };
-		83EEBD6F3402E9E1B4D1AD35B56075BF /* MKScannerPro.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MKScannerPro.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		83EEBD6F3402E9E1B4D1AD35B56075BF /* MKScannerPro.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MKScannerPro.podspec; sourceTree = "<group>"; tabWidth = 2; };
 		84147EA18948553B6A4FA0CAE28DBC0B /* mk_customUI_listButtonSelectedIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mk_customUI_listButtonSelectedIcon@3x.png"; path = "MKCustomUIModule/Assets/mk_customUI_listButtonSelectedIcon@3x.png"; sourceTree = "<group>"; };
 		8415B52F3CD69A401A887E2F2ED96B78 /* mk_customUI_clearButtonIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mk_customUI_clearButtonIcon@2x.png"; path = "MKCustomUIModule/Assets/mk_customUI_clearButtonIcon@2x.png"; sourceTree = "<group>"; };
-		84263171559CF845D957440B9095F148 /* MKScannerPro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MKScannerPro.framework; path = MKScannerPro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84263171559CF845D957440B9095F148 /* MKScannerPro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKScannerPro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84604B039DA63C830CC45ACADADEE33F /* NSObject+MKAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MKAdd.h"; path = "MKBaseModuleLibrary/Classes/Category/NSObject+MKAdd.h"; sourceTree = "<group>"; };
 		8501A6C09B797F15B133FD5C25186867 /* MKMQTTUserCredentialsView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKMQTTUserCredentialsView.h; path = MKCustomUIModule/Classes/MQTTServerView/UserCredentials/MKMQTTUserCredentialsView.h; sourceTree = "<group>"; };
 		85BB1848CC36BB085F4023F2645EA764 /* CTMediator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CTMediator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1411,7 +1411,7 @@
 		89BB1460FA36FC4F7456F7BEA4E3FF72 /* NSString+MKAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+MKAdd.m"; path = "MKBaseModuleLibrary/Classes/Category/NSString+MKAdd.m"; sourceTree = "<group>"; };
 		8B0E5D7F7AC1814A16C619ED51E22DA3 /* WKWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WKWebView+AFNetworking.h"; path = "UIKit+AFNetworking/WKWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		8B8D4CB86601304F22F35D97448DE7A0 /* NirKxMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NirKxMenu.h; path = MKCustomUIModule/Classes/View/NirKxMenu/NirKxMenu.h; sourceTree = "<group>"; };
-		8B8FAB0D627B17EDE1366984278705D9 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBProgressHUD.framework; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B8FAB0D627B17EDE1366984278705D9 /* MBProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C32A9B64D7F622AA22C5B03A65569DF /* MKMQTTSSLCertificateView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKMQTTSSLCertificateView.m; path = MKCustomUIModule/Classes/MQTTServerView/SSL/MKMQTTSSLCertificateView.m; sourceTree = "<group>"; };
 		8C4F26053BDF3EA860AC00ACFC80C258 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = src/fmdb/FMDatabaseQueue.m; sourceTree = "<group>"; };
 		8C5700A027C1A416E2751FA77FE60F2A /* MKDeviceDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKDeviceDefine.h; path = MKBaseModuleLibrary/Classes/Defines/MKDeviceDefine.h; sourceTree = "<group>"; };
@@ -1468,8 +1468,8 @@
 		9D21778BE450D8404E2093833B1FF580 /* MKHaveRefreshTableView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKHaveRefreshTableView.h; path = MKCustomUIModule/Classes/View/HaveRefreshView/MKHaveRefreshTableView.h; sourceTree = "<group>"; };
 		9D58B9138121ACA349D1890813DF8A7E /* CircleProgressBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CircleProgressBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7E131AF1AC508B6C0C98D3D9D95650 /* SecureDFUService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SecureDFUService.swift; path = iOSDFULibrary/Classes/Implementation/SecureDFU/Services/SecureDFUService.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9DD3C78AD49DD9A8A07A50772F8A4AD8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DD3C78AD49DD9A8A07A50772F8A4AD8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9E09758D4CD225DFE515374AC8264609 /* MKAboutController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKAboutController.h; path = MKCustomUIModule/Classes/Controller/MKAboutPage/Controller/MKAboutController.h; sourceTree = "<group>"; };
 		9E10CAFE07B9F66533BA7B97E132F259 /* MASConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASConstraint.m; path = Masonry/MASConstraint.m; sourceTree = "<group>"; };
 		9E44C272157A9F0D5F0A4E3C7D33539D /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
@@ -1482,11 +1482,11 @@
 		A1F5AFEAAEB4F3389E5D6E1DB287C2D1 /* MQTTSessionSynchron.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MQTTSessionSynchron.h; path = MQTTClient/MQTTClient/MQTTSessionSynchron.h; sourceTree = "<group>"; };
 		A30387E49ACFC91EE8D8BA37047A13BA /* MKSPBLESDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPBLESDK.h; sourceTree = "<group>"; };
 		A367D94260602B8847227774C575C675 /* MBProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		A3A80BA70CFB7F75C5391BEBBBA8C9DA /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FMDB.framework; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3A80BA70CFB7F75C5391BEBBBA8C9DA /* FMDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FMDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4388790AA1BA7409202366D071C00EE /* MKBaseBleModule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MKBaseBleModule.debug.xcconfig; sourceTree = "<group>"; };
 		A450F0F2E451020C9A6CA87AFF93372E /* MKSPDeviceListDatabaseManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPDeviceListDatabaseManager.h; sourceTree = "<group>"; };
 		A4C4D6647E5B7BFBF6A131D21844AC8C /* ReconnectTimer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ReconnectTimer.h; path = MQTTClient/MQTTClient/ReconnectTimer.h; sourceTree = "<group>"; };
-		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FA15D44DF6BAC7550EDEED10862AA3 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50006B1B2FE4A1FB892257205F2D6E6 /* MKSPUploadOptionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPUploadOptionController.h; sourceTree = "<group>"; };
 		A5573B67E6C283F1FF9A4B5AE3FD64F3 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
 		A5B14AE13D7CA6FFE606AB44F6B8E80C /* MKCustomUIModule-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MKCustomUIModule-umbrella.h"; sourceTree = "<group>"; };
@@ -1528,13 +1528,13 @@
 		B324B495C0CF7384116632878D12BB0C /* MQTTInMemoryPersistence.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQTTInMemoryPersistence.m; path = MQTTClient/MQTTClient/MQTTInMemoryPersistence.m; sourceTree = "<group>"; };
 		B357823CAD0602C44E3CDAF5C4F305A2 /* MKSPMQTTSettingForDeviceCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MKSPMQTTSettingForDeviceCell.m; sourceTree = "<group>"; };
 		B4CF1997E944D08D172AE9035C76E274 /* MKBaseMQTTModule-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MKBaseMQTTModule-prefix.pch"; sourceTree = "<group>"; };
-		B558AD58183C7859004AD2D69E181FEA /* MKBaseBleModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MKBaseBleModule.framework; path = MKBaseBleModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B558AD58183C7859004AD2D69E181FEA /* MKBaseBleModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKBaseBleModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B56AB0BB921846A4E390F3B658404290 /* MJRefreshAutoStateFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoStateFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.m; sourceTree = "<group>"; };
 		B6CF83143758E5754F42CE37CF8AD4D1 /* MJRefresh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-umbrella.h"; sourceTree = "<group>"; };
 		B710CC76320F70AE0A55DF56394FBBC6 /* MKSPInterface+MKSPConfig.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MKSPInterface+MKSPConfig.m"; sourceTree = "<group>"; };
 		B76511D9AC9190B12811B7AF0C2F93DF /* ZipArchive.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZipArchive.swift; path = iOSDFULibrary/Classes/Utilities/ZipArchive.swift; sourceTree = "<group>"; };
 		B85A67FF88FF7159F9558AC950525F03 /* MKHudManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKHudManager.h; path = MKCustomUIModule/Classes/View/MKHudManager/MKHudManager.h; sourceTree = "<group>"; };
-		B89B4C18968695F1EACCC3C041C82C4F /* MKScannerPro.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MKScannerPro.bundle; path = "MKScannerPro-MKScannerPro.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B89B4C18968695F1EACCC3C041C82C4F /* MKScannerPro.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKScannerPro.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B4CE9DF4452418386421557678DA51 /* MKBaseMQTTModule.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MKBaseMQTTModule.modulemap; sourceTree = "<group>"; };
 		B8BED8E8CFA4CC777CD59C407E35F3DF /* MQTTClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQTTClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8CAED55C132E7C02FEAE53BF4E314E1 /* MKMQTTServerSDKAdopter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKMQTTServerSDKAdopter.h; path = MKBaseMQTTModule/Classes/MQTT/MKMQTTServerSDKAdopter.h; sourceTree = "<group>"; };
@@ -1564,11 +1564,11 @@
 		BF4B896167FC5D0E1B7197C439C1CC52 /* CBPeripheral+MKSPAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CBPeripheral+MKSPAdd.m"; sourceTree = "<group>"; };
 		BF9D6CC8F38F801A81CDC499DCD4DF7A /* UIView+Toast.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "Toast/UIView+Toast.m"; sourceTree = "<group>"; };
 		C020816126A3D1793718B41524C8C8A5 /* MKPageControl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKPageControl.m; path = MKCustomUIModule/Classes/View/MKPageControl/MKPageControl.m; sourceTree = "<group>"; };
-		C0E79AD53820186F5DE86726D150F447 /* MQTTClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MQTTClient.framework; path = MQTTClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0E79AD53820186F5DE86726D150F447 /* MQTTClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MQTTClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1CC890763354FB34C8DAC8EBEF258BF /* MKBaseBleModule-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MKBaseBleModule-Info.plist"; sourceTree = "<group>"; };
 		C2118759D96E4FCDFA980595D0965320 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+MJExtension.h"; path = "MJRefresh/UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
 		C263BE226B6F4F8B231666C36E246416 /* MKScannerPro-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MKScannerPro-umbrella.h"; sourceTree = "<group>"; };
-		C291AC0DBEA2986CD250F2466A26691D /* MLInputDodger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MLInputDodger.framework; path = MLInputDodger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C291AC0DBEA2986CD250F2466A26691D /* MLInputDodger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MLInputDodger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2A0C9592D44B7060532F60D16CB29F2 /* Toast.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Toast.modulemap; sourceTree = "<group>"; };
 		C2E2DC425693D91284EF302F07C96FAA /* MKCustomUIModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MKCustomUIModule.release.xcconfig; sourceTree = "<group>"; };
 		C2EDECAA6A583FCA43E21E243F70F426 /* AFNetworking-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AFNetworking-Info.plist"; sourceTree = "<group>"; };
@@ -1579,7 +1579,7 @@
 		C3D92CAFE9183114E5D5D8B7AD386E33 /* FMDatabasePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = src/fmdb/FMDatabasePool.h; sourceTree = "<group>"; };
 		C3E7956424531CD6F6A3B776593D81FB /* DFUPacket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DFUPacket.swift; path = iOSDFULibrary/Classes/Implementation/LegacyDFU/Characteristics/DFUPacket.swift; sourceTree = "<group>"; };
 		C4361029A87BBDCF509F57384C4A6AAA /* MQTTTransport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQTTTransport.m; path = MQTTClient/MQTTClient/MQTTTransport.m; sourceTree = "<group>"; };
-		C43B4C6EFAD2E662F90465BFE82677D9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		C43B4C6EFAD2E662F90465BFE82677D9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C4CEE4DECA8BB6417AC07C14F2DF7E44 /* MKBaseBleModule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MKBaseBleModule.release.xcconfig; sourceTree = "<group>"; };
 		C5036C1D666C6BFB5A2539657BB9DB99 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
 		C570DF10110D2AD651F20CD785B14697 /* mk_customUI_listButtonUnselectedIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mk_customUI_listButtonUnselectedIcon@3x.png"; path = "MKCustomUIModule/Assets/mk_customUI_listButtonUnselectedIcon@3x.png"; sourceTree = "<group>"; };
@@ -1626,7 +1626,7 @@
 		D1CDA1838C973171DB412C8C8EBB911D /* MKBLEBaseSDKAdopter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKBLEBaseSDKAdopter.h; path = MKBaseBleModule/Classes/MKBLEBaseSDKAdopter.h; sourceTree = "<group>"; };
 		D218A5A897E1EAB3C5D2F04C92FAF7E6 /* MJRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MJRefresh.release.xcconfig; sourceTree = "<group>"; };
 		D2952BBF46DA6FB0842E10B9A7A10C46 /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ViewController+MASAdditions.m"; path = "Masonry/ViewController+MASAdditions.m"; sourceTree = "<group>"; };
-		D299E571E016B9E6B94A53EE5C782D2B /* MKCustomUIModule.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MKCustomUIModule.bundle; path = "MKCustomUIModule-MKCustomUIModule.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D299E571E016B9E6B94A53EE5C782D2B /* MKCustomUIModule.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKCustomUIModule.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AF51C43BA228CAE52321A2ABBA0AF2 /* NSString+MKAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+MKAdd.h"; path = "MKBaseModuleLibrary/Classes/Category/NSString+MKAdd.h"; sourceTree = "<group>"; };
 		D316891172CE188331278773B6F6D229 /* MQTTCFSocketDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MQTTCFSocketDecoder.m; path = MQTTClient/MQTTClient/MQTTCFSocketDecoder.m; sourceTree = "<group>"; };
 		D3AA455F4B3745ED803C58DE5E338A6F /* MKSearchButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKSearchButton.m; path = MKCustomUIModule/Classes/View/MKSearchButton/MKSearchButton.m; sourceTree = "<group>"; };
@@ -1643,7 +1643,7 @@
 		D5E1164F61CFE1BE412FCE23ED325C8F /* MKBaseBleModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKBaseBleModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5FD1735BE3071D943589663AFD62DBC /* UISegmentedControl+MKAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UISegmentedControl+MKAdd.m"; path = "MKBaseModuleLibrary/Classes/Category/UISegmentedControl+MKAdd.m"; sourceTree = "<group>"; };
 		D676A28B4D55A3724EF92A83623E1175 /* CTMediator+HandyTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CTMediator+HandyTools.h"; path = "CTMediator/CTMediator/CTMediator+HandyTools.h"; sourceTree = "<group>"; };
-		D6DC4C0350A0D2CD3112B06156B566F0 /* Pods_MKScannerPro_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MKScannerPro_Example.framework; path = "Pods-MKScannerPro_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6DC4C0350A0D2CD3112B06156B566F0 /* Pods_MKScannerPro_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MKScannerPro_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6E4BAD00900679713BFF204E6998178 /* ForegroundReconnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ForegroundReconnection.h; path = MQTTClient/MQTTClient/ForegroundReconnection.h; sourceTree = "<group>"; };
 		D89F7E233603CBF4B330B99FD985BE97 /* DFUExecutor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DFUExecutor.swift; path = iOSDFULibrary/Classes/Implementation/GenericDFU/DFUExecutor.swift; sourceTree = "<group>"; };
 		D8A524EFE507875AFC4EF347F2C53F55 /* mk_customUI_aboutIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "mk_customUI_aboutIcon@3x.png"; path = "MKCustomUIModule/Assets/mk_customUI_aboutIcon@3x.png"; sourceTree = "<group>"; };
@@ -1658,7 +1658,7 @@
 		DA816507DAA70EA1E4D1A5F2E41E3FB3 /* MKMQTTServerSDKDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKMQTTServerSDKDefines.h; path = MKBaseMQTTModule/Classes/MQTT/MKMQTTServerSDKDefines.h; sourceTree = "<group>"; };
 		DAF5E2BE6B9E0744A58BAAC91E54B6D3 /* MQTTClient-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MQTTClient-dummy.m"; sourceTree = "<group>"; };
 		DAFF78202FACDDD5A0D21D2CBEBB7519 /* navigation_back_button_white@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "navigation_back_button_white@3x.png"; path = "MKBaseModuleLibrary/Assets/navigation_back_button_white@3x.png"; sourceTree = "<group>"; };
-		DB44A53B4095D85B82663F9EC7903BCE /* MKBaseMQTTModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MKBaseMQTTModule.framework; path = MKBaseMQTTModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB44A53B4095D85B82663F9EC7903BCE /* MKBaseMQTTModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MKBaseMQTTModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF84080FB04FEA2D036B129F86DDD2A /* MKNormalTextCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MKNormalTextCell.m; path = MKCustomUIModule/Classes/Cell/NormalCell/MKNormalTextCell/MKNormalTextCell.m; sourceTree = "<group>"; };
 		DD47514CF7136A5C5E8A2E5DCC87FD4E /* MKSPAddDeviceView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPAddDeviceView.h; sourceTree = "<group>"; };
 		DD60E2C62EA313B0E755EEA7F30B037A /* MKCustomUIModule-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MKCustomUIModule-Info.plist"; sourceTree = "<group>"; };
@@ -1667,7 +1667,7 @@
 		DE5FD4F9AC41F36AA1D49C8F298DBF44 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		DE8A523D14BAC4D7C2E9A91DBA8706A7 /* ZIPFoundation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZIPFoundation.debug.xcconfig; sourceTree = "<group>"; };
 		DEEB42F4006C407265F4BB49A806863F /* Pods-MKScannerPro_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MKScannerPro_Example.release.xcconfig"; sourceTree = "<group>"; };
-		DF1910F703AB9A9A05DDD9333F8D0EF9 /* WRNavigationBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WRNavigationBar.framework; path = WRNavigationBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF1910F703AB9A9A05DDD9333F8D0EF9 /* WRNavigationBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WRNavigationBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF77B1E80659C68EE2EFFFF290D48498 /* MKRawAdvDataOperationCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKRawAdvDataOperationCell.h; path = MKCustomUIModule/Classes/Cell/LoRaCell/MKRawAdvDataOperationCell/MKRawAdvDataOperationCell.h; sourceTree = "<group>"; };
 		E02A0C8035DD72CABF3FBCF9F54673DE /* ZIPFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZIPFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0FE7127B152DAF5F964D571364CD3F5 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
@@ -1678,7 +1678,7 @@
 		E323A60E55D7A2A2EA49F0E8194DB23F /* DFUPeripheral.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DFUPeripheral.swift; path = iOSDFULibrary/Classes/Implementation/GenericDFU/DFUPeripheral.swift; sourceTree = "<group>"; };
 		E3378A90F8635B8BBD63D30EB304BA92 /* MKSPFilterConditionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPFilterConditionController.h; sourceTree = "<group>"; };
 		E42710F6A0F86B082EA43FBF467ABAB3 /* MKSPServerForAppController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MKSPServerForAppController.m; sourceTree = "<group>"; };
-		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MJRefresh.framework; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49D6D248DD1CEE584E6776B9164A1B2 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BB4846F2C6350D3CCBFB30484EB884 /* MKBaseCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MKBaseCell.h; path = MKBaseModuleLibrary/Classes/Base/Cell/MKBaseCell/MKBaseCell.h; sourceTree = "<group>"; };
 		E4EB5E39F8169316C4E3424FBB8F6027 /* DFUController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DFUController.swift; path = iOSDFULibrary/Classes/Implementation/GenericDFU/DFUController.swift; sourceTree = "<group>"; };
 		E5F736388507F7AC040016AA9DE46EDC /* MKSPConnectionSettingController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MKSPConnectionSettingController.h; sourceTree = "<group>"; };
@@ -1988,7 +1988,6 @@
 				A1EB6DA6216C521F91DB1E70B2BC8FE2 /* CTMediator+HandyTools.m */,
 				1F4E4730F61538D6A5D033324C3D8F32 /* Support Files */,
 			);
-			name = CTMediator;
 			path = CTMediator;
 			sourceTree = "<group>";
 		};
@@ -1998,7 +1997,6 @@
 				3BE773DC0CC9FE6C8087D0F51E4FC07A /* MKSPServerForDeviceController.h */,
 				D07503599368B8D107FB86BE83FBBBCC /* MKSPServerForDeviceController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -2025,7 +2023,6 @@
 			children = (
 				63CC8CB3B189E4EB4C59B4685840BF11 /* Controller */,
 			);
-			name = ConnectSuccessPage;
 			path = ConnectSuccessPage;
 			sourceTree = "<group>";
 		};
@@ -2039,7 +2036,6 @@
 				BA3794352878C4A2C85AFDEA0BC1BC84 /* MKSPEasyShowView.h */,
 				14136CDAAF2F111F93D68A13F2F696A0 /* MKSPEasyShowView.m */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -2121,7 +2117,6 @@
 				CF3DCD99FD93F18162DB27DCF8C520B5 /* MKSPTypeFilterModel.h */,
 				A8E356D954A9A9C35BA04B1C315153A2 /* MKSPTypeFilterModel.m */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -2131,7 +2126,6 @@
 				FCD4A5982817BE35926C921998F71921 /* MKSPServerForAppModel.h */,
 				4D9DABC0B7928A705F233C70292080FE /* MKSPServerForAppModel.m */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -2141,7 +2135,6 @@
 				1E89314FA3135258213FCF999B812EFD /* MKSPNetworkStatusController.h */,
 				5FB9D5679E28D5DBCECED9CDE7C99F79 /* MKSPNetworkStatusController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -2241,7 +2234,6 @@
 				F62A24BC617463B6D34EA923A940CD13 /* MKSPTypeFilterController.h */,
 				16F8229B68D01148A1E32713D6E41295 /* MKSPTypeFilterController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -2269,7 +2261,6 @@
 				A450F0F2E451020C9A6CA87AFF93372E /* MKSPDeviceListDatabaseManager.h */,
 				74DDB19CFF37CD8ADC1E350134D0655F /* MKSPDeviceListDatabaseManager.m */,
 			);
-			name = DeviceListDatabase;
 			path = DeviceListDatabase;
 			sourceTree = "<group>";
 		};
@@ -2395,7 +2386,6 @@
 				C6E8FA63DDDB199E718DC2F129CC60A3 /* NetworkManager */,
 				4AD7BBE2344F22D97389933D5E4278BA /* Support Files */,
 			);
-			name = MKBaseMQTTModule;
 			path = MKBaseMQTTModule;
 			sourceTree = "<group>";
 		};
@@ -2480,7 +2470,6 @@
 				7ACD1F3B40BF1EB8B342471DF6156410 /* Support Files */,
 				98B8DA3545CAF09FDB410989EF59F77A /* Tools */,
 			);
-			name = MKBaseModuleLibrary;
 			path = MKBaseModuleLibrary;
 			sourceTree = "<group>";
 		};
@@ -2513,7 +2502,6 @@
 			children = (
 				49D6D25C0240C6246D0FC32552A9D126 /* Controller */,
 			);
-			name = DataReportingPage;
 			path = DataReportingPage;
 			sourceTree = "<group>";
 		};
@@ -2536,7 +2524,6 @@
 				1A164D46C5DEDCF0E45FA0ADE2158B3C /* MKSPDeviceListController.h */,
 				954A59EDECF1A2D2A22F4F027726DF7D /* MKSPDeviceListController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -2581,7 +2568,6 @@
 				C971F5FEE10F180FD9A793CBFC88798E /* standard */,
 				FAABDD6E172D9DC1A5D35353D1620271 /* Support Files */,
 			);
-			name = FMDB;
 			path = FMDB;
 			sourceTree = "<group>";
 		};
@@ -2618,7 +2604,6 @@
 				E0F437BB7E856F9742F8DAB8A5934855 /* Controller */,
 				483025D6CE70389A9D3E82E555181792 /* View */,
 			);
-			name = DeviceDataPage;
 			path = DeviceDataPage;
 			sourceTree = "<group>";
 		};
@@ -2628,7 +2613,6 @@
 				475A596B6CF42374F24512CAD7700EFF /* MKSPDuplicateDataFilterModel.h */,
 				04C41EEA71FFF1CDCF8306C729315927 /* MKSPDuplicateDataFilterModel.m */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -2670,7 +2654,6 @@
 				FB97091FE54D8D30CBCE2468F5EA956A /* MKSPDeviceDataTableHeaderView.h */,
 				97E0A469CFDF9E042603C731D5ED0FB3 /* MKSPDeviceDataTableHeaderView.m */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -2680,7 +2663,6 @@
 				11A88E06028340740FF786F343601B88 /* MKSPDataReportingController.h */,
 				30EAAC166531E075412FDA396C75DD6E /* MKSPDataReportingController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -2744,7 +2726,6 @@
 			children = (
 				6280503149CF42A142A331511D6A73A8 /* Controller */,
 			);
-			name = OTAPage;
 			path = OTAPage;
 			sourceTree = "<group>";
 		};
@@ -2763,7 +2744,6 @@
 				A50006B1B2FE4A1FB892257205F2D6E6 /* MKSPUploadOptionController.h */,
 				C5E27D4FB72700A7959A3AABA12684AA /* MKSPUploadOptionController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -2797,7 +2777,6 @@
 				DC854FF0D38246C1990D7F0A93A5BC3A /* Controller */,
 				40BB282145E36C8E1BEA740723EBE63F /* Model */,
 			);
-			name = DuplicateDataFilterPage;
 			path = DuplicateDataFilterPage;
 			sourceTree = "<group>";
 		};
@@ -2815,7 +2794,6 @@
 				5BFA9E9C0B6CCE5469883ED247349749 /* MKBLEBaseSDKDefines.h */,
 				1E14C0A57B63B8DA79C96FAD2ECE42ED /* Support Files */,
 			);
-			name = MKBaseBleModule;
 			path = MKBaseBleModule;
 			sourceTree = "<group>";
 		};
@@ -2833,7 +2811,6 @@
 			children = (
 				D310CD238AB755D11B7096294389851E /* Controller */,
 			);
-			name = SettingPage;
 			path = SettingPage;
 			sourceTree = "<group>";
 		};
@@ -2919,7 +2896,6 @@
 				52CCB15E7850173A96A44B7A4DD45E61 /* MKSPUploadDataOptionController.h */,
 				DA76C69AFA99FB2E8E63C75CA4C0B808 /* MKSPUploadDataOptionController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -2929,7 +2905,6 @@
 				9A3A2B8D16193670F0CBA593313A1FFE /* Controller */,
 				EE58BCAD16B93455E66B5B70926F527B /* View */,
 			);
-			name = MQTTSettingForDevicePage;
 			path = MQTTSettingForDevicePage;
 			sourceTree = "<group>";
 		};
@@ -2940,7 +2915,6 @@
 				085F731D8315044811C7DE9AEC6EE350 /* Min */,
 				201F7FF02535F5A9CC02FBB81C0C9566 /* Support Files */,
 			);
-			name = MQTTClient;
 			path = MQTTClient;
 			sourceTree = "<group>";
 		};
@@ -2959,7 +2933,6 @@
 				05EAF03F159F060699462A83884660A3 /* MKSPOTAController.h */,
 				BEA51ECC0395B0331E32BB63CC920899 /* MKSPOTAController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -2978,7 +2951,6 @@
 				8E30DF3BAE06663EC55956560CE02BED /* MKSPConnectSuccessController.h */,
 				95116033DE9CE74EC14F789311D43AB6 /* MKSPConnectSuccessController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -2997,7 +2969,6 @@
 				4922B9A8149D01A53902690DB23B93FF /* MKSPScanTimeoutOptionController.h */,
 				6FEE42CA53DD4AB24A02B592626CA1FD /* MKSPScanTimeoutOptionController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -3014,7 +2985,6 @@
 				FBE19150762B50D87906CCC30E6D18BB /* FileManager+ZIP.swift */,
 				AE6A01DAD33730F4AB86A287DF3C4042 /* Support Files */,
 			);
-			name = ZIPFoundation;
 			path = ZIPFoundation;
 			sourceTree = "<group>";
 		};
@@ -3029,7 +2999,6 @@
 				24F46EBFC588A5544B7BBF951BFFE86F /* Support Files */,
 				797AAB6E49B495466D2A6B4113F3223F /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -3065,7 +3034,6 @@
 				E492A2D8BE74B6FC0323F59372E8CB21 /* UIAdopter */,
 				984435E679E09EB17ED20308EA3B7B12 /* View */,
 			);
-			name = MKCustomUIModule;
 			path = MKCustomUIModule;
 			sourceTree = "<group>";
 		};
@@ -3086,7 +3054,6 @@
 			children = (
 				CFFE38223AAA7F114795E306E065E783 /* Controller */,
 			);
-			name = ConnectionSettingPage;
 			path = ConnectionSettingPage;
 			sourceTree = "<group>";
 		};
@@ -3096,7 +3063,6 @@
 				0D8873B021A2BD0859290F725BE5324B /* MKSPServerForAppController.h */,
 				E42710F6A0F86B082EA43FBF467ABAB3 /* MKSPServerForAppController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -3226,7 +3192,6 @@
 				15102DB30E8B21ABDD653CF3DB37657E /* MKSPDeviceInfoController.h */,
 				673CCF946162A1D6365013D339662434 /* MKSPDeviceInfoController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -3244,7 +3209,6 @@
 				A9AE1C385FF768FF333DE2DA8F8AB125 /* MKSPServerForDeviceModel.h */,
 				B93A7BC1EA232AE6566A358F0DC976EE /* MKSPServerForDeviceModel.m */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -3340,7 +3304,6 @@
 				D93D37714AE56759DB7E5AE09BF69544 /* Resources */,
 				4FA7047D0C27CA5662262407B2C322B9 /* Support Files */,
 			);
-			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -3350,7 +3313,6 @@
 				EB4A3E114905BD8883B34D480E1141C7 /* Controller */,
 				C9541D7551C9A93CC3E60D75BF0D7F26 /* Model */,
 			);
-			name = FilterConditionPage;
 			path = FilterConditionPage;
 			sourceTree = "<group>";
 		};
@@ -3380,7 +3342,6 @@
 			children = (
 				DA57E5F422AC1BECCB82CFFB54A7E1B0 /* Controller */,
 			);
-			name = LEDSettingPage;
 			path = LEDSettingPage;
 			sourceTree = "<group>";
 		};
@@ -3391,7 +3352,6 @@
 				72F2EF9D8ED9BCEC1CA280B61D9C1D9B /* MBProgressHUD.m */,
 				31D9F40FADC59990F64C13599DE7E3A3 /* Support Files */,
 			);
-			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -3424,7 +3384,6 @@
 				146BAB287A2DEFD7ACCB097D944F4FFA /* Resources */,
 				8316DA7D7633F302B1E2D8D7C1473382 /* Support Files */,
 			);
-			name = MLInputDodger;
 			path = MLInputDodger;
 			sourceTree = "<group>";
 		};
@@ -3464,7 +3423,6 @@
 				FE07C47925615474E25C3A6A2FBE46E9 /* MKSPSystemTimeController.h */,
 				F33FE365C42FF089F42C8EEF62B29269 /* MKSPSystemTimeController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -3473,7 +3431,6 @@
 			children = (
 				834525F297646EA967EBB402E962127C /* Controller */,
 			);
-			name = DeviceInfoPage;
 			path = DeviceInfoPage;
 			sourceTree = "<group>";
 		};
@@ -3483,7 +3440,6 @@
 				E5FFA52060DA4BFC62B738E70CE4E1A5 /* MKSPMQTTSettingForDeviceController.h */,
 				5352115BB9FD6BB21EA524A2FF52DEBB /* MKSPMQTTSettingForDeviceController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -3494,7 +3450,6 @@
 				0CB4178569B60B09645726916AE76630 /* Model */,
 				CACDA03E10C8F762DCEE667080FEC087 /* View */,
 			);
-			name = ServerForAPP;
 			path = ServerForAPP;
 			sourceTree = "<group>";
 		};
@@ -3517,7 +3472,6 @@
 				7401FA307C101A550A250BEBF6745CEF /* MKSPServerConfigDeviceSettingView.h */,
 				AAA7BCFD2CF06DD6DEFA62485B63AD43 /* MKSPServerConfigDeviceSettingView.m */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -3575,7 +3529,6 @@
 				E27BBCE0AD0D4E0F5D2542DB0BEEAC5E /* MKSPUploadDataOptionModel.h */,
 				3FCEBF0DA88884BD5B4DB758063E7F80 /* MKSPUploadDataOptionModel.m */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -3587,7 +3540,6 @@
 				BF9D6CC8F38F801A81CDC499DCD4DF7A /* UIView+Toast.m */,
 				FEED7D6695B9D27EAD52013F09A25F9A /* Support Files */,
 			);
-			name = Toast;
 			path = Toast;
 			sourceTree = "<group>";
 		};
@@ -3638,7 +3590,6 @@
 				3FA2A35CF8DB33AF08C207237407515A /* MKSPUploadOptionModel.h */,
 				87988C7158A98C3BAD0F16D3F36D4A22 /* MKSPUploadOptionModel.m */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -3647,7 +3598,6 @@
 			children = (
 				10D96FEC19A455A76D61C8F39648F699 /* Controller */,
 			);
-			name = NetworkStatusPage;
 			path = NetworkStatusPage;
 			sourceTree = "<group>";
 		};
@@ -3669,7 +3619,6 @@
 				66BCC71B74C67C88C3289B8CA63F57DD /* WRNavigationBar.m */,
 				9536D4F9793C758DD81BAD2E9E8F3B36 /* Support Files */,
 			);
-			name = WRNavigationBar;
 			path = WRNavigationBar;
 			sourceTree = "<group>";
 		};
@@ -3768,7 +3717,6 @@
 				D2952BBF46DA6FB0842E10B9A7A10C46 /* ViewController+MASAdditions.m */,
 				B53D27E11EAD8889A7E7EC485AD4744F /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -3778,7 +3726,6 @@
 				5C268AE90B5532A3832BE5EDBEC058DF /* Controller */,
 				A3F63221028F1E9486822D62682F8BD0 /* Model */,
 			);
-			name = UploadDataOptionPage;
 			path = UploadDataOptionPage;
 			sourceTree = "<group>";
 		};
@@ -3875,7 +3822,6 @@
 				BD8D60F5B9CA7B1EAAB1964A9A5C7CE2 /* MKSPFilterConditionModel.h */,
 				4D21FF97A18488C558F7DE2AC404701D /* MKSPFilterConditionModel.m */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -3903,7 +3849,6 @@
 				17EC6AB756E3BAA9D8093A35E927AB8A /* Controller */,
 				09E245BE2CCA3F56C73705BA7E5EBFC0 /* Model */,
 			);
-			name = TypeFilterPage;
 			path = TypeFilterPage;
 			sourceTree = "<group>";
 		};
@@ -3915,7 +3860,6 @@
 				16D3DEFA6FDB6CFEC406E0D3D1C5460F /* MKSPServerConfigAppFooterView.h */,
 				02A325C9C526E3D0DD486D352D58E9B2 /* MKSPServerConfigAppFooterView.m */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -3934,7 +3878,6 @@
 				589D3D0DA960824723DC593309EF99BD /* MKSPScanPageCell.h */,
 				469F26BBF5958C288E627FDC0451DC73 /* MKSPScanPageCell.m */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -3966,7 +3909,6 @@
 				E5F736388507F7AC040016AA9DE46EDC /* MKSPConnectionSettingController.h */,
 				CA89544CA07F9C4AC3EB08A9E0811C35 /* MKSPConnectionSettingController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -3994,7 +3936,6 @@
 				ECFF76567D8ECD1231EC605C65E514F8 /* MKSPSettingController.h */,
 				18E183A09A893D1E1EA95B1A020DD3ED /* MKSPSettingController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -4004,7 +3945,6 @@
 				121978123846DDE13379E206535BC032 /* MKSPScanPageController.h */,
 				CABDD8B1F746A6963EBD20385689B90D /* MKSPScanPageController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -4042,7 +3982,6 @@
 				3B3000453108685CC43F02D0FF2EFFD3 /* MKSPServerTaskAdopter.m */,
 				D4D0603BE369B3DA409165A18D467BBE /* MKSPServerTaskID.h */,
 			);
-			name = MQTT;
 			path = MQTT;
 			sourceTree = "<group>";
 		};
@@ -4053,7 +3992,6 @@
 				FA4CD3E65022B8E65F679B75B8E4404C /* Model */,
 				CC13DF70885C24E7CA843907838CFD95 /* View */,
 			);
-			name = ScanPage;
 			path = ScanPage;
 			sourceTree = "<group>";
 		};
@@ -4062,7 +4000,6 @@
 			children = (
 				65BC3F04BD7D3948CFBA2776C75062C8 /* Controller */,
 			);
-			name = ScanTimeoutOptionPage;
 			path = ScanTimeoutOptionPage;
 			sourceTree = "<group>";
 		};
@@ -4080,7 +4017,6 @@
 				2728E625F992E83C5B85979BA0A424F1 /* MKSPLEDSettingController.h */,
 				7F46E096E2EBF49A3A0B35DCE38CA015 /* MKSPLEDSettingController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -4098,7 +4034,6 @@
 				7FC65D1143832413A9930C5B66AA586D /* MKSPDuplicateDataFilterController.h */,
 				2DABA90CAA6487E8639E3109365C4EE5 /* MKSPDuplicateDataFilterController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -4122,7 +4057,6 @@
 				C9903675064A1877EF30394907B234F8 /* MKSPTaskAdopter.h */,
 				369E71B0F51A462A37F5632837A880C9 /* MKSPTaskAdopter.m */,
 			);
-			name = BLE;
 			path = BLE;
 			sourceTree = "<group>";
 		};
@@ -4132,7 +4066,6 @@
 				34420FB645D975BA2C5A7B0EDBE23AB4 /* Controller */,
 				0745FE1AA533561CA4CC884DEED9CFD1 /* View */,
 			);
-			name = DeviceListPage;
 			path = DeviceListPage;
 			sourceTree = "<group>";
 		};
@@ -4142,7 +4075,6 @@
 				51AD30CCB46F2AAC8BC065407D9185F1 /* MKSPDeviceDataController.h */,
 				FF7DF49A16BBBF35655B658946114023 /* MKSPDeviceDataController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -4151,7 +4083,6 @@
 			children = (
 				1A4F63D771E5BF9C3B7279FCB0B7D840 /* DeviceListDatabase */,
 			);
-			name = Manager;
 			path = Manager;
 			sourceTree = "<group>";
 		};
@@ -4198,7 +4129,6 @@
 				ADEB09CF6CAD3C09BCAF20E2308CC6A1 /* CircleProgressBar.m */,
 				8BB5FA874636122F5F7C61F375D6C493 /* Support Files */,
 			);
-			name = CircleProgressBar;
 			path = CircleProgressBar;
 			sourceTree = "<group>";
 		};
@@ -4208,7 +4138,6 @@
 				E3378A90F8635B8BBD63D30EB304BA92 /* MKSPFilterConditionController.h */,
 				DA5C329668A138A138415F14634F55EA /* MKSPFilterConditionController.m */,
 			);
-			name = Controller;
 			path = Controller;
 			sourceTree = "<group>";
 		};
@@ -4219,7 +4148,6 @@
 				8A9763D92E016C16FB36498EE604C7DF /* Model */,
 				9E97D1A8778F75E6855C9F98AAE757F9 /* View */,
 			);
-			name = ServerForDevice;
 			path = ServerForDevice;
 			sourceTree = "<group>";
 		};
@@ -4228,7 +4156,6 @@
 			children = (
 				98C7C4EDF29603661E88F896F638FB52 /* Controller */,
 			);
-			name = SystemTimePage;
 			path = SystemTimePage;
 			sourceTree = "<group>";
 		};
@@ -4238,7 +4165,6 @@
 				336CE1B1E59EE05F93A327AFAAD83A3D /* MKSPMQTTSettingForDeviceCell.h */,
 				B357823CAD0602C44E3CDAF5C4F305A2 /* MKSPMQTTSettingForDeviceCell.m */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -4322,7 +4248,6 @@
 				B76511D9AC9190B12811B7AF0C2F93DF /* ZipArchive.swift */,
 				8C76107BF2148BEF35553150A0D7E976 /* Support Files */,
 			);
-			name = iOSDFULibrary;
 			path = iOSDFULibrary;
 			sourceTree = "<group>";
 		};
@@ -4332,7 +4257,6 @@
 				4F31F4F8C71430FD6A631D323BC159F8 /* Controller */,
 				AF115222E1512E5ABD32A3D5EF661969 /* Model */,
 			);
-			name = UploadOptionPage;
 			path = UploadOptionPage;
 			sourceTree = "<group>";
 		};
@@ -4351,7 +4275,6 @@
 				09D8F083DBD141FFE691414E2E6FE77A /* MKSPScanPageModel.h */,
 				8F249C211BCAE5F01BC135D9620E55A3 /* MKSPScanPageModel.m */,
 			);
-			name = Model;
 			path = Model;
 			sourceTree = "<group>";
 		};
@@ -6337,8 +6260,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -7729,8 +7651,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

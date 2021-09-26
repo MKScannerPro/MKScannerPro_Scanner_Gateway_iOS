@@ -62,12 +62,11 @@ TODO: Add long description of the pod here.
         ssss.source_files = 'MKScannerPro/Classes/Expand/Manager/DeviceListDatabase/**'
         
         ssss.dependency 'FMDB'
+        ssss.dependency 'MKBaseModuleLibrary'
         ssss.dependency 'MKScannerPro/DeviceModel'
       end
       
     end
-    
-    ss.dependency 'MKBaseModuleLibrary'
     
   end
   
