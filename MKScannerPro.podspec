@@ -54,19 +54,13 @@ TODO: Add long description of the pod here.
     ss.source_files = 'MKScannerPro/Classes/Target/**'
   end
   
-  s.subspec 'Expand' do |ss|
+  s.subspec 'DatabaseManager' do |ss|
     
-    ss.subspec 'Manager' do |sss|
-      
-      sss.subspec 'DeviceListDatabase' do |ssss|
-        ssss.source_files = 'MKScannerPro/Classes/Expand/Manager/DeviceListDatabase/**'
-        
-        ssss.dependency 'FMDB'
-        ssss.dependency 'MKBaseModuleLibrary'
-        ssss.dependency 'MKScannerPro/DeviceModel'
-      end
-      
-    end
+    ss.source_files = 'MKScannerPro/Classes/DatabaseManager/**'
+    
+    ss.dependency 'FMDB'
+    ss.dependency 'MKBaseModuleLibrary'
+    ss.dependency 'MKScannerPro/DeviceModel'
     
   end
   
@@ -338,7 +332,7 @@ TODO: Add long description of the pod here.
     end
   
     ss.dependency 'MKScannerPro/DeviceModel'
-    ss.dependency 'MKScannerPro/Expand'
+    ss.dependency 'MKScannerPro/DatabaseManager'
     ss.dependency 'MKScannerPro/SDK'
     ss.dependency 'MKScannerPro/ServerManager'
     

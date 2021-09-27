@@ -482,8 +482,8 @@ PODS:
   - MKScannerPro (1.0.0):
     - MKScannerPro/ApplicationModule (= 1.0.0)
     - MKScannerPro/CTMediator (= 1.0.0)
+    - MKScannerPro/DatabaseManager (= 1.0.0)
     - MKScannerPro/DeviceModel (= 1.0.0)
-    - MKScannerPro/Expand (= 1.0.0)
     - MKScannerPro/Functions (= 1.0.0)
     - MKScannerPro/SDK (= 1.0.0)
     - MKScannerPro/ServerManager (= 1.0.0)
@@ -493,24 +493,18 @@ PODS:
   - MKScannerPro/CTMediator (1.0.0):
     - CTMediator
     - MKBaseModuleLibrary
-  - MKScannerPro/DeviceModel (1.0.0):
-    - MKBaseModuleLibrary
-    - MKScannerPro/SDK/MQTT
-  - MKScannerPro/Expand (1.0.0):
-    - MKBaseModuleLibrary
-    - MKScannerPro/Expand/Manager (= 1.0.0)
-  - MKScannerPro/Expand/Manager (1.0.0):
-    - MKBaseModuleLibrary
-    - MKScannerPro/Expand/Manager/DeviceListDatabase (= 1.0.0)
-  - MKScannerPro/Expand/Manager/DeviceListDatabase (1.0.0):
+  - MKScannerPro/DatabaseManager (1.0.0):
     - FMDB
     - MKBaseModuleLibrary
     - MKScannerPro/DeviceModel
+  - MKScannerPro/DeviceModel (1.0.0):
+    - MKBaseModuleLibrary
+    - MKScannerPro/SDK/MQTT
   - MKScannerPro/Functions (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ConnectionSettingPage (= 1.0.0)
     - MKScannerPro/Functions/ConnectSuccessPage (= 1.0.0)
     - MKScannerPro/Functions/DataReportingPage (= 1.0.0)
@@ -538,8 +532,8 @@ PODS:
   - MKScannerPro/Functions/ConnectionSettingPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ConnectionSettingPage/Controller (= 1.0.0)
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -547,16 +541,16 @@ PODS:
   - MKScannerPro/Functions/ConnectionSettingPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/ConnectSuccessPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ConnectSuccessPage/Controller (= 1.0.0)
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -564,16 +558,16 @@ PODS:
   - MKScannerPro/Functions/ConnectSuccessPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/DataReportingPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/DataReportingPage/Controller (= 1.0.0)
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -581,16 +575,16 @@ PODS:
   - MKScannerPro/Functions/DataReportingPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/DeviceDataPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/DeviceDataPage/Controller (= 1.0.0)
     - MKScannerPro/Functions/DeviceDataPage/View (= 1.0.0)
     - MKScannerPro/SDK
@@ -599,8 +593,8 @@ PODS:
   - MKScannerPro/Functions/DeviceDataPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/DeviceDataPage/View
     - MKScannerPro/Functions/SettingPage/Controller
     - MKScannerPro/Functions/UploadDataOptionPage/Controller
@@ -610,16 +604,16 @@ PODS:
   - MKScannerPro/Functions/DeviceDataPage/View (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/DeviceInfoPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/DeviceInfoPage/Controller (= 1.0.0)
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -627,16 +621,16 @@ PODS:
   - MKScannerPro/Functions/DeviceInfoPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/DeviceListPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/DeviceListPage/Controller (= 1.0.0)
     - MKScannerPro/Functions/DeviceListPage/View (= 1.0.0)
     - MKScannerPro/SDK
@@ -645,8 +639,8 @@ PODS:
   - MKScannerPro/Functions/DeviceListPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/DeviceDataPage/Controller
     - MKScannerPro/Functions/DeviceListPage/View
     - MKScannerPro/Functions/ScanPage/Controller
@@ -657,16 +651,16 @@ PODS:
   - MKScannerPro/Functions/DeviceListPage/View (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/DuplicateDataFilterPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/DuplicateDataFilterPage/Controller (= 1.0.0)
     - MKScannerPro/Functions/DuplicateDataFilterPage/Model (= 1.0.0)
     - MKScannerPro/SDK
@@ -675,8 +669,8 @@ PODS:
   - MKScannerPro/Functions/DuplicateDataFilterPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/DuplicateDataFilterPage/Model
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -684,16 +678,16 @@ PODS:
   - MKScannerPro/Functions/DuplicateDataFilterPage/Model (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/FilterConditionPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/FilterConditionPage/Controller (= 1.0.0)
     - MKScannerPro/Functions/FilterConditionPage/Model (= 1.0.0)
     - MKScannerPro/SDK
@@ -702,8 +696,8 @@ PODS:
   - MKScannerPro/Functions/FilterConditionPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/FilterConditionPage/Model
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -711,16 +705,16 @@ PODS:
   - MKScannerPro/Functions/FilterConditionPage/Model (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/LEDSettingPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/LEDSettingPage/Controller (= 1.0.0)
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -728,16 +722,16 @@ PODS:
   - MKScannerPro/Functions/LEDSettingPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/MQTTSettingForDevicePage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/MQTTSettingForDevicePage/Controller (= 1.0.0)
     - MKScannerPro/Functions/MQTTSettingForDevicePage/View (= 1.0.0)
     - MKScannerPro/SDK
@@ -746,8 +740,8 @@ PODS:
   - MKScannerPro/Functions/MQTTSettingForDevicePage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/MQTTSettingForDevicePage/View
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -755,16 +749,16 @@ PODS:
   - MKScannerPro/Functions/MQTTSettingForDevicePage/View (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/NetworkStatusPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/NetworkStatusPage/Controller (= 1.0.0)
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -772,16 +766,16 @@ PODS:
   - MKScannerPro/Functions/NetworkStatusPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/OTAPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/OTAPage/Controller (= 1.0.0)
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -789,16 +783,16 @@ PODS:
   - MKScannerPro/Functions/OTAPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/ScanPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ScanPage/Controller (= 1.0.0)
     - MKScannerPro/Functions/ScanPage/Model (= 1.0.0)
     - MKScannerPro/Functions/ScanPage/View (= 1.0.0)
@@ -808,8 +802,8 @@ PODS:
   - MKScannerPro/Functions/ScanPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ScanPage/Model
     - MKScannerPro/Functions/ScanPage/View
     - MKScannerPro/Functions/ServerForDevice/Controller
@@ -819,16 +813,16 @@ PODS:
   - MKScannerPro/Functions/ScanPage/Model (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/ScanPage/View (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ScanPage/Model
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -836,8 +830,8 @@ PODS:
   - MKScannerPro/Functions/ScanTimeoutOptionPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ScanTimeoutOptionPage/Controller (= 1.0.0)
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -845,16 +839,16 @@ PODS:
   - MKScannerPro/Functions/ScanTimeoutOptionPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/ServerForAPP (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ServerForAPP/Controller (= 1.0.0)
     - MKScannerPro/Functions/ServerForAPP/Model (= 1.0.0)
     - MKScannerPro/Functions/ServerForAPP/View (= 1.0.0)
@@ -864,8 +858,8 @@ PODS:
   - MKScannerPro/Functions/ServerForAPP/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ServerForAPP/Model
     - MKScannerPro/Functions/ServerForAPP/View
     - MKScannerPro/SDK
@@ -874,24 +868,24 @@ PODS:
   - MKScannerPro/Functions/ServerForAPP/Model (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/ServerForAPP/View (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/ServerForDevice (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ServerForDevice/Controller (= 1.0.0)
     - MKScannerPro/Functions/ServerForDevice/Model (= 1.0.0)
     - MKScannerPro/Functions/ServerForDevice/View (= 1.0.0)
@@ -901,8 +895,8 @@ PODS:
   - MKScannerPro/Functions/ServerForDevice/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ConnectSuccessPage/Controller
     - MKScannerPro/Functions/ServerForDevice/Model
     - MKScannerPro/Functions/ServerForDevice/View
@@ -912,24 +906,24 @@ PODS:
   - MKScannerPro/Functions/ServerForDevice/Model (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/ServerForDevice/View (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/SettingPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/SettingPage/Controller (= 1.0.0)
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -937,8 +931,8 @@ PODS:
   - MKScannerPro/Functions/SettingPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/ConnectionSettingPage/Controller
     - MKScannerPro/Functions/DataReportingPage/Controller
     - MKScannerPro/Functions/DeviceInfoPage/Controller
@@ -954,8 +948,8 @@ PODS:
   - MKScannerPro/Functions/SystemTimePage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/SystemTimePage/Controller (= 1.0.0)
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -963,16 +957,16 @@ PODS:
   - MKScannerPro/Functions/SystemTimePage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/TypeFilterPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/TypeFilterPage/Controller (= 1.0.0)
     - MKScannerPro/Functions/TypeFilterPage/Model (= 1.0.0)
     - MKScannerPro/SDK
@@ -981,8 +975,8 @@ PODS:
   - MKScannerPro/Functions/TypeFilterPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/TypeFilterPage/Model
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -990,16 +984,16 @@ PODS:
   - MKScannerPro/Functions/TypeFilterPage/Model (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/UploadDataOptionPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/UploadDataOptionPage/Controller (= 1.0.0)
     - MKScannerPro/Functions/UploadDataOptionPage/Model (= 1.0.0)
     - MKScannerPro/SDK
@@ -1008,8 +1002,8 @@ PODS:
   - MKScannerPro/Functions/UploadDataOptionPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/UploadDataOptionPage/Model
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
@@ -1017,16 +1011,16 @@ PODS:
   - MKScannerPro/Functions/UploadDataOptionPage/Model (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
   - MKScannerPro/Functions/UploadOptionPage (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/UploadOptionPage/Controller (= 1.0.0)
     - MKScannerPro/Functions/UploadOptionPage/Model (= 1.0.0)
     - MKScannerPro/SDK
@@ -1035,8 +1029,8 @@ PODS:
   - MKScannerPro/Functions/UploadOptionPage/Controller (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/Functions/DuplicateDataFilterPage/Controller
     - MKScannerPro/Functions/FilterConditionPage/Controller
     - MKScannerPro/Functions/TypeFilterPage/Controller
@@ -1048,8 +1042,8 @@ PODS:
   - MKScannerPro/Functions/UploadOptionPage/Model (1.0.0):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/DatabaseManager
     - MKScannerPro/DeviceModel
-    - MKScannerPro/Expand
     - MKScannerPro/SDK
     - MKScannerPro/ServerManager
     - MLInputDodger
@@ -1119,7 +1113,7 @@ SPEC CHECKSUMS:
   MKBaseModuleLibrary: a563c3af4c51cf0a22b42871f39fb72b9be0b043
   MKBaseMQTTModule: a897389b91385b06f3eee1c9be26e89ca449ef93
   MKCustomUIModule: 886ed51a8ddfeaee966fad93a0b9af5056a2ecef
-  MKScannerPro: 7c74079958a1ec609a60216f1dd7f6f4945aa806
+  MKScannerPro: 4a78bc1b8fe16ccf390ba3f7460169bf7ba091aa
   MLInputDodger: 79a0e420a80d0d3bba122bf2639603cc76609ba8
   MQTTClient: 0dfa04e789479c2e461786464969895c1fcb0875
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196

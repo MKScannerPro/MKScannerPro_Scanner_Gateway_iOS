@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "summary": "A short description of MKScannerPro.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/aadyx2007@163.com/MKScannerPro",
+  "homepage": "https://github.com/MKScannerPro/MKScannerPro_iOS",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,7 +12,7 @@
     "aadyx2007@163.com": "aadyx2007@163.com"
   },
   "source": {
-    "git": "https://github.com/aadyx2007@163.com/MKScannerPro.git",
+    "git": "https://github.com/MKScannerPro/MKScannerPro_iOS.git",
     "tag": "1.0.0"
   },
   "platforms": {
@@ -51,31 +51,19 @@
       "source_files": "MKScannerPro/Classes/Target/**"
     },
     {
-      "name": "Expand",
+      "name": "DatabaseManager",
+      "source_files": "MKScannerPro/Classes/DatabaseManager/**",
       "dependencies": {
+        "FMDB": [
+
+        ],
         "MKBaseModuleLibrary": [
 
+        ],
+        "MKScannerPro/DeviceModel": [
+
         ]
-      },
-      "subspecs": [
-        {
-          "name": "Manager",
-          "subspecs": [
-            {
-              "name": "DeviceListDatabase",
-              "source_files": "MKScannerPro/Classes/Expand/Manager/DeviceListDatabase/**",
-              "dependencies": {
-                "FMDB": [
-
-                ],
-                "MKScannerPro/DeviceModel": [
-
-                ]
-              }
-            }
-          ]
-        }
-      ]
+      }
     },
     {
       "name": "DeviceModel",
@@ -130,7 +118,7 @@
         "MKScannerPro/DeviceModel": [
 
         ],
-        "MKScannerPro/Expand": [
+        "MKScannerPro/DatabaseManager": [
 
         ],
         "MKScannerPro/SDK": [
