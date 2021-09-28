@@ -82,6 +82,7 @@ TODO: Add long description of the pod here.
     ss.subspec 'MQTT' do |sss|
       sss.source_files = 'MKScannerPro/Classes/SDK/MQTT/**'
       
+      ss.dependency 'MKBaseModuleLibrary'
       ss.dependency 'MKBaseMQTTModule'
     end
   
