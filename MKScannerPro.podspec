@@ -123,7 +123,7 @@ TODO: Add long description of the pod here.
         ssss.dependency 'MKScannerPro/Functions/DeviceDataPage/View'
         
         ssss.dependency 'MKScannerPro/Functions/SettingPage/Controller'
-        ssss.dependency 'MKScannerPro/Functions/UploadDataOptionPage/Controller'
+        ssss.dependency 'MKScannerPro/Functions/UploadOptionPage/Controller'
       end
       sss.subspec 'View' do |ssss|
         ssss.source_files = 'MKScannerPro/Classes/Functions/DeviceDataPage/View/**'
