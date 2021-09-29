@@ -68,7 +68,7 @@ TODO: Add long description of the pod here.
     ss.source_files = 'MKScannerPro/Classes/DeviceModel/**'
     
     ss.dependency 'MKBaseModuleLibrary'
-    ss.dependency 'MKScannerPro/SDK/MQTT'
+    ss.dependency 'MKScannerPro/ServerManager'
   end
   
   s.subspec 'SDK' do |ss|
