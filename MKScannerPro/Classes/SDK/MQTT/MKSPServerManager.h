@@ -15,17 +15,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark - 相关通知
-
+//The notification that is thrown when the connection status between the APP and the MQTT server changes.
 extern NSString *const MKSPMQTTSessionManagerStateChangedNotification;
 
-//设备上报的状态信息
+//Notification of device online.
 extern NSString *const MKSPReceiveDeviceNetStateNotification;
-//设备OTA结果
+//Notification of device OTA results.
 extern NSString *const MKSPReceiveDeviceOTAResultNotification;
-//设备恢复出厂设置
+//Notification of device reset to factory settings.
 extern NSString *const MKSPReceiveDeviceFactoryResetResultNotification;
-//设备扫描到的蓝牙数据
+//Notification that the device scans and reports Bluetooth data.
 extern NSString *const MKSPReceiveDeviceDatasNotification;
 
 @interface MKSPServerManager : NSObject<MKMQTTServerProtocol>

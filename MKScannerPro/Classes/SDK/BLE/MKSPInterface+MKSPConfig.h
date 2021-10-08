@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, mk_sp_mqttServerQosMode) {
 
 @interface MKSPInterface (MKSPConfig)
 
-#pragma mark ****************************************自定义参数配置************************************************
+#pragma mark *************************************Custom parameter configuration*******************************************
 
 /// The device exits the configuration mode.
 /// @param sucBlock Success callback

@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)sp_readDeviceNameWithSucBlock:(void (^)(id returnData))sucBlock
                           failedBlock:(void (^)(NSError *error))failedBlock;
 
-#pragma mark ****************************************自定义协议读取************************************************
+#pragma mark ****************************************Custom protocol read************************************************
 
 /// Read SSID of WIFI.
 /// @param sucBlock Success callback
