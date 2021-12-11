@@ -138,13 +138,21 @@ typedef NS_ENUM(NSInteger, mk_sp_mqttServerQosMode) {
                       sucBlock:(void (^)(void))sucBlock
                    failedBlock:(void (^)(NSError *error))failedBlock;
 
-/// Configure the current time zone to the device.
+/// Configure the current time zone to the device.(MK107)
 /// @param timeZone Time Zone(-12~12)
 /// @param sucBlock Success callback
 /// @param failedBlock Failure callback
 + (void)sp_configTimeZone:(NSInteger)timeZone
                  sucBlock:(void (^)(void))sucBlock
               failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// Configure the current time zone to the device.(MK107 Pro)
+/// @param timeZone Time Zone(-24~28,Unit:0.5)
+/// @param sucBlock Success callback
+/// @param failedBlock Failure callback
++ (void)sp_configPTimeZone:(NSInteger)timeZone
+                  sucBlock:(void (^)(void))sucBlock
+               failedBlock:(void (^)(NSError *error))failedBlock;
 
 /// Configure the user name for the device to connect to the server. If the server passes the certificate or does not require any authentication, you do not need to fill in.
 /// @param userName 0~256 character ascii code.

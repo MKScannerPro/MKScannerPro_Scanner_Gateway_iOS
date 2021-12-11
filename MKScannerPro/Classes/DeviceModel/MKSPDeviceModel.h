@@ -2,7 +2,7 @@
 //  MKSPDeviceModel.h
 //  MKScannerPro_Example
 //
-//  Created by aa on 2021/7/16.
+//  Created by aa on 2021/11/11.
 //  Copyright © 2021 aadyx2007@163.com. All rights reserved.
 //
 
@@ -27,6 +27,9 @@ extern NSString *const MKSPDeviceModelOfflineNotification;
 @end
 
 @interface MKSPDeviceModel : NSObject
+
+/// 设备类型    00:MK107    02:MK107P
+@property (nonatomic, copy)NSString *deviceType;
 
 /**
  数据交互可能存在多个设备订阅同一个topic的情况，这个时候只能通过deviceID区分设备，所以统一为topic+deviceID来区分通信数据

@@ -270,6 +270,9 @@
     }else if ([cmd isEqualToString:@"0f"]) {
         //配置时区
         operationID = mk_sp_taskConfigTimeZoneOperation;
+    }else if ([cmd isEqualToString:@"19"]) {
+        //配置MK107P时区
+        operationID = mk_sp_taskConfigPTimeZoneOperation;
     }
     return [self dataParserGetDataSuccess:@{@"success":@(success)} operationID:operationID];
 }
