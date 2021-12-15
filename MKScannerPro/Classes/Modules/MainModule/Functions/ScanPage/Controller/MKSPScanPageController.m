@@ -21,15 +21,13 @@
 #import "MKCustomUIAdopter.h"
 #import "MKAlertController.h"
 
+#import "CTMediator+MKSPAdd.h"
+
 #import "MKSPBLESDK.h"
 
 #import "MKSPScanPageCell.h"
 
 #import "MKSPScanPageModel.h"
-
-#import "MKSPAServerForDeviceController.h"
-
-#import "MKSPPServerForDeviceController.h"
 
 static NSString *const localPasswordKey = @"mk_sp_passwordKey";
 
@@ -265,18 +263,8 @@ mk_sp_centralManagerScanDelegate>
 }
 
 - (void)pushMQTTForDevicePage:(NSString *)deviceType {
-    if ([deviceType isEqualToString:@"00"]) {
-        //107
-        MKSPAServerForDeviceController *vc = [[MKSPAServerForDeviceController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    if ([deviceType isEqualToString:@"02"]) {
-        //107P
-        MKSPPServerForDeviceController *vc = [[MKSPPServerForDeviceController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
+    UIViewController *vc = [[CTMediator sharedInstance] CTMediator_MKScannerPro_ServerForDevicePage:[deviceType integerValue]];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)connectFailed {

@@ -67,6 +67,18 @@
       }
     },
     {
+      "name": "CTMediator",
+      "source_files": "MKScannerPro/Classes/CTMediator/**",
+      "dependencies": {
+        "CTMediator": [
+
+        ],
+        "MKScannerPro/DeviceModel": [
+
+        ]
+      }
+    },
+    {
       "name": "SDK",
       "dependencies": {
         "MKBaseModuleLibrary": [
@@ -104,6 +116,9 @@
         "MKScannerPro/SDK": [
 
         ],
+        "MKScannerPro/CTMediator": [
+
+        ],
         "MKBaseModuleLibrary": [
 
         ],
@@ -121,6 +136,15 @@
             {
               "name": "SDK",
               "source_files": "MKScannerPro/Classes/Modules/107PModule/SDK/**"
+            },
+            {
+              "name": "Target",
+              "source_files": "MKScannerPro/Classes/Modules/107PModule/Target/**",
+              "dependencies": {
+                "MKScannerPro/Modules/107PModule/Functions": [
+
+                ]
+              }
             },
             {
               "name": "Functions",
@@ -589,6 +613,15 @@
               "source_files": "MKScannerPro/Classes/Modules/107Module/SDK/**"
             },
             {
+              "name": "Target",
+              "source_files": "MKScannerPro/Classes/Modules/107Module/Target/**",
+              "dependencies": {
+                "MKScannerPro/Modules/107Module/Functions": [
+
+                ]
+              }
+            },
+            {
               "name": "Functions",
               "dependencies": {
                 "MKScannerPro/Modules/CommonModule": [
@@ -812,12 +845,6 @@
           "name": "MainModule",
           "dependencies": {
             "MKScannerPro/Modules/CommonModule": [
-
-            ],
-            "MKScannerPro/Modules/107Module": [
-
-            ],
-            "MKScannerPro/Modules/107PModule": [
 
             ]
           },

@@ -20,13 +20,15 @@
 #import "MKAlertController.h"
 #import "MKAboutController.h"
 
-#import "MKSPDeviceModel.h"
-
 #import "MKNetworkManager.h"
+
+#import "MKSPDeviceModel.h"
 
 #import "MKSPMMQTTManager.h"
 
 #import "MKSPDeviceDatabaseManager.h"
+
+#import "CTMediator+MKSPAdd.h"
 
 #import "MKSPAddDeviceView.h"
 #import "MKSPDeviceListCell.h"
@@ -34,9 +36,6 @@
 
 #import "MKSPServerForAppController.h"
 #import "MKSPScanPageController.h"
-
-#import "MKSPADeviceDataController.h"
-#import "MKSPPDeviceDataController.h"
 
 static NSTimeInterval const kRefreshInterval = 0.5f;
 
@@ -103,20 +102,8 @@ MKSPDeviceModelDelegate>
         [self.view showCentralToast:@"Device is off-line!"];
         return;
     }
-    if ([deviceModel.deviceType isEqualToString:@"00"]) {
-        //MK107
-        MKSPADeviceDataController *vc = [[MKSPADeviceDataController alloc] init];
-        vc.deviceModel = deviceModel;
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    if ([deviceModel.deviceType isEqualToString:@"02"]) {
-        //MK107P
-        MKSPPDeviceDataController *vc = [[MKSPPDeviceDataController alloc] init];
-        vc.deviceModel = deviceModel;
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
+    UIViewController *vc = [[CTMediator sharedInstance] CTMediator_MKScannerPro_DeviceDataPage:deviceModel];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource

@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - CircleProgressBar (0.32)
+  - CTMediator (46)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -438,10 +439,14 @@ PODS:
     - MKBaseModuleLibrary
     - MKCustomUIModule/View/MKTextField
   - MKScannerPro (2.0.1):
+    - MKScannerPro/CTMediator (= 2.0.1)
     - MKScannerPro/DeviceModel (= 2.0.1)
     - MKScannerPro/Expand (= 2.0.1)
     - MKScannerPro/Modules (= 2.0.1)
     - MKScannerPro/SDK (= 2.0.1)
+  - MKScannerPro/CTMediator (2.0.1):
+    - CTMediator
+    - MKScannerPro/DeviceModel
   - MKScannerPro/DeviceModel (2.0.1):
     - MKBaseModuleLibrary
     - MKScannerPro/SDK/MQTT
@@ -463,6 +468,7 @@ PODS:
   - MKScannerPro/Modules (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module (= 2.0.1)
@@ -474,15 +480,18 @@ PODS:
   - MKScannerPro/Modules/107Module (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions (= 2.0.1)
     - MKScannerPro/Modules/107Module/SDK (= 2.0.1)
+    - MKScannerPro/Modules/107Module/Target (= 2.0.1)
     - MKScannerPro/SDK
     - MLInputDodger
   - MKScannerPro/Modules/107Module/Functions (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/DeviceDataPage (= 2.0.1)
@@ -503,6 +512,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/DeviceDataPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/DeviceDataPage/Controller (= 2.0.1)
@@ -514,6 +524,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/DeviceDataPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/DeviceDataPage/Model
@@ -526,6 +537,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/DeviceDataPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -535,6 +547,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/DeviceInfoPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/DeviceInfoPage/Controller (= 2.0.1)
@@ -545,6 +558,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/DeviceInfoPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -554,6 +568,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/DuplicateDataFilterPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/DuplicateDataFilterPage/Controller (= 2.0.1)
@@ -565,6 +580,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/DuplicateDataFilterPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/DuplicateDataFilterPage/Model
@@ -575,6 +591,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/DuplicateDataFilterPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -584,6 +601,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/FilterConditionPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/FilterConditionPage/Controller (= 2.0.1)
@@ -595,6 +613,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/FilterConditionPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/FilterConditionPage/Model
@@ -605,6 +624,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/FilterConditionPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -614,6 +634,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/OTAPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/OTAPage/Controller (= 2.0.1)
@@ -624,6 +645,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/OTAPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -633,6 +655,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/ServerForDevice (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/ServerForDevice/Controller (= 2.0.1)
@@ -645,6 +668,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/ServerForDevice/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/ServerForDevice/Model
@@ -656,6 +680,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/ServerForDevice/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -665,6 +690,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/ServerForDevice/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -674,6 +700,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/SettingPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/SettingPage/Controller (= 2.0.1)
@@ -685,6 +712,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/SettingPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/DeviceInfoPage/Controller
@@ -698,6 +726,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/SettingPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -707,6 +736,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/SystemTimePage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/SystemTimePage/Controller (= 2.0.1)
@@ -717,6 +747,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/SystemTimePage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -726,6 +757,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/TypeFilterPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/TypeFilterPage/Controller (= 2.0.1)
@@ -737,6 +769,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/TypeFilterPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/TypeFilterPage/Model
@@ -747,6 +780,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/TypeFilterPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -756,6 +790,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/UploadDataOptionPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/UploadDataOptionPage/Controller (= 2.0.1)
@@ -767,6 +802,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/UploadDataOptionPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/UploadDataOptionPage/Model
@@ -777,6 +813,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/UploadDataOptionPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -786,6 +823,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/UploadOptionPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/UploadOptionPage/Controller (= 2.0.1)
@@ -797,6 +835,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/UploadOptionPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/Functions/DuplicateDataFilterPage/Controller
@@ -811,6 +850,7 @@ PODS:
   - MKScannerPro/Modules/107Module/Functions/UploadOptionPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107Module/SDK
@@ -820,22 +860,35 @@ PODS:
   - MKScannerPro/Modules/107Module/SDK (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
+    - MKScannerPro/SDK
+    - MLInputDodger
+  - MKScannerPro/Modules/107Module/Target (2.0.1):
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MKScannerPro/CTMediator
+    - MKScannerPro/DeviceModel
+    - MKScannerPro/Expand
+    - MKScannerPro/Modules/107Module/Functions
     - MKScannerPro/SDK
     - MLInputDodger
   - MKScannerPro/Modules/107PModule (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions (= 2.0.1)
     - MKScannerPro/Modules/107PModule/SDK (= 2.0.1)
+    - MKScannerPro/Modules/107PModule/Target (= 2.0.1)
     - MKScannerPro/SDK
     - MLInputDodger
   - MKScannerPro/Modules/107PModule/Functions (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/DeviceDataPage (= 2.0.1)
@@ -858,6 +911,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/DeviceDataPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/DeviceDataPage/Controller (= 2.0.1)
@@ -869,6 +923,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/DeviceDataPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/DeviceDataPage/Model
@@ -881,6 +936,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/DeviceDataPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -890,6 +946,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/DeviceInfoPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/DeviceInfoPage/Controller (= 2.0.1)
@@ -901,6 +958,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/DeviceInfoPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/DeviceInfoPage/Model
@@ -911,6 +969,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/DeviceInfoPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -920,6 +979,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/DuplicateDataFilterPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/DuplicateDataFilterPage/Controller (= 2.0.1)
@@ -931,6 +991,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/DuplicateDataFilterPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/DuplicateDataFilterPage/Model
@@ -941,6 +1002,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/DuplicateDataFilterPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -950,6 +1012,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByAdvNamePage (= 2.0.1)
@@ -967,6 +1030,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByAdvNamePage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByAdvNamePage/Controller (= 2.0.1)
@@ -978,6 +1042,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByAdvNamePage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByAdvNamePage/Model
@@ -988,6 +1053,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByAdvNamePage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -997,6 +1063,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Controller (= 2.0.1)
@@ -1009,6 +1076,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Header
@@ -1020,6 +1088,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Header (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1029,6 +1098,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1038,6 +1108,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByMacPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByMacPage/Controller (= 2.0.1)
@@ -1049,6 +1120,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByMacPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByMacPage/Model
@@ -1059,6 +1131,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByMacPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1068,6 +1141,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByOtherPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByOtherPage/Controller (= 2.0.1)
@@ -1079,6 +1153,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByOtherPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByOtherPage/Model
@@ -1089,6 +1164,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByOtherPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1098,6 +1174,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByRawDataPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByRawDataPage/Controller (= 2.0.1)
@@ -1109,6 +1186,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByRawDataPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Controller
@@ -1124,6 +1202,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByRawDataPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1133,6 +1212,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByTLMPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByTLMPage/Controller (= 2.0.1)
@@ -1144,6 +1224,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByTLMPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByTLMPage/Model
@@ -1154,6 +1235,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByTLMPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1163,6 +1245,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByUIDPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByUIDPage/Controller (= 2.0.1)
@@ -1174,6 +1257,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByUIDPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByUIDPage/Model
@@ -1184,6 +1268,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByUIDPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1193,6 +1278,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByURLPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByURLPage/Controller (= 2.0.1)
@@ -1204,6 +1290,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByURLPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByURLPage/Model
@@ -1214,6 +1301,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByURLPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1223,6 +1311,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/ModifyMQTTServerPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/ModifyMQTTServerPage/Controller (= 2.0.1)
@@ -1235,6 +1324,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/ModifyMQTTServerPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/ModifyMQTTServerPage/Model
@@ -1246,6 +1336,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/ModifyMQTTServerPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1255,6 +1346,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/ModifyMQTTServerPage/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1264,6 +1356,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/NTPServerPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/NTPServerPage/Controller (= 2.0.1)
@@ -1275,6 +1368,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/NTPServerPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/NTPServerPage/Model
@@ -1285,6 +1379,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/NTPServerPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1294,6 +1389,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/OTAPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/OTAPage/Controller (= 2.0.1)
@@ -1306,6 +1402,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/OTAPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/OTAPage/Model
@@ -1319,6 +1416,7 @@ PODS:
     - iOSDFULibrary
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1328,6 +1426,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/OTAPage/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1337,6 +1436,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/ServerForDevice (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/ServerForDevice/Controller (= 2.0.1)
@@ -1349,6 +1449,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/ServerForDevice/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/ServerForDevice/Model
@@ -1360,6 +1461,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/ServerForDevice/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1369,6 +1471,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/ServerForDevice/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1378,6 +1481,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/SettingPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/SettingPage/Controller (= 2.0.1)
@@ -1389,6 +1493,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/SettingPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/DeviceInfoPage/Controller
@@ -1403,6 +1508,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/SettingPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1412,6 +1518,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/SlaveFileSelectPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/SlaveFileSelectPage/Controller (= 2.0.1)
@@ -1422,6 +1529,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/SlaveFileSelectPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1431,6 +1539,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/SystemTimePage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/SystemTimePage/Controller (= 2.0.1)
@@ -1442,6 +1551,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/SystemTimePage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/NTPServerPage/Controller
@@ -1453,6 +1563,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/SystemTimePage/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1462,6 +1573,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/UploadDataOptionPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/UploadDataOptionPage/Controller (= 2.0.1)
@@ -1473,6 +1585,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/UploadDataOptionPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/UploadDataOptionPage/Model
@@ -1483,6 +1596,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/UploadDataOptionPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1492,6 +1606,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/UploadOptionPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/UploadOptionPage/Controller (= 2.0.1)
@@ -1504,6 +1619,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/UploadOptionPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/Functions/DuplicateDataFilterPage/Controller
@@ -1518,6 +1634,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/UploadOptionPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1527,6 +1644,7 @@ PODS:
   - MKScannerPro/Modules/107PModule/Functions/UploadOptionPage/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/107PModule/SDK
@@ -1536,13 +1654,24 @@ PODS:
   - MKScannerPro/Modules/107PModule/SDK (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
+    - MKScannerPro/SDK
+    - MLInputDodger
+  - MKScannerPro/Modules/107PModule/Target (2.0.1):
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MKScannerPro/CTMediator
+    - MKScannerPro/DeviceModel
+    - MKScannerPro/Expand
+    - MKScannerPro/Modules/107PModule/Functions
     - MKScannerPro/SDK
     - MLInputDodger
   - MKScannerPro/Modules/CommonModule (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages (= 2.0.1)
@@ -1552,6 +1681,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/ConnectionSettingPage (= 2.0.1)
@@ -1566,6 +1696,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/ConnectionSettingPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/ConnectionSettingPage/Controller (= 2.0.1)
@@ -1575,6 +1706,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/ConnectionSettingPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/ConnectionSettingPage/Protocol
@@ -1583,6 +1715,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/ConnectionSettingPage/Protocol (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1590,6 +1723,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/ConnectSuccessPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/ConnectSuccessPage/Controller (= 2.0.1)
@@ -1598,6 +1732,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/ConnectSuccessPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1605,6 +1740,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/DataReportingPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/DataReportingPage/Controller (= 2.0.1)
@@ -1614,6 +1750,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/DataReportingPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/DataReportingPage/Protocol
@@ -1622,6 +1759,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/DataReportingPage/Protocol (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1629,6 +1767,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/LEDSettingPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/LEDSettingPage/Controller (= 2.0.1)
@@ -1638,6 +1777,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/LEDSettingPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/LEDSettingPage/Protocol
@@ -1646,6 +1786,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/LEDSettingPage/Protocol (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1653,6 +1794,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/MQTTSettingForDevicePage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/MQTTSettingForDevicePage/Controller (= 2.0.1)
@@ -1663,6 +1805,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/MQTTSettingForDevicePage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/MQTTSettingForDevicePage/Protocol
@@ -1672,6 +1815,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/MQTTSettingForDevicePage/Protocol (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1679,6 +1823,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/MQTTSettingForDevicePage/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1686,6 +1831,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/NetworkStatusPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/NetworkStatusPage/Controller (= 2.0.1)
@@ -1695,6 +1841,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/NetworkStatusPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/NetworkStatusPage/Protocol
@@ -1703,6 +1850,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/NetworkStatusPage/Protocol (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1710,6 +1858,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/ScanTimeoutOptionPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/ScanTimeoutOptionPage/Controller (= 2.0.1)
@@ -1719,6 +1868,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/ScanTimeoutOptionPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Pages/ScanTimeoutOptionPage/Protocol
@@ -1727,6 +1877,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Pages/ScanTimeoutOptionPage/Protocol (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1734,6 +1885,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Views (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/Modules/CommonModule/Views/DeviceDataPageView (= 2.0.1)
@@ -1746,6 +1898,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Views/DeviceDataPageView (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1753,6 +1906,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Views/FilterBeaconCell (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1760,6 +1914,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Views/FilterByRawDataCell (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1767,6 +1922,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Views/FilterEditSectionHeaderView (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1774,6 +1930,7 @@ PODS:
   - MKScannerPro/Modules/CommonModule/Views/FilterNormalTextFieldCell (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
     - MKScannerPro/SDK
@@ -1781,10 +1938,9 @@ PODS:
   - MKScannerPro/Modules/MainModule (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/Functions (= 2.0.1)
     - MKScannerPro/Modules/MainModule/SDK (= 2.0.1)
@@ -1793,10 +1949,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/Functions/DeviceListPage (= 2.0.1)
     - MKScannerPro/Modules/MainModule/Functions/ScanPage (= 2.0.1)
@@ -1807,10 +1962,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/DeviceListPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/Functions/DeviceListPage/Controller (= 2.0.1)
     - MKScannerPro/Modules/MainModule/Functions/DeviceListPage/View (= 2.0.1)
@@ -1820,10 +1974,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/DeviceListPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/Functions/DeviceListPage/View
     - MKScannerPro/Modules/MainModule/Functions/ScanPage/Controller
@@ -1834,10 +1987,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/DeviceListPage/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/SDK
     - MKScannerPro/SDK
@@ -1845,10 +1997,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/ScanPage (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/Functions/ScanPage/Controller (= 2.0.1)
     - MKScannerPro/Modules/MainModule/Functions/ScanPage/Model (= 2.0.1)
@@ -1859,10 +2010,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/ScanPage/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/Functions/ScanPage/Model
     - MKScannerPro/Modules/MainModule/Functions/ScanPage/View
@@ -1872,10 +2022,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/ScanPage/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/SDK
     - MKScannerPro/SDK
@@ -1883,10 +2032,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/ScanPage/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/Functions/ScanPage/Model
     - MKScannerPro/Modules/MainModule/SDK
@@ -1895,10 +2043,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/ServerForAPP (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/Functions/ServerForAPP/Controller (= 2.0.1)
     - MKScannerPro/Modules/MainModule/Functions/ServerForAPP/Model (= 2.0.1)
@@ -1909,10 +2056,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/ServerForAPP/Controller (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/Functions/ServerForAPP/Model
     - MKScannerPro/Modules/MainModule/Functions/ServerForAPP/View
@@ -1922,10 +2068,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/ServerForAPP/Model (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/SDK
     - MKScannerPro/SDK
@@ -1933,10 +2078,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/Functions/ServerForAPP/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/Modules/MainModule/SDK
     - MKScannerPro/SDK
@@ -1944,10 +2088,9 @@ PODS:
   - MKScannerPro/Modules/MainModule/SDK (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
+    - MKScannerPro/CTMediator
     - MKScannerPro/DeviceModel
     - MKScannerPro/Expand
-    - MKScannerPro/Modules/107Module
-    - MKScannerPro/Modules/107PModule
     - MKScannerPro/Modules/CommonModule
     - MKScannerPro/SDK
     - MLInputDodger
@@ -1983,6 +2126,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - CircleProgressBar
+    - CTMediator
     - FMDB
     - iOSDFULibrary
     - Masonry
@@ -2005,6 +2149,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   CircleProgressBar: 3920079be5224b62b3d9ed6eeb23ac01c835b681
+  CTMediator: f1cf58d509fb3192086c367711f039efd769b907
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   iOSDFULibrary: 3500ac00451aa7d8ec48a752e91099669a2c1d27
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -2014,7 +2159,7 @@ SPEC CHECKSUMS:
   MKBaseModuleLibrary: 859013194f81daa5f8a7a777ce88bf58cd3b5919
   MKBaseMQTTModule: a897389b91385b06f3eee1c9be26e89ca449ef93
   MKCustomUIModule: 91646517fc7a90d94dd5578d119fec38d67d6a90
-  MKScannerPro: ceb593fbe532938235768f42378d45d4b77cd562
+  MKScannerPro: 23d517a147e9f983ea7510867ce897d1cf63cfa2
   MLInputDodger: 79a0e420a80d0d3bba122bf2639603cc76609ba8
   MQTTClient: 0dfa04e789479c2e461786464969895c1fcb0875
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196

@@ -2,24 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIFileSharingEnabled</key>
-	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
-	<key>NSLocationUsageDescription</key>
-	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>新版Pro</string>
+	<string>MKScannerPro</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
@@ -37,6 +23,20 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
+	<key>NSLocationUsageDescription</key>
+	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
+	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

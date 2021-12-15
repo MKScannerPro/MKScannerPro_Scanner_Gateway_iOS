@@ -61,6 +61,14 @@ TODO: Add long description of the pod here.
     ss.dependency 'MKScannerPro/SDK/MQTT'
   end
   
+  s.subspec 'CTMediator' do |ss|
+    ss.source_files = 'MKScannerPro/Classes/CTMediator/**'
+      
+    ss.dependency 'CTMediator'
+    
+    ss.dependency 'MKScannerPro/DeviceModel'
+  end
+  
   s.subspec 'SDK' do |ss|
   
     ss.subspec 'BLE' do |sss|
@@ -84,6 +92,11 @@ TODO: Add long description of the pod here.
     ss.subspec '107PModule' do |sss|
         sss.subspec 'SDK' do |ssss|
           ssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/SDK/**'
+        end
+        sss.subspec 'Target' do |ssss|
+          ssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/Target/**'
+          
+          ssss.dependency 'MKScannerPro/Modules/107PModule/Functions'
         end
         sss.subspec 'Functions' do |ssss|
           
@@ -360,6 +373,11 @@ TODO: Add long description of the pod here.
         sss.subspec 'SDK' do |ssss|
           ssss.source_files = 'MKScannerPro/Classes/Modules/107Module/SDK/**'
         end
+        sss.subspec 'Target' do |ssss|
+          ssss.source_files = 'MKScannerPro/Classes/Modules/107Module/Target/**'
+          
+          ssss.dependency 'MKScannerPro/Modules/107Module/Functions'
+        end
         sss.subspec 'Functions' do |ssss|
           
           ssss.subspec 'DeviceDataPage' do |sssss|
@@ -545,8 +563,6 @@ TODO: Add long description of the pod here.
           ssss.dependency 'MKScannerPro/Modules/MainModule/SDK'
         end
         sss.dependency 'MKScannerPro/Modules/CommonModule'
-        sss.dependency 'MKScannerPro/Modules/107Module'
-        sss.dependency 'MKScannerPro/Modules/107PModule'
     end
     
     ss.subspec 'CommonModule' do |sss|
@@ -660,6 +676,7 @@ TODO: Add long description of the pod here.
     ss.dependency 'MKScannerPro/DeviceModel'
     ss.dependency 'MKScannerPro/Expand'
     ss.dependency 'MKScannerPro/SDK'
+    ss.dependency 'MKScannerPro/CTMediator'
     
     ss.dependency 'MKBaseModuleLibrary'
     ss.dependency 'MKCustomUIModule'
