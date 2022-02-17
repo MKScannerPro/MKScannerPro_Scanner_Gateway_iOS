@@ -36,6 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)singleDealloc;
 
+/// 当前app连接服务器参数
+@property (nonatomic, strong, readonly, getter=currentServerParams)id <MKSPServerParamsProtocol>serverParams;
+
 /// 当前用户有没有设置MQTT的订阅topic，如果设置了，则只能定于这个topic，如果没有设置，则订阅添加的设备的topic
 @property (nonatomic, copy, readonly, getter=currentSubscribeTopic)NSString *subscribeTopic;
 

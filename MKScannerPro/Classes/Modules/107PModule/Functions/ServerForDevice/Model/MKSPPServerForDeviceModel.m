@@ -13,6 +13,8 @@
 
 #import "MKSPInterface+MKSPConfig.h"
 
+#import "MKSPPMQTTManager.h"
+
 static NSString *const defaultSubTopic = @"{device_name}/{device_id}/app_to_device";
 static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_app";
 
@@ -28,6 +30,8 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
 
 - (instancetype)init {
     if (self = [super init]) {
+        _host = [MKSPPMQTTManager shared].currentServerParams.host;
+        _port = [MKSPPMQTTManager shared].currentServerParams.port;
         _subscribeTopic = defaultSubTopic;
         _publishTopic = defaultPubTopic;
         _cleanSession = YES;

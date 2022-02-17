@@ -174,8 +174,9 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
             [self operationFailedBlockWithMsg:msg block:failedBlock];
             return;
         }
-        if (![self configServerInfo]) {
-            [self operationFailedBlockWithMsg:@"Config MQTT Server Error" block:failedBlock];
+        NSString *resultMsg = [self configServerInfo];
+        if (ValidStr(resultMsg)) {
+            [self operationFailedBlockWithMsg:resultMsg block:failedBlock];
             return;
         }
     });
@@ -206,18 +207,23 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
 }
 
 #pragma mark - interval
-- (BOOL)configServerInfo {
-    __block BOOL success = NO;
+- (NSString *)configServerInfo {
+    __block NSString *resultMsg = @"Config MQTT Server Error";
     MKSPPUpdateMQTTServerModel *serverModel = [[MKSPPUpdateMQTTServerModel alloc] initWithModifyServerModel:self];
     
     [MKSPPMQTTInterface spp_configMQTTServer:serverModel deviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
-        success = YES;
+        NSInteger resultCode = [returnData[@"data"][@"ota_state"] integerValue];
+        if (resultCode != 0) {
+            resultMsg = @"Device is upgrading, please try it later!";
+        }else {
+            resultMsg = @"";
+        }
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
         dispatch_semaphore_signal(self.semaphore);
     }];
     dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
-    return success;
+    return resultMsg;
 }
 
 #pragma mark - Notification

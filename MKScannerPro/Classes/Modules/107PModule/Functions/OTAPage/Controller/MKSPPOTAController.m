@@ -320,6 +320,12 @@ MKSPPSlaveFileSelectControllerDelegate>
                                    macAddress:self.deviceModel.macAddress
                                         topic:[self.deviceModel currentSubscribedTopic]
                                      sucBlock:^(id  _Nonnull returnData) {
+        NSInteger resultCode = [returnData[@"data"][@"ota_state"] integerValue];
+        if (resultCode != 0) {
+            [[MKHudManager share] hide];
+            [self.view showCentralToast:@"Device is upgrading, please try it later!"];
+            return;
+        }
         [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveOTAResult:)
@@ -338,6 +344,12 @@ MKSPPSlaveFileSelectControllerDelegate>
                                                  macAddress:self.deviceModel.macAddress
                                                       topic:[self.deviceModel currentSubscribedTopic]
                                                    sucBlock:^(id  _Nonnull returnData) {
+        NSInteger resultCode = [returnData[@"data"][@"ota_state"] integerValue];
+        if (resultCode != 0) {
+            [[MKHudManager share] hide];
+            [self.view showCentralToast:@"Device is upgrading, please try it later!"];
+            return;
+        }
         [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveOTAResult:)
@@ -360,6 +372,12 @@ MKSPPSlaveFileSelectControllerDelegate>
                                   macAddress:self.deviceModel.macAddress
                                        topic:[self.deviceModel currentSubscribedTopic]
                                     sucBlock:^(id  _Nonnull returnData) {
+        NSInteger resultCode = [returnData[@"data"][@"ota_state"] integerValue];
+        if (resultCode != 0) {
+            [[MKHudManager share] hide];
+            [self.view showCentralToast:@"Device is upgrading, please try it later!"];
+            return;
+        }
         [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveOTAResult:)
@@ -383,6 +401,12 @@ MKSPPSlaveFileSelectControllerDelegate>
                                            macAddress:self.deviceModel.macAddress
                                                 topic:[self.deviceModel currentSubscribedTopic]
                                              sucBlock:^(id  _Nonnull returnData) {
+        NSInteger resultCode = [returnData[@"data"][@"ota_state"] integerValue];
+        if (resultCode != 0) {
+            [[MKHudManager share] hide];
+            [self.view showCentralToast:@"Device is upgrading, please try it later!"];
+            return;
+        }
         [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveOTAResult:)

@@ -300,7 +300,7 @@ MKSPPModifyServerFooterViewDelegate>
                                  failedBlock:^(NSError * _Nonnull error) {
         @strongify(self);
         [[MKHudManager share] hide];
-        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+        [self.view showCentralToast:@"Set up failed!"];
     }];
 }
 
@@ -313,20 +313,25 @@ MKSPPModifyServerFooterViewDelegate>
     deviceModel.macAddress = self.deviceModel.macAddress;
     
     deviceModel.clientID = self.dataModel.clientID;
-    deviceModel.subscribedTopic = [self.dataModel subscribeTopic];
-    deviceModel.publishedTopic = [self.dataModel publishTopic];
+    deviceModel.subscribedTopic = [self.dataModel currentSubscribeTopic];
+    deviceModel.publishedTopic = [self.dataModel currentPublishTopic];
     deviceModel.onLineState = MKSPDeviceModelStateOffline;
     
     [MKSPDeviceDatabaseManager insertDeviceList:@[deviceModel] sucBlock:^{
         [[MKHudManager share] hide];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"mk_sp_addNewDeviceSuccessNotification"
-                                                            object:nil
-                                                          userInfo:@{@"deviceModel":deviceModel}];
+        [self.view showCentralToast:@"Set up succeed!"];
+        [self performSelector:@selector(popAction:) withObject:deviceModel afterDelay:0.5f];
     } failedBlock:^(NSError * _Nonnull error) {
         [[MKHudManager share] hide];
-        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+        [self.view showCentralToast:@"Set up failed!"];
     }];
+}
+
+- (void)popAction:(MKSPDeviceModel *)deviceModel {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"mk_sp_addNewDeviceSuccessNotification"
+                                                        object:nil
+                                                      userInfo:@{@"deviceModel":deviceModel}];
 }
 
 #pragma mark - loadSectionDatas

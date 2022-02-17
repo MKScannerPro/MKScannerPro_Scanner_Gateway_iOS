@@ -582,7 +582,7 @@ MKCAFileSelectControllerDelegate>
 
 #pragma mark - UI
 - (void)loadSubViews {
-    self.defaultTitle = @"MQTT Settings for Device";
+    self.defaultTitle = @"Settings for Device";
     [self.rightButton setImage:LOADICON(@"MKScannerPro", @"MKSPAServerForDeviceController", @"sp_saveIcon.png") forState:UIControlStateNormal];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {

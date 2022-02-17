@@ -119,6 +119,10 @@ static dispatch_once_t onceToken;
     return [MKSPMQTTServerManager shared].serverParams.publishTopic;
 }
 
+- (id<MKSPServerParamsProtocol>)currentServerParams {
+    return [MKSPMQTTServerManager shared].currentServerParams;
+}
+
 - (void)subscriptions:(NSArray <NSString *>*)topicList {
     [[MKSPMQTTServerManager shared] subscriptions:topicList];
 }

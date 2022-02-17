@@ -21,8 +21,8 @@
                                                                  action:kAction_MKScannerPro_MK107_deviceDataPage
                                                                  params:@{@"deviceModel":deviceModel}];
     }
-    if ([deviceModel.deviceType isEqualToString:@"02"]) {
-        //MK107Pro
+    if ([deviceModel.deviceType isEqualToString:@"02"] || [deviceModel.deviceType isEqualToString:@"03"]) {
+        //MK107Pro、mini-02
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107P_module
                                                                  action:kAction_MKScannerPro_MK107P_deviceDataPage
                                                                  params:@{@"deviceModel":deviceModel}];
@@ -43,8 +43,8 @@
                                                                  action:kAction_MKScannerPro_MK107_serverForDevicePage
                                                                  params:@{}];
     }
-    if (deviceType == 2) {
-        //MK107Pro
+    if (deviceType == 2 || deviceType == 3) {
+        //MK107Pro、mini-02
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107P_module
                                                                  action:kAction_MKScannerPro_MK107P_serverForDevicePage
                                                                  params:@{}];

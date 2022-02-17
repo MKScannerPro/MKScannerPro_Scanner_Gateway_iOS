@@ -169,7 +169,11 @@ MKSPDeviceDataTableHeaderViewDelegate>
         if (ValidStr(jsonString)) {
             MKSPDeviceDataPageCellModel *cellModel = [[MKSPDeviceDataPageCellModel alloc] init];
             cellModel.msg = jsonString;
-            [self.dataList addObject:cellModel];
+            if (self.dataList.count == 0) {
+                [self.dataList addObject:cellModel];
+            }else {
+                [self.dataList insertObject:cellModel atIndex:0];
+            }
         }
     }
     [self needRefreshList];
