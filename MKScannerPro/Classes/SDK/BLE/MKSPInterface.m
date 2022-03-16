@@ -209,4 +209,14 @@
                          failureBlock:failedBlock];
 }
 
++ (void)sp_readChannelWithSucBlock:(void (^)(id returnData))sucBlock
+                       failedBlock:(void (^)(NSError *error))failedBlock {
+    NSString *commandString = @"ed001a00";
+    [centralManager addTaskWithTaskID:mk_sp_taskReadChannelOperation
+                       characteristic:peripheral.sp_custom
+                          commandData:commandString
+                         successBlock:sucBlock
+                         failureBlock:failedBlock];
+}
+
 @end

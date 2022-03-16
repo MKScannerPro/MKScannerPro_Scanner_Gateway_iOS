@@ -144,7 +144,7 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
     if (!ValidStr(self.wifiSSID) || self.wifiSSID.length > 32 || ![self.wifiSSID isAsciiString]) {
         return @"Wifi ssid error";
     }
-    if (self.wifiPassword.length > 64 || ![self.wifiPassword isAsciiString]) {
+    if (self.wifiPassword.length > 64) {
         return @"Wifi password error";
     }
     return @"";

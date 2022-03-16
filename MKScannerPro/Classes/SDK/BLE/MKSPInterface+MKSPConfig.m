@@ -269,6 +269,21 @@ static const NSInteger packDataMaxLen = 150;
                    failedBlock:failedBlock];
 }
 
++ (void)sp_configChannel:(NSInteger)channel
+                sucBlock:(void (^)(void))sucBlock
+             failedBlock:(void (^)(NSError *error))failedBlock {
+    if (channel < 0 || channel > 21) {
+        [MKBLEBaseSDKAdopter operationParamsErrorBlock:failedBlock];
+        return;
+    }
+    NSString *channelString = [MKBLEBaseSDKAdopter fetchHexValue:channel byteLen:1];
+    NSString *commandString = [@"ed011a01" stringByAppendingString:channelString];
+    [self configDataWithTaskID:mk_sp_taskConfigChannelOperation
+                          data:commandString
+                      sucBlock:sucBlock
+                   failedBlock:failedBlock];
+}
+
 + (void)sp_configServerUserName:(NSString *)userName
                        sucBlock:(void (^)(void))sucBlock
                     failedBlock:(void (^)(NSError *error))failedBlock {

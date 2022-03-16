@@ -319,6 +319,31 @@
                   ]
                 },
                 {
+                  "name": "ServerForDPPage",
+                  "subspecs": [
+                    {
+                      "name": "Controller",
+                      "source_files": "MKScannerPro/Classes/Modules/107PModule/Functions/ServerForDPPage/Controller/**",
+                      "dependencies": {
+                        "MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/Model": [
+
+                        ],
+                        "MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/View": [
+
+                        ]
+                      }
+                    },
+                    {
+                      "name": "View",
+                      "source_files": "MKScannerPro/Classes/Modules/107PModule/Functions/ServerForDPPage/View/**"
+                    },
+                    {
+                      "name": "Model",
+                      "source_files": "MKScannerPro/Classes/Modules/107PModule/Functions/ServerForDPPage/Model/**"
+                    }
+                  ]
+                },
+                {
                   "name": "SettingPage",
                   "subspecs": [
                     {

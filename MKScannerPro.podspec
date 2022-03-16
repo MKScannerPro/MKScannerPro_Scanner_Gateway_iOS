@@ -196,6 +196,21 @@ TODO: Add long description of the pod here.
               end
           end
           
+          ssss.subspec 'ServerForDPPage' do |sssss|
+              sssss.subspec 'Controller' do |ssssss|
+                ssssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/Functions/ServerForDPPage/Controller/**'
+                
+                ssssss.dependency 'MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/Model'
+                ssssss.dependency 'MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/View'
+              end
+              sssss.subspec 'View' do |ssssss|
+                ssssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/Functions/ServerForDPPage/View/**'
+              end
+              sssss.subspec 'Model' do |ssssss|
+                ssssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/Functions/ServerForDPPage/Model/**'
+              end
+          end
+          
           ssss.subspec 'SettingPage' do |sssss|
               sssss.subspec 'Controller' do |ssssss|
                 ssssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/Functions/SettingPage/Controller/**'

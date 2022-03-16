@@ -912,7 +912,7 @@
                       topic:(NSString *)topic
                    sucBlock:(void (^)(id returnData))sucBlock
                 failedBlock:(void (^)(NSError *error))failedBlock {
-    if (!host || ![host isKindOfClass:NSString.class] || host.length > 20) {
+    if (!host || ![host isKindOfClass:NSString.class] || host.length > 64) {
         [self operationFailedBlockWithMsg:@"Params error" failedBlock:failedBlock];
         return;
     }
@@ -1946,7 +1946,7 @@
     if (!ValidStr(protocol.wifiSSID) || protocol.wifiSSID.length > 32 || ![protocol.wifiSSID isAsciiString]) {
         return NO;
     }
-    if (protocol.wifiPassword.length > 64 || ![protocol.wifiPassword isAsciiString]) {
+    if (protocol.wifiPassword.length > 64) {
         return NO;
     }
     return YES;

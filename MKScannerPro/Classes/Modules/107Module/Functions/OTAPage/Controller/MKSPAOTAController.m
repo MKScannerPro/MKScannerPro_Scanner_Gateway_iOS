@@ -117,6 +117,7 @@ MKTextFieldCellDelegate>
 - (void)mk_loraTextButtonCellSelected:(NSInteger)index
                         dataListIndex:(NSInteger)dataListIndex
                                 value:(NSString *)value {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MKTextFieldNeedHiddenKeyboard" object:nil];
     if (index == 0) {
         //Type
         MKTextButtonCellModel *cellModel = self.section0List[0];

@@ -146,6 +146,39 @@ typedef NS_ENUM(NSInteger, mk_sp_mqttServerQosMode) {
                  sucBlock:(void (^)(void))sucBlock
               failedBlock:(void (^)(NSError *error))failedBlock;
 
+/// Configure 2.4G&5G channel by selecting your domain, channels will be matched according to the domain.
+/*
+ Channel：0~ 21，default:9。
+ 0: Argentina,Mexico
+ 1: Australia,New Zealand
+ 2: Bahrain、Egypt、Israel、India
+ 3: Bolivia、Chile、China、El Salvador
+ 4: Canada
+ 5: Europe
+ 6: Indonesia
+ 7: Japan
+ 8: Jordan
+ 9: Korea、US
+ 10: Latin America-1
+ 11: Latin America-2
+ 12: Latin America-3
+ 13: Lebanon
+ 14: Malaysia
+ 15: Qatar
+ 16: Russia
+ 17: Singapore
+ 18: Taiwan
+ 19: Tunisia
+ 20: Venezuela
+ 21: Worldwide (Global)
+ */
+/// @param channel channel
+/// @param sucBlock Success callback
+/// @param failedBlock Failure callback
++ (void)sp_configChannel:(NSInteger)channel
+                sucBlock:(void (^)(void))sucBlock
+             failedBlock:(void (^)(NSError *error))failedBlock;
+
 /// Configure the current time zone to the device.(MK107 Pro)
 /// @param timeZone Time Zone(-24~28,Unit:0.5)
 /// @param sucBlock Success callback

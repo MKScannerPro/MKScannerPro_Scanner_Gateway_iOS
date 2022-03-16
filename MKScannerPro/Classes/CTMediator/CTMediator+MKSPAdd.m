@@ -15,14 +15,14 @@
 @implementation CTMediator (MKSPAdd)
 
 - (UIViewController *)CTMediator_MKScannerPro_DeviceDataPage:(MKSPDeviceModel *)deviceModel {
-    if ([deviceModel.deviceType isEqualToString:@"00"]) {
-        //MK107
+    if ([deviceModel.deviceType isEqualToString:@"00"] || [deviceModel.deviceType isEqualToString:@"01"]) {
+        //MK107、mini-01
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107_module
                                                                  action:kAction_MKScannerPro_MK107_deviceDataPage
                                                                  params:@{@"deviceModel":deviceModel}];
     }
-    if ([deviceModel.deviceType isEqualToString:@"02"] || [deviceModel.deviceType isEqualToString:@"03"]) {
-        //MK107Pro、mini-02
+    if ([deviceModel.deviceType isEqualToString:@"02"] || [deviceModel.deviceType isEqualToString:@"03"] || [deviceModel.deviceType isEqualToString:@"04"]) {
+        //MK107Pro、mini-02、MK107D Pro
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107P_module
                                                                  action:kAction_MKScannerPro_MK107P_deviceDataPage
                                                                  params:@{@"deviceModel":deviceModel}];
@@ -34,11 +34,14 @@
 /// @param deviceType 设备类型
 /*
     deviceType = 0 : mk107
+    deviceType = 1 : mini-01
     deviceType = 2 : mk107Pro
+    deviceType = 3 : mini-02
+    deviceType = 4 : mk107D Pro
  */
 - (UIViewController *)CTMediator_MKScannerPro_ServerForDevicePage:(NSInteger)deviceType {
-    if (deviceType == 0) {
-        //MK107
+    if (deviceType == 0 || deviceType == 1) {
+        //MK107、mini-01
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107_module
                                                                  action:kAction_MKScannerPro_MK107_serverForDevicePage
                                                                  params:@{}];
@@ -47,6 +50,12 @@
         //MK107Pro、mini-02
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107P_module
                                                                  action:kAction_MKScannerPro_MK107P_serverForDevicePage
+                                                                 params:@{}];
+    }
+    if (deviceType == 4) {
+        //MK107D Pro
+        return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107P_module
+                                                                 action:kAction_MKScannerPro_MK107DP_serverForDevicePage
                                                                  params:@{}];
     }
     return [[UIViewController alloc] init];

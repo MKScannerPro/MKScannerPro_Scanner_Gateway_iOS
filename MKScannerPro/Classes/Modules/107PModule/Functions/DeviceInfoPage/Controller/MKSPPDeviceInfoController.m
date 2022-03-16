@@ -136,19 +136,16 @@
 
 - (void)loadSection0Datas {
     MKNormalTextCellModel *cellModel1 = [[MKNormalTextCellModel alloc] init];
-    cellModel1.showRightIcon = YES;
     cellModel1.leftMsg = @"Product Model";
     cellModel1.rightMsg = self.dataModel.productModel;
     [self.section0List addObject:cellModel1];
     
     MKNormalTextCellModel *cellModel2 = [[MKNormalTextCellModel alloc] init];
-    cellModel2.showRightIcon = YES;
     cellModel2.leftMsg = @"Manufacturer";
     cellModel2.rightMsg = self.dataModel.companyName;
     [self.section0List addObject:cellModel2];
     
     MKNormalTextCellModel *cellModel3 = [[MKNormalTextCellModel alloc] init];
-    cellModel3.showRightIcon = YES;
     cellModel3.leftMsg = @"Hardware Version";
     cellModel3.rightMsg = self.dataModel.hardwareVersion;
     [self.section0List addObject:cellModel3];
@@ -156,19 +153,16 @@
 
 - (void)loadSection1Datas {
     MKNormalTextCellModel *cellModel1 = [[MKNormalTextCellModel alloc] init];
-    cellModel1.showRightIcon = YES;
     cellModel1.leftMsg = @"Master Software Version";
     cellModel1.rightMsg = self.dataModel.masterSoftwareVersion;
     [self.section1List addObject:cellModel1];
     
     MKNormalTextCellModel *cellModel2 = [[MKNormalTextCellModel alloc] init];
-    cellModel2.showRightIcon = YES;
     cellModel2.leftMsg = @"Master Firmware Version";
     cellModel2.rightMsg = self.dataModel.masterFirmwareVersion;
     [self.section1List addObject:cellModel2];
     
     MKNormalTextCellModel *cellModel3 = [[MKNormalTextCellModel alloc] init];
-    cellModel3.showRightIcon = YES;
     cellModel3.leftMsg = @"Master MAC";
     cellModel3.rightMsg = self.dataModel.masterMac;
     [self.section1List addObject:cellModel3];
@@ -176,19 +170,16 @@
 
 - (void)loadSection2Datas {
     MKNormalTextCellModel *cellModel1 = [[MKNormalTextCellModel alloc] init];
-    cellModel1.showRightIcon = YES;
     cellModel1.leftMsg = @"Slave Software Version";
     cellModel1.rightMsg = self.dataModel.slaveSoftwareVersion;
     [self.section2List addObject:cellModel1];
     
     MKNormalTextCellModel *cellModel2 = [[MKNormalTextCellModel alloc] init];
-    cellModel2.showRightIcon = YES;
     cellModel2.leftMsg = @"Slave Firmware Version";
     cellModel2.rightMsg = self.dataModel.slaveFirmwareVersion;
     [self.section2List addObject:cellModel2];
     
     MKNormalTextCellModel *cellModel3 = [[MKNormalTextCellModel alloc] init];
-    cellModel3.showRightIcon = YES;
     cellModel3.leftMsg = @"Slave MAC";
     cellModel3.rightMsg = self.dataModel.slaveMac;
     [self.section2List addObject:cellModel3];

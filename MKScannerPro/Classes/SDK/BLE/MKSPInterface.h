@@ -138,6 +138,37 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)sp_readDeviceTypeWithSucBlock:(void (^)(id returnData))sucBlock
                           failedBlock:(void (^)(NSError *error))failedBlock;
 
+/// Read 2.4G&5G channel by selecting your domain, channels will be matched according to the domain.
+/*
+ Channel：0~ 21，default:9。
+ 0: Argentina,Mexico
+ 1: Australia,New Zealand
+ 2: Bahrain、Egypt、Israel、India
+ 3: Bolivia、Chile、China、El Salvador
+ 4: Canada
+ 5: Europe
+ 6: Indonesia
+ 7: Japan
+ 8: Jordan
+ 9: Korea、US
+ 10: Latin America-1
+ 11: Latin America-2
+ 12: Latin America-3
+ 13: Lebanon
+ 14: Malaysia
+ 15: Qatar
+ 16: Russia
+ 17: Singapore
+ 18: Taiwan
+ 19: Tunisia
+ 20: Venezuela
+ 21: Worldwide (Global)
+ */
+/// @param sucBlock Success callback
+/// @param failedBlock Failure callback
++ (void)sp_readChannelWithSucBlock:(void (^)(id returnData))sucBlock
+                       failedBlock:(void (^)(NSError *error))failedBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

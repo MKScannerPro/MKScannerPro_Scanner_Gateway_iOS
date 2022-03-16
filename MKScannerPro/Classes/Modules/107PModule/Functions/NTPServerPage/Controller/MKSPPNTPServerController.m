@@ -175,9 +175,9 @@ mk_textSwitchCellDelegate>
     cellModel.index = 0;
     cellModel.msg = @"NTP Server";
     cellModel.textFieldValue = self.dataModel.host;
-    cellModel.textPlaceholder = @"0-32 Characters";
+    cellModel.textPlaceholder = @"0-64 Characters";
     cellModel.textFieldType = mk_normal;
-    cellModel.maxLength = 32;
+    cellModel.maxLength = 64;
     [self.section1List addObject:cellModel];
 }
 

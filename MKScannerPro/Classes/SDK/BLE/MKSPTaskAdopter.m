@@ -218,6 +218,11 @@
         NSString *deviceType = [MKBLEBaseSDKAdopter getDecimalStringWithHex:content range:NSMakeRange(0, content.length)];
         resultDic = @{@"deviceType":deviceType};
         operationID = mk_sp_taskReadDeviceTypeOperation;
+    }else if ([cmd isEqualToString:@"1a"]) {
+        //读取区域参数
+        NSString *domain = [MKBLEBaseSDKAdopter getDecimalStringWithHex:content range:NSMakeRange(0, content.length)];
+        resultDic = @{@"domain":domain};
+        operationID = mk_sp_taskReadChannelOperation;
     }
     return [self dataParserGetDataSuccess:resultDic operationID:operationID];
 }
@@ -273,6 +278,9 @@
     }else if ([cmd isEqualToString:@"19"]) {
         //配置MK107P时区
         operationID = mk_sp_taskConfigPTimeZoneOperation;
+    }else if ([cmd isEqualToString:@"1a"]) {
+        //配置MK107D Pro的区域参数
+        operationID = mk_sp_taskConfigChannelOperation;
     }
     return [self dataParserGetDataSuccess:@{@"success":@(success)} operationID:operationID];
 }

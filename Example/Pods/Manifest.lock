@@ -899,6 +899,7 @@ PODS:
     - MKScannerPro/Modules/107PModule/Functions/NTPServerPage (= 2.0.1)
     - MKScannerPro/Modules/107PModule/Functions/OTAPage (= 2.0.1)
     - MKScannerPro/Modules/107PModule/Functions/ServerForDevice (= 2.0.1)
+    - MKScannerPro/Modules/107PModule/Functions/ServerForDPPage (= 2.0.1)
     - MKScannerPro/Modules/107PModule/Functions/SettingPage (= 2.0.1)
     - MKScannerPro/Modules/107PModule/Functions/SlaveFileSelectPage (= 2.0.1)
     - MKScannerPro/Modules/107PModule/Functions/SystemTimePage (= 2.0.1)
@@ -1469,6 +1470,51 @@ PODS:
     - MKScannerPro/SDK
     - MLInputDodger
   - MKScannerPro/Modules/107PModule/Functions/ServerForDevice/View (2.0.1):
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MKScannerPro/CTMediator
+    - MKScannerPro/DeviceModel
+    - MKScannerPro/Expand
+    - MKScannerPro/Modules/107PModule/SDK
+    - MKScannerPro/Modules/CommonModule
+    - MKScannerPro/SDK
+    - MLInputDodger
+  - MKScannerPro/Modules/107PModule/Functions/ServerForDPPage (2.0.1):
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MKScannerPro/CTMediator
+    - MKScannerPro/DeviceModel
+    - MKScannerPro/Expand
+    - MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/Controller (= 2.0.1)
+    - MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/Model (= 2.0.1)
+    - MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/View (= 2.0.1)
+    - MKScannerPro/Modules/107PModule/SDK
+    - MKScannerPro/Modules/CommonModule
+    - MKScannerPro/SDK
+    - MLInputDodger
+  - MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/Controller (2.0.1):
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MKScannerPro/CTMediator
+    - MKScannerPro/DeviceModel
+    - MKScannerPro/Expand
+    - MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/Model
+    - MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/View
+    - MKScannerPro/Modules/107PModule/SDK
+    - MKScannerPro/Modules/CommonModule
+    - MKScannerPro/SDK
+    - MLInputDodger
+  - MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/Model (2.0.1):
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MKScannerPro/CTMediator
+    - MKScannerPro/DeviceModel
+    - MKScannerPro/Expand
+    - MKScannerPro/Modules/107PModule/SDK
+    - MKScannerPro/Modules/CommonModule
+    - MKScannerPro/SDK
+    - MLInputDodger
+  - MKScannerPro/Modules/107PModule/Functions/ServerForDPPage/View (2.0.1):
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MKScannerPro/CTMediator
@@ -2159,7 +2205,7 @@ SPEC CHECKSUMS:
   MKBaseModuleLibrary: 859013194f81daa5f8a7a777ce88bf58cd3b5919
   MKBaseMQTTModule: a897389b91385b06f3eee1c9be26e89ca449ef93
   MKCustomUIModule: 91646517fc7a90d94dd5578d119fec38d67d6a90
-  MKScannerPro: 23d517a147e9f983ea7510867ce897d1cf63cfa2
+  MKScannerPro: 9a1bcdcbde79124748b8ef6212ef158595ddf06b
   MLInputDodger: 79a0e420a80d0d3bba122bf2639603cc76609ba8
   MQTTClient: 0dfa04e789479c2e461786464969895c1fcb0875
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196

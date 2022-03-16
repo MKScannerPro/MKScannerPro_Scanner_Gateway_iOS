@@ -256,6 +256,7 @@ mk_sp_centralManagerScanDelegate>
         self.rightButton.selected = NO;
         [self pushMQTTForDevicePage:deviecModel.deviceType];
     } failedBlock:^(NSError * _Nonnull error) {
+        [[MKSPCentralManager shared] disconnect];
         [[MKHudManager share] hide];
         [self.view showCentralToast:error.userInfo[@"errorInfo"]];
         [self connectFailed];

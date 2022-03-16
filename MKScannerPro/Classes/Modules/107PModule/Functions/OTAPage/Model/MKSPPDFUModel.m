@@ -82,7 +82,8 @@ mk_sp_centralManagerScanDelegate>
     self.updateFailedBlock = failedBlock;
     
     [MKSPCentralManager shared].delegate = self;
-    [self scanTimerRun];
+    [self performSelector:@selector(scanTimerRun) withObject:nil afterDelay:1.f];
+//    [self scanTimerRun];
 }
 
 #pragma mark -
@@ -167,7 +168,7 @@ mk_sp_centralManagerScanDelegate>
     dispatch_source_set_event_handler(self.scanTimer, ^{
         @strongify(self);
         self.timerCount ++;
-        if (self.timerCount == 180) {
+        if (self.timerCount == 60) {
             [[MKSPCentralManager shared] stopScan];
             if (self.scanTimer) {
                 dispatch_cancel(self.scanTimer);

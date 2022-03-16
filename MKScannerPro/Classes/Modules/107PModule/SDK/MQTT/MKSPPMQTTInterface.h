@@ -433,7 +433,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Configure the NTP server.
 /// @param isOn isOn
-/// @param host 0-32 Characters
+/// @param host 0-64 Characters
 /// @param deviceID deviceID,1-32 Characters
 /// @param macAddress Mac address of the device
 /// @param topic topic 1-128 Characters

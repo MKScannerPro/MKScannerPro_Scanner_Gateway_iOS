@@ -11,6 +11,7 @@
 #import "MKSPPDeviceDataController.h"
 
 #import "MKSPPServerForDeviceController.h"
+#import "MKSPDPServerForDeviceController.h"
 
 @implementation Target_MKScannerPro_MK107P_Module
 
@@ -22,6 +23,10 @@
 
 - (UIViewController *)Action_MKScannerPro_MK107PModule_ServerForDevicePage:(NSDictionary *)params {
     return [[MKSPPServerForDeviceController alloc] init];
+}
+
+- (UIViewController *)Action_MKScannerPro_MK107DPModule_ServerForDevicePage:(NSDictionary *)params {
+    return [[MKSPDPServerForDeviceController alloc] init];
 }
 
 @end

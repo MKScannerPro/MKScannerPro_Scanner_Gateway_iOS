@@ -63,6 +63,12 @@ MKSPPSlaveFileSelectControllerDelegate>
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.view.shiftHeightAsDodgeViewForMLInputDodger = 50.0f;
+    [self.view registerAsDodgeViewForMLInputDodgerWithOriginalY:self.view.frame.origin.y];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadSubViews];
@@ -264,6 +270,7 @@ MKSPPSlaveFileSelectControllerDelegate>
  
 #pragma mark - event method
 - (void)typeButtonPressed {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MKTextFieldNeedHiddenKeyboard" object:nil];
     NSArray *typeList = @[@"Master Firmware",@"Slave Firmware",
                           @"CA certificate",@"Self signed server certificates"];
     NSInteger index = 0;

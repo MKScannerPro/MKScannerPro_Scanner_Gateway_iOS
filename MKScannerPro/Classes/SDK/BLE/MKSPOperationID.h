@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger, mk_sp_taskOperationID) {
     mk_sp_taskReadTimeZoneOperation,            //读取时区
     mk_sp_taskReadDeviceMacAddressOperation,    //读取Mca地址
     mk_sp_taskReadDeviceTypeOperation,          //读取设备类型
+    mk_sp_taskReadChannelOperation,              //读取区域参数
         
 #pragma mark - 密码特征
     mk_sp_connectPasswordOperation,             //连接设备时候发送密码
@@ -46,6 +47,7 @@ typedef NS_ENUM(NSInteger, mk_sp_taskOperationID) {
     mk_sp_taskConfigNTPServerHostOperation,         //配置NTP服务器域名
     mk_sp_taskConfigTimeZoneOperation,              //配置时区
     mk_sp_taskConfigPTimeZoneOperation,             //配置MK107P的时区
+    mk_sp_taskConfigChannelOperation,               //配置MK107D Pro的区域参数
     
     mk_sp_taskConfigServerUserNameOperation,        //配置服务器的登录用户名
     mk_sp_taskConfigServerPasswordOperation,        //配置服务器的登录密码
