@@ -135,7 +135,7 @@ static CGFloat const textFieldHeight = 30.f;
 /// @param index 当前cell所在的index
 /// @param value 当前textField的值
 - (void)spp_modifyServerSSLTextFieldValueChanged:(NSInteger)index textValue:(NSString *)value {
-    if ([self.delegate respondsToSelector:@selector(spp_modifyServerSSLTextFieldValueChanged:textValue:)]) {
+    if ([self.delegate respondsToSelector:@selector(spp_mqtt_sslParams_modifyDevice_textFieldValueChanged:value:)]) {
         [self.delegate spp_mqtt_sslParams_modifyDevice_textFieldValueChanged:index value:value];
     }
 }

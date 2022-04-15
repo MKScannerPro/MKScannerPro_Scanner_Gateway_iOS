@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
     deviceType = 2 : mk107Pro
     deviceType = 3 : mini-02
     deviceType = 4 : mk107D Pro
+    deviceType = 5 : mini-03
  */
 - (UIViewController *)CTMediator_MKScannerPro_ServerForDevicePage:(NSInteger)deviceType;
 

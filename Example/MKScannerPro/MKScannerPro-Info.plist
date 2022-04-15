@@ -29,13 +29,13 @@
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
+	<string>MKScannerPro need your location information for connecting device</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
+	<string>MKScannerPro need your location information for connecting device</string>
 	<key>NSLocationUsageDescription</key>
-	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
+	<string>MKScannerPro need your location information for connecting device</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>MKScannerPro need to use your mobile phone bluetooth to communicate with devices</string>
+	<string>MKScannerPro need your location information for connecting device</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

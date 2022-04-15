@@ -21,7 +21,7 @@
                                                                  action:kAction_MKScannerPro_MK107_deviceDataPage
                                                                  params:@{@"deviceModel":deviceModel}];
     }
-    if ([deviceModel.deviceType isEqualToString:@"02"] || [deviceModel.deviceType isEqualToString:@"03"] || [deviceModel.deviceType isEqualToString:@"04"]) {
+    if ([deviceModel.deviceType isEqualToString:@"02"] || [deviceModel.deviceType isEqualToString:@"03"] || [deviceModel.deviceType isEqualToString:@"04"] || [deviceModel.deviceType isEqualToString:@"05"]) {
         //MK107Pro、mini-02、MK107D Pro
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107P_module
                                                                  action:kAction_MKScannerPro_MK107P_deviceDataPage
@@ -38,6 +38,7 @@
     deviceType = 2 : mk107Pro
     deviceType = 3 : mini-02
     deviceType = 4 : mk107D Pro
+    deviceType = 5 : mini-03
  */
 - (UIViewController *)CTMediator_MKScannerPro_ServerForDevicePage:(NSInteger)deviceType {
     if (deviceType == 0 || deviceType == 1) {
@@ -52,8 +53,8 @@
                                                                  action:kAction_MKScannerPro_MK107P_serverForDevicePage
                                                                  params:@{}];
     }
-    if (deviceType == 4) {
-        //MK107D Pro
+    if (deviceType == 4 || deviceType == 5) {
+        //MK107D Pro、mini-03
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107P_module
                                                                  action:kAction_MKScannerPro_MK107DP_serverForDevicePage
                                                                  params:@{}];
