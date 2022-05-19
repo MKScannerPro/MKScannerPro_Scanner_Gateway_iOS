@@ -451,6 +451,9 @@ MKCAFileSelectControllerDelegate>
             //接受数据超时
             dispatch_cancel(self.connectTimer);
             self.timeCount = 0;
+            [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                            name:MKSPPReceiveDeviceNetStateNotification
+                                                          object:nil];
             moko_dispatch_main_safe(^{
                 [self.progressView dismiss];
                 [self.view showCentralToast:@"Connect Failed!"];
