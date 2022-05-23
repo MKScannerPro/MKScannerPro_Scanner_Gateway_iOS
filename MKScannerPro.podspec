@@ -89,7 +89,9 @@ TODO: Add long description of the pod here.
     
     ss.subspec '107PModule' do |sss|
         sss.subspec 'SDK' do |ssss|
-          ssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/SDK/**'
+          ssss.subspec 'MQTT' do |sssss|
+            sssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/SDK/MQTT/**'
+          end
         end
         sss.subspec 'Target' do |ssss|
           ssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/Target/**'
@@ -101,14 +103,9 @@ TODO: Add long description of the pod here.
           ssss.subspec 'DeviceDataPage' do |sssss|
               sssss.subspec 'Controller' do |ssssss|
                 ssssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/Functions/DeviceDataPage/Controller/**'
-                
-                ssssss.dependency 'MKScannerPro/Modules/107PModule/Functions/DeviceDataPage/Model'
-                
+                                
                 ssssss.dependency 'MKScannerPro/Modules/107PModule/Functions/SettingPage/Controller'
                 ssssss.dependency 'MKScannerPro/Modules/107PModule/Functions/UploadOptionPage/Controller'
-              end
-              sssss.subspec 'Model' do |ssssss|
-                ssssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/Functions/DeviceDataPage/Model/**'
               end
           end
           
@@ -384,7 +381,9 @@ TODO: Add long description of the pod here.
     
     ss.subspec '107Module' do |sss|
         sss.subspec 'SDK' do |ssss|
-          ssss.source_files = 'MKScannerPro/Classes/Modules/107Module/SDK/**'
+          ssss.subspec 'MQTT' do |sssss|
+            sssss.source_files = 'MKScannerPro/Classes/Modules/107Module/SDK/MQTT/**'
+          end
         end
         sss.subspec 'Target' do |ssss|
           ssss.source_files = 'MKScannerPro/Classes/Modules/107Module/Target/**'

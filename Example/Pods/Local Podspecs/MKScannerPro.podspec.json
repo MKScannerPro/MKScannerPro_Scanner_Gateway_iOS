@@ -1,6 +1,6 @@
 {
   "name": "MKScannerPro",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "summary": "A short description of MKScannerPro.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/MKScannerPro/MKScannerPro_iOS",
@@ -13,12 +13,11 @@
   },
   "source": {
     "git": "https://github.com/MKScannerPro/MKScannerPro_iOS.git",
-    "tag": "2.0.1"
+    "tag": "2.1.0"
   },
   "platforms": {
     "ios": "12.0"
   },
-  "source_files": "MKScannerPro/Classes/**/*",
   "resource_bundles": {
     "MKScannerPro": [
       "MKScannerPro/Assets/*.png"
@@ -135,7 +134,12 @@
           "subspecs": [
             {
               "name": "SDK",
-              "source_files": "MKScannerPro/Classes/Modules/107PModule/SDK/**"
+              "subspecs": [
+                {
+                  "name": "MQTT",
+                  "source_files": "MKScannerPro/Classes/Modules/107PModule/SDK/MQTT/**"
+                }
+              ]
             },
             {
               "name": "Target",
@@ -164,9 +168,6 @@
                       "name": "Controller",
                       "source_files": "MKScannerPro/Classes/Modules/107PModule/Functions/DeviceDataPage/Controller/**",
                       "dependencies": {
-                        "MKScannerPro/Modules/107PModule/Functions/DeviceDataPage/Model": [
-
-                        ],
                         "MKScannerPro/Modules/107PModule/Functions/SettingPage/Controller": [
 
                         ],
@@ -174,10 +175,6 @@
 
                         ]
                       }
-                    },
-                    {
-                      "name": "Model",
-                      "source_files": "MKScannerPro/Classes/Modules/107PModule/Functions/DeviceDataPage/Model/**"
                     }
                   ]
                 },
@@ -635,7 +632,12 @@
           "subspecs": [
             {
               "name": "SDK",
-              "source_files": "MKScannerPro/Classes/Modules/107Module/SDK/**"
+              "subspecs": [
+                {
+                  "name": "MQTT",
+                  "source_files": "MKScannerPro/Classes/Modules/107Module/SDK/MQTT/**"
+                }
+              ]
             },
             {
               "name": "Target",
