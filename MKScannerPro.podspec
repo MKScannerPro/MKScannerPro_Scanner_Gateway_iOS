@@ -296,6 +296,8 @@ TODO: Add long description of the pod here.
               end
               ssssss.subspec 'Model' do |sssssss|
                 sssssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Model/**'
+                
+                sssssss.dependency 'MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Header'
               end
             end
             
