@@ -395,14 +395,9 @@ TODO: Add long description of the pod here.
           ssss.subspec 'DeviceDataPage' do |sssss|
               sssss.subspec 'Controller' do |ssssss|
                 ssssss.source_files = 'MKScannerPro/Classes/Modules/107Module/Functions/DeviceDataPage/Controller/**'
-                
-                ssssss.dependency 'MKScannerPro/Modules/107Module/Functions/DeviceDataPage/Model'
-                
+                                
                 ssssss.dependency 'MKScannerPro/Modules/107Module/Functions/SettingPage/Controller'
                 ssssss.dependency 'MKScannerPro/Modules/107Module/Functions/UploadOptionPage/Controller'
-              end
-              sssss.subspec 'Model' do |ssssss|
-                ssssss.source_files = 'MKScannerPro/Classes/Modules/107Module/Functions/DeviceDataPage/Model/**'
               end
           end
           

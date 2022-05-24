@@ -99,6 +99,9 @@ MKTextButtonCellDelegate>
         headerView.delegate = self;
         return headerView;
     }
+    MKTableSectionLineHeader *headerView = [MKTableSectionLineHeader initHeaderViewWithTableView:tableView];
+    headerView.headerModel = [[MKTableSectionLineHeaderModel alloc] init];
+    return headerView;
 }
 
 #pragma mark - UITableViewDataSource
