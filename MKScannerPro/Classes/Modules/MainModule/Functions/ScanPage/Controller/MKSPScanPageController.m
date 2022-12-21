@@ -21,6 +21,8 @@
 #import "MKCustomUIAdopter.h"
 #import "MKAlertController.h"
 
+#import "MKBLEBaseSDKAdopter.h"
+
 #import "CTMediator+MKSPAdd.h"
 
 #import "MKSPBLESDK.h"
@@ -225,7 +227,7 @@ mk_sp_centralManagerScanDelegate>
         NSString *localPassword = [[NSUserDefaults standardUserDefaults] objectForKey:localPasswordKey];
         textField.text = localPassword;
         self.asciiText = localPassword;
-        self.passwordField.placeholder = @"The password is 8 characters.";
+        self.passwordField.placeholder = @"The password is 1 ~ 8 characters.";
         [textField addTarget:self action:@selector(passwordInput) forControlEvents:UIControlEventEditingChanged];
     }];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -245,8 +247,8 @@ mk_sp_centralManagerScanDelegate>
 
 - (void)connectDevice:(MKSPScanPageModel *)deviecModel {
     NSString *password = self.passwordField.text;
-    if (password.length != 8) {
-        [self.view showCentralToast:@"The password should be 8 characters."];
+    if (!ValidStr(password) || password.length > 8) {
+        [self.view showCentralToast:@"The password should be 1 ~ 8 characters."];
         return;
     }
     [[MKHudManager share] showHUDWithTitle:@"Connecting..." inView:self.view isPenetration:NO];
@@ -264,7 +266,7 @@ mk_sp_centralManagerScanDelegate>
 }
 
 - (void)pushMQTTForDevicePage:(NSString *)deviceType {
-    UIViewController *vc = [[CTMediator sharedInstance] CTMediator_MKScannerPro_ServerForDevicePage:[deviceType integerValue]];
+    UIViewController *vc = [[CTMediator sharedInstance] CTMediator_MKScannerPro_ServerForDevicePage:[MKBLEBaseSDKAdopter getDecimalWithHex:deviceType range:NSMakeRange(0, deviceType.length)]];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -20,7 +20,9 @@
 }
 
 - (UIViewController *)Action_MKScannerPro_MK107Module_ServerForDevicePage:(NSDictionary *)params {
-    return [[MKSPAServerForDeviceController alloc] init];
+    MKSPAServerForDeviceController *vc = [[MKSPAServerForDeviceController alloc] init];
+    vc.supportRead = ([params[@"deviceType"] integerValue] == 16);
+    return vc;
 }
 
 @end

@@ -169,6 +169,18 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)sp_readChannelWithSucBlock:(void (^)(id returnData))sucBlock
                        failedBlock:(void (^)(NSError *error))failedBlock;
 
+/// Read User Name of the MQTT server.
+/// @param sucBlock Success callback
+/// @param failedBlock Failure callback
++ (void)sp_readServerUserNameWithSucBlock:(void (^)(id returnData))sucBlock
+                              failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// Read Password of the MQTT server.
+/// @param sucBlock Success callback
+/// @param failedBlock Failure callback
++ (void)sp_readServerPasswordWithSucBlock:(void (^)(id returnData))sucBlock
+                              failedBlock:(void (^)(NSError *error))failedBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

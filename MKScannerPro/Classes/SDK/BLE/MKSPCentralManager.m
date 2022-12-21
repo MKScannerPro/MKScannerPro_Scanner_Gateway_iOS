@@ -173,7 +173,7 @@ static dispatch_once_t onceToken;
         [MKBLEBaseSDKAdopter operationConnectFailedBlock:failedBlock];
         return;
     }
-    if (password.length != 8 || ![MKBLEBaseSDKAdopter asciiString:password]) {
+    if (!MKValidStr(password) || password.length > 8 || ![MKBLEBaseSDKAdopter asciiString:password]) {
         [self operationFailedBlockWithMsg:@"Password Error" failedBlock:failedBlock];
         return;
     }
@@ -246,7 +246,7 @@ static dispatch_once_t onceToken;
 }
 
 - (void)sendPasswordToDevice {
-    NSString *commandData = @"ed010108";
+    NSString *commandData = [NSString stringWithFormat:@"ed0101%@",[MKBLEBaseSDKAdopter fetchHexValue:self.password.length byteLen:1]];
     for (NSInteger i = 0; i < self.password.length; i ++) {
         int asciiCode = [self.password characterAtIndex:i];
         commandData = [commandData stringByAppendingString:[NSString stringWithFormat:@"%1lx",(unsigned long)asciiCode]];

@@ -573,6 +573,7 @@ MKCAFileSelectControllerDelegate>
     self.sslParamsModel.caFileName = self.dataModel.caFileName;
     self.sslParamsModel.clientKeyName = self.dataModel.clientKeyName;
     self.sslParamsModel.clientCertName = self.dataModel.clientCertName;
+    self.sslParamsModel.deviceID = self.dataModel.deviceID;
     
     //动态布局底部footer
     [self setupSSLViewFrames];
@@ -641,6 +642,7 @@ MKCAFileSelectControllerDelegate>
 - (MKSPAServerForDeviceModel *)dataModel {
     if (!_dataModel) {
         _dataModel = [[MKSPAServerForDeviceModel alloc] init];
+        _dataModel.supportRead = self.supportRead;
     }
     return _dataModel;
 }

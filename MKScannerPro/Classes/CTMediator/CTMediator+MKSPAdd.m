@@ -15,8 +15,8 @@
 @implementation CTMediator (MKSPAdd)
 
 - (UIViewController *)CTMediator_MKScannerPro_DeviceDataPage:(MKSPDeviceModel *)deviceModel {
-    if ([deviceModel.deviceType isEqualToString:@"00"] || [deviceModel.deviceType isEqualToString:@"01"]) {
-        //MK107、mini-01
+    if ([deviceModel.deviceType isEqualToString:@"00"] || [deviceModel.deviceType isEqualToString:@"01"] || [deviceModel.deviceType isEqualToString:@"10"]) {
+        //MK107、mini-01、MK110-AC347
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107_module
                                                                  action:kAction_MKScannerPro_MK107_deviceDataPage
                                                                  params:@{@"deviceModel":deviceModel}];
@@ -39,13 +39,14 @@
     deviceType = 3 : mini-02
     deviceType = 4 : mk107D Pro
     deviceType = 5 : mini-03
+    deviceType = 16 : MK110-AC347
  */
 - (UIViewController *)CTMediator_MKScannerPro_ServerForDevicePage:(NSInteger)deviceType {
-    if (deviceType == 0 || deviceType == 1) {
-        //MK107、mini-01
+    if (deviceType == 0 || deviceType == 1 || deviceType == 16) {
+        //MK107、mini-01、MK110-AC347
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107_module
                                                                  action:kAction_MKScannerPro_MK107_serverForDevicePage
-                                                                 params:@{}];
+                                                                 params:@{@"deviceType":@(deviceType)}];
     }
     if (deviceType == 2 || deviceType == 3) {
         //MK107Pro、mini-02

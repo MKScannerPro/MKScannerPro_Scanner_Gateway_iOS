@@ -26,6 +26,8 @@ typedef NS_ENUM(NSInteger, mk_sp_taskOperationID) {
     mk_sp_taskReadDeviceMacAddressOperation,    //读取Mca地址
     mk_sp_taskReadDeviceTypeOperation,          //读取设备类型
     mk_sp_taskReadChannelOperation,              //读取区域参数
+    mk_sp_taskReadServerUserNameOperation,      //读取服务器登录用户名
+    mk_sp_taskReadServerPasswordOperation,      //读取服务器登录密码
         
 #pragma mark - 密码特征
     mk_sp_connectPasswordOperation,             //连接设备时候发送密码

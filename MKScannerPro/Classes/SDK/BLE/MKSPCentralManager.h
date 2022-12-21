@@ -87,7 +87,7 @@ extern NSString *const mk_sp_deviceDisconnectTypeNotification;
 
 /// Connect device function
 /// @param trackerModel Model
-/// @param password Device connection password,8 characters long ascii code
+/// @param password Device connection password,1 ~ 8 characters long ascii code
 /// @param sucBlock Success callback
 /// @param failedBlock Failure callback
 - (void)connectPeripheral:(nonnull CBPeripheral *)peripheral

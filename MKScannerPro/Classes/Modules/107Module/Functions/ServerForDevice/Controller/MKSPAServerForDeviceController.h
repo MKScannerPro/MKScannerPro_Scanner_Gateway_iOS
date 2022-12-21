@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKSPAServerForDeviceController : MKBaseViewController
 
+/// MK110-AC347支持读取设备当前的各项MQTT参数
+@property (nonatomic, assign)BOOL supportRead;
+
 @end
 
 NS_ASSUME_NONNULL_END

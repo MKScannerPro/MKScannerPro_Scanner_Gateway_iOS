@@ -43,6 +43,9 @@
  */
 @property (nonatomic, assign)NSInteger receiveTimerCount;
 
+/// 分帧数据使用
+@property (nonatomic, strong)NSMutableArray *dataList;
+
 @end
 
 @implementation MKSPOperation
@@ -165,6 +168,26 @@
     if (!MKValidDict(returnData)) {
         return;
     }
+    //分帧数据
+    NSString *totalNum = returnData[mk_sp_totalNumKey];
+    if (MKValidStr(totalNum)) {
+        //存在分帧数据
+        self.receiveTimerCount = 0;
+        NSData *data = returnData[mk_sp_contentKey];
+        if (data) {
+            [self.dataList addObject:data];
+        }
+        if (self.dataList.count == [totalNum integerValue]) {
+            if (self.receiveTimer) {
+                dispatch_cancel(self.receiveTimer);
+            }
+            [self finishOperation];
+            if (self.completeBlock) {
+                self.completeBlock(nil, self.dataList);
+            }
+        }
+        return;
+    }
     if (self.receiveTimer) {
         dispatch_cancel(self.receiveTimer);
     }
@@ -185,6 +208,13 @@
 
 - (BOOL)isExecuting{
     return _executing;
+}
+
+- (NSMutableArray *)dataList {
+    if (!_dataList) {
+        _dataList = [NSMutableArray array];
+    }
+    return _dataList;
 }
 
 @end

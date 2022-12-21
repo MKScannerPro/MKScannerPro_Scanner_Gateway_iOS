@@ -106,6 +106,56 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
             [self operationFailedBlockWithMsg:@"Read Device Name Error" block:failedBlock];
             return;
         }
+        if (self.supportRead) {
+            if (![self readConnectMode]) {
+                [self operationFailedBlockWithMsg:@"Read Connect Mode Error" block:failedBlock];
+                return;
+            }
+            if (![self readHost]) {
+                [self operationFailedBlockWithMsg:@"Read Host Error" block:failedBlock];
+                return;
+            }
+            if (![self readPort]) {
+                [self operationFailedBlockWithMsg:@"Read Port Error" block:failedBlock];
+                return;
+            }
+            if (![self readCleanSession]) {
+                [self operationFailedBlockWithMsg:@"Read Clean Session Error" block:failedBlock];
+                return;
+            }
+            if (![self readKeepAlive]) {
+                [self operationFailedBlockWithMsg:@"Read Keep Alive Error" block:failedBlock];
+                return;
+            }
+            if (![self readQos]) {
+                [self operationFailedBlockWithMsg:@"Read Qos Error" block:failedBlock];
+                return;
+            }
+            if (![self readClientID]) {
+                [self operationFailedBlockWithMsg:@"Read Client ID Error" block:failedBlock];
+                return;
+            }
+            if (![self readDeviceID]) {
+                [self operationFailedBlockWithMsg:@"Read Device ID Error" block:failedBlock];
+                return;
+            }
+            if (![self readSubTopic]) {
+                [self operationFailedBlockWithMsg:@"Read Sub Topic Error" block:failedBlock];
+                return;
+            }
+            if (![self readPubTopic]) {
+                [self operationFailedBlockWithMsg:@"Read Pub Topic Error" block:failedBlock];
+                return;
+            }
+            if (![self readServerUsername]) {
+                [self operationFailedBlockWithMsg:@"Read Server Username Error" block:failedBlock];
+                return;
+            }
+            if (![self readServerPassword]) {
+                [self operationFailedBlockWithMsg:@"Read Server Password Error" block:failedBlock];
+                return;
+            }
+        }
         moko_dispatch_main_safe(^{
             if (sucBlock) {
                 sucBlock();
@@ -226,6 +276,9 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
 }
 
 #pragma mark - interface
+
+#pragma mark - 参数配置
+
 - (BOOL)configHost {
     __block BOOL success = NO;
     [MKSPInterface sp_configServerHost:self.host sucBlock:^{
@@ -500,6 +553,19 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
     return success;
 }
 
+- (BOOL)exitConfigMode {
+    __block BOOL success = NO;
+    [MKSPInterface sp_exitConfigModeWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+#pragma mark - 参数读取
 - (BOOL)readDeviceMac {
     __block BOOL success = NO;
     [MKSPInterface sp_readDeviceMacAddressWithSucBlock:^(id  _Nonnull returnData) {
@@ -526,10 +592,186 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
     return success;
 }
 
-- (BOOL)exitConfigMode {
+- (BOOL)readConnectMode {
     __block BOOL success = NO;
-    [MKSPInterface sp_exitConfigModeWithSucBlock:^(id  _Nonnull returnData) {
+    [MKSPInterface sp_readConnectModeWithSucBlock:^(id  _Nonnull returnData) {
         success = YES;
+        NSInteger mode = [returnData[@"result"][@"mode"] integerValue];
+        if (mode == 0) {
+            self.sslIsOn = NO;
+        }else {
+            self.sslIsOn = YES;
+            self.certificate = (mode - 1);
+        }
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readHost {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readServerHostWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.host = returnData[@"result"][@"host"];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readPort {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readServerPortWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.port = returnData[@"result"][@"port"];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readCleanSession {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readServerCleanSessionWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.cleanSession = [returnData[@"result"][@"clean"] boolValue];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readKeepAlive {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readServerKeepAliveWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.keepAlive = returnData[@"result"][@"interval"];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readQos {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readServerQosWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.qos = [returnData[@"result"][@"qos"] integerValue];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readClientID {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readClientIDWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.clientID = returnData[@"result"][@"clientID"];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readDeviceID {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readDeviceIDWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.deviceID = returnData[@"result"][@"deviceID"];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readSubTopic {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readSubscibeTopicWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.subscribeTopic = returnData[@"result"][@"topic"];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readPubTopic {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readPublishTopicWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.publishTopic = returnData[@"result"][@"topic"];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readNTPServerHost {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readNTPServerHostWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.ntpHost = returnData[@"result"][@"host"];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readTimezone {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readTimeZoneWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.timeZone = [returnData[@"result"][@"timeZone"] integerValue] + 12;
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readServerUsername {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readServerUserNameWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.userName = returnData[@"result"][@"userName"];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readServerPassword {
+    __block BOOL success = NO;
+    [MKSPInterface sp_readServerPasswordWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.password = returnData[@"result"][@"password"];
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
         dispatch_semaphore_signal(self.semaphore);

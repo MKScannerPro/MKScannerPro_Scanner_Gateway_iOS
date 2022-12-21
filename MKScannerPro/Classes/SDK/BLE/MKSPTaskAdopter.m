@@ -16,6 +16,10 @@
 #import "MKSPOperationID.h"
 #import "CBPeripheral+MKSPAdd.h"
 
+NSString *const mk_sp_totalNumKey = @"mk_sp_totalNumKey";
+NSString *const mk_sp_totalIndexKey = @"mk_sp_totalIndexKey";
+NSString *const mk_sp_contentKey = @"mk_sp_contentKey";
+
 @implementation MKSPTaskAdopter
 
 + (NSDictionary *)parseReadDataWithCharacteristic:(CBCharacteristic *)characteristic {
@@ -54,6 +58,12 @@
 
 + (NSDictionary *)parseCustomData:(NSData *)readData {
     NSString *readString = [MKBLEBaseSDKAdopter hexStringFromData:readData];
+    
+    if ([[readString substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {
+        //多帧数据
+        return [self parseMultiData:readData];
+    }
+    
     NSInteger dataLen = [MKBLEBaseSDKAdopter getDecimalWithHex:readString range:NSMakeRange(6, 2)];
     if (readData.length != dataLen + 4) {
         return @{};
@@ -71,17 +81,25 @@
             return [self parseCustomConfigData:content cmd:cmd];
         }
     }
-    if ([[readString substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"ee"]) {
-        //多帧数据
-        if ([flag isEqualToString:@"01"]) {
-            return [self parseMultiPackageData:content cmd:cmd];
-        }
-    }
     
     return @{};
 }
 
-+ (NSDictionary *)parseCustomReadData:(NSString *)content cmd:(NSString *)cmd data:(NSData *)data{
++ (NSDictionary *)parseMultiData:(NSData *)readData {
+    NSString *readString = [MKBLEBaseSDKAdopter hexStringFromData:readData];
+    NSString *flag = [readString substringWithRange:NSMakeRange(2, 2)];
+    NSString *cmd = [readString substringWithRange:NSMakeRange(4, 2)];
+    NSString *content = [readString substringFromIndex:8];
+    if ([flag isEqualToString:@"00"]) {
+        return [self parseMultiPackageReadData:readData cmd:[readString substringWithRange:NSMakeRange(4, 2)]];
+    }
+    if ([flag isEqualToString:@"01"]) {
+        return [self parseMultiPackageData:content cmd:[readString substringWithRange:NSMakeRange(4, 2)]];
+    }
+    return @{};
+}
+
++ (NSDictionary *)parseCustomReadData:(NSString *)content cmd:(NSString *)cmd data:(NSData *)data {
     mk_sp_taskOperationID operationID = mk_sp_defaultTaskOperationID;
     NSDictionary *resultDic = @{};
     if ([cmd isEqualToString:@"02"]) {
@@ -283,6 +301,32 @@
         operationID = mk_sp_taskConfigChannelOperation;
     }
     return [self dataParserGetDataSuccess:@{@"success":@(success)} operationID:operationID];
+}
+
++ (NSDictionary *)parseMultiPackageReadData:(NSData *)readData cmd:(NSString *)cmd {
+    NSString *readString = [MKBLEBaseSDKAdopter hexStringFromData:readData];
+    NSString *totalNum = [MKBLEBaseSDKAdopter getDecimalStringWithHex:readString range:NSMakeRange(6, 2)];
+    NSString *index = [MKBLEBaseSDKAdopter getDecimalStringWithHex:readString range:NSMakeRange(8, 2)];
+    NSInteger len = [MKBLEBaseSDKAdopter getDecimalWithHex:readString range:NSMakeRange(10, 2)];
+    if ([index integerValue] >= [totalNum integerValue]) {
+        return @{};
+    }
+    mk_sp_taskOperationID operationID = mk_sp_defaultTaskOperationID;
+    
+    NSData *subData = [readData subdataWithRange:NSMakeRange(6, len)];
+    NSDictionary *resultDic= @{
+        mk_sp_totalNumKey:totalNum,
+        mk_sp_totalIndexKey:index,
+        mk_sp_contentKey:(subData ? subData : [NSData data]),
+    };
+    if ([cmd isEqualToString:@"01"]) {
+        //读取服务器登录用户名
+        operationID = mk_sp_taskReadServerUserNameOperation;
+    }else if ([cmd isEqualToString:@"02"]) {
+        //读取服务器登录密码
+        operationID = mk_sp_taskReadServerPasswordOperation;
+    }
+    return [self dataParserGetDataSuccess:resultDic operationID:operationID];
 }
 
 + (NSDictionary *)parseMultiPackageData:(NSString *)content cmd:(NSString *)cmd {

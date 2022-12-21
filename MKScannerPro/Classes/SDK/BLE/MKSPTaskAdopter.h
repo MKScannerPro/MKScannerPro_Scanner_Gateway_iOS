@@ -10,6 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString *const mk_sp_totalNumKey;
+extern NSString *const mk_sp_totalIndexKey;
+extern NSString *const mk_sp_contentKey;
+
 @class CBCharacteristic;
 @interface MKSPTaskAdopter : NSObject
 

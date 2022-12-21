@@ -494,7 +494,12 @@
                         },
                         {
                           "name": "Model",
-                          "source_files": "MKScannerPro/Classes/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Model/**"
+                          "source_files": "MKScannerPro/Classes/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Model/**",
+                          "dependencies": {
+                            "MKScannerPro/Modules/107PModule/Functions/FilterPages/FilterByBeaconPage/Header": [
+
+                            ]
+                          }
                         }
                       ]
                     },
@@ -666,9 +671,6 @@
                       "name": "Controller",
                       "source_files": "MKScannerPro/Classes/Modules/107Module/Functions/DeviceDataPage/Controller/**",
                       "dependencies": {
-                        "MKScannerPro/Modules/107Module/Functions/DeviceDataPage/Model": [
-
-                        ],
                         "MKScannerPro/Modules/107Module/Functions/SettingPage/Controller": [
 
                         ],
@@ -676,10 +678,6 @@
 
                         ]
                       }
-                    },
-                    {
-                      "name": "Model",
-                      "source_files": "MKScannerPro/Classes/Modules/107Module/Functions/DeviceDataPage/Model/**"
                     }
                   ]
                 },

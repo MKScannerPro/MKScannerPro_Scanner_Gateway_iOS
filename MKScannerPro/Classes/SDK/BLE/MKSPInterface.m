@@ -8,6 +8,9 @@
 
 #import "MKSPInterface.h"
 
+#import "MKBLEBaseSDKDefines.h"
+#import "MKBLEBaseSDKAdopter.h"
+
 #import "MKSPCentralManager.h"
 #import "MKSPOperationID.h"
 #import "MKSPOperation.h"
@@ -217,6 +220,62 @@
                           commandData:commandString
                          successBlock:sucBlock
                          failureBlock:failedBlock];
+}
+
++ (void)sp_readServerUserNameWithSucBlock:(void (^)(id returnData))sucBlock
+                              failedBlock:(void (^)(NSError *error))failedBlock {
+    NSString *commandString = @"ee000100";
+    [centralManager addTaskWithTaskID:mk_sp_taskReadServerUserNameOperation
+                       characteristic:peripheral.sp_custom
+                          commandData:commandString
+                         successBlock:^(id  _Nonnull returnData) {
+        NSArray *tempList = returnData[@"result"];
+        NSMutableData *usernameData = [NSMutableData data];
+        for (NSInteger i = 0; i < tempList.count; i ++) {
+            NSData *tempData = tempList[i];
+            [usernameData appendData:tempData];
+        }
+        NSString *username = [[NSString alloc] initWithData:usernameData encoding:NSUTF8StringEncoding];
+        NSDictionary *resultDic = @{@"msg":@"success",
+                                    @"code":@"1",
+                                    @"result":@{
+                                        @"username":(MKValidStr(username) ? username : @""),
+                                    },
+                                    };
+        MKBLEBase_main_safe(^{
+            if (sucBlock) {
+                sucBlock(resultDic);
+            }
+        });
+    } failureBlock:failedBlock];
+}
+
++ (void)sp_readServerPasswordWithSucBlock:(void (^)(id returnData))sucBlock
+                              failedBlock:(void (^)(NSError *error))failedBlock {
+    NSString *commandString = @"ee000200";
+    [centralManager addTaskWithTaskID:mk_sp_taskReadServerPasswordOperation
+                       characteristic:peripheral.sp_custom
+                          commandData:commandString
+                         successBlock:^(id  _Nonnull returnData) {
+        NSArray *tempList = returnData[@"result"];
+        NSMutableData *passwordData = [NSMutableData data];
+        for (NSInteger i = 0; i < tempList.count; i ++) {
+            NSData *tempData = tempList[i];
+            [passwordData appendData:tempData];
+        }
+        NSString *password = [[NSString alloc] initWithData:passwordData encoding:NSUTF8StringEncoding];
+        NSDictionary *resultDic = @{@"msg":@"success",
+                                    @"code":@"1",
+                                    @"result":@{
+                                        @"password":(MKValidStr(password) ? password : @""),
+                                    },
+                                    };
+        MKBLEBase_main_safe(^{
+            if (sucBlock) {
+                sucBlock(resultDic);
+            }
+        });
+    } failureBlock:failedBlock];
 }
 
 @end

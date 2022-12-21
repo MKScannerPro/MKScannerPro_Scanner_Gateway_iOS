@@ -17,7 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIViewController *)Action_MKScannerPro_MK107Module_DeviceDataPage:(NSDictionary *)params;
 
 /// 设备MQTT参数页面
-/// @param params @{}
+/// @param params @{@"deviceType":@(1)}
+/*
+ deviceType = 0 : mk107
+ deviceType = 1 : mini-01
+ deviceType = 16 : MK110-AC347
+ */
 - (UIViewController *)Action_MKScannerPro_MK107Module_ServerForDevicePage:(NSDictionary *)params;
 
 @end
