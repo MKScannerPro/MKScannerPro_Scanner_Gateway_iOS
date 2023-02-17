@@ -344,7 +344,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"mk_sp_deleteDeviceNotification"
                                                             object:nil
                                                           userInfo:@{@"macAddress":self.deviceModel.macAddress}];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self popToViewControllerWithClassName:@"MKSPDeviceListController"];
     } failedBlock:^(NSError * _Nonnull error) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:error.userInfo[@"errorInfo"]];

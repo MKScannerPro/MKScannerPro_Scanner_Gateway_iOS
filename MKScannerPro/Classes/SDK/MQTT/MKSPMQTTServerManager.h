@@ -46,6 +46,9 @@ extern NSString *const MKSPMQTTSessionManagerStateChangedNotification;
  */
 - (BOOL)clearLocalData;
 
+/// 如果是从壳工程进入的设备列表页面，接收不到需要网络改变导致需要联网的通知，所以需要走网络改变的流程
+- (void)startWork;
+
 #pragma mark - *****************************服务器交互部分******************************
 
 /// 开始连接服务器，前提是必须服务器参数不能为空
@@ -59,6 +62,8 @@ extern NSString *const MKSPMQTTSessionManagerStateChangedNotification;
  @param topicList topicList
  */
 - (void)subscriptions:(NSArray <NSString *>*)topicList;
+
+- (void)clearAllSubscriptions;
 
 /**
  Unsubscribe the topic

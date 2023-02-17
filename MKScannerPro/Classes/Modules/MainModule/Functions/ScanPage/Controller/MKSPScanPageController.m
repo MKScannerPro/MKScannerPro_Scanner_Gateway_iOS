@@ -68,6 +68,7 @@ mk_sp_centralManagerScanDelegate>
     //移除runloop的监听
     CFRunLoopRemoveObserver(CFRunLoopGetCurrent(), self.observerRef, kCFRunLoopCommonModes);
     [[MKSPCentralManager shared] stopScan];
+    [MKSPCentralManager sharedDealloc];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

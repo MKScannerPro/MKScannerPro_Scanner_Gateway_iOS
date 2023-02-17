@@ -328,7 +328,7 @@ MKSPPModifyServerFooterViewDelegate>
 }
 
 - (void)popAction:(MKSPDeviceModel *)deviceModel {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self popToViewControllerWithClassName:@"MKSPDeviceListController"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"mk_sp_addNewDeviceSuccessNotification"
                                                         object:nil
                                                       userInfo:@{@"deviceModel":deviceModel}];

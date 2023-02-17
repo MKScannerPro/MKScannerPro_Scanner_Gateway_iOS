@@ -31,9 +31,9 @@ static dispatch_once_t onceToken;
 
 @implementation NSObject (MKSPMQTTServerManager)
 
-+ (void)load{
-    [MKSPMQTTServerManager shared];
-}
+//+ (void)load{
+//    [MKSPMQTTServerManager shared];
+//}
 
 @end
 
@@ -44,6 +44,8 @@ static dispatch_once_t onceToken;
 @property (nonatomic, strong)MKSPServerParamsModel *paramsModel;
 
 @property (nonatomic, strong)NSMutableArray <id <MKSPServerManagerProtocol>>*managerList;
+
+@property (nonatomic, strong)NSMutableDictionary *subscriptions;
 
 @end
 
@@ -239,15 +241,36 @@ static dispatch_once_t onceToken;
     return YES;
 }
 
+- (void)startWork {
+    [self networkStateChanged];
+}
+
 - (void)disconnect {
     [[MKMQTTServerManager shared] disconnect];
 }
 
 - (void)subscriptions:(NSArray <NSString *>*)topicList {
+    for (NSString *topic in topicList) {
+        if (ValidStr(topic)) {
+            [self.subscriptions setObject:@(MQTTQosLevelAtLeastOnce) forKey:topic];
+        }
+    }
     [[MKMQTTServerManager shared] subscriptions:topicList qosLevel:MQTTQosLevelAtLeastOnce];
 }
 
+- (void)clearAllSubscriptions {
+    if (!ValidDict(self.subscriptions)) {
+        return;
+    }
+    [[MKMQTTServerManager shared] unsubscriptions:self.subscriptions.allKeys];
+}
+
 - (void)unsubscriptions:(NSArray <NSString *>*)topicList {
+    for (NSString *topic in topicList) {
+        if (ValidStr(topic)) {
+            [self.subscriptions removeObjectForKey:topic];
+        }
+    }
     [[MKMQTTServerManager shared] unsubscriptions:topicList];
 }
 
@@ -268,6 +291,13 @@ static dispatch_once_t onceToken;
         _managerList = [NSMutableArray array];
     }
     return _managerList;
+}
+
+- (NSMutableDictionary *)subscriptions {
+    if (!_subscriptions) {
+        _subscriptions = [NSMutableDictionary dictionary];
+    }
+    return _subscriptions;
 }
 
 @end

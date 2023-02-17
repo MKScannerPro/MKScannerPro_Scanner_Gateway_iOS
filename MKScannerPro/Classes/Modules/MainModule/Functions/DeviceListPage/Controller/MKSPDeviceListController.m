@@ -17,12 +17,13 @@
 
 #import "MKHudManager.h"
 #import "MKCustomUIAdopter.h"
-#import "MKAlertController.h"
-#import "MKAboutController.h"
+#import "MKAlertView.h"
 
 #import "MKNetworkManager.h"
 
 #import "MKSPDeviceModel.h"
+
+#import "MKSPMQTTServerManager.h"
 
 #import "MKSPMMQTTManager.h"
 
@@ -70,24 +71,28 @@ MKSPDeviceModelDelegate>
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     //移除runloop的监听
     CFRunLoopRemoveObserver(CFRunLoopGetCurrent(), self.observerRef, kCFRunLoopCommonModes);
+    [[MKSPMQTTServerManager shared] clearAllSubscriptions];
+    [[MKSPMQTTServerManager shared] disconnect];
+    [MKSPMMQTTManager singleDealloc];
+    [MKSPMQTTServerManager singleDealloc];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadSubViews];
+    if (self.connectServer) {
+        //对于从壳工程进来的时候，需要走本地联网流程
+        [[MKSPMQTTServerManager shared] startWork];
+    }
     [self readDataFromDatabase];
     [self runloopObserver];
     [self addNotifications];
 }
 
 #pragma mark - super method
-- (void)leftButtonMethod {
-    MKSPServerForAppController *vc = [[MKSPServerForAppController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 - (void)rightButtonMethod {
-    MKAboutController *vc = [[MKAboutController alloc] init];
+    MKSPServerForAppController *vc = [[MKSPServerForAppController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -134,20 +139,20 @@ MKSPDeviceModelDelegate>
         return;
     }
     
-    MKAlertController *alertView = [MKAlertController alertControllerWithTitle:@"Remove Device"
-                                                                       message:@"Please confirm again whether to remove the device."
-                                                                preferredStyle:UIAlertControllerStyleAlert];
     @weakify(self);
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    MKAlertViewAction *cancelAction = [[MKAlertViewAction alloc] initWithTitle:@"Cancel" handler:^{
+        
     }];
-    [alertView addAction:cancelAction];
-    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    
+    MKAlertViewAction *confirmAction = [[MKAlertViewAction alloc] initWithTitle:@"Confirm" handler:^{
         @strongify(self);
         [self removeDeviceFromLocal:index];
     }];
-    [alertView addAction:moreAction];
-    
-    [self presentViewController:alertView animated:YES completion:nil];    
+    NSString *msg = @"Please confirm again whether to remove the device.";
+    MKAlertView *alertView = [[MKAlertView alloc] init];
+    [alertView addAction:cancelAction];
+    [alertView addAction:confirmAction];
+    [alertView showAlertWithTitle:@"Remove Device" message:msg notificationName:@""];
 }
 
 #pragma mark - MKSPDeviceModelDelegate
@@ -417,8 +422,7 @@ MKSPDeviceModelDelegate>
 #pragma mark - UI
 - (void)loadSubViews {
     self.defaultTitle = @"MKScannerPro";
-    [self.rightButton setImage:LOADICON(@"MKScannerPro", @"MKSPDeviceListController", @"sp_aboutMenuIcon.png") forState:UIControlStateNormal];
-    [self.leftButton setImage:LOADICON(@"MKScannerPro", @"MKSPDeviceListController", @"sp_menuIcon.png") forState:UIControlStateNormal];
+    [self.rightButton setImage:LOADICON(@"MKScannerPro", @"MKSPDeviceListController", @"sp_menuIcon.png") forState:UIControlStateNormal];
     [self.view addSubview:self.footerView];
     [self.footerView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);

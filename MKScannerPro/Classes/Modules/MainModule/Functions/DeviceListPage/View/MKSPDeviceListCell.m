@@ -77,8 +77,8 @@
 }
 
 #pragma mark - event method
-- (void)longPressEventAction {
-    if ([self.delegate respondsToSelector:@selector(sp_cellDeleteButtonPressed:)]) {
+- (void)longPressEventAction:(UILongPressGestureRecognizer *)longPress {
+    if (longPress.state == UIGestureRecognizerStateBegan && [self.delegate respondsToSelector:@selector(sp_cellDeleteButtonPressed:)]) {
         [self.delegate sp_cellDeleteButtonPressed:self.indexPath.row];
     }
 }
@@ -99,7 +99,7 @@
 #pragma mark - private method
 - (void)addLongPressEventAction {
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] init];
-    [longPress addTarget:self action:@selector(longPressEventAction)];
+    [longPress addTarget:self action:@selector(longPressEventAction:)];
     [self.contentView addGestureRecognizer:longPress];
 }
 

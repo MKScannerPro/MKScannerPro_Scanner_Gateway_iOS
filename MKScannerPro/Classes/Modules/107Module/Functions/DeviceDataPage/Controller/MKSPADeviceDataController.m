@@ -207,15 +207,7 @@ MKSPDeviceDataTableHeaderViewDelegate>
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.view showCentralToast:@"Device is off-line!"];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
-- (void)serverManagerStateChanged {
-    if ([MKSPAMQTTManager shared].state != MKSPMQTTSessionManagerStateConnected) {
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
-        [self.view showCentralToast:@"APP is off-line!"];
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+    [self popToViewControllerWithClassName:@"MKSPDeviceListController"];
 }
 
 #pragma mark - interface
@@ -302,10 +294,6 @@ MKSPDeviceDataTableHeaderViewDelegate>
                                              selector:@selector(receiveDeviceOffline:)
                                                  name:MKSPDeviceModelOfflineNotification
                                                object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(serverManagerStateChanged)
-//                                                 name:MKSPMQTTSessionManagerStateChangedNotification
-//                                               object:nil];
 }
 
 #pragma mark - UI

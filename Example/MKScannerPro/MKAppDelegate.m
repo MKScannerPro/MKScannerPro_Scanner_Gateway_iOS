@@ -9,7 +9,7 @@
 #import "MKAppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
 
-#import "MKSPDeviceListController.h"
+#import "MKTestViewController.h"
 
 @interface MKAppDelegate ()
 
@@ -25,12 +25,12 @@
 {
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     _window.backgroundColor = [UIColor whiteColor];
-    MKSPDeviceListController *vc = [[MKSPDeviceListController alloc] init];
+    MKTestViewController *vc = [[MKTestViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     _window.rootViewController = nav;
     [_window makeKeyAndVisible];
-//    [self addLaunchScreen];
-//    [self addLocationAuth];
+    [self addLaunchScreen];
+    [self addLocationAuth];
     return YES;
 }
 

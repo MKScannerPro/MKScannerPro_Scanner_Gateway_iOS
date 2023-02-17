@@ -69,7 +69,7 @@
     [[MKHudManager share] showHUDWithTitle:@"Save..." inView:self.view isPenetration:NO];
     [MKSPDeviceDatabaseManager insertDeviceList:@[self.deviceModel] sucBlock:^{
         [[MKHudManager share] hide];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self popToViewControllerWithClassName:@"MKSPDeviceListController"];
         
         MKSPDeviceModel *deviceModel = [[MKSPDeviceModel alloc] init];
         deviceModel.deviceType = self.deviceModel.deviceType;

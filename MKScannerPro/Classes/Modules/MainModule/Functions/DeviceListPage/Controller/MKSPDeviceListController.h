@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKSPDeviceListController : MKBaseViewController
 
+@property (nonatomic, assign)BOOL connectServer;
+
 @end
 
 NS_ASSUME_NONNULL_END
