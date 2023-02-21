@@ -149,6 +149,7 @@
 #import "MKSPMQTTServerManager.h"
 #import "MKSPServerConfigDefines.h"
 #import "MKSPServerParamsModel.h"
+#import "Target_ScannerPro_ScannerGateway_Module.h"
 
 FOUNDATION_EXPORT double MKScannerProVersionNumber;
 FOUNDATION_EXPORT const unsigned char MKScannerProVersionString[];

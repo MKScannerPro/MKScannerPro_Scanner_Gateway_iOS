@@ -78,6 +78,18 @@
       }
     },
     {
+      "name": "Target",
+      "source_files": "MKScannerPro/Classes/Target/**",
+      "dependencies": {
+        "MKBaseModuleLibrary": [
+
+        ],
+        "MKScannerPro/Modules": [
+
+        ]
+      }
+    },
+    {
       "name": "SDK",
       "dependencies": {
         "MKBaseModuleLibrary": [

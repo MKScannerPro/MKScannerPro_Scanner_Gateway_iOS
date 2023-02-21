@@ -459,6 +459,7 @@ PODS:
     - MKScannerPro/Expand (= 2.1.0)
     - MKScannerPro/Modules (= 2.1.0)
     - MKScannerPro/SDK (= 2.1.0)
+    - MKScannerPro/Target (= 2.1.0)
   - MKScannerPro/CTMediator (2.1.0):
     - CTMediator
     - MKScannerPro/DeviceModel
@@ -2162,6 +2163,9 @@ PODS:
   - MKScannerPro/SDK/MQTT (2.1.0):
     - MKBaseModuleLibrary
     - MKBaseMQTTModule
+  - MKScannerPro/Target (2.1.0):
+    - MKBaseModuleLibrary
+    - MKScannerPro/Modules
   - MLInputDodger (1.5.2)
   - MQTTClient (0.15.3):
     - MQTTClient/Core (= 0.15.3)
@@ -2215,7 +2219,7 @@ SPEC CHECKSUMS:
   MKBaseModuleLibrary: 6de43aeeb519d1c5f3aa94ebaffe8b3a57351312
   MKBaseMQTTModule: b3a5c4776b60d5c395da4fd7019fc1cf64ec48a6
   MKCustomUIModule: 83b76a0ccd1ac855157091b389154bd6a309c414
-  MKScannerPro: b8822edadf57f4dff901f059e5ab78e3be251848
+  MKScannerPro: 9743f37df814b8ed8dc0dc87600678e057d8f11f
   MLInputDodger: 79a0e420a80d0d3bba122bf2639603cc76609ba8
   MQTTClient: 0dfa04e789479c2e461786464969895c1fcb0875
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196

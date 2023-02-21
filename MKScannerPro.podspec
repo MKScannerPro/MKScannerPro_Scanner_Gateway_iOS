@@ -67,6 +67,13 @@ TODO: Add long description of the pod here.
     ss.dependency 'MKScannerPro/DeviceModel'
   end
   
+  s.subspec 'Target' do |ss|
+    ss.source_files = 'MKScannerPro/Classes/Target/**'
+          
+    ss.dependency 'MKBaseModuleLibrary'
+    ss.dependency 'MKScannerPro/Modules'
+  end
+  
   s.subspec 'SDK' do |ss|
   
     ss.subspec 'BLE' do |sss|
