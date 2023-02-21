@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MKSPDeviceModel;
 @interface MKSPConnectSuccessController : MKSPBaseViewController
+
+@property (nonatomic, strong)MKSPDeviceModel *deviceModel;
 
 @end
 

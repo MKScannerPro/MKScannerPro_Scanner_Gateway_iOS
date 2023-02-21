@@ -10,6 +10,8 @@
 
 #import "MKMacroDefines.h"
 
+#import "MKSPDeviceModeManager.h"
+
 #import "MKSPPMQTTInterface.h"
 
 @interface MKSPPUploadOptionModel ()
@@ -18,26 +20,9 @@
 
 @property (nonatomic, strong)dispatch_semaphore_t semaphore;
 
-@property (nonatomic, copy)NSString *deviceID;
-
-@property (nonatomic, copy)NSString *macAddress;
-
-@property (nonatomic, copy)NSString *topic;
-
 @end
 
 @implementation MKSPPUploadOptionModel
-
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic {
-    if (self = [self init]) {
-        self.deviceID = deviceID;
-        self.macAddress = macAddress;
-        self.topic = topic;
-    }
-    return self;
-}
 
 - (void)readDataWithSucBlock:(void (^)(void))sucBlock failedBlock:(void (^)(NSError *error))failedBlock {
     dispatch_async(self.readQueue, ^{
@@ -86,7 +71,7 @@
 #pragma mark - interface
 - (BOOL)readFilterRelationship {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readFilterRelationshipWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readFilterRelationshipWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.relationship = [returnData[@"data"][@"rule"] integerValue];
         dispatch_semaphore_signal(self.semaphore);
@@ -99,7 +84,7 @@
 
 - (BOOL)configFilterRelationship {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_configFilterRelationship:self.relationship deviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_configFilterRelationship:self.relationship deviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
@@ -111,7 +96,7 @@
 
 - (BOOL)readFilterByPHY {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readFilterByPHYWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readFilterByPHYWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.filterByPHY = [returnData[@"data"][@"phy"] integerValue];
         dispatch_semaphore_signal(self.semaphore);
@@ -124,7 +109,7 @@
 
 - (BOOL)configFilterByPHY {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_configFilterByPHY:self.filterByPHY deviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_configFilterByPHY:self.filterByPHY deviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
@@ -136,7 +121,7 @@
 
 - (BOOL)readFilterByRSSI {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readFilterByRSSIWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readFilterByRSSIWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.rssi = [returnData[@"data"][@"rssi"] integerValue];
         dispatch_semaphore_signal(self.semaphore);
@@ -149,7 +134,7 @@
 
 - (BOOL)configFilterByRSSI {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_configFilterByRSSI:self.rssi deviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_configFilterByRSSI:self.rssi deviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {

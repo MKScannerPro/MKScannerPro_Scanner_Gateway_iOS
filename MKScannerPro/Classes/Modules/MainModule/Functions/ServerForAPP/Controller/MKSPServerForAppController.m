@@ -23,7 +23,7 @@
 #import "MKTextSwitchCell.h"
 #import "MKTableSectionLineHeader.h"
 #import "MKCustomUIAdopter.h"
-#import "MKAlertController.h"
+#import "MKAlertView.h"
 #import "MKCAFileSelectController.h"
 
 #import "MKSPMQTTServerManager.h"
@@ -107,22 +107,20 @@ MKCAFileSelectControllerDelegate>
 }
 
 - (void)leftButtonMethod {
-    MKAlertController *alertView = [MKAlertController alertControllerWithTitle:@""
-                                                                       message:@"Please confirm whether to save the modified parameters?"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
     @weakify(self);
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        @strongify(self);
+    MKAlertViewAction *cancelAction = [[MKAlertViewAction alloc] initWithTitle:@"NO" handler:^{
         [super leftButtonMethod];
     }];
-    [alertView addAction:cancelAction];
-    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    
+    MKAlertViewAction *confirmAction = [[MKAlertViewAction alloc] initWithTitle:@"YES" handler:^{
         @strongify(self);
         [self rightButtonMethod];
     }];
-    [alertView addAction:moreAction];
-    
-    [self presentViewController:alertView animated:YES completion:nil];
+    NSString *msg = @"Please confirm whether to save the modified parameters?";
+    MKAlertView *alertView = [[MKAlertView alloc] init];
+    [alertView addAction:cancelAction];
+    [alertView addAction:confirmAction];
+    [alertView showAlertWithTitle:@"" message:msg notificationName:@"mk_sp_needDismissAlert"];
 }
 
 #pragma mark - UITableViewDelegate

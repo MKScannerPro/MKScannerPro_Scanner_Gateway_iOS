@@ -31,6 +31,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)readLocalDeviceWithSucBlock:(void (^)(NSArray <MKSPDeviceModel *> *deviceList))sucBlock
                         failedBlock:(void (^)(NSError *error))failedBlock;
 
+/// 更新本地存储的名字
+/// @param localName 名字
+/// @param macAddress 本地存储的key
+/// @param sucBlock 成功回调
+/// @param failedBlock 失败回调
++ (void)updateLocalName:(NSString *)localName
+             macAddress:(NSString *)macAddress
+               sucBlock:(void (^)(void))sucBlock
+            failedBlock:(void (^)(NSError *error))failedBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -19,6 +19,7 @@
 #import "MKTextSwitchCell.h"
 #import "MKHudManager.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 @interface MKSPLedSettingModel : NSObject
@@ -106,9 +107,9 @@ mk_textSwitchCellDelegate>
                                    ble_connected:self.settingModel.ble_connected
                                server_connecting:self.settingModel.server_connecting
                                 server_connected:self.settingModel.server_connected
-                                        deviceID:self.deviceModel.deviceID
-                                      macAddress:self.deviceModel.macAddress
-                                           topic:[self.deviceModel currentSubscribedTopic]
+                                        deviceID:[MKSPDeviceModeManager shared].deviceID
+                                      macAddress:[MKSPDeviceModeManager shared].macAddress
+                                           topic:[MKSPDeviceModeManager shared].subscribedTopic
                                         sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
@@ -122,9 +123,9 @@ mk_textSwitchCellDelegate>
 #pragma mark - interface
 - (void)readDataFromServer {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [self.protocol sp_readIndicatorLightStatusWithDeviceID:self.deviceModel.deviceID
-                                                macAddress:self.deviceModel.macAddress
-                                                     topic:[self.deviceModel currentSubscribedTopic]
+    [self.protocol sp_readIndicatorLightStatusWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                                macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                     topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                   sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self updateCellData:returnData[@"data"]];

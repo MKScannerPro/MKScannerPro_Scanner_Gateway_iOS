@@ -299,9 +299,7 @@ MKTextFieldCellDelegate>
 
 - (MKSPPFilterByMacModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKSPPFilterByMacModel alloc] initWithDeviceID:self.deviceModel.deviceID
-                                                          macAddress:self.deviceModel.macAddress
-                                                               topic:[self.deviceModel currentSubscribedTopic]];
+        _dataModel = [[MKSPPFilterByMacModel alloc] init];
     }
     return _dataModel;
 }

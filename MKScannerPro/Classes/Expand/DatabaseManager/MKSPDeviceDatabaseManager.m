@@ -132,6 +132,44 @@
     }];
 }
 
++ (void)updateLocalName:(NSString *)localName
+             macAddress:(NSString *)macAddress
+               sucBlock:(void (^)(void))sucBlock
+            failedBlock:(void (^)(NSError *error))failedBlock {
+    if (!ValidStr(localName) || !ValidStr(macAddress)) {
+        [self operationDeleteFailedBlock:failedBlock];
+        return;
+    }
+    FMDatabase* db = [FMDatabase databaseWithPath:kFilePath(@"SPDeviceDB")];
+    if (![db open]) {
+        [self operationInsertFailedBlock:failedBlock];
+        return;
+    }
+    [[FMDatabaseQueue databaseQueueWithPath:kFilePath(@"SPDeviceDB")] inDatabase:^(FMDatabase *db) {
+        
+        BOOL exist = NO;
+        FMResultSet * result = [db executeQuery:@"select * from SPDeviceTable where macAddress = ?",macAddress];
+        while (result.next) {
+            if ([macAddress isEqualToString:[result stringForColumn:@"macAddress"]]) {
+                exist = YES;
+            }
+        }
+        if (!exist) {
+            [self operationUpdateFailedBlock:failedBlock];
+            [db close];
+            return;
+        }
+        //存在该设备，更新设备
+        [db executeUpdate:@"UPDATE SPDeviceTable SET deviceName = ? WHERE macAddress = ?",localName,macAddress];
+        if (sucBlock) {
+            moko_dispatch_main_safe(^{
+                sucBlock();
+            });
+        }
+        [db close];
+    }];
+}
+
 + (void)operationFailedBlock:(void (^)(NSError *error))block msg:(NSString *)msg{
     if (block) {
         NSError *error = [[NSError alloc] initWithDomain:@"com.moko.databaseOperation"

@@ -11,6 +11,8 @@
 #import "MQTTSSLSecurityPolicyTransport.h"
 #import "MQTTSSLSecurityPolicy.h"
 
+#import "MKMQTTServerLogManager.h"
+
 #import "MKMacroDefines.h"
 
 #import "MKMQTTServerSDKDefines.h"
@@ -18,6 +20,8 @@
 #import "MKNetworkManager.h"
 
 #import "MKSPServerParamsModel.h"
+
+static NSString *const mqttLogName = @"ScannerGatewayLogData";
 
 NSString *const MKSPMQTTSessionManagerStateChangedNotification = @"MKSPMQTTSessionManagerStateChangedNotification";
 
@@ -98,6 +102,13 @@ static dispatch_once_t onceToken;
     if (!ValidDict(dataDic) || !ValidNum(dataDic[@"msg_id"]) || !ValidStr(dataDic[@"device_info"][@"device_id"])) {
         return;
     }
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dataDic options:0 error:&error];
+    NSString *json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    if (!error) {
+        NSString *msg = [NSString stringWithFormat:@"MQTT Receive Datas:%@",json];
+        [MKMQTTServerLogManager saveDataWithFileName:mqttLogName dataList:@[msg]];
+    }
     @synchronized (self.managerList) {
         for (id <MKSPServerManagerProtocol>protocol in self.managerList) {
             if ([protocol respondsToSelector:@selector(sp_didReceiveMessage:onTopic:)]) {
@@ -110,6 +121,15 @@ static dispatch_once_t onceToken;
 - (void)sessionManager:(MQTTSessionManager *)sessionManager didChangeState:(MKMQTTSessionManagerState)newState {
     self.state = newState;
     [[NSNotificationCenter defaultCenter] postNotificationName:MKSPMQTTSessionManagerStateChangedNotification object:nil];
+    NSString *msg = [NSString stringWithFormat:@"MQTT Session Manager State:%@",@(newState)];
+    [MKMQTTServerLogManager saveDataWithFileName:mqttLogName dataList:@[msg]];
+    if (newState == MKMQTTSessionManagerStateError) {
+        NSError *error = [sessionManager lastErrorCode];
+        NSString *errorMsg = [NSString stringWithFormat:@"MQTT Session Manager Error:%@",error.localizedDescription];
+        [MKMQTTServerLogManager saveDataWithFileName:mqttLogName dataList:@[errorMsg]];
+        //连接失败，尝试重连
+        [self connect];
+    }
     @synchronized (self.managerList) {
         for (id <MKSPServerManagerProtocol>protocol in self.managerList) {
             if ([protocol respondsToSelector:@selector(sp_didChangeState:)]) {
@@ -121,12 +141,15 @@ static dispatch_once_t onceToken;
 
 #pragma mark - note
 - (void)networkStateChanged{
+    NSString *stateMsg = [NSString stringWithFormat:@"%@:%@",@"Network State Changed",[MKNetworkManager currentWifiSSID]];
+    [MKMQTTServerLogManager saveDataWithFileName:mqttLogName dataList:@[stateMsg]];
     if (![self.paramsModel paramsCanConnectServer]) {
         //服务器连接参数缺失
         return;
     }
     if (![[MKNetworkManager sharedInstance] currentNetworkAvailable]) {
         //如果是当前网络不可用，则断开当前手机与mqtt服务器的连接操作
+        [MKMQTTServerLogManager saveDataWithFileName:mqttLogName dataList:@[@"Network Reachability Status Not Reachable"]];
         [[MKMQTTServerManager shared] disconnect];
         self.state = MKSPMQTTSessionManagerStateStarting;
         [[NSNotificationCenter defaultCenter] postNotificationName:MKSPMQTTSessionManagerStateChangedNotification object:nil];
@@ -177,6 +200,13 @@ static dispatch_once_t onceToken;
            topic:(NSString *)topic
         sucBlock:(void (^)(void))sucBlock
      failedBlock:(void (^)(NSError *error))failedBlock {
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
+    NSString *json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    if (!error) {
+        NSString *msg = [NSString stringWithFormat:@"MQTT Send Data:%@---%@",json,topic];
+        [MKMQTTServerLogManager saveDataWithFileName:mqttLogName dataList:@[msg]];
+    }
     [[MKMQTTServerManager shared] sendData:data
                                      topic:topic
                                   qosLevel:MQTTQosLevelAtLeastOnce
@@ -276,6 +306,32 @@ static dispatch_once_t onceToken;
 
 - (id<MKSPServerParamsProtocol>)currentServerParams {
     return self.paramsModel;
+}
+
+#pragma mark - Private method
+- (void)loadLogFile {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *recordDateString = [[NSUserDefaults standardUserDefaults] objectForKey:@"mk_sp_mqtt_recordDate"];
+    if (!ValidStr(recordDateString)) {
+        //如果第一次存，则把当天的日期写入
+        [[NSUserDefaults standardUserDefaults] setObject:[dateFormatter stringFromDate:[NSDate date]] forKey:@"mk_sp_mqtt_recordDate"];
+        return;
+    }
+    //写入当天日期，用来做比较
+    [[NSUserDefaults standardUserDefaults] setObject:[dateFormatter stringFromDate:[NSDate date]] forKey:@"mk_sp_mqtt_recordDate"];
+    NSDate *currentDate = [NSDate date];
+    NSDate *recordDate = [dateFormatter dateFromString:recordDateString];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *delta = [calendar components:NSCalendarUnitDay
+                                          fromDate:recordDate
+                                            toDate:currentDate
+                                           options:0];
+    if (delta.day <= 2) {
+        //仅保存两天数据
+        return;
+    }
+    [MKMQTTServerLogManager deleteLogWithFileName:mqttLogName];
 }
 
 #pragma mark - getter

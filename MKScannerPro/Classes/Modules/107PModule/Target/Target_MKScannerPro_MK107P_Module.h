@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Target_MKScannerPro_MK107P_Module : NSObject
 
 /// 设备主页面
-/// @param params @{@"deviceModel":id <MKSPDeviceModel *>deviceModel}
+/// @param params @{}
 - (UIViewController *)Action_MKScannerPro_MK107PModule_DeviceDataPage:(NSDictionary *)params;
 
 /// 107P、BG-2设备MQTT参数页面

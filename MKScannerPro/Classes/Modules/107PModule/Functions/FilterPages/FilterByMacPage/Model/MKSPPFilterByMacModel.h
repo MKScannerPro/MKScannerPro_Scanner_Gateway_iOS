@@ -12,10 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKSPPFilterByMacModel : NSObject
 
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic;
-
 @property (nonatomic, assign)BOOL preciseMatch;
 
 @property (nonatomic, assign)BOOL reverseFilter;

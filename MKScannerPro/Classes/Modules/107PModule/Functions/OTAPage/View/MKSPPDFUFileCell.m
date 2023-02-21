@@ -116,7 +116,7 @@
 - (UIButton *)rightButton {
     if (!_rightButton) {
         _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_rightButton setImage:LOADICON(@"MKScannerPro", @"MKSPPDFUFileCell", @"spp_slaveFirmwareSelectIcon.png") forState:UIControlStateNormal];
+        [_rightButton setImage:LOADICON(@"MKScannerPro", @"MKSPPDFUFileCell", @"sp_slaveFirmwareSelectIcon.png") forState:UIControlStateNormal];
         [_rightButton addTarget:self
                          action:@selector(rightButtonPressed)
                forControlEvents:UIControlEventTouchUpInside];

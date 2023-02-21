@@ -21,6 +21,7 @@
 #import "MKTextFieldCell.h"
 #import "MKPickerView.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPPMQTTManager.h"
@@ -256,7 +257,7 @@ MKSPPSlaveFileSelectControllerDelegate>
 - (void)receiveOTAResult:(NSNotification *)note {
     NSDictionary *user = note.userInfo;
     if (!ValidDict(user) || !ValidStr(user[@"device_info"][@"device_id"])
-        || ![self.deviceModel.deviceID isEqualToString:user[@"device_info"][@"device_id"]]) {
+        || ![[MKSPDeviceModeManager shared].deviceID isEqualToString:user[@"device_info"][@"device_id"]]) {
         return;
     }
     [[MKHudManager share] hide];
@@ -323,9 +324,9 @@ MKSPPSlaveFileSelectControllerDelegate>
     [MKSPPMQTTInterface spp_otaMasterFirmware:self.dataModel.masterModel.host
                                          port:[self.dataModel.masterModel.port integerValue]
                                      filePath:self.dataModel.masterModel.filePath
-                                     deviceID:self.deviceModel.deviceID
-                                   macAddress:self.deviceModel.macAddress
-                                        topic:[self.deviceModel currentSubscribedTopic]
+                                     deviceID:[MKSPDeviceModeManager shared].deviceID
+                                   macAddress:[MKSPDeviceModeManager shared].macAddress
+                                        topic:[MKSPDeviceModeManager shared].subscribedTopic
                                      sucBlock:^(id  _Nonnull returnData) {
         NSInteger resultCode = [returnData[@"data"][@"ota_state"] integerValue];
         if (resultCode != 0) {
@@ -347,9 +348,9 @@ MKSPPSlaveFileSelectControllerDelegate>
 
 - (void)otaSlaveFirmware {
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
-    [MKSPPMQTTInterface spp_updateSlaveFirmwareWithDeviceID:self.deviceModel.deviceID
-                                                 macAddress:self.deviceModel.macAddress
-                                                      topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPPMQTTInterface spp_updateSlaveFirmwareWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                                 macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                      topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                    sucBlock:^(id  _Nonnull returnData) {
         NSInteger resultCode = [returnData[@"data"][@"ota_state"] integerValue];
         if (resultCode != 0) {
@@ -375,9 +376,9 @@ MKSPPSlaveFileSelectControllerDelegate>
     [MKSPPMQTTInterface spp_otaCACertificate:self.dataModel.caFileModel.host
                                         port:[self.dataModel.caFileModel.port integerValue]
                                     filePath:self.dataModel.caFileModel.filePath
-                                    deviceID:self.deviceModel.deviceID
-                                  macAddress:self.deviceModel.macAddress
-                                       topic:[self.deviceModel currentSubscribedTopic]
+                                    deviceID:[MKSPDeviceModeManager shared].deviceID
+                                  macAddress:[MKSPDeviceModeManager shared].macAddress
+                                       topic:[MKSPDeviceModeManager shared].subscribedTopic
                                     sucBlock:^(id  _Nonnull returnData) {
         NSInteger resultCode = [returnData[@"data"][@"ota_state"] integerValue];
         if (resultCode != 0) {
@@ -404,9 +405,9 @@ MKSPPSlaveFileSelectControllerDelegate>
                                            caFilePath:self.dataModel.signedModel.caFilePath
                                         clientKeyPath:self.dataModel.signedModel.clientKeyPath
                                        clientCertPath:self.dataModel.signedModel.clientCertPath
-                                             deviceID:self.deviceModel.deviceID
-                                           macAddress:self.deviceModel.macAddress
-                                                topic:[self.deviceModel currentSubscribedTopic]
+                                             deviceID:[MKSPDeviceModeManager shared].deviceID
+                                           macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                topic:[MKSPDeviceModeManager shared].subscribedTopic
                                              sucBlock:^(id  _Nonnull returnData) {
         NSInteger resultCode = [returnData[@"data"][@"ota_state"] integerValue];
         if (resultCode != 0) {
@@ -428,9 +429,9 @@ MKSPPSlaveFileSelectControllerDelegate>
 
 - (void)readDataFromDevice {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKSPPMQTTInterface spp_readSlaveDeviceInfoWithDeviceID:self.deviceModel.deviceID
-                                                 macAddress:self.deviceModel.macAddress
-                                                      topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPPMQTTInterface spp_readSlaveDeviceInfoWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                                 macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                      topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                    sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         self.dataModel.slaveModel.slaveMacAddress = returnData[@"data"][@"slave_mac"];

@@ -222,9 +222,7 @@ MKSPFilterNormalTextFieldCellDelegate>
 
 - (MKSPPFilterByURLModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKSPPFilterByURLModel alloc] initWithDeviceID:self.deviceModel.deviceID
-                                                          macAddress:self.deviceModel.macAddress
-                                                               topic:[self.deviceModel currentSubscribedTopic]];
+        _dataModel = [[MKSPPFilterByURLModel alloc] init];
     }
     return _dataModel;
 }

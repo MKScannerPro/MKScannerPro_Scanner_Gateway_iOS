@@ -33,6 +33,7 @@
 
 #import "MKSPAServerForDeviceModel.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPCentralManager.h"
@@ -642,7 +643,7 @@ MKCAFileSelectControllerDelegate>
 - (MKSPAServerForDeviceModel *)dataModel {
     if (!_dataModel) {
         _dataModel = [[MKSPAServerForDeviceModel alloc] init];
-        _dataModel.supportRead = self.supportRead;
+        _dataModel.supportRead = ([[MKSPDeviceModeManager shared].deviceType integerValue] == 16);
     }
     return _dataModel;
 }

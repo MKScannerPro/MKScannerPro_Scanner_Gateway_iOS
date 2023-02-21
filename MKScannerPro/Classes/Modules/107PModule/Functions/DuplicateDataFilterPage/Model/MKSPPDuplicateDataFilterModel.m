@@ -10,6 +10,8 @@
 
 #import "MKMacroDefines.h"
 
+#import "MKSPDeviceModeManager.h"
+
 #import "MKSPPMQTTInterface.h"
 
 @interface MKSPPDuplicateDataFilterModel ()
@@ -18,26 +20,9 @@
 
 @property (nonatomic, strong)dispatch_semaphore_t semaphore;
 
-@property (nonatomic, copy)NSString *deviceID;
-
-@property (nonatomic, copy)NSString *macAddress;
-
-@property (nonatomic, copy)NSString *topic;
-
 @end
 
 @implementation MKSPPDuplicateDataFilterModel
-
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic {
-    if (self = [self init]) {
-        self.deviceID = deviceID;
-        self.macAddress = macAddress;
-        self.topic = topic;
-    }
-    return self;
-}
 
 - (void)readDataWithSucBlock:(void (^)(void))sucBlock failedBlock:(void (^)(NSError *error))failedBlock {
     dispatch_async(self.readQueue, ^{
@@ -70,7 +55,7 @@
 #pragma mark - interface
 - (BOOL)readDuplicateDataFilter {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readDuplicateDataFilterWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readDuplicateDataFilterWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.isOn = ([returnData[@"data"][@"switch"] integerValue] == 1);
         self.rule = [returnData[@"data"][@"rule"] integerValue];
@@ -85,7 +70,7 @@
 
 - (BOOL)configDuplicateDataFilter {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_configDuplicateDataFilter:self.rule period:[self.time longLongValue] deviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_configDuplicateDataFilter:self.rule period:[self.time longLongValue] deviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {

@@ -21,6 +21,7 @@
 #import "MKTableSectionLineHeader.h"
 #import "MKCustomUIAdopter.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPPUploadOptionModel.h"
@@ -222,31 +223,26 @@ MKSPPFilterCellDelegate>
 #pragma mark - cell event method
 - (void)filterByMACAddress {
     MKSPPFilterByMacController *vc = [[MKSPPFilterByMacController alloc] init];
-    vc.deviceModel = self.deviceModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)filterByADVName {
     MKSPPFilterByAdvNameController *vc = [[MKSPPFilterByAdvNameController alloc] init];
-    vc.deviceModel = self.deviceModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)filterByRawData {
     MKSPPFilterByRawDataController *vc = [[MKSPPFilterByRawDataController alloc] init];
-    vc.deviceModel = self.deviceModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)duplicateDataFilter {
     MKSPPDuplicateDataFilterController *vc = [[MKSPPDuplicateDataFilterController alloc] init];
-    vc.deviceModel = self.deviceModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)uploadDataOption {
     MKSPPUploadDataOptionController *vc = [[MKSPPUploadDataOptionController alloc] init];
-    vc.deviceModel = self.deviceModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -367,7 +363,7 @@ MKSPPFilterCellDelegate>
 
 #pragma mark - UI
 - (void)loadSubViews {
-    self.defaultTitle = self.deviceModel.deviceName;
+    self.defaultTitle = [MKSPDeviceModeManager shared].deviceName;
     [self.rightButton setImage:LOADICON(@"MKScannerPro", @"MKSPPUploadOptionController", @"sp_saveIcon.png")
                       forState:UIControlStateNormal];
     [self.view addSubview:self.tableView];
@@ -442,9 +438,7 @@ MKSPPFilterCellDelegate>
 
 - (MKSPPUploadOptionModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKSPPUploadOptionModel alloc] initWithDeviceID:self.deviceModel.deviceID
-                                                           macAddress:self.deviceModel.macAddress
-                                                                topic:[self.deviceModel currentSubscribedTopic]];
+        _dataModel = [[MKSPPUploadOptionModel alloc] init];
     }
     return _dataModel;
 }

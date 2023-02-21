@@ -462,9 +462,7 @@ MKTextButtonCellDelegate>
 
 - (MKSPPFilterByOtherModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKSPPFilterByOtherModel alloc] initWithDeviceID:self.deviceModel.deviceID
-                                                            macAddress:self.deviceModel.macAddress
-                                                                 topic:[self.deviceModel currentSubscribedTopic]];
+        _dataModel = [[MKSPPFilterByOtherModel alloc] init];
     }
     return _dataModel;
 }

@@ -10,6 +10,8 @@
 
 #import "MKMacroDefines.h"
 
+#import "MKSPDeviceModeManager.h"
+
 #import "MKSPPMQTTInterface.h"
 
 @interface MKSPPFilterByAdvNameModel ()
@@ -18,23 +20,12 @@
 
 @property (nonatomic, strong)dispatch_semaphore_t semaphore;
 
-@property (nonatomic, copy)NSString *deviceID;
-
-@property (nonatomic, copy)NSString *macAddress;
-
-@property (nonatomic, copy)NSString *topic;
-
 @end
 
 @implementation MKSPPFilterByAdvNameModel
 
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic {
-    if (self = [self init]) {
-        self.deviceID = deviceID;
-        self.macAddress = macAddress;
-        self.topic = topic;
+- (instancetype)init {
+    if (self = [super init]) {
         self.dataList = @[];
     }
     return self;
@@ -72,7 +63,7 @@
 
 - (BOOL)readFilterByName {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readFilterByAdvNameWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readFilterByAdvNameWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.preciseMatch = ([returnData[@"data"][@"precise"] integerValue] == 1);
         self.reverseFilter = ([returnData[@"data"][@"reverse"] integerValue] == 1);
@@ -89,7 +80,7 @@
 
 - (BOOL)configFilterByName:(NSArray <NSString *>*)nameList {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_configFilterByADVName:nameList preciseMatch:self.preciseMatch reverseFilter:self.reverseFilter deviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_configFilterByADVName:nameList preciseMatch:self.preciseMatch reverseFilter:self.reverseFilter deviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {

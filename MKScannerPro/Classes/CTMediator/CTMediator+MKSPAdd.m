@@ -14,18 +14,18 @@
 
 @implementation CTMediator (MKSPAdd)
 
-- (UIViewController *)CTMediator_MKScannerPro_DeviceDataPage:(MKSPDeviceModel *)deviceModel {
-    if ([deviceModel.deviceType isEqualToString:@"00"] || [deviceModel.deviceType isEqualToString:@"01"] || [deviceModel.deviceType isEqualToString:@"10"]) {
+- (UIViewController *)CTMediator_MKScannerPro_DeviceDataPage:(NSInteger)deviceType {
+    if (deviceType == 0 || deviceType== 1 || deviceType == 16) {
         //MK107、mini-01、MK110-AC347
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107_module
                                                                  action:kAction_MKScannerPro_MK107_deviceDataPage
-                                                                 params:@{@"deviceModel":deviceModel}];
+                                                                 params:@{}];
     }
-    if ([deviceModel.deviceType isEqualToString:@"02"] || [deviceModel.deviceType isEqualToString:@"03"] || [deviceModel.deviceType isEqualToString:@"04"] || [deviceModel.deviceType isEqualToString:@"05"]) {
+    if (deviceType == 2 || deviceType == 3 || deviceType == 4 || deviceType == 5) {
         //MK107Pro、mini-02、MK107D Pro
         return [self Action_MKScannerProModule_ViewControllerWithTarget:kTarget_MKScannerPro_MK107P_module
                                                                  action:kAction_MKScannerPro_MK107P_deviceDataPage
-                                                                 params:@{@"deviceModel":deviceModel}];
+                                                                 params:@{}];
     }
     return [[UIViewController alloc] init];
 }

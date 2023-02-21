@@ -26,6 +26,7 @@
 #import "MKCustomUIAdopter.h"
 #import "MKNormalSliderCell.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPAMQTTInterface.h"
@@ -114,9 +115,9 @@ MKFilterRawAdvDataCellDelegate>
     
     [MKSPAMQTTInterface spa_configFilterWithConditionsType:self.conditionType
                                                 conditions:params[@"data"]
-                                                  deviceID:self.deviceModel.deviceID
-                                                macAddress:self.deviceModel.macAddress
-                                                     topic:[self.deviceModel currentSubscribedTopic]
+                                                  deviceID:[MKSPDeviceModeManager shared].deviceID
+                                                macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                     topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                   sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
@@ -406,9 +407,9 @@ MKFilterRawAdvDataCellDelegate>
 - (void)readDataFromServer {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
     [MKSPAMQTTInterface spa_readFilterConditions:self.conditionType
-                                        deviceID:self.deviceModel.deviceID
-                                      macAddress:self.deviceModel.macAddress
-                                           topic:[self.deviceModel currentSubscribedTopic]
+                                        deviceID:[MKSPDeviceModeManager shared].deviceID
+                                      macAddress:[MKSPDeviceModeManager shared].macAddress
+                                           topic:[MKSPDeviceModeManager shared].subscribedTopic
                                         sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self.dataModel updateModelWithJson:returnData[@"data"]];

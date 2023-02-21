@@ -12,10 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKSPPFilterByURLModel : NSObject
 
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic;
-
 @property (nonatomic, assign)BOOL isOn;
 
 @property (nonatomic, copy)NSString *url;

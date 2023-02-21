@@ -31,6 +31,7 @@
 
 #import "MKSPPModifyServerModel.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 @interface MKSPPModifyServerController ()<UITableViewDelegate,
@@ -288,10 +289,10 @@ MKSPPModifyServerFooterViewDelegate>
 - (void)updateMQTTServer {
     [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
     @weakify(self);
-    [self.dataModel updateServerWithDeviceID:self.deviceModel.deviceID
-                                  macAddress:self.deviceModel.macAddress
-                                  deviceName:self.deviceModel.deviceName
-                                       topic:[self.deviceModel currentSubscribedTopic]
+    [self.dataModel updateServerWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                  macAddress:[MKSPDeviceModeManager shared].macAddress
+                                  deviceName:[MKSPDeviceModeManager shared].deviceName
+                                       topic:[MKSPDeviceModeManager shared].subscribedTopic
                                     sucBlock:^{
         @strongify(self);
         [[MKHudManager share] hide];
@@ -307,10 +308,10 @@ MKSPPModifyServerFooterViewDelegate>
 - (void)updateLocal {
     
     MKSPDeviceModel *deviceModel = [[MKSPDeviceModel alloc] init];
-    deviceModel.deviceType = self.deviceModel.deviceType;
-    deviceModel.deviceID = self.deviceModel.deviceID;
-    deviceModel.deviceName = self.deviceModel.deviceName;
-    deviceModel.macAddress = self.deviceModel.macAddress;
+    deviceModel.deviceType = [MKSPDeviceModeManager shared].deviceType;
+    deviceModel.deviceID = [MKSPDeviceModeManager shared].deviceID;
+    deviceModel.deviceName = [MKSPDeviceModeManager shared].deviceName;
+    deviceModel.macAddress = [MKSPDeviceModeManager shared].macAddress;
     
     deviceModel.clientID = self.dataModel.clientID;
     deviceModel.subscribedTopic = [self.dataModel currentSubscribeTopic];

@@ -10,6 +10,8 @@
 
 #import "MKMacroDefines.h"
 
+#import "MKSPDeviceModeManager.h"
+
 #import "MKSPPMQTTInterface.h"
 
 @interface MKSPPDeviceInfoModel ()
@@ -18,26 +20,9 @@
 
 @property (nonatomic, strong)dispatch_semaphore_t semaphore;
 
-@property (nonatomic, copy)NSString *deviceID;
-
-@property (nonatomic, copy)NSString *macAddress;
-
-@property (nonatomic, copy)NSString *topic;
-
 @end
 
 @implementation MKSPPDeviceInfoModel
-
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic {
-    if (self = [self init]) {
-        self.deviceID = deviceID;
-        self.macAddress = macAddress;
-        self.topic = topic;
-    }
-    return self;
-}
 
 - (void)readDataWithSucBlock:(void (^)(void))sucBlock failedBlock:(void (^)(NSError *error))failedBlock {
     dispatch_async(self.readQueue, ^{
@@ -60,7 +45,7 @@
 #pragma mark - interface
 - (BOOL)readMasterInfo {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readMasterDeviceInfoWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readMasterDeviceInfoWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.deviceName = returnData[@"data"][@"device_name"];
         self.productModel = returnData[@"data"][@"product_model"];
@@ -80,7 +65,7 @@
 
 - (BOOL)readSlaveInfo {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readSlaveDeviceInfoWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readSlaveDeviceInfoWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.slaveSoftwareVersion = returnData[@"data"][@"software_version"];
         self.slaveFirmwareVersion = returnData[@"data"][@"firmware_version"];

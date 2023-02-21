@@ -12,10 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKSPPFilterByTLMModel : NSObject
 
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic;
-
 @property (nonatomic, assign)BOOL isOn;
 
 /// 0:过滤所有TLM  1:过滤非加密类型TLM 2:过滤加密类型TLM

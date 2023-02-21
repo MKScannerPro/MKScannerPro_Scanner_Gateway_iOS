@@ -12,6 +12,8 @@
 
 #import "MKBLEBaseSDKAdopter.h"
 
+#import "MKSPDeviceModeManager.h"
+
 #import "MKSPPMQTTInterface.h"
 
 @implementation MKSPPFilterRawAdvDataModel
@@ -68,27 +70,9 @@
 
 @property (nonatomic, strong)dispatch_semaphore_t semaphore;
 
-@property (nonatomic, copy)NSString *deviceID;
-
-@property (nonatomic, copy)NSString *macAddress;
-
-@property (nonatomic, copy)NSString *topic;
-
 @end
 
 @implementation MKSPPFilterByOtherModel
-
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic {
-    if (self = [self init]) {
-        self.deviceID = deviceID;
-        self.macAddress = macAddress;
-        self.topic = topic;
-        _rawDataList = @[];
-    }
-    return self;
-}
 
 - (void)readDataWithSucBlock:(void (^)(void))sucBlock failedBlock:(void (^)(NSError *error))failedBlock {
     dispatch_async(self.readQueue, ^{
@@ -124,7 +108,7 @@
 #pragma mark - interface
 - (BOOL)readFilterByOther {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readFilterByOtherDatasWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readFilterByOtherDatasWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.isOn = ([returnData[@"data"][@"switch"] integerValue] == 1);
         self.relationship = [returnData[@"data"][@"relationship"] integerValue];
@@ -139,7 +123,7 @@
 
 - (BOOL)configFilterByOther:(NSArray <MKSPPFilterRawAdvDataModel *>*)list relationship:(mk_spp_filterByOther)relationship {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_configFilterByOtherDatas:self.isOn relationship:relationship rawDataList:list deviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_configFilterByOtherDatas:self.isOn relationship:relationship rawDataList:list deviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {

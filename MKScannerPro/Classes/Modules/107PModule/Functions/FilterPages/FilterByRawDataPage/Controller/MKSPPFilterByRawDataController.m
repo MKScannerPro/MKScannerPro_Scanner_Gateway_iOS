@@ -22,6 +22,7 @@
 #import "MKSPPMQTTManager.h"
 #import "MKSPPMQTTInterface.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPPFilterByRawDataModel.h"
@@ -74,7 +75,6 @@ mk_textSwitchCellDelegate>
     if (indexPath.section == 0 && indexPath.row == 0) {
         //iBeacon
         MKSPPFilterByBeaconController *vc = [[MKSPPFilterByBeaconController alloc] init];
-        vc.deviceModel = self.deviceModel;
         vc.pageType = mk_spp_filterByBeaconPageType_beacon;
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -82,28 +82,24 @@ mk_textSwitchCellDelegate>
     if (indexPath.section == 0 && indexPath.row == 1) {
         //Eddystone-UID
         MKSPPFilterByUIDController *vc = [[MKSPPFilterByUIDController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (indexPath.section == 0 && indexPath.row == 2) {
         //Eddystone-URL
         MKSPPFilterByURLController *vc = [[MKSPPFilterByURLController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (indexPath.section == 0 && indexPath.row == 3) {
         //Eddystone-TLM
         MKSPPFilterByTLMController *vc = [[MKSPPFilterByTLMController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (indexPath.section == 0 && indexPath.row == 4) {
         //MKiBeacon
         MKSPPFilterByBeaconController *vc = [[MKSPPFilterByBeaconController alloc] init];
-        vc.deviceModel = self.deviceModel;
         vc.pageType = mk_spp_filterByBeaconPageType_MKBeacon;
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -111,7 +107,6 @@ mk_textSwitchCellDelegate>
     if (indexPath.section == 0 && indexPath.row == 5) {
         //MKiBeacon&ACC
         MKSPPFilterByBeaconController *vc = [[MKSPPFilterByBeaconController alloc] init];
-        vc.deviceModel = self.deviceModel;
         vc.pageType = mk_spp_filterByBeaconPageType_MKBeaconAcc;
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -119,7 +114,6 @@ mk_textSwitchCellDelegate>
     if (indexPath.section == 2 && indexPath.row == 0) {
         //Other
         MKSPPFilterByOtherController *vc = [[MKSPPFilterByOtherController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
@@ -195,9 +189,9 @@ mk_textSwitchCellDelegate>
 - (void)configFilterBXPACC:(BOOL)isOn {
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [MKSPPMQTTInterface spp_configFilterBXPACC:isOn
-                                      deviceID:self.deviceModel.deviceID
-                                    macAddress:self.deviceModel.macAddress
-                                         topic:[self.deviceModel currentSubscribedTopic]
+                                      deviceID:[MKSPDeviceModeManager shared].deviceID
+                                    macAddress:[MKSPDeviceModeManager shared].macAddress
+                                         topic:[MKSPDeviceModeManager shared].subscribedTopic
                                       sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         MKTextSwitchCellModel *cellModel = self.section1List[0];
@@ -214,9 +208,9 @@ mk_textSwitchCellDelegate>
 - (void)configFilterBXPTH:(BOOL)isOn {
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [MKSPPMQTTInterface spp_configFilterBXPTH:isOn
-                                     deviceID:self.deviceModel.deviceID
-                                   macAddress:self.deviceModel.macAddress
-                                        topic:[self.deviceModel currentSubscribedTopic]
+                                     deviceID:[MKSPDeviceModeManager shared].deviceID
+                                   macAddress:[MKSPDeviceModeManager shared].macAddress
+                                        topic:[MKSPDeviceModeManager shared].subscribedTopic
                                      sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         MKTextSwitchCellModel *cellModel = self.section1List[1];
@@ -366,9 +360,7 @@ mk_textSwitchCellDelegate>
 
 - (MKSPPFilterByRawDataModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKSPPFilterByRawDataModel alloc] initWithDeviceID:self.deviceModel.deviceID
-                                                              macAddress:self.deviceModel.macAddress
-                                                                   topic:[self.deviceModel currentSubscribedTopic]];
+        _dataModel = [[MKSPPFilterByRawDataModel alloc] init];
     }
     return _dataModel;
 }

@@ -226,9 +226,7 @@ MKTextFieldCellDelegate>
 
 - (MKSPPDuplicateDataFilterModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKSPPDuplicateDataFilterModel alloc] initWithDeviceID:self.deviceModel.deviceID
-                                                                  macAddress:self.deviceModel.macAddress
-                                                                       topic:[self.deviceModel currentSubscribedTopic]];
+        _dataModel = [[MKSPPDuplicateDataFilterModel alloc] init];
     }
     return _dataModel;
 }

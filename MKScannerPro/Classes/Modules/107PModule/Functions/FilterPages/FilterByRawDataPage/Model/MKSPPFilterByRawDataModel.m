@@ -10,6 +10,8 @@
 
 #import "MKMacroDefines.h"
 
+#import "MKSPDeviceModeManager.h"
+
 #import "MKSPPMQTTInterface.h"
 
 @interface MKSPPFilterByRawDataModel ()
@@ -18,26 +20,9 @@
 
 @property (nonatomic, strong)dispatch_semaphore_t semaphore;
 
-@property (nonatomic, copy)NSString *deviceID;
-
-@property (nonatomic, copy)NSString *macAddress;
-
-@property (nonatomic, copy)NSString *topic;
-
 @end
 
 @implementation MKSPPFilterByRawDataModel
-
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic {
-    if (self = [self init]) {
-        self.deviceID = deviceID;
-        self.macAddress = macAddress;
-        self.topic = topic;
-    }
-    return self;
-}
 
 - (void)readDataWithSucBlock:(void (^)(void))sucBlock failedBlock:(void (^)(NSError *error))failedBlock {
     dispatch_async(self.readQueue, ^{
@@ -56,7 +41,7 @@
 #pragma mark - interface
 - (BOOL)readFilterByRawData {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readFilterByRawDataStatusWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readFilterByRawDataStatusWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.iBeacon = ([returnData[@"data"][@"ibeacon"] integerValue] == 1);
         self.uid = ([returnData[@"data"][@"eddystone_uid"] integerValue] == 1);

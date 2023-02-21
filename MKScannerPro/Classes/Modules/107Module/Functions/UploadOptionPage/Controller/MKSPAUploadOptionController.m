@@ -21,6 +21,7 @@
 #import "MKTableSectionLineHeader.h"
 #import "MKFilterConditionCell.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPAUploadOptionModel.h"
@@ -96,14 +97,12 @@ MKFilterConditionCellDelegate>
     if (indexPath.section == 0 && indexPath.row == 0) {
         //Beacon type filter
         MKSPATypeFilterController *vc = [[MKSPATypeFilterController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (indexPath.section == 2) {
         //Filter condition A 、Filter condition B
         MKSPAFilterConditionController *vc = [[MKSPAFilterConditionController alloc] init];
-        vc.deviceModel = self.deviceModel;
         vc.conditionType = indexPath.row;
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -111,14 +110,12 @@ MKFilterConditionCellDelegate>
     if (indexPath.section == 4 && indexPath.row == 0) {
         //Duplicate data filter
         MKSPADuplicateDataFilterController *vc = [[MKSPADuplicateDataFilterController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (indexPath.section == 5 && indexPath.row == 0) {
         //Upload data option
         MKSPAUploadDataOptionController *vc = [[MKSPAUploadDataOptionController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
@@ -208,9 +205,9 @@ MKFilterConditionCellDelegate>
         ship = mk_spa_scanFilterConditionShipAND;
     }
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
-    [MKSPAMQTTInterface spa_configScanFilterConditions:ship deviceID:self.deviceModel.deviceID
-                                            macAddress:self.deviceModel.macAddress
-                                                 topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPAMQTTInterface spa_configScanFilterConditions:ship deviceID:[MKSPDeviceModeManager shared].deviceID
+                                            macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                 topic:[MKSPDeviceModeManager shared].subscribedTopic
                                               sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         self.dataModel.conditionIndex = conditionIndex;
@@ -227,9 +224,9 @@ MKFilterConditionCellDelegate>
 #pragma mark - interface
 - (void)readDataFromServer {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKSPAMQTTInterface spa_readScanFilterConditionsWithDeviceID:self.deviceModel.deviceID
-                                                      macAddress:self.deviceModel.macAddress
-                                                           topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPAMQTTInterface spa_readScanFilterConditionsWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                                      macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                           topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                         sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self updateCellDatas:returnData[@"data"]];
@@ -327,7 +324,7 @@ MKFilterConditionCellDelegate>
 
 #pragma mark - UI
 - (void)loadSubViews {
-    self.defaultTitle = self.deviceModel.deviceName;
+    self.defaultTitle = [MKSPDeviceModeManager shared].deviceName;
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);

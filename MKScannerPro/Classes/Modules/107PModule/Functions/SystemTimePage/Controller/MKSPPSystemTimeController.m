@@ -21,6 +21,7 @@
 
 #import "MKSPPMQTTInterface.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPPSystemTimeCell.h"
@@ -92,7 +93,6 @@ MKTextButtonCellDelegate>
     if (indexPath.section == 0 && indexPath.row == 0)  {
         //Sync Time From NTP
         MKSPPNTPServerController *vc = [[MKSPPNTPServerController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
@@ -157,9 +157,9 @@ MKTextButtonCellDelegate>
 #pragma mark - interface
 - (void)readDataFromServer {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKSPPMQTTInterface spp_readDeviceUTCWithDeviceID:self.deviceModel.deviceID
-                                           macAddress:self.deviceModel.macAddress
-                                                topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPPMQTTInterface spp_readDeviceUTCWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                           macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                topic:[MKSPDeviceModeManager shared].subscribedTopic
                                              sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self updateCellData:returnData[@"data"]];
@@ -173,9 +173,9 @@ MKTextButtonCellDelegate>
 - (void)syncTimeZoneToDevice:(NSInteger)timeZone {
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [MKSPPMQTTInterface spp_configDeviceTimeZone:timeZone - 24
-                                        deviceID:self.deviceModel.deviceID
-                                      macAddress:self.deviceModel.macAddress
-                                           topic:[self.deviceModel currentSubscribedTopic]
+                                        deviceID:[MKSPDeviceModeManager shared].deviceID
+                                      macAddress:[MKSPDeviceModeManager shared].macAddress
+                                           topic:[MKSPDeviceModeManager shared].subscribedTopic
                                         sucBlock:^(id  _Nonnull returnData) {
         self.timeZone = timeZone;
         MKTextButtonCellModel *cellModel = self.section2List[0];

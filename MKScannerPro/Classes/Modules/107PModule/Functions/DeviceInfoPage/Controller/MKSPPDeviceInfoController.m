@@ -239,9 +239,7 @@
 
 - (MKSPPDeviceInfoModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKSPPDeviceInfoModel alloc] initWithDeviceID:self.deviceModel.deviceID
-                                                         macAddress:self.deviceModel.macAddress
-                                                              topic:[self.deviceModel currentSubscribedTopic]];
+        _dataModel = [[MKSPPDeviceInfoModel alloc] init];
     }
     return _dataModel;
 }

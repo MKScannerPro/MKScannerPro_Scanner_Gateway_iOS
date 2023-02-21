@@ -312,10 +312,7 @@ MKSPFilterBeaconCellDelegate>
 
 - (MKSPPFilterByBeaconModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKSPPFilterByBeaconModel alloc] initWithDeviceID:self.deviceModel.deviceID
-                                                             macAddress:self.deviceModel.macAddress
-                                                                  topic:[self.deviceModel currentSubscribedTopic]
-                                                               pageType:self.pageType];
+        _dataModel = [[MKSPPFilterByBeaconModel alloc] initWithPageType:self.pageType];
     }
     return _dataModel;
 }

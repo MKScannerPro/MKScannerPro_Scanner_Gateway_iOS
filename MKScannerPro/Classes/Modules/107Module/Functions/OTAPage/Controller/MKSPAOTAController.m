@@ -21,6 +21,7 @@
 #import "MKTextFieldCell.h"
 #import "MKTextButtonCell.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPAMQTTManager.h"
@@ -155,7 +156,7 @@ MKTextFieldCellDelegate>
 - (void)receiveOTAResult:(NSNotification *)note {
     NSDictionary *user = note.userInfo;
     if (!ValidDict(user) || !ValidStr(user[@"device_info"][@"device_id"])
-        || ![self.deviceModel.deviceID isEqualToString:user[@"device_info"][@"device_id"]]) {
+        || ![[MKSPDeviceModeManager shared].deviceID isEqualToString:user[@"device_info"][@"device_id"]]) {
         return;
     }
     [[MKHudManager share] hide];
@@ -186,9 +187,9 @@ MKTextFieldCellDelegate>
                                  host:self.dataModel.host
                                  port:[self.dataModel.port integerValue]
                             catalogue:self.dataModel.catalogue
-                             deviceID:self.deviceModel.deviceID
-                           macAddress:self.deviceModel.macAddress
-                                topic:[self.deviceModel currentSubscribedTopic]
+                             deviceID:[MKSPDeviceModeManager shared].deviceID
+                           macAddress:[MKSPDeviceModeManager shared].macAddress
+                                topic:[MKSPDeviceModeManager shared].subscribedTopic
                              sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
         [[NSNotificationCenter defaultCenter] addObserver:self

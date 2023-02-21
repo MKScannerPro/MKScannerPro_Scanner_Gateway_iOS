@@ -22,6 +22,7 @@
 
 #import "MKSPPMQTTInterface.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPPUploadDataOptionModel.h"
@@ -212,9 +213,7 @@ mk_textSwitchCellDelegate>
 
 - (MKSPPUploadDataOptionModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKSPPUploadDataOptionModel alloc] initWithDeviceID:self.deviceModel.deviceID
-                                                               macAddress:self.deviceModel.macAddress
-                                                                    topic:[self.deviceModel currentSubscribedTopic]];
+        _dataModel = [[MKSPPUploadDataOptionModel alloc] init];
     }
     return _dataModel;
 }

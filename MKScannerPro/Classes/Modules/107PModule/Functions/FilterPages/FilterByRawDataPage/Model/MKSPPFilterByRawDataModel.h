@@ -30,10 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign)BOOL other;
 
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic;
-
 - (void)readDataWithSucBlock:(void (^)(void))sucBlock failedBlock:(void (^)(NSError *error))failedBlock;
 
 @end

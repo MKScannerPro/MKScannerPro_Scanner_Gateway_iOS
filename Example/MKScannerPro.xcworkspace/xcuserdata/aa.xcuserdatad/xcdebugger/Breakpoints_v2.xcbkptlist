@@ -19,99 +19,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "825F23E4-CCEF-4DD0-8A0A-5AF4D41AEDB4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../MKScannerPro/Classes/Modules/107PModule/Functions/OTAPage/Controller/MKSPPOTAController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
-            landmarkName = "-otaMasterFirmware"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "825F23E4-CCEF-4DD0-8A0A-5AF4D41AEDB4 - 87764be492fec672"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[MKSPPOTAController otaMasterFirmware]_block_invoke"
-                  moduleName = "MKScannerPro"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aa/Desktop/%E5%85%AC%E5%8F%B8%E7%BB%84%E4%BB%B6%E5%8C%96%E9%A1%B9%E7%9B%AE/MKScannerPro/MKScannerPro/Classes/Modules/107PModule/Functions/OTAPage/Controller/MKSPPOTAController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "331"
-                  endingLineNumber = "331"
-                  offsetFromSymbolStart = "168">
-               </Location>
-               <Location
-                  uuid = "825F23E4-CCEF-4DD0-8A0A-5AF4D41AEDB4 - 87764be492fec672"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[MKSPPOTAController otaMasterFirmware]_block_invoke"
-                  moduleName = "MKScannerPro"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aa/Desktop/%E5%85%AC%E5%8F%B8%E7%BB%84%E4%BB%B6%E5%8C%96%E9%A1%B9%E7%9B%AE/MKScannerPro/MKScannerPro/Classes/Modules/107PModule/Functions/OTAPage/Controller/MKSPPOTAController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "331"
-                  endingLineNumber = "331"
-                  offsetFromSymbolStart = "156">
-               </Location>
-               <Location
-                  uuid = "825F23E4-CCEF-4DD0-8A0A-5AF4D41AEDB4 - 87764be492fec672"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[MKSPPOTAController otaMasterFirmware]_block_invoke"
-                  moduleName = "MKScannerPro"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aa/Desktop/%E5%85%AC%E5%8F%B8%E7%BB%84%E4%BB%B6%E5%8C%96%E9%A1%B9%E7%9B%AE/MKScannerPro/MKScannerPro/Classes/Modules/107PModule/Functions/OTAPage/Controller/MKSPPOTAController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "331"
-                  endingLineNumber = "331"
-                  offsetFromSymbolStart = "152">
-               </Location>
-               <Location
-                  uuid = "825F23E4-CCEF-4DD0-8A0A-5AF4D41AEDB4 - c438ecfa603aaa12"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[MKSPPOTAController otaMasterFirmware]_block_invoke"
-                  moduleName = "MKScannerPro"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aa/Desktop/%E5%85%AC%E5%8F%B8%E7%BB%84%E4%BB%B6%E5%8C%96%E9%A1%B9%E7%9B%AE/ScannerPro/MKScannerPro/MKScannerPro/Classes/Modules/107PModule/Functions/OTAPage/Controller/MKSPPOTAController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "331"
-                  endingLineNumber = "331"
-                  offsetFromSymbolStart = "152">
-               </Location>
-               <Location
-                  uuid = "825F23E4-CCEF-4DD0-8A0A-5AF4D41AEDB4 - c438ecfa603aaa12"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[MKSPPOTAController otaMasterFirmware]_block_invoke"
-                  moduleName = "MKScannerPro"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aa/Desktop/%E5%85%AC%E5%8F%B8%E7%BB%84%E4%BB%B6%E5%8C%96%E9%A1%B9%E7%9B%AE/ScannerPro/MKScannerPro/MKScannerPro/Classes/Modules/107PModule/Functions/OTAPage/Controller/MKSPPOTAController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "331"
-                  endingLineNumber = "331"
-                  offsetFromSymbolStart = "156">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "42F9317E-4E23-4C92-8475-5A8604C6E802"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -119,8 +26,8 @@
             filePath = "../MKScannerPro/Classes/Modules/107PModule/Functions/OTAPage/Controller/MKSPPOTAController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
             landmarkName = "-otaSlaveFirmware"
             landmarkType = "7">
             <Locations>
@@ -182,6 +89,21 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "354"
                   endingLineNumber = "354"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "42F9317E-4E23-4C92-8475-5A8604C6E802 - 2ef59f01348c49e7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[MKSPPOTAController otaSlaveFirmware]_block_invoke"
+                  moduleName = "MKScannerPro"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aa/Desktop/%E5%85%AC%E5%8F%B8%E7%BB%84%E4%BB%B6%E5%8C%96%E9%A1%B9%E7%9B%AE/ScannerPro/Modules/MKScannerPro/MKScannerPro/Classes/Modules/107PModule/Functions/OTAPage/Controller/MKSPPOTAController.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "355"
+                  endingLineNumber = "355"
                   offsetFromSymbolStart = "40">
                </Location>
             </Locations>

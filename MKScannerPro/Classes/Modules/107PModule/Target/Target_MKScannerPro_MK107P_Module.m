@@ -17,7 +17,6 @@
 
 - (UIViewController *)Action_MKScannerPro_MK107PModule_DeviceDataPage:(NSDictionary *)params {
     MKSPPDeviceDataController *vc = [[MKSPPDeviceDataController alloc] init];
-    vc.deviceModel = params[@"deviceModel"];
     return vc;
 }
 

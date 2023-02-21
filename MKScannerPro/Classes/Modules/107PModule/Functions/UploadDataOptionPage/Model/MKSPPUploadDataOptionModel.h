@@ -14,10 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKSPPUploadDataOptionModel : NSObject<spp_uploadDataOptionProtocol>
 
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic;
-
 @property (nonatomic, assign)BOOL timestamp;
 
 @property (nonatomic, assign)BOOL deviceType;

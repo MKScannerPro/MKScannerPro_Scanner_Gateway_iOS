@@ -10,6 +10,8 @@
 
 #import "MKMacroDefines.h"
 
+#import "MKSPDeviceModeManager.h"
+
 #import "MKSPPMQTTInterface.h"
 
 @interface MKSPPFilterByBeaconModel ()
@@ -18,26 +20,14 @@
 
 @property (nonatomic, strong)dispatch_semaphore_t semaphore;
 
-@property (nonatomic, copy)NSString *deviceID;
-
-@property (nonatomic, copy)NSString *macAddress;
-
-@property (nonatomic, copy)NSString *topic;
-
 @property (nonatomic, assign)mk_spp_filterByBeaconPageType pageType;
 
 @end
 
 @implementation MKSPPFilterByBeaconModel
 
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic
-                        pageType:(mk_spp_filterByBeaconPageType)pageType {
+- (instancetype)initWithPageType:(mk_spp_filterByBeaconPageType)pageType {
     if (self = [self init]) {
-        self.deviceID = deviceID;
-        self.macAddress = macAddress;
-        self.topic = topic;
         self.pageType = pageType;
     }
     return self;
@@ -99,7 +89,7 @@
 #pragma mark - interface
 - (BOOL)readFilterByBeacon {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readFilterByBeaconWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readFilterByBeaconWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.isOn = ([returnData[@"data"][@"switch"] integerValue] == 1);
         self.minMinor = [NSString stringWithFormat:@"%@",returnData[@"data"][@"min_minor"]];
@@ -117,7 +107,7 @@
 
 - (BOOL)configFilterByBeacon {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_configFilterByBeacon:self.isOn minMinor:[self.minMinor integerValue] maxMinor:[self.maxMinor integerValue] minMajor:[self.minMajor integerValue] maxMajor:[self.maxMajor integerValue] uuid:self.uuid deviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_configFilterByBeacon:self.isOn minMinor:[self.minMinor integerValue] maxMinor:[self.maxMinor integerValue] minMajor:[self.minMajor integerValue] maxMajor:[self.maxMajor integerValue] uuid:self.uuid deviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
@@ -129,7 +119,7 @@
 
 - (BOOL)readFilterByMKBeacon {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readFilterByMKBeaconWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readFilterByMKBeaconWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.isOn = ([returnData[@"data"][@"switch"] integerValue] == 1);
         self.minMinor = [NSString stringWithFormat:@"%@",returnData[@"data"][@"min_minor"]];
@@ -147,7 +137,7 @@
 
 - (BOOL)configFilterByMKBeacon {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_configFilterByMKBeacon:self.isOn minMinor:[self.minMinor integerValue] maxMinor:[self.maxMinor integerValue] minMajor:[self.minMajor integerValue] maxMajor:[self.maxMajor integerValue] uuid:self.uuid deviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_configFilterByMKBeacon:self.isOn minMinor:[self.minMinor integerValue] maxMinor:[self.maxMinor integerValue] minMajor:[self.minMajor integerValue] maxMajor:[self.maxMajor integerValue] uuid:self.uuid deviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
@@ -159,7 +149,7 @@
 
 - (BOOL)readFilterByMKBeaconACC {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_readFilterByMKBeaconACCWithDeviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_readFilterByMKBeaconACCWithDeviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         self.isOn = ([returnData[@"data"][@"switch"] integerValue] == 1);
         self.minMinor = [NSString stringWithFormat:@"%@",returnData[@"data"][@"min_minor"]];
@@ -177,7 +167,7 @@
 
 - (BOOL)configFilterByMKBeaconACC {
     __block BOOL success = NO;
-    [MKSPPMQTTInterface spp_configFilterByMKBeaconACC:self.isOn minMinor:[self.minMinor integerValue] maxMinor:[self.maxMinor integerValue] minMajor:[self.minMajor integerValue] maxMajor:[self.maxMajor integerValue] uuid:self.uuid deviceID:self.deviceID macAddress:self.macAddress topic:self.topic sucBlock:^(id  _Nonnull returnData) {
+    [MKSPPMQTTInterface spp_configFilterByMKBeaconACC:self.isOn minMinor:[self.minMinor integerValue] maxMinor:[self.maxMinor integerValue] minMajor:[self.minMajor integerValue] maxMajor:[self.maxMajor integerValue] uuid:self.uuid deviceID:[MKSPDeviceModeManager shared].deviceID macAddress:[MKSPDeviceModeManager shared].macAddress topic:[MKSPDeviceModeManager shared].subscribedTopic sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {

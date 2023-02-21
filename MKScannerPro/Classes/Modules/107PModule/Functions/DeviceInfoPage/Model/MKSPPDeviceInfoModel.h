@@ -12,10 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKSPPDeviceInfoModel : NSObject
 
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic;
-
 @property (nonatomic, copy)NSString *deviceName;
 
 @property (nonatomic, copy)NSString *productModel;

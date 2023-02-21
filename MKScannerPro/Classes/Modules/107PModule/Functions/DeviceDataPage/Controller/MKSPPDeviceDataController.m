@@ -23,6 +23,7 @@
 #import "MKSPPMQTTManager.h"
 #import "MKSPPMQTTInterface.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPDeviceDataTableHeaderView.h"
@@ -60,6 +61,7 @@ MKSPDeviceDataTableHeaderViewDelegate>
     //移除runloop的监听
     CFRunLoopRemoveObserver(CFRunLoopGetCurrent(), self.observerRef, kCFRunLoopCommonModes);
     [MKSPPMQTTManager singleDealloc];
+    [MKSPDeviceModeManager sharedDealloc];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -79,7 +81,6 @@ MKSPDeviceDataTableHeaderViewDelegate>
 #pragma mark - super method
 - (void)rightButtonMethod {
     MKSPPSettingController *vc = [[MKSPPSettingController alloc] init];
-    vc.deviceModel = self.deviceModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -107,7 +108,6 @@ MKSPDeviceDataTableHeaderViewDelegate>
 #pragma mark - MKSPDeviceDataTableHeaderViewDelegate
 - (void)sp_updateLoadButtonAction {
     MKSPPUploadOptionController *vc = [[MKSPPUploadOptionController alloc] init];
-    vc.deviceModel = self.deviceModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -115,9 +115,9 @@ MKSPDeviceDataTableHeaderViewDelegate>
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [MKSPPMQTTInterface spp_configScanSwitchStatus:isOn
                                           scanTime:[self.headerModel.scanTime integerValue]
-                                          deviceID:self.deviceModel.deviceID
-                                        macAddress:self.deviceModel.macAddress
-                                             topic:[self.deviceModel currentSubscribedTopic]
+                                          deviceID:[MKSPDeviceModeManager shared].deviceID
+                                        macAddress:[MKSPDeviceModeManager shared].macAddress
+                                             topic:[MKSPDeviceModeManager shared].subscribedTopic
                                           sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         self.headerModel.isOn = isOn;
@@ -141,9 +141,9 @@ MKSPDeviceDataTableHeaderViewDelegate>
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [MKSPPMQTTInterface spp_configScanSwitchStatus:self.headerModel.isOn
                                           scanTime:[self.headerModel.scanTime integerValue]
-                                          deviceID:self.deviceModel.deviceID
-                                        macAddress:self.deviceModel.macAddress
-                                             topic:[self.deviceModel currentSubscribedTopic]
+                                          deviceID:[MKSPDeviceModeManager shared].deviceID
+                                        macAddress:[MKSPDeviceModeManager shared].macAddress
+                                             topic:[MKSPDeviceModeManager shared].subscribedTopic
                                           sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
@@ -157,7 +157,7 @@ MKSPDeviceDataTableHeaderViewDelegate>
 #pragma mark - note
 - (void)receiveDeviceDatas:(NSNotification *)note {
     NSDictionary *user = note.userInfo;
-    if (!ValidDict(user) || !ValidStr(user[@"device_info"][@"device_id"]) || ![self.deviceModel.deviceID isEqualToString:user[@"device_info"][@"device_id"]]) {
+    if (!ValidDict(user) || !ValidStr(user[@"device_info"][@"device_id"]) || ![[MKSPDeviceModeManager shared].deviceID isEqualToString:user[@"device_info"][@"device_id"]]) {
         return;
     }
     NSArray *tempList = user[@"data"];
@@ -194,7 +194,7 @@ MKSPDeviceDataTableHeaderViewDelegate>
 
 - (void)receiveDeviceNameChanged:(NSNotification *)note {
     NSDictionary *user = note.userInfo;
-    if (!ValidDict(user) || !ValidStr(user[@"macAddress"]) || ![self.deviceModel.macAddress isEqualToString:user[@"macAddress"]]) {
+    if (!ValidDict(user) || !ValidStr(user[@"macAddress"]) || ![[MKSPDeviceModeManager shared].macAddress isEqualToString:user[@"macAddress"]]) {
         return;
     }
     self.defaultTitle = user[@"deviceName"];
@@ -202,7 +202,7 @@ MKSPDeviceDataTableHeaderViewDelegate>
 
 - (void)receiveDeviceOffline:(NSNotification *)note {
     NSDictionary *user = note.userInfo;
-    if (!ValidDict(user) || !ValidStr(user[@"deviceID"]) || ![self.deviceModel.deviceID isEqualToString:user[@"deviceID"]]) {
+    if (!ValidDict(user) || !ValidStr(user[@"deviceID"]) || ![[MKSPDeviceModeManager shared].deviceID isEqualToString:user[@"deviceID"]]) {
         return;
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -213,9 +213,9 @@ MKSPDeviceDataTableHeaderViewDelegate>
 #pragma mark - interface
 - (void)readDataFromServer {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKSPPMQTTInterface spp_readScanSwitchPramsWithDeviceID:self.deviceModel.deviceID
-                                                 macAddress:self.deviceModel.macAddress
-                                                      topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPPMQTTInterface spp_readScanSwitchPramsWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                                 macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                      topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                    sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         self.headerModel.isOn = ([returnData[@"data"][@"scan_switch"] integerValue] == 1);
@@ -290,15 +290,15 @@ MKSPDeviceDataTableHeaderViewDelegate>
                                              selector:@selector(receiveDeviceNameChanged:)
                                                  name:@"mk_sp_deviceNameChangedNotification"
                                                object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receiveDeviceOffline:)
-                                                 name:MKSPDeviceModelOfflineNotification
-                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(receiveDeviceOffline:)
+//                                                 name:MKSPDeviceModelOfflineNotification
+//                                               object:nil];
 }
 
 #pragma mark - UI
 - (void)loadSubViews {
-    self.defaultTitle = self.deviceModel.deviceName;
+    self.defaultTitle = [MKSPDeviceModeManager shared].deviceName;
     [self.rightButton setImage:LOADICON(@"MKScannerPro", @"MKSPPDeviceDataController", @"sp_moreIcon.png") forState:UIControlStateNormal];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {

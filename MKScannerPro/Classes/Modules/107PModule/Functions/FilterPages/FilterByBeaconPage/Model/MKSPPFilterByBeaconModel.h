@@ -14,10 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKSPPFilterByBeaconModel : NSObject
 
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic
-                        pageType:(mk_spp_filterByBeaconPageType)pageType;
+- (instancetype)initWithPageType:(mk_spp_filterByBeaconPageType)pageType;
 
 @property (nonatomic, assign)BOOL isOn;
 

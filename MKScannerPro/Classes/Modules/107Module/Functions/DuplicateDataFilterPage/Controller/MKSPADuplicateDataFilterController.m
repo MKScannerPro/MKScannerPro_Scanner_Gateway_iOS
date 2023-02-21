@@ -21,6 +21,7 @@
 #import "MKTextButtonCell.h"
 #import "MKTextFieldCell.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPAMQTTInterface.h"
@@ -69,9 +70,9 @@ MKTextFieldCellDelegate>
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [MKSPAMQTTInterface spa_configDuplicateDataFilter:self.dataModel.filterType
                                                period:[self.dataModel.interval integerValue]
-                                             deviceID:self.deviceModel.deviceID
-                                           macAddress:self.deviceModel.macAddress
-                                                topic:[self.deviceModel currentSubscribedTopic]
+                                             deviceID:[MKSPDeviceModeManager shared].deviceID
+                                           macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                topic:[MKSPDeviceModeManager shared].subscribedTopic
                                              sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
@@ -150,9 +151,9 @@ MKTextFieldCellDelegate>
 #pragma mark - interface
 - (void)readDataFromServer {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKSPAMQTTInterface spa_readDuplicateDataFilterWithDeviceID:self.deviceModel.deviceID
-                                                     macAddress:self.deviceModel.macAddress
-                                                          topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPAMQTTInterface spa_readDuplicateDataFilterWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                                     macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                          topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                        sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         self.dataModel.filterType = [returnData[@"data"][@"rule"] integerValue];

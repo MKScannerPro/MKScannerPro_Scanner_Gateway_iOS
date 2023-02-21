@@ -21,6 +21,7 @@
 #import "MKHudManager.h"
 #import "MKTextField.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 @interface MKSPDataReportingController ()
@@ -57,9 +58,9 @@
     }
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [self.protocol sp_configDataReportingTimeout:([self.textField.text integerValue] * 50)
-                                        deviceID:self.deviceModel.deviceID
-                                      macAddress:self.deviceModel.macAddress
-                                           topic:[self.deviceModel currentSubscribedTopic]
+                                        deviceID:[MKSPDeviceModeManager shared].deviceID
+                                      macAddress:[MKSPDeviceModeManager shared].macAddress
+                                           topic:[MKSPDeviceModeManager shared].subscribedTopic
                                         sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
@@ -73,9 +74,9 @@
 #pragma mark - interface
 - (void)readDataFromServer {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [self.protocol sp_readDataReportingTimeoutWithDeviceID:self.deviceModel.deviceID
-                                                macAddress:self.deviceModel.macAddress
-                                                     topic:[self.deviceModel currentSubscribedTopic]
+    [self.protocol sp_readDataReportingTimeoutWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                                macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                     topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                   sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         NSInteger value = [returnData[@"data"][@"timeout"] integerValue];

@@ -19,10 +19,11 @@
 
 #import "MKCustomUIAdopter.h"
 #import "MKTableSectionLineHeader.h"
-#import "MKAlertController.h"
 #import "MKHudManager.h"
 #import "MKSettingTextCell.h"
+#import "MKAlertView.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPDeviceDatabaseManager.h"
@@ -54,8 +55,6 @@
 @property (nonatomic, strong)NSMutableArray *section2List;
 
 @property (nonatomic, strong)NSMutableArray *sectionHeaderList;
-
-@property (nonatomic, strong)UITextField *localNameField;
 
 @property (nonatomic, copy)NSString *localNameAsciiStr;
 
@@ -101,7 +100,6 @@
     if (indexPath.section == 0 && indexPath.row == 0) {
         //LED settings
         MKSPLEDSettingController *vc = [[MKSPLEDSettingController alloc] init];
-        vc.deviceModel = self.deviceModel;
         vc.protocol = [[MKSPPSettingsProtocolModel alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -109,7 +107,6 @@
     if (indexPath.section == 0 && indexPath.row == 1) {
         //Data reporting timeout
         MKSPDataReportingController *vc = [[MKSPDataReportingController alloc] init];
-        vc.deviceModel = self.deviceModel;
         vc.protocol = [[MKSPPSettingsProtocolModel alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -117,7 +114,6 @@
     if (indexPath.section == 0 && indexPath.row == 2) {
         //Network status reporting interval
         MKSPNetworkStatusController *vc = [[MKSPNetworkStatusController alloc] init];
-        vc.deviceModel = self.deviceModel;
         vc.protocol = [[MKSPPSettingsProtocolModel alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -125,7 +121,6 @@
     if (indexPath.section == 0 && indexPath.row == 3) {
         //Connection timeout setting
         MKSPConnectionSettingController *vc = [[MKSPConnectionSettingController alloc] init];
-        vc.deviceModel = self.deviceModel;
         vc.protocol = [[MKSPPSettingsProtocolModel alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -133,35 +128,30 @@
     if (indexPath.section == 0 && indexPath.row == 4) {
         //System time
         MKSPPSystemTimeController *vc = [[MKSPPSystemTimeController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (indexPath.section == 0 && indexPath.row == 5) {
         //Modify MQTT settings
         MKSPPModifyServerController *vc = [[MKSPPModifyServerController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (indexPath.section == 1 && indexPath.row == 0) {
         //OTA
         MKSPPOTAController *vc = [[MKSPPOTAController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (indexPath.section == 2 && indexPath.row == 0) {
         //Device information
         MKSPPDeviceInfoController *vc = [[MKSPPDeviceInfoController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     if (indexPath.section == 2 && indexPath.row == 1) {
         //MQTT settings for device
         MKSPMQTTSettingForDeviceController *vc = [[MKSPMQTTSettingForDeviceController alloc] init];
-        vc.deviceModel = self.deviceModel;
         vc.protocol = [[MKSPPSettingsProtocolModel alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -204,91 +194,65 @@
 
 #pragma mark - event method
 - (void)resetButtonPressed {
-    NSString *msg = @"After reset, the device will be removed from the device list, and relevant data will be totally cleared.";
-    MKAlertController *alertView = [MKAlertController alertControllerWithTitle:@"Reset Device"
-                                                                       message:msg
-                                                                preferredStyle:UIAlertControllerStyleAlert];
     @weakify(self);
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    MKAlertViewAction *cancelAction = [[MKAlertViewAction alloc] initWithTitle:@"Cancel" handler:^{
+        
     }];
-    [alertView addAction:cancelAction];
-    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    
+    MKAlertViewAction *confirmAction = [[MKAlertViewAction alloc] initWithTitle:@"Confirm" handler:^{
         @strongify(self);
         [self resetDevice];
     }];
-    [alertView addAction:moreAction];
-    
-    [self presentViewController:alertView animated:YES completion:nil];
+    NSString *msg = @"After reset, the device will be removed from the device list, and relevant data will be totally cleared.";
+    MKAlertView *alertView = [[MKAlertView alloc] init];
+    [alertView addAction:cancelAction];
+    [alertView addAction:confirmAction];
+    [alertView showAlertWithTitle:@"Reset Device" message:msg notificationName:@"mk_sp_needDismissAlert"];
 }
 
 - (void)rebootButtonPressed {
-    NSString *msg = @"Please confirm again whether to reboot the device.";
-    MKAlertController *alertView = [MKAlertController alertControllerWithTitle:@"Reboot Device"
-                                                                       message:msg
-                                                                preferredStyle:UIAlertControllerStyleAlert];
     @weakify(self);
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    MKAlertViewAction *cancelAction = [[MKAlertViewAction alloc] initWithTitle:@"Cancel" handler:^{
+        
     }];
-    [alertView addAction:cancelAction];
-    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    
+    MKAlertViewAction *confirmAction = [[MKAlertViewAction alloc] initWithTitle:@"Confirm" handler:^{
         @strongify(self);
         [self rebootDevice];
     }];
-    [alertView addAction:moreAction];
-    
-    [self presentViewController:alertView animated:YES completion:nil];
+    NSString *msg = @"Please confirm again whether to reboot the device.";
+    MKAlertView *alertView = [[MKAlertView alloc] init];
+    [alertView addAction:cancelAction];
+    [alertView addAction:confirmAction];
+    [alertView showAlertWithTitle:@"Reboot Device" message:msg notificationName:@"mk_sp_needDismissAlert"];
 }
 
 #pragma mark - 修改设备本地名称
 - (void)configLocalName{
     @weakify(self);
-    NSString *msg = @"Note:The local name should be 1-20 characters.";
-    MKAlertController *alertView = [MKAlertController alertControllerWithTitle:@"Edit Local Name"
-                                                                       message:msg
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-    [alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        @strongify(self);
-        self.localNameField = nil;
-        self.localNameField = textField;
-        self.localNameAsciiStr = @"";
-        [self.localNameField setPlaceholder:@"1-20 characters"];
-        [self.localNameField addTarget:self
-                                action:@selector(locaNameTextFieldValueChanged:)
-                      forControlEvents:UIControlEventEditingChanged];
+    MKAlertViewAction *cancelAction = [[MKAlertViewAction alloc] initWithTitle:@"Cancel" handler:^{
     }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-    [alertView addAction:cancelAction];
-    UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    
+    MKAlertViewAction *confirmAction = [[MKAlertViewAction alloc] initWithTitle:@"Confirm" handler:^{
         @strongify(self);
         [self saveDeviceLocalName];
     }];
-    [alertView addAction:moreAction];
+    self.localNameAsciiStr = SafeStr([MKSPDeviceModeManager shared].deviceName);
+    MKAlertViewTextField *textField = [[MKAlertViewTextField alloc] initWithTextValue:SafeStr([MKSPDeviceModeManager shared].deviceName)
+                                                                          placeholder:@"1-20 characters"
+                                                                        textFieldType:mk_normal
+                                                                            maxLength:20
+                                                                              handler:^(NSString * _Nonnull text) {
+        @strongify(self);
+        self.localNameAsciiStr = text;
+    }];
     
-    [self presentViewController:alertView animated:YES completion:nil];
-}
-
-- (void)locaNameTextFieldValueChanged:(UITextField *)textField{
-    NSString *inputValue = textField.text;
-    if (!ValidStr(inputValue)) {
-        textField.text = @"";
-        self.localNameAsciiStr = @"";
-        return;
-    }
-    NSInteger strLen = inputValue.length;
-    NSInteger dataLen = [inputValue dataUsingEncoding:NSUTF8StringEncoding].length;
-    
-    NSString *currentStr = self.localNameAsciiStr;
-    if (dataLen == strLen) {
-        //当前输入是ascii字符
-        currentStr = inputValue;
-    }
-    if (currentStr.length > 20) {
-        textField.text = [currentStr substringToIndex:20];
-        self.localNameAsciiStr = [currentStr substringToIndex:20];
-    }else {
-        textField.text = currentStr;
-        self.localNameAsciiStr = currentStr;
-    }
+    NSString *msg = @"Note:The local name should be 1-20 characters.";
+    MKAlertView *alertView = [[MKAlertView alloc] init];
+    [alertView addAction:cancelAction];
+    [alertView addAction:confirmAction];
+    [alertView addTextField:textField];
+    [alertView showAlertWithTitle:@"Edit Local Name" message:msg notificationName:@"mk_sp_needDismissAlert"];
 }
 
 - (void)saveDeviceLocalName {
@@ -296,26 +260,20 @@
         [self.view showCentralToast:@"The local name should be 1-20 characters."];
         return;
     }
-    MKSPDeviceModel *deviceModel = [[MKSPDeviceModel alloc] init];
-    deviceModel.deviceType = self.deviceModel.deviceType;
-    deviceModel.deviceID = self.deviceModel.deviceID;
-    deviceModel.clientID = self.deviceModel.clientID;
-    deviceModel.deviceName = self.localNameAsciiStr;
-    deviceModel.subscribedTopic = self.deviceModel.subscribedTopic;
-    deviceModel.publishedTopic = self.deviceModel.publishedTopic;
-    deviceModel.macAddress = self.deviceModel.macAddress;
     [[MKHudManager share] showHUDWithTitle:@"Save..." inView:self.view isPenetration:NO];
-    [MKSPDeviceDatabaseManager insertDeviceList:@[deviceModel] sucBlock:^{
+    [MKSPDeviceDatabaseManager updateLocalName:self.localNameAsciiStr
+                                    macAddress:[MKSPDeviceModeManager shared].macAddress
+                                      sucBlock:^{
         [[MKHudManager share] hide];
-        self.deviceModel.deviceName = self.localNameAsciiStr;
         self.defaultTitle = self.localNameAsciiStr;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"mk_sp_deviceNameChangedNotification"
                                                             object:nil
                                                           userInfo:@{
-                                                              @"macAddress":self.deviceModel.macAddress,
+                                                              @"macAddress":[MKSPDeviceModeManager shared].macAddress,
                                                               @"deviceName":self.localNameAsciiStr
                                                           }];
-    } failedBlock:^(NSError * _Nonnull error) {
+    }
+                                   failedBlock:^(NSError * _Nonnull error) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:error.userInfo[@"errorInfo"]];
     }];
@@ -324,9 +282,9 @@
 #pragma mark - 设备复位
 - (void)resetDevice {
     [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
-    [MKSPPMQTTInterface spp_configDeviceResetWithDeviceID:self.deviceModel.deviceID
-                                               macAddress:self.deviceModel.macAddress
-                                                    topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPPMQTTInterface spp_configDeviceResetWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                               macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                    topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                  sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self removeDevice];
@@ -339,11 +297,11 @@
 
 - (void)removeDevice {
     [[MKHudManager share] showHUDWithTitle:@"Delete..." inView:self.view isPenetration:NO];
-    [MKSPDeviceDatabaseManager deleteDeviceWithMacAddress:self.deviceModel.macAddress sucBlock:^{
+    [MKSPDeviceDatabaseManager deleteDeviceWithMacAddress:[MKSPDeviceModeManager shared].macAddress sucBlock:^{
         [[MKHudManager share] hide];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"mk_sp_deleteDeviceNotification"
                                                             object:nil
-                                                          userInfo:@{@"macAddress":self.deviceModel.macAddress}];
+                                                          userInfo:@{@"macAddress":[MKSPDeviceModeManager shared].macAddress}];
         [self popToViewControllerWithClassName:@"MKSPDeviceListController"];
     } failedBlock:^(NSError * _Nonnull error) {
         [[MKHudManager share] hide];
@@ -354,9 +312,9 @@
 #pragma mark - 设备重启
 - (void)rebootDevice {
     [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
-    [MKSPPMQTTInterface spp_rebootDeviceWithDeviceID:self.deviceModel.deviceID
-                                          macAddress:self.deviceModel.macAddress
-                                               topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPPMQTTInterface spp_rebootDeviceWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                          macAddress:[MKSPDeviceModeManager shared].macAddress
+                                               topic:[MKSPDeviceModeManager shared].subscribedTopic
                                             sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success!"];
@@ -428,7 +386,7 @@
 
 #pragma mark - UI
 - (void)loadSubViews {
-    self.defaultTitle = self.deviceModel.deviceName;
+    self.defaultTitle = [MKSPDeviceModeManager shared].deviceName;
     [self.rightButton setImage:LOADICON(@"MKScannerPro", @"MKSPPSettingController", @"sp_editIcon.png")
                       forState:UIControlStateNormal];
     [self.view addSubview:self.tableView];

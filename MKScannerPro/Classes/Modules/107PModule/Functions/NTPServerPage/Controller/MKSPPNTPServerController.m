@@ -220,9 +220,7 @@ mk_textSwitchCellDelegate>
 
 - (MKSPPNTPServerModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKSPPNTPServerModel alloc] initWithDeviceID:self.deviceModel.deviceID
-                                                        macAddress:self.deviceModel.macAddress
-                                                             topic:[self.deviceModel currentSubscribedTopic]];
+        _dataModel = [[MKSPPNTPServerModel alloc] init];
     }
     return _dataModel;
 }

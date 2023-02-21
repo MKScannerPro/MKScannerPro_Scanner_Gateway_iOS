@@ -18,6 +18,7 @@
 
 #import "MKHudManager.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPMQTTSettingForDeviceCell.h"
@@ -62,9 +63,9 @@
 #pragma mark - interface
 - (void)readDataFromServer {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [self.protocol sp_readDeviceMQTTServerInfoWithDeviceID:self.deviceModel.deviceID
-                                                macAddress:self.deviceModel.macAddress
-                                                     topic:[self.deviceModel currentSubscribedTopic]
+    [self.protocol sp_readDeviceMQTTServerInfoWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                                macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                     topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                   sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self updateCellDatas:returnData[@"data"]];

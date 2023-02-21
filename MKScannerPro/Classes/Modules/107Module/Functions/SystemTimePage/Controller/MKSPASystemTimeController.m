@@ -18,6 +18,7 @@
 #import "MKHudManager.h"
 #import "MKTextButtonCell.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPAMQTTInterface.h"
@@ -94,9 +95,9 @@ MKTextButtonCellDelegate>
 #pragma mark - interface
 - (void)readDataFromServer {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKSPAMQTTInterface spa_readDeviceUTCWithDeviceID:self.deviceModel.deviceID
-                                           macAddress:self.deviceModel.macAddress
-                                                topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPAMQTTInterface spa_readDeviceUTCWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                           macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                topic:[MKSPDeviceModeManager shared].subscribedTopic
                                              sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self updateCellData:returnData[@"data"]];
@@ -110,9 +111,9 @@ MKTextButtonCellDelegate>
 - (void)syncTimeZoneToDevice:(NSInteger)timeZone {
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [MKSPAMQTTInterface spa_configDeviceTimeZone:timeZone - 12
-                                        deviceID:self.deviceModel.deviceID
-                                      macAddress:self.deviceModel.macAddress
-                                           topic:[self.deviceModel currentSubscribedTopic]
+                                        deviceID:[MKSPDeviceModeManager shared].deviceID
+                                      macAddress:[MKSPDeviceModeManager shared].macAddress
+                                           topic:[MKSPDeviceModeManager shared].subscribedTopic
                                         sucBlock:^(id  _Nonnull returnData) {
         self.timeZone = timeZone;
         MKTextButtonCellModel *cellModel = self.dataList[0];

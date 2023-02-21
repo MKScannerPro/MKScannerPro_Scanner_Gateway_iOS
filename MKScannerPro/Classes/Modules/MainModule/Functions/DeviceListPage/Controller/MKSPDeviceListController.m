@@ -21,6 +21,7 @@
 
 #import "MKNetworkManager.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPMQTTServerManager.h"
@@ -38,7 +39,7 @@
 #import "MKSPServerForAppController.h"
 #import "MKSPScanPageController.h"
 
-static NSTimeInterval const kRefreshInterval = 0.5f;
+static NSTimeInterval const kRefreshInterval = 1.f;
 
 @interface MKSPDeviceListController ()<UITableViewDelegate,
 UITableViewDataSource,
@@ -107,7 +108,9 @@ MKSPDeviceModelDelegate>
         [self.view showCentralToast:@"Device is off-line!"];
         return;
     }
-    UIViewController *vc = [[CTMediator sharedInstance] CTMediator_MKScannerPro_DeviceDataPage:deviceModel];
+    [[MKSPDeviceModeManager shared] addDeviceModel:deviceModel];
+    NSInteger deviceType = strtoul([deviceModel.deviceType UTF8String],0,16);
+    UIViewController *vc = [[CTMediator sharedInstance] CTMediator_MKScannerPro_DeviceDataPage:deviceType];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

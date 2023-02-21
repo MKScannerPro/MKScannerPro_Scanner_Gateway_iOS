@@ -13,6 +13,7 @@
 #import "CTMediator+MKSPAdd.h"
 #import "MKScannerModuleKey.h"
 #import "MKSPDeviceModel.h"
+#import "MKSPDeviceModeManager.h"
 #import "MKSPBaseViewController.h"
 #import "MKSPDeviceDatabaseManager.h"
 #import "MKSPADeviceDataController.h"

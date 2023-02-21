@@ -12,10 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKSPPUploadOptionModel : NSObject
 
-- (instancetype)initWithDeviceID:(NSString *)deviceID
-                      macAddress:(NSString *)macAddress
-                           topic:(NSString *)topic; 
-
 @property (nonatomic, assign)NSInteger rssi;
 
 /// 0:1M PHY(V4.2)   1:1M PHY(V5.0)   2:1M PHY(V4.2) & 1M PHY(V5.0)    3:Coded PHY(V5.0)

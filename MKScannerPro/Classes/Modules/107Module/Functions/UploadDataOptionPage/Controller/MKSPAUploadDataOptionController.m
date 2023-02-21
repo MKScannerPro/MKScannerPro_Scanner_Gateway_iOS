@@ -19,6 +19,7 @@
 #import "MKHudManager.h"
 #import "MKTextSwitchCell.h"
 
+#import "MKSPDeviceModeManager.h"
 #import "MKSPDeviceModel.h"
 
 #import "MKSPAMQTTInterface.h"
@@ -49,9 +50,9 @@ mk_textSwitchCellDelegate>
 - (void)rightButtonMethod {
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [MKSPAMQTTInterface spa_configUploadDataOption:self.dataModel
-                                          deviceID:self.deviceModel.deviceID
-                                        macAddress:self.deviceModel.macAddress
-                                             topic:[self.deviceModel currentSubscribedTopic]
+                                          deviceID:[MKSPDeviceModeManager shared].deviceID
+                                        macAddress:[MKSPDeviceModeManager shared].macAddress
+                                             topic:[MKSPDeviceModeManager shared].subscribedTopic
                                           sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
@@ -115,9 +116,9 @@ mk_textSwitchCellDelegate>
 #pragma mark - interface
 - (void)readDataFromServer {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKSPAMQTTInterface spa_readUploadDataOptionWithDeviceID:self.deviceModel.deviceID
-                                                  macAddress:self.deviceModel.macAddress
-                                                       topic:[self.deviceModel currentSubscribedTopic]
+    [MKSPAMQTTInterface spa_readUploadDataOptionWithDeviceID:[MKSPDeviceModeManager shared].deviceID
+                                                  macAddress:[MKSPDeviceModeManager shared].macAddress
+                                                       topic:[MKSPDeviceModeManager shared].subscribedTopic
                                                     sucBlock:^(id  _Nonnull returnData) {
         [[MKHudManager share] hide];
         self.dataModel.timestamp = ([returnData[@"data"][@"timestamp"] integerValue] == 1);
