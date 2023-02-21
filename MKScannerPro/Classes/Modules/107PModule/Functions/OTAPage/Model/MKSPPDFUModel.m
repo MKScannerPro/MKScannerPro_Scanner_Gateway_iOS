@@ -138,7 +138,9 @@ mk_sp_centralManagerScanDelegate>
         [self operationFailedBlock:self.updateFailedBlock msg:@"Dfu upgrade failure!"];
         return;
     }
-    DFUFirmware *selectedFirmware = [[DFUFirmware alloc] initWithZipFile:zipData];// or
+    NSError *firmwareError = nil;
+    
+    DFUFirmware *selectedFirmware = [[DFUFirmware alloc] initWithZipFile:zipData error:&firmwareError];// or
     //Use the DFUServiceInitializer to initialize the DFU process.
     if (!selectedFirmware) {
         [self operationFailedBlock:self.updateFailedBlock msg:@"Dfu upgrade failure!"];
@@ -148,7 +150,7 @@ mk_sp_centralManagerScanDelegate>
         dispatch_cancel(self.scanTimer);
     }
     self.timeout = NO;
-    DFUServiceInitiator *initiator = [[DFUServiceInitiator alloc] initWithQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) progressQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) loggerQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+    DFUServiceInitiator *initiator = [[DFUServiceInitiator alloc] initWithQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) progressQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) loggerQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) centralManagerOptions:@{}];
     initiator = [initiator withFirmware:selectedFirmware];
     initiator.logger = self; // - to get log info
     initiator.delegate = self; // - to be informed about current state and errors
