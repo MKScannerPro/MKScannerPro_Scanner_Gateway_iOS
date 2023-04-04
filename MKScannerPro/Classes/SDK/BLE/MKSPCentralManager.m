@@ -215,6 +215,7 @@ static dispatch_once_t onceToken;
 }
 
 - (void)disconnect {
+    [self logToLocal:@"主动断开连接"];
     [[MKBLEBaseCentralManager shared] disconnect];
 }
 
@@ -270,6 +271,8 @@ static dispatch_once_t onceToken;
     }
     __weak typeof(self) weakSelf = self;
     MKSPOperation *operation = [[MKSPOperation alloc] initOperationWithID:mk_sp_connectPasswordOperation commandBlock:^{
+        __strong typeof(self) sself = weakSelf;
+        NSLog(@"设备连接密码:%@",sself.password);
         [[MKBLEBaseCentralManager shared] sendDataToPeripheral:commandData characteristic:[MKBLEBaseCentralManager shared].peripheral.sp_password type:CBCharacteristicWriteWithResponse];
     } completeBlock:^(NSError * _Nullable error, id  _Nullable returnData) {
         __strong typeof(self) sself = weakSelf;
