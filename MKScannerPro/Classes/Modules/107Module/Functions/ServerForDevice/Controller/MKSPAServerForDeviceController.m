@@ -575,6 +575,8 @@ MKCAFileSelectControllerDelegate>
     self.sslParamsModel.clientKeyName = self.dataModel.clientKeyName;
     self.sslParamsModel.clientCertName = self.dataModel.clientCertName;
     self.sslParamsModel.deviceID = self.dataModel.deviceID;
+    self.sslParamsModel.ntpHost = self.dataModel.ntpHost;
+    self.sslParamsModel.timeZone = self.dataModel.timeZone;
     
     //动态布局底部footer
     [self setupSSLViewFrames];
