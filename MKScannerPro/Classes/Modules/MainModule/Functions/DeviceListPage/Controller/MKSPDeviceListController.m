@@ -296,7 +296,7 @@ MKSPDeviceModelDelegate>
         [self.addView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(0);
             make.right.mas_equalTo(0);
-            make.top.mas_equalTo(defaultTopInset);
+            make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop);
             make.bottom.mas_equalTo(self.footerView.mas_top);
         }];
         return;
@@ -306,7 +306,7 @@ MKSPDeviceModelDelegate>
     [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
-        make.top.mas_equalTo(defaultTopInset);
+        make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop);
         make.bottom.mas_equalTo(self.footerView.mas_top);
     }];
     [self.tableView reloadData];
@@ -430,7 +430,7 @@ MKSPDeviceModelDelegate>
     [self.footerView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
-        make.bottom.mas_equalTo(-VirtualHomeHeight);
+        make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom);
         make.height.mas_equalTo(60.f);
     }];
 }
