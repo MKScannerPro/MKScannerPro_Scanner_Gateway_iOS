@@ -1401,7 +1401,7 @@ PODS:
     - MKScannerPro/SDK
     - MLInputDodger
   - MKScannerPro/Modules/107PModule/Functions/OTAPage/Model (2.1.1):
-    - iOSDFULibrary
+    - iOSDFULibrary (= 4.13.0)
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MKScannerPro/CTMediator
@@ -2199,7 +2199,7 @@ SPEC CHECKSUMS:
   MKBaseModuleLibrary: 2b79bcae588c755588413fbb643b510253271b23
   MKBaseMQTTModule: 5434692b017865eede3b2ac6d2b4df52acd65a91
   MKCustomUIModule: 3c7038a6c5f5841c7894e6647ecff78482723947
-  MKScannerPro: 8f06ab6e2ebdd5e087d3157e53b5d2f406b0e537
+  MKScannerPro: 3eeafcecc0209b7b5d7b59cc13d75fc517d9fc24
   MLInputDodger: 79a0e420a80d0d3bba122bf2639603cc76609ba8
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196

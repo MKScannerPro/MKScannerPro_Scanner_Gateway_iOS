@@ -179,7 +179,7 @@ TODO: Add long description of the pod here.
               sssss.subspec 'Model' do |ssssss|
                 ssssss.source_files = 'MKScannerPro/Classes/Modules/107PModule/Functions/OTAPage/Model/**'
                 
-                ssssss.dependency 'iOSDFULibrary'
+                ssssss.dependency 'iOSDFULibrary',  '4.13.0'
               end
           end
           

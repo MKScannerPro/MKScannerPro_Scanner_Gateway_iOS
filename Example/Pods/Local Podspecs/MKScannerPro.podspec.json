@@ -296,7 +296,7 @@
                       "source_files": "MKScannerPro/Classes/Modules/107PModule/Functions/OTAPage/Model/**",
                       "dependencies": {
                         "iOSDFULibrary": [
-
+                          "4.13.0"
                         ]
                       }
                     }
